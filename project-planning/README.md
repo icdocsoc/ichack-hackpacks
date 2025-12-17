@@ -63,3 +63,57 @@ focuses on documentation, demo, and final pitch
 > Assign at least one team member to focus on the **presentation, demo, and write-up** later in the hackathon. After long hours of coding, teams are often too exhausted to clearly explain their project or record a strong presentation, and planning ahead makes a huge difference.
 
 # 4. Time management
+
+Time management is crucial to success at ICHACK. Making good use of the limited hacking time will help your team stay focused, avoid last-minute stress, and deliver a polished project.
+
+**Hacking Period:**  
+- 🕛 **Start:** Saturday 12:00 PM  
+- 🕛 **Deadline:** Sunday 12:00 PM  
+
+Expect around **1–2 hours before hacking starts** for the opening ceremony, team setup, and initial planning.
+
+---
+
+## Suggested Hackathon Timeline
+
+### 12:00 – 1:00 PM (Hour 0–1): Problem Selection & Planning
+- Finalise your problem statement
+- Decide on your solution approach
+- Define MVP scope and milestones
+- Assign roles and responsibilities
+
+---
+
+### 1:00PM - 12:00AM (Hours 1–12): Core Development
+- Implement core features
+- Set up frontend, backend, and infrastructure
+- Focus on getting a working MVP
+
+**Tip:** Track progress against milestones and adjust scope if needed.
+
+---
+
+### 12:00AM - 6:00AM (Hours 12–18): Refinement & Testing
+- Polish key features
+- Fix bugs and edge cases
+- Ensure the demo flow works smoothly
+
+**Tip:** Try to allocate everyone to have some rest in this period of time as well
+
+---
+
+### 6:00AM - 10:00AM (Hours 18–22): Presentation Preparation
+- Prepare demo flow
+- Create slides and project description
+- Craft a clear and compelling pitch
+
+---
+
+### 10:00AM -12:00PM (Hours 22–24): Final Sprint & Submission
+- Final bug fixes and polish
+- Rehearse demo and pitch
+- Submit on time
+
+---
+
+Good time management helps your team balance **building**, **polishing**, and **presenting**—all of which are critical to success at ICHACK!
