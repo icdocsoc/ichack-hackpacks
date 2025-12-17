@@ -72,8 +72,6 @@ Time management is crucial to success at ICHACK. Making good use of the limited 
 
 Expect around **1–2 hours before hacking starts** for the opening ceremony, team setup, and initial planning.
 
----
-
 ## Suggested Hackathon Timeline
 
 ### 12:00 – 1:00 PM (Hour 0–1): Problem Selection & Planning
@@ -89,7 +87,7 @@ Expect around **1–2 hours before hacking starts** for the opening ceremony, te
 - Set up frontend, backend, and infrastructure
 - Focus on getting a working MVP
 
-**Tip:** Track progress against milestones and adjust scope if needed.
+>**Tip:** Track progress against milestones and adjust scope if needed.
 
 ---
 
@@ -98,7 +96,7 @@ Expect around **1–2 hours before hacking starts** for the opening ceremony, te
 - Fix bugs and edge cases
 - Ensure the demo flow works smoothly
 
-**Tip:** Try to allocate everyone to have some rest in this period of time as well
+>**Tip:** Try to allocate everyone to have some rest in this period of time as well
 
 ---
 
