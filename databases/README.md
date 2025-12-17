@@ -4,7 +4,7 @@ For your ICHack project, you will almost certainly need to store data. This Hack
 
 We have deep dives into 3 types:
  - [Structured (Relational) Databases - PostgreSQL]()
- - [Document Databases - Firestore]()
+ - [Document Databases - Firestore](document.md)
  - [Graph Databases - [NOT SURE]]()
 
 Use the decision tree below to choose your database.
@@ -20,10 +20,6 @@ flowchart TD
 
     D -->|Yes| E[Use a Graph DB]
     D -->|No| F[Use a Document DB]
-
-    click C "relational.md" "Open Relational DB Deep-Dive"
-    click E "graph.md" "Open Graph DB Deep-Dive"
-    click F "document.md" "Open Document DB Deep-Dive"
 ```
 
 ## Deeper Dive into Differences
@@ -76,7 +72,7 @@ Document databases store data as **JSON-like documents**. Each document can have
  - Logs, events and analytics
  - Chat apps
   
-[Click here for the deep-dive]()
+[Click here for the deep-dive](document.md)
 
 ### Graph Databases
 #### What they are
