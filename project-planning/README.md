@@ -26,7 +26,7 @@ Before forming a team, think about the end product. It can be anything like
 - AI tools
 - Platforms etc.
 
-After having an initial idea of the product, then idenify the skills required to build it
+After having an initial idea of the product, then identify the skills required to build it.
 
 ## Common Skills
 
@@ -42,7 +42,7 @@ A well-rounded team often includes a mix of:
 - **UI/UX /  Graphic Design**
     user flows, visual design, branding
 
->Always remember not every team need all roles, but instead find the skills most needed for your project!
+> Always remember not every team need all roles, but instead find the skills most needed for your project!
 
 
 # 3. Work allocation 
@@ -107,11 +107,11 @@ Expect around **1–2 hours before hacking starts** for the opening ceremony, te
 
 ---
 
-### 10:00AM -12:00PM (Hours 22–24): Final Sprint & Submission
+### 10:00AM - 12:00PM (Hours 22–24): Final Sprint & Submission
 - Final bug fixes and polish
 - Rehearse demo and pitch
 - Submit on time
 
 ---
 
-Good time management helps your team balance **building**, **polishing**, and **presenting**—all of which are critical to success at ICHACK!
+Good time management helps your team balance **building**, **polishing**, and **presenting** - all of which are critical to success at ICHACK!
