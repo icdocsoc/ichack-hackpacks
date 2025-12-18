@@ -494,3 +494,11 @@ The above code will cause all the users to be printed each time the query result
 
 > [!NOTE]
 > Both of the above will cause an initial trigger for the first data read. 
+
+## 7. Indexes
+There are likely to be many occasions when you have errors running a complex query. Firestore requires composite indexes for running complex queries involving several fields.
+
+These errors will be very explicit and accompanied with a link, that should create the necessary index for you.
+
+> [!NOTE]
+> The creation of a composite index typically takes a long time (up to tens of minutes), so do not be alarmed!
