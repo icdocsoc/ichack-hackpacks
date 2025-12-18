@@ -6,14 +6,54 @@ This deep-dive covers the theory, then two practical implementations: **Firestor
 
 Sample code will be provided, with example programs found in `databases/example-project`.
 
+# Table of Contents
+- [Document Databases](#document-databases)
+- [Table of Contents](#table-of-contents)
+- [Firestore](#firestore)
+  - [Setup](#setup)
+    - [Create a Firebase project](#create-a-firebase-project)
+    - [Install Firebase SDK](#install-firebase-sdk)
+    - [Initialise Firebase](#initialise-firebase)
+  - [Firestore Data Model](#firestore-data-model)
+    - [Data Types](#data-types)
+  - [Core Database Operations](#core-database-operations)
+    - [Create Data](#create-data)
+      - [Auto-ID Document](#auto-id-document)
+      - [Known ID](#known-id)
+    - [Read Data](#read-data)
+      - [Getting a single document](#getting-a-single-document)
+      - [Query a collection](#query-a-collection)
+      - [Other operators](#other-operators)
+      - [Combining queries](#combining-queries)
+      - [Query a subcollection](#query-a-subcollection)
+      - [Order and limit data](#order-and-limit-data)
+    - [Update Data](#update-data)
+    - [Delete Data](#delete-data)
+  - [Batching](#batching)
+  - [Transactions](#transactions)
+  - [Real-Time Updates](#real-time-updates)
+  - [Indexes](#indexes)
+  - [Quota](#quota)
+  - [Authentication](#authentication)
+    - [Setup](#setup-1)
+    - [Use](#use)
+  - [Example](#example)
+    - [Auth](#auth)
+    - [Create](#create)
+    - [Read](#read)
+    - [Update](#update)
+    - [Delete](#delete)
+    - [Batching](#batching-1)
+
+
 # Firestore
 Firestore is a **managed, serverless document database** designed primarily for **web and mobile applications**. It shines when you want to move fast, avoid backend infrastructure, and build real-time features.
 
 This deep dive will focus on **web apps** (React / Vue / plain JS), however links to the official Firestore docs will be provided to find alternatives (Python, Kotlin, Java, etc).
 
-## 1. Setup
+## Setup
 
-### 1.1 Create a Firebase project
+### Create a Firebase project
 
  0. Ensure you have already set up a JS project (we will be using `npm` with `React` and `TypeScript`)
  1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/)
@@ -29,13 +69,13 @@ This deep dive will focus on **web apps** (React / Vue / plain JS), however link
  9. Return to the home screen
  10. Add a new web app (press `Add app` and select `web`)
 
-### 1.2 Install Firebase SDK
+### Install Firebase SDK
   In your project root directory, run 
   ```bash
   npm install firebase
   ```
 
-### 1.3 Initialise Firebase
+### Initialise Firebase
  1. Copy the code snippet from the web app setup screen. This should look something like
  ```ts
  // Import the functions you need from the SDKs you need
@@ -67,8 +107,8 @@ const app = initializeApp(firebaseConfig);
  ```
  4. Congratulations, you are ready to use Firestore!
    
-## 2. Firestore Data Model
-Now you have to design a data model for your app. For the purposes of the HackPack, we will be using [insert here]
+## Firestore Data Model
+Now you have to design a data model for your app.
 
 In general, your Firestore data model will take the shape of
 ```
@@ -85,6 +125,7 @@ Since Firestore does not support joins, you have to instead store data in a deno
 
 The latter is preferred for **small**, mostly **read-only** data, since it avoids running extra queries. However, you should use references if the documents are **large**, **frequently updated** or **shared** across entities.
 
+> [!IMPORTANT]
 > Firestore is optimised for **reads**, **real-time updates** and **velocity**, not **relational correctness** or **complex querying**
 
 ### Data Types
@@ -151,7 +192,7 @@ The above shows how you would go about creating a converter, and using it with a
 [Click here for other languages](https://firebase.google.com/docs/firestore/manage-data/add-data#custom_objects)
 
 
-## 3. Core Database Operations
+## Core Database Operations
 
 For the following, you may need to use some or all of
 
@@ -173,7 +214,7 @@ import {
 
 We will go through each of the elementary database CRUD operations.
 
-### 3.1 Create Data
+### Create Data
 
 There are 2 ways to add a document to a collection. 
 #### Auto-ID Document
@@ -196,7 +237,7 @@ The above is more for users. It is idiomatic to set the document name of a user,
 
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/add-data#add_a_document)
 
-### 3.2 Read Data
+### Read Data
 #### Getting a single document
 ```ts
 const docRef = doc(db, "users", userId)
@@ -241,8 +282,8 @@ These will only ever return documents where the operand field exists.
 Firestore imposes limits of 30 elements for the `in` and `array-contains-any` operators, as in `where('field', 'not-in', [a, b, c, ... , x, y, z])`, the `[a, b, c, ...]` array must have at most 30 elements. 
 Similarly, the `not-in` operator can support up to 10 elements. 
 
-> [!NOTE]
-> The above is only true for web apps, Python, Node.js, Go and Ruby. Other langugages use named methods. [See here for more info](https://firebase.google.com/docs/firestore/query-data/queries#query_operators)
+> [!IMPORTANT]
+> The above is only true for web apps, Python, Node.js, Go and Ruby. Other languages use named methods. [See here for more info](https://firebase.google.com/docs/firestore/query-data/queries#query_operators)
 
 
 #### Combining queries
@@ -257,10 +298,10 @@ const q = query(collection(db, "users"), and(
 ));
 ```
 
-> [!NOTE]
+> [!WARNING]
 > The 30 term limit described in the previous section extends to this too. Your total query must have a maximum of 30 disjunctions after Firestore converts your query into disjunctive normal form.
 
-> [!NOTE]
+> [!IMPORTANT]
 > You cannot combine `not-in` with any of `in`, `array-contains-any` or `or` in the same query.
 
 #### Query a subcollection
@@ -295,7 +336,7 @@ const q = query(collection(db, "users"), orderBy("name"), orderBy("email", "desc
 The above query will return the top 5 users, when sorted by name ascending, and ties are resolved by sorting by email decreasing.
 Note that you can combine this with `where` clauses to first filter your data.
 
-### 3.3 Update Data
+### Update Data
 ```ts
 await updateDoc(doc(db, "users", userId), {
   email: "alice1@gmail.com"
@@ -353,12 +394,12 @@ await updateDoc(doc(db, "users", userId), {
 });
 ```
 This will increase `userId`'s `followerCount` by 2. 
-> [!NOTE]
+> [!IMPORTANT]
 > If the field does not exist, or is not numeric, this operation will set the field to the numeric value specified in the argument.
 
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/add-data#increment_a_numeric_value)
 
-### 3.4 Delete Data
+### Delete Data
 You can delete a document
 ```ts
 await deleteDoc(doc(db, "users", userId));
@@ -388,12 +429,12 @@ await batch.commit();
 ```
 
 > [!NOTE]
-> We have used batches here, we will cover this properly in section 4
+> We have used batches here, we will cover this properly in the [batching section](#batching)
 
-> [!WARNING]
+> [!CAUTION]
 > Only to be used in hackathons! Strongly not recommended for production code!
 
-## 4. Batching
+## Batching
 When you want to complete a set of operations, which do not include any reads, this can be combined into one `batch` operation. While this **does not** reduce your usage towards the quota limit, it **does** reduce operation latency by only having one network round-trip. 
 
 ```ts
@@ -410,7 +451,7 @@ await batch.commit();
 Notice how we only have 1 async operation, the final `batch.commit()`.
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/transactions#batched-writes)
 
-## 5. Transactions
+## Transactions
 Transactions have the same benefits as batching (only a single network round-trip), while also allowing reads. 
 However, there are a few points to note:
  - Reads must be executed before writes
@@ -449,12 +490,12 @@ try {
 
 The above code snippet shows how to execute a transaction. Notice how no `console.log()` was called within the transaction. Instead we return a value out of the transaction and use that. This ensures that retries can happen safely without repeatedly executing the `console.log()`.
 
-> [!NOTE]
-> Transactions ensure atomicity, however for array and counter operations, prefer to use the methods at the end of [section 3.3](#33-update-data).
+> [!TIP]
+> Transactions ensure atomicity, however for array and counter operations, prefer to use the methods at the end of [Update Data](#update-data).
 
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/transactions#passing_information_out_of_transactions)
 
-## 6. Real-Time Updates
+## Real-Time Updates
 One key feature of Firestore is the ability to subscribe to updates to a document or collection.
 This is especially useful for things like
  - Chats
@@ -492,10 +533,10 @@ The above code will cause all the users to be printed each time the query result
 
 [Click for other languages](https://firebase.google.com/docs/firestore/query-data/listen#listen_to_multiple_documents_in_a_collection)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Both of the above will cause an initial trigger for the first data read. 
 
-## 7. Indexes
+## Indexes
 There are likely to be many occasions when you have errors running a complex query. Firestore requires composite indexes for running complex queries involving several fields.
 
 These errors will be very explicit and accompanied with a link, that should create the necessary index for you.
@@ -503,7 +544,7 @@ These errors will be very explicit and accompanied with a link, that should crea
 > [!NOTE]
 > The creation of a composite index typically takes a long time (up to tens of minutes), so do not be alarmed!
 
-## 8. Quota
+## Quota
 By default, when you create a new project, you will be on the **Spark** plan. This is a completely free tier and you will never be charged. 
 
 Your limits are:
@@ -513,8 +554,8 @@ Your limits are:
  - 50K reads per day
  - 20K deletes per day
 
-> [!WARNING]
-> The real-time updates from [Section 6](#6-real-time-updates) count as 1 read for each updated document. For a query listener, this counts as however many documents were returned by that query. The same goes for ordinary queries.
+> [!CAUTION]
+> The real-time updates from [Section 6](#real-time-updates) count as 1 read for each updated document. For a query listener, this counts as however many documents were returned by that query. The same goes for ordinary queries.
 > 
 > Batched writes and transactions count each constituent read and write towards your quota as well.
 
@@ -522,3 +563,88 @@ Once your quota runs out, you will be unable to perform that operation.
 
 > [!NOTE]
 > This is just for reference. You will be *EXTREMELY* unlikely to hit any of these quota limits.
+
+## Authentication
+You will likely want some sort of authentication, even anonymous (using just the browser session). This will give each user a unique authentication ID, which becomes the document name for their user document. 
+
+### Setup
+ 1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/)
+ 2. Open your project
+ 3. On the left hand pane, click on `Build` -> `Authentication`
+ 4. Click on `Get started`
+ 5. From this panel, click on the sign-in providers you want
+> [!TIP]
+> Anonymous or email/password are by far the recommended methods
+ 6. Click enable for the selected sign-in provider
+
+### Use
+ 1. Add the following to your imports for `firebase.ts`
+ ```ts
+import { getAuth } from "firebase/auth"
+```
+ 2. Add the following just before your `getFirestore(app)` call, also in `firebase.ts`
+ ```ts
+ export const auth = getAuth(app);
+ ```
+ 3. In `App.tsx`, the main `App()` function should be of the form
+ ```ts
+ function App() {
+  const [user, setUser] = useState<User | null | undefined>(undefined);
+
+  useEffect(() => {
+    return onAuthStateChanged(auth, setUser);
+  }, []);
+
+  if (user === undefined) return <Loading />;
+
+  return user ? <Dashboard /> : <SignIn />;
+}
+```
+where `Loading`, `Dashboard` and `SignIn` are React components. 
+
+Click on the following for examples of those components
+ - [`Loading`](./example-project/sample-document-app/src/components/LoadingSpinner.tsx)
+ - [`Dashboard`](./example-project/sample-document-app/src/pages/Dashboard.tsx)
+ - [Anonymous `SignIn`](./example-project/sample-document-app/src/components/SignInAnonymous.tsx)
+ - [Email/Password `SignIn`](./example-project/sample-document-app/src/components/SignInPassword.tsx)
+ - [`App.tsx`](./example-project/sample-document-app/src/App.tsx)
+
+
+## Example
+For our example project, we will be creating a VERY simple chat app. This is one of the ideal use-cases for Firestore, since we want real-time updates on messages across all the users.
+
+Our data model is as follows
+```
+posts (collection)
+ └─ postId (document)
+     ├─ authorId: "gSUFRq..."
+     ├─ createdAt: 18 December 2025 at 14:27:01 UTC
+     ├─ text: "Hello World!"
+     └─ updatedAt: 18 December 2025 at 14:45:34 UTC
+```
+
+The example demonstrates how to use Firestore for authentication. 
+The example also covers all of the CRUD operations, along with real-time query updates to retrieve the last 50 messages. There is also an example of a batched operation to delete all the posts of the current user. 
+
+### Auth
+ - [Routing](./example-project/sample-document-app/src/App.tsx#L10)
+ - [Anonymous Sign-In](./example-project/sample-document-app/src/components/SignInAnonymous.tsx)
+ - [Email/Password Sign-In](./example-project/sample-document-app/src/components/SignInPassword.tsx)
+
+### Create
+ - [Create a Post](./example-project/sample-document-app/src/pages/Dashboard.tsx#L103)
+
+### Read
+ - [Read Newest Posts](./example-project/sample-document-app/src/pages/Dashboard.tsx#L94)
+ - [Converter](./example-project/sample-document-app/src/pages/Dashboard.tsx#L34)
+ - [Read All Posts Created By Current User](./example-project/sample-document-app/src/pages/Dashboard.tsx#L66)
+
+### Update
+ - [Update Post](./example-project/sample-document-app/src/components/Post.tsx#L12)
+
+### Delete
+ - [Delete Single Post](./example-project/sample-document-app/src/components/Post.tsx#L23)
+ - [Batch Delete All Posts](./example-project/sample-document-app/src/pages/Dashboard.tsx#L78)
+
+### Batching
+ - [Batch Delete All Posts](./example-project/sample-document-app/src/pages/Dashboard.tsx#L78)
