@@ -502,3 +502,23 @@ These errors will be very explicit and accompanied with a link, that should crea
 
 > [!NOTE]
 > The creation of a composite index typically takes a long time (up to tens of minutes), so do not be alarmed!
+
+## 8. Quota
+By default, when you create a new project, you will be on the **Spark** plan. This is a completely free tier and you will never be charged. 
+
+Your limits are:
+ - 1 GiB total Firestore data
+ - 10 GiB data read per month
+ - 20K writes per day (including updates)
+ - 50K reads per day
+ - 20K deletes per day
+
+> [!WARNING]
+> The real-time updates from [Section 6](#6-real-time-updates) count as 1 read for each updated document. For a query listener, this counts as however many documents were returned by that query. The same goes for ordinary queries.
+> 
+> Batched writes and transactions count each constituent read and write towards your quota as well.
+
+Once your quota runs out, you will be unable to perform that operation.
+
+> [!NOTE]
+> This is just for reference. You will be *EXTREMELY* unlikely to hit any of these quota limits.
