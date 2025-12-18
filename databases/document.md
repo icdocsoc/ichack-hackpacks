@@ -453,3 +453,44 @@ The above code snippet shows how to execute a transaction. Notice how no `consol
 > Transactions ensure atomicity, however for array and counter operations, prefer to use the methods at the end of [section 3.3](#33-update-data).
 
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/transactions#passing_information_out_of_transactions)
+
+## 6. Real-Time Updates
+One key feature of Firestore is the ability to subscribe to updates to a document or collection.
+This is especially useful for things like
+ - Chats
+ - Collaborative tools
+ - Live dashboards
+  
+```ts
+const unsub = onSnapshot(doc(db, "users", userId), (doc) => {
+  console.log("Updates for user: ", doc.data());
+});
+
+// Later
+unsub();
+```
+
+[Click for other languages](https://firebase.google.com/docs/firestore/query-data/listen)
+
+You can also listen to multiple documents, by listening to a query.
+
+```ts
+const q = query(collection(db, "users"));
+const unsub = onSnapshot(q, (querySnapshot) => {
+  const users = [];
+  querySnapshot.forEach((doc) => {
+    users.push(doc.data().name);
+  });
+  console.log("List of current users: ", users.join(", "));
+});
+
+// Later
+unsub();
+```
+
+The above code will cause all the users to be printed each time the query results change (this includes document additions, removals and modification).
+
+[Click for other languages](https://firebase.google.com/docs/firestore/query-data/listen#listen_to_multiple_documents_in_a_collection)
+
+> [!NOTE]
+> Both of the above will cause an initial trigger for the first data read. 
