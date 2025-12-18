@@ -8,7 +8,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 
 ## Available HackPacks
 
- - Databases
+ - [Databases](./databases/README.md)
 
 ## Repository Structure
 
