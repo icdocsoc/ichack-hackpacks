@@ -28,6 +28,7 @@ Sample code will be provided, with example programs found in `databases/example-
       - [Query a subcollection](#query-a-subcollection)
       - [Order and limit data](#order-and-limit-data)
     - [Update Data](#update-data)
+      - [Special Atomic Update Methods](#special-atomic-update-methods)
     - [Delete Data](#delete-data)
   - [Batching](#batching)
   - [Transactions](#transactions)
@@ -69,11 +70,14 @@ This deep dive will focus on **web apps** (React / Vue / plain JS), however link
  9. Return to the home screen
  10. Add a new web app (press `Add app` and select `web`)
 
+---
+
 ### Install Firebase SDK
   In your project root directory, run 
   ```bash
   npm install firebase
   ```
+---
 
 ### Initialise Firebase
  1. Copy the code snippet from the web app setup screen. This should look something like
@@ -128,6 +132,8 @@ The latter is preferred for **small**, mostly **read-only** data, since it avoid
 > [!IMPORTANT]
 > Firestore is optimised for **reads**, **real-time updates** and **velocity**, not **relational correctness** or **complex querying**
 
+---
+
 ### Data Types
 Firestore can store
  - strings
@@ -157,6 +163,8 @@ const docData = {
 Above is an example of each of the datatypes.
 > [!NOTE]
 > Firestore stores all numbers as doubles.
+
+---
 
 As you can see from the example, all Firestore objects are stored as `Map` or `Dictionary` objects.
 In order to store custom classes, you must create a converter.
@@ -214,6 +222,8 @@ import {
 
 We will go through each of the elementary database CRUD operations.
 
+---
+
 ### Create Data
 
 There are 2 ways to add a document to a collection. 
@@ -236,6 +246,8 @@ await setDoc(doc(db, "users", userId), {
 The above is more for users. It is idiomatic to set the document name of a user, to the AuthID of a user provided by Firebase Auth. 
 
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/add-data#add_a_document)
+
+---
 
 ### Read Data
 #### Getting a single document
@@ -292,7 +304,7 @@ You can perform `OR` and `AND` operations to logically combine constraints.
 const q = query(collection(db, "users"), and(
   where("name", 'in', ['Alice', 'Bob']),
   or (
-    where("email", '==', 'alice@gmail.com')
+    where("email", '==', 'alice@gmail.com'),
     where("email", '==', 'bob@gmail.com')
   )
 ));
@@ -336,6 +348,8 @@ const q = query(collection(db, "users"), orderBy("name"), orderBy("email", "desc
 The above query will return the top 5 users, when sorted by name ascending, and ties are resolved by sorting by email decreasing.
 Note that you can combine this with `where` clauses to first filter your data.
 
+---
+
 ### Update Data
 ```ts
 await updateDoc(doc(db, "users", userId), {
@@ -365,7 +379,10 @@ await updateDoc(frankDocRef, {
 
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/add-data#update_fields_in_nested_objects)
 
-There are also 2 special methods for arrays:
+---
+
+#### Special Atomic Update Methods
+There are also 2 special methods to update arrays:
  - `arrayUnion()` - this adds the element to the target array if not already in it
  - `arrayRemove()` - this removes all instances of the element from the target array
 
@@ -385,6 +402,8 @@ await updateDoc(washingtonRef, {
 ```
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/add-data#update_elements_in_an_array)
 
+---
+
 Finally, there is a pair of special methods for numeric fields, `increment` and `decrement`. 
 These increment or decrement the target numeric field by the amount specified. 
 
@@ -398,6 +417,8 @@ This will increase `userId`'s `followerCount` by 2.
 > If the field does not exist, or is not numeric, this operation will set the field to the numeric value specified in the argument.
 
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/add-data#increment_a_numeric_value)
+
+---
 
 ### Delete Data
 You can delete a document
@@ -417,7 +438,7 @@ await updateDoc(doc(db, "users", userId), {
 ```
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/delete-data#fields)
 
-In order to delete a collection or subcollection, you need to delete all the documents inside that collection. Large deletes are note recommended for clients, and should instead be handled by a backend function. 
+In order to delete a collection or subcollection, you need to delete all the documents inside that collection. Large deletes are not recommended for clients, and should instead be handled by a backend function. 
 Here is an example of how you would do it for a client. We will limit it to 500 deletions for safety.
 ```ts
 const q = query(collection(db, "users", userId, "posts"), limit(500));
@@ -449,7 +470,11 @@ batch.delete(doc(db, "users", userId3));
 await batch.commit();
 ```
 Notice how we only have 1 async operation, the final `batch.commit()`.
+
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/transactions#batched-writes)
+
+> [!TIP]
+> Use this whenever possible if you are writing to more than 1 document!
 
 ## Transactions
 Transactions have the same benefits as batching (only a single network round-trip), while also allowing reads. 
@@ -491,12 +516,17 @@ try {
 The above code snippet shows how to execute a transaction. Notice how no `console.log()` was called within the transaction. Instead we return a value out of the transaction and use that. This ensures that retries can happen safely without repeatedly executing the `console.log()`.
 
 > [!TIP]
-> Transactions ensure atomicity, however for array and counter operations, prefer to use the methods at the end of [Update Data](#update-data).
+> Transactions ensure atomicity, however for array and counter operations, prefer to use the methods [found here](#special-atomic-update-methods).
+
+> [!TIP]
+> Use this whenever possible!
+
 
 [Click for other languages](https://firebase.google.com/docs/firestore/manage-data/transactions#passing_information_out_of_transactions)
 
 ## Real-Time Updates
 One key feature of Firestore is the ability to subscribe to updates to a document or collection.
+
 This is especially useful for things like
  - Chats
  - Collaborative tools
@@ -534,7 +564,10 @@ The above code will cause all the users to be printed each time the query result
 [Click for other languages](https://firebase.google.com/docs/firestore/query-data/listen#listen_to_multiple_documents_in_a_collection)
 
 > [!IMPORTANT]
-> Both of the above will cause an initial trigger for the first data read. 
+> Both of the above will cause an initial trigger for the initial read. 
+
+> [!CAUTION]
+> Creating a listener for a query can quickly use up read quotas. Consider adding a limit to how many documents to return from the query!
 
 ## Indexes
 There are likely to be many occasions when you have errors running a complex query. Firestore requires composite indexes for running complex queries involving several fields.
@@ -555,11 +588,12 @@ Your limits are:
  - 20K deletes per day
 
 > [!CAUTION]
-> The real-time updates from [Section 6](#real-time-updates) count as 1 read for each updated document. For a query listener, this counts as however many documents were returned by that query. The same goes for ordinary queries.
+> The [real-time updates](#real-time-updates) count as **1 read per updated document**. For a query listener, this counts as **however many documents were returned by that query**. The same goes for ordinary queries. This can quickly chew through your quota if you're not careful!
 > 
-> Batched writes and transactions count each constituent read and write towards your quota as well.
+> Batched writes and transactions count **each** constituent read and write towards your quota as well.
 
-Once your quota runs out, you will be unable to perform that operation.
+> [!WARNING]
+> Once your quota runs out, you will be unable to perform that operation.
 
 > [!NOTE]
 > This is just for reference. You will be *EXTREMELY* unlikely to hit any of these quota limits.
