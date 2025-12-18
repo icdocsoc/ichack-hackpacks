@@ -8,7 +8,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 
 ## Available HackPacks
 
-_HackPacks will be added here as they are developed._
+- **`project-planning`**
 
 ## Repository Structure
 
