@@ -28,7 +28,7 @@ Before forming a team, think about the end product. It could be anything along t
 - Web apps,
 - Mobile apps,
 - AI tools,
-- Platforms etc.
+- Hardwares etc.
 
 After having an initial idea of the product, then identify the skills required to build it.
 
@@ -40,9 +40,12 @@ A well-rounded team often includes a mix of people with the following skills:
 - **Frontend Development**: user-facing interfaces (React, Vue, mobile frameworks).
 - **Backend Development**: APIs, authentication, business logic.
 - **Databases / Infrastructure**: data modelling, storage, deployment
-- **UI/UX Design**: user flows, visual design, branding.
+- **UI/UX Design**: user flows, visual design, branding. (Figma)
 
-> Always remember not every team needs all of these roles filled, but you should still seek the skills most needed for your project! Also, if you've already formed a team and are missing some of these skills, don't worry! That's what the other HackPacks are for.
+Always remember not every team needs all of these roles filled, but you should still seek the skills most needed for your project! Also, if you've already formed a team and are missing some of these skills, don't worry! That's what the other HackPacks are for.
+
+> **Top Tip:**
+> It is important to have someone in your group who understands **UI/UX design and frontend development** as this is how judges *see* your idea working, not just hear about it. A good UI also makes demos smoother and pitch preparation much easier.
 
 ## Work allocation
 
@@ -55,7 +58,7 @@ While working flexibly between different components of your project is important
 - **Product/presentation leads** focus on developing your documentation, demo, and final pitch.
 
 > **Top Tip:**  
-> Assign at least one team member to focus on the **presentation, demo, and DevPost documentation/submission** in the last few hours of hacking. It can be easy to get wrapped up in your project after that much time spent coding, but planning ahead to ensure you're able to clearly explain your project and present well can make a massive difference.
+> Assign at least two team members to focus on the **presentation, demo, and DevPost documentation/submission** in the last few hours of hacking. It can be easy to get wrapped up in your project after that much time spent coding, but planning ahead to ensure you're able to clearly explain your project and present well can make a massive difference.
 
 ## Time management
 
@@ -73,16 +76,24 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 > **Disclaimer:**
 > Don't feel obligated to follow this too closely! It's just a suggestion to hopefully streamline your hacking process a bit more.
 
-### 12:00 – 1:00 PM (Hour 0–1): Problem Selection & Planning
+### 12:00PM – 2:00PM (Hour 0–2): Problem Selection & Planning
 
 - Finalise your problem statement
 - Decide on your solution approach
-- Define MVP scope and milestones
 - Assign roles and responsibilities
+- and enjoy your lunch!
 
 ---
 
-### 1:00PM - 12:00AM (Hours 1–12): Core Development
+### 2:00PM – 3:00PM (Hour 2-3): Overall Design Layout
+
+- Design the overall layout for your solution
+- Break down problems into small tasks
+- Assign tasks to every team member
+
+---
+
+### 3:00PM - 12:00AM (Hours 3–12): Core Development
 
 - Implement core features
 - Set up frontend, backend, and infrastructure
