@@ -49,6 +49,8 @@ Relational databases store data in **tables with fixed schemas**, with rows and 
 
 [Click here for the deep-dive]()
 
+---
+
 ### Document Databases
 #### What they are
 Document databases store data as **JSON-like documents**. Each document can have a flexible, heterogenous structure. 
