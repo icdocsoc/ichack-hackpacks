@@ -152,3 +152,225 @@ Mine looks like this:
 ![Screenshot of example app.](assets/welcome-to-ic-hack.png)
 
 > **Stuck?** The complete example is available in the `welcome-to-ic-hack` folder of this repository. Compare your code to `MainActivity.kt` if you need a hint!
+
+## An IC Hack Countdown Timer
+
+For our second demo, we'll build a countdown timer that shows how long until IC Hack begins! This will introduce some more advanced concepts: **state management**, **coroutines**, and **interactive UI** with buttons.
+
+### Project Set-up
+
+Create a new *Empty Activity* project in Android Studio, just like before. I've named mine 'IC Hack Countdown'.
+
+### State in Compose
+
+So far, our greeting app has been entirely *static* — it displays the same thing every time. But a countdown timer needs to *change* over time. How do we make our UI update?
+
+This is where **state** comes in.
+
+**State** is any data that can change during the lifetime of your app. When state changes, Compose automatically **recomposes** (re-runs) the composables that use that state, updating the UI.
+
+To create state in Compose, we use `remember` and `mutableStateOf`:
+
+```kotlin
+var count by remember { mutableStateOf(0) }
+```
+
+Let's break this down:
+
+- **`mutableStateOf(0)`** creates a state holder with an initial value of `0`
+- **`remember { }`** tells Compose to keep this value across recompositions (otherwise it would reset to `0` every time!)
+- **`by`** is Kotlin's property delegation — it lets us read and write `count` directly instead of using `.value`
+
+When you update `count`, any composable that reads it will automatically re-run with the new value. This is the core of Compose's reactive model!
+
+### Building the countdown display
+
+Let's start by creating a `CountdownTimer` composable. For now, we'll just display a title and a static time value:
+
+```kotlin
+@Composable
+fun CountdownTimer(modifier: Modifier = Modifier) {
+    var timeRemaining by remember { mutableStateOf(86400000L) } // 24 hours in milliseconds
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
+            .fillMaxSize()
+            .padding(24.dp)
+    ) {
+        Text(
+            text = "IC Hack 2025\nTime until submission",
+            textAlign = TextAlign.Center,
+            fontSize = 24.sp,
+            lineHeight = 36.sp,
+            color = MaterialTheme.colorScheme.primary
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = formatTime(timeRemaining),
+            fontSize = 48.sp,
+            lineHeight = 56.sp,
+            textAlign = TextAlign.Center
+        )
+    }
+}
+```
+
+We're storing `timeRemaining` as a `Long` representing milliseconds. The title uses `MaterialTheme.colorScheme.primary` to pick up the theme's accent colour. We'll write the `formatTime()` helper function shortly.
+
+Don't forget to update `onCreate()` to use your new `CountdownTimer` composable instead of `Greeting`!
+
+### Making it tick with coroutines
+
+Right now our timer just sits there. We need it to tick down every second!
+
+**Coroutines** are Kotlin's way of writing asynchronous code — code that can pause and resume without blocking the main thread. In Compose, we use `LaunchedEffect` to run a coroutine when a composable enters the screen.
+
+Add this inside your `CountdownTimer`, before the `Column`:
+
+```kotlin
+LaunchedEffect(Unit) {
+    while (timeRemaining > 0) {
+        delay(1000L) // Wait 1 second
+        timeRemaining -= 1000L
+    }
+}
+```
+
+Here's what's happening:
+
+- **`LaunchedEffect(Unit)`** starts a coroutine when the composable first appears. The `Unit` key means it only runs once.
+- **`delay(1000L)`** pauses the coroutine for 1 second — *without* blocking the UI thread
+- **`timeRemaining -= 1000L`** decreases the time, which triggers a recomposition
+
+If you run your app now, you should see the time counting down!
+
+### Formatting the time
+
+We need a helper function to convert milliseconds into a readable format. Add this *outside* your composable (it's a regular function, not a composable):
+
+```kotlin
+fun formatTime(millis: Long, detailed: Boolean = true): String {
+    val totalSeconds = millis / 1000
+    val days = totalSeconds / 86400
+    val hours = (totalSeconds % 86400) / 3600
+    val minutes = (totalSeconds % 3600) / 60
+    val seconds = totalSeconds % 60
+
+    return if (detailed) {
+        buildString {
+            if (days > 0) append("$days days, ")
+            if (hours > 0 || days > 0) append("$hours hours, ")
+            append("$minutes minutes, $seconds seconds")
+        }
+    } else {
+        String.format("%02d:%02d:%02d", hours + days * 24, minutes, seconds)
+    }
+}
+```
+
+This function supports two formats:
+
+- **Detailed**: "2 days, 5 hours, 23 minutes, 47 seconds"
+- **Compact**: "53:23:47"
+
+We're passing a `detailed` parameter so we can toggle between them, but how can we actually introduce that toggling mechanism?
+
+### Adding a format toggle button
+
+Let's add a button that switches between the detailed and compact formats.
+
+First, add another piece of state to track the current format:
+
+```kotlin
+var isDetailedFormat by remember { mutableStateOf(true) }
+```
+
+Then update your countdown `Text` to use this state:
+
+```kotlin
+Text(
+    text = formatTime(timeRemaining, isDetailedFormat),
+    fontSize = if (isDetailedFormat) 32.sp else 48.sp,
+    lineHeight = if (isDetailedFormat) 44.sp else 56.sp,
+    textAlign = TextAlign.Center
+)
+```
+
+We adjust both `fontSize` and `lineHeight` based on the format — the detailed view needs more line spacing since it wraps across multiple lines.
+
+Finally, add a `Button` below the text (but inside the `Column`):
+
+```kotlin
+Spacer(modifier = Modifier.height(24.dp))
+
+Button(onClick = { isDetailedFormat = !isDetailedFormat }) {
+    Text(if (isDetailedFormat) "Show compact" else "Show detailed")
+}
+```
+
+The **`Spacer`** adds some breathing room between the countdown and the button.
+
+The **`Button`** composable takes an `onClick` lambda — code that runs when the user taps it. Here, we're toggling `isDetailedFormat` between `true` and `false`.
+
+### Setting a real target time
+
+Instead of a hardcoded duration, let's count down to an actual date. Update your state initialisation:
+
+```kotlin
+// IC Hack 2025 submission time
+val targetTime = 1769947200000L // February 1st, 12:00PM UTC
+
+var timeRemaining by remember {
+    mutableStateOf((targetTime - System.currentTimeMillis()).coerceAtLeast(0))
+}
+```
+
+And update your `LaunchedEffect` to recalculate based on the current time:
+
+```kotlin
+LaunchedEffect(Unit) {
+    while (timeRemaining > 0) {
+        delay(1000L)
+        timeRemaining = (targetTime - System.currentTimeMillis()).coerceAtLeast(0)
+    }
+}
+```
+
+The `.coerceAtLeast(0)` ensures we don't go negative if the target time has passed.
+
+### Handling the countdown end
+
+What happens when the countdown reaches zero? Let's show a celebration message!
+
+Update your countdown `Text` to handle this case:
+
+```kotlin
+Text(
+    text = if (timeRemaining > 0) {
+        formatTime(timeRemaining, isDetailedFormat)
+    } else {
+        "🎉 IC Hack has begun!"
+    },
+    fontSize = if (timeRemaining <= 0 && isDetailedFormat) 32.sp else 48.sp,
+    lineHeight = if (timeRemaining <= 0 && isDetailedFormat) 44.sp else 56.sp,
+    textAlign = TextAlign.Center
+)
+```
+
+The celebration message gets the smaller font size when detailed format is on, keeping it nicely contained.
+
+You could also hide the format toggle button when the countdown is complete. Give this a try yourself!
+
+### Run your app
+
+Click *Run app* and you should see a live countdown with a working format toggle button.
+
+Mine looks like this:
+
+![Screenshot of example app.](assets/ic-hack-countdown.png)
+
+> **Stuck?** The complete example is available in the [`ic-hack-countdown` directory](/android-development/ic-hack-countdown/).
