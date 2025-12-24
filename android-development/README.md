@@ -353,7 +353,7 @@ Text(
     text = if (timeRemaining > 0) {
         formatTime(timeRemaining, isDetailedFormat)
     } else {
-        "🎉 IC Hack has begun!"
+        "🎉 IC Hack submission is closed!"
     },
     fontSize = if (timeRemaining <= 0 && isDetailedFormat) 32.sp else 48.sp,
     lineHeight = if (timeRemaining <= 0 && isDetailedFormat) 44.sp else 56.sp,
