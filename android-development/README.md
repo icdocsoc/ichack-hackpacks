@@ -151,7 +151,7 @@ Mine looks like this:
 
 ![Screenshot of example app.](assets/welcome-to-ic-hack.png)
 
-> **Stuck?** The complete example is available in the `welcome-to-ic-hack` folder of this repository. Compare your code to `MainActivity.kt` if you need a hint!
+> **Stuck?** The complete example is available in the [`welcome-to-ic-hack` directory](/android-development/welcome-to-ic-hack/). Compare your code to `MainActivity.kt` if you need a hint!
 
 ## An IC Hack Countdown Timer
 
