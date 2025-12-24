@@ -374,3 +374,66 @@ Mine looks like this:
 ![Screenshot of example app.](assets/ic-hack-countdown.png)
 
 > **Stuck?** The complete example is available in the [`ic-hack-countdown` directory](/android-development/ic-hack-countdown/).
+
+## Next Steps
+
+Congratulations — you've built two Android apps and learned the fundamentals of Jetpack Compose! Here are some directions you could explore next.
+
+### UI Design with Figma
+
+If you're working with a designer (or wearing that hat yourself), you'll want to translate visual designs into Compose code:
+
+- **[Figma Dev Mode](https://www.figma.com/dev-mode/)** — Inspect designs and extract spacing, colours, and typography values to implement in Compose.
+- **[Material Theme Builder](https://m3.material.io/theme-builder)** — Create a custom colour scheme and export it as Compose theme code. This generates the `Color.kt`, `Theme.kt`, and `Type.kt` files for your project.
+
+### More on Coroutines
+
+We only scratched the surface with `LaunchedEffect` and `delay()`. Kotlin Coroutines are a powerful tool for handling asynchronous operations:
+
+- **`suspend` functions** — Functions that can pause and resume, perfect for network calls or database operations
+- **`CoroutineScope`** and `viewModelScope` — Managing coroutine lifecycles properly
+- **`Flow`** — Reactive streams of data that emit values over time (great for real-time updates)
+- **Structured concurrency** — Running multiple coroutines in parallel with `async`/`await`
+
+Resources:
+
+- [Kotlin Coroutines Guide](https://kotlinlang.org/docs/coroutines-guide.html)
+- [Coroutines in Android](https://developer.android.com/kotlin/coroutines)
+
+### Connecting to APIs
+
+Most apps need to fetch data from the internet. The typical stack for Android includes:
+
+- **[Retrofit](https://square.github.io/retrofit/)** — A type-safe HTTP client that makes API calls feel like regular function calls
+- **[Ktor Client](https://ktor.io/docs/client.html)** — A Kotlin-first HTTP client from JetBrains, works nicely with coroutines
+- **[kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)** — Parse JSON responses into Kotlin data classes
+
+A simple example with Ktor:
+
+```kotlin
+val client = HttpClient(Android) {
+    install(ContentNegotiation) {
+        json()
+    }
+}
+
+suspend fun fetchHackers(): List<Hacker> {
+    return client.get("https://api.example.com/hackers").body()
+}
+```
+
+### Working with Databases
+
+For local data persistence, Android offers several options:
+
+- **[Room](https://developer.android.com/training/data-storage/room)** — A SQLite abstraction that provides compile-time query verification and works seamlessly with coroutines and Flow
+- **[DataStore](https://developer.android.com/topic/libraries/architecture/datastore)** — A modern replacement for SharedPreferences, great for storing user preferences
+- **[Firebase](https://firebase.google.com/docs/android/setup)** — Cloud-hosted database (Firestore or Realtime Database) with real-time sync and offline support
+
+### Official Resources
+
+- **[Android Basics with Compose](https://developer.android.com/courses/android-basics-compose/course)** — Google's free course covering everything from basics to advanced topics
+- **[Jetpack Compose Samples](https://github.com/android/compose-samples)** — Official sample apps demonstrating various Compose patterns
+- **[Now in Android](https://github.com/android/nowinandroid)** — A fully-featured sample app showcasing modern Android development best practices
+
+Good luck with your project!
