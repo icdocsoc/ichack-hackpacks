@@ -9,6 +9,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 ## Available HackPacks
 
 - **`project-planning`**
+- **`android-development`**
 
 ## Repository Structure
 
