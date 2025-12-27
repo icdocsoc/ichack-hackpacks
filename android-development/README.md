@@ -71,6 +71,10 @@ The three most common layout composables are:
 - **`Row`**: arranges children horizontally (side by side)
 - **`Box`**: stacks children on top of each other (like layers)
 
+You can see these three layouts illustrated below.
+
+![Example composable layouts.](https://developer.android.com/static/develop/ui/compose/images/layout-column-row-box.svg)
+
 For our greeting card, we want a main message at the top and a "from" line below it. This is a perfect use case for `Column`!
 
 #### Units: dp and sp
