@@ -1,6 +1,6 @@
 # Pitching and Presenting
 
-After 24 hours of intense hacking, you have your end-product. It's not over yet though - it still comes down to how well you present your project to the judges in a very limited span of time.
+After 24 hours of intense hacking, you (hopefully) have your end product. It's not over yet though - it still comes down to how well you present your project to the judges in a very limited span of time.
 
 In this guide, we will provide you with some tips and tricks on how to manage the pitching and presenting part at IC Hack successfully!
 
@@ -12,24 +12,24 @@ If you have entered multiple categories, you will have to pitch multiple times (
 
 We would advise you to cover the following in your pitches (not necessarily in the order below):
 
-- *Problem* - what problem are you trying to solve?
+- *Problem* - what problem are you trying to solve? A compelling opening line or hook relating to your problem could make a big difference too.
 - *Technical solution* - what have you built to solve this problem?
 - *Demo* - demonstrate to the judges how your product is working (ideally live demo)!
-- *Linkage to your chosen category* - how has your product managed to link to the theme of each category?
+- *Linking to the category* - how does your product fit in with the category that you're currently presenting on?
 - and anything else that you think is worth mentioning!
 
 ## Preparing for the pitch
 
-As we have mentioned in our [project planning HackPack](../project-planning/), you should be working on preparation of the pitch and demo in the last few hours of hacking.
+As we have mentioned in our [project planning HackPack](../project-planning/), you should be working on preparing your pitch and demo in the last few hours of hacking.
 
 ### Slides
 
-We think that slides are not absolutely necessary, but it could be great to have visual aids to help you during your presentation! You might find the following helpful:
+Slides are not absolutely necessary to successfuly present your project, but it could be great to have visual aids to help you during your presentation! You might find the following tips helpful:
 
 - Keep text minimal; people read slower than you speak.
 - Use visuals and graphics: diagrams, numbers, screenshots, and not long paragraphs of text!
 - High contrast, legible fonts, consistent layout: looks more organised.
-- Cue cards: they should be for *cues* and you don't need to refer to them too often. Focus on the people that you are presenting to!
+- Cue cards (or notes): they should be for *cues* and you shouldn't need to refer to them too often. Focus on the people that you are presenting to!
 
 ### Demo
 
@@ -38,7 +38,7 @@ This is where your product actually comes to life in front of the judges - make 
 - Choose the (1-2) most valuable user flows to demo. You won't have time to demonstrate every user journey in your product!
 - Keep states simple: set up demo accounts/data and pre-run steps in advance.
 - Rehearse transitions between slides and demo (especially if you have multiple presenters).
-- Definitely test your demo beforehand to try minimise any surprises!
+- Definitely test your demo beforehand to try and minimise any surprises!
 - Prepare a fallback solution in case the live demo fails! This could be a pre-recorded video or series of screenshots.
 
 ### Delivery
@@ -55,7 +55,7 @@ How you deliver your pitch makes a lasting impact and impression on the judges; 
 
 - Try to avoid complicated jargon; having a few technical terms is fine but what technologies/frameworks that you used isn't always the main point of the presentation!
 - During Q&A, listen fully to the question first before answering (it's rude to cut off your judges).
-- If you don't know the answer to a question, change it as an opportunity to bring your project further! Phrase it as an chance for further development, and remain interested and enthuisastic whilst remaining honest and open.
+- If you don't know the answer to a question, treat it as an opportunity to bring your project further! Phrase it as a chance for further development, rather than trying to hide a deficiency or shortcoming.
 - Time management - keep a close eye on the timer; the last thing you want is to have an abrupt ending to your pitch! Rehearse your timings well in advance.
 
-> **Final Tip**: Practise, practise and practise! More practice perfects your pitch and puts you in a great position for the actual thing :) Good luck!
+> **Final Tip**: Practice, practice and practice! More practice perfects your pitch and puts you in a great position for the actual thing :) Good luck!
