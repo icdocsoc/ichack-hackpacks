@@ -20,7 +20,7 @@ We would advise you to cover the following in your pitches (not necessarily in t
 
 ## Preparing for the pitch
 
-As we have mentioned in our project planning HackPack, you should be working on preparation of the pitch and demo in the last few hours of hacking.
+As we have mentioned in our [project planning HackPack](../project-planning/), you should be working on preparation of the pitch and demo in the last few hours of hacking.
 
 ### Slides
 
