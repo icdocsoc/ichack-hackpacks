@@ -12,6 +12,7 @@ If you have entered multiple categories, you will have to pitch multiple times (
 
 We would advise you to cover the following in your pitches (not necessarily in the order below):
 
+- *Team introductions* - keep this brief, but it's still a good idea for judges to know who you are! A quick round of names and what you each worked on is plenty.
 - *Problem* - what problem are you trying to solve? A compelling opening line or hook relating to your problem could make a big difference too.
 - *Technical solution* - what have you built to solve this problem?
 - *Demo* - demonstrate to the judges how your product is working (ideally live demo)!
@@ -24,7 +25,7 @@ As we have mentioned in our [project planning HackPack](../project-planning/), y
 
 ### Slides
 
-Slides are not absolutely necessary to successfuly present your project, but it could be great to have visual aids to help you during your presentation! You might find the following tips helpful:
+Slides are not absolutely necessary to successfully present your project, but it could be great to have visual aids to help you during your presentation! You might find the following tips helpful:
 
 - Keep text minimal; people read slower than you speak.
 - Use visuals and graphics: diagrams, numbers, screenshots, and not long paragraphs of text!
@@ -45,17 +46,28 @@ This is where your product actually comes to life in front of the judges - make 
 
 How you deliver your pitch makes a lasting impact and impression on the judges; here are a few pieces of advice to help you out:
 
-- Speak clearly - ideally slightly slower than your normal conversation speed.
-- Use short sentences and pauses so key points stand out.
-- Eye contact - make sure you are looking at the audience and not just on your laptop/cue cards all the time!
-- Body language - a suitable amount of body gestures to emphasise key ideas is great (just don't overdo it)!
-- Energy - be passionate about your project!
+- **Speak clearly** - ideally slightly slower than your normal conversation speed.
+- Use **short sentences and pauses** so key points stand out.
+- **Eye contact** - make sure you are looking at the audience and not just on your laptop/cue cards all the time!
+- **Body language** - a suitable amount of body gestures to emphasise key ideas is great (just don't overdo it)!
+- **Energy** - be passionate about your project!
+
+## Handling nerves
+
+It's completely normal to feel nervous before presenting, especially if it's your first hackathon! Here are a few ways to manage those nerves:
+
+- **Breathe** - take a few slow, deep breaths before you start. It helps calm your nerves and steadies your voice.
+- **Remember: judges want you to succeed** - they're not there to catch you out; they genuinely want to see cool projects and are rooting for you!
+- **Focus on your project, not yourself** - shift your mindset from "everyone is watching me" to "I get to show off something I built." You know your project better than anyone in the room.
+- **It's okay to make mistakes** - if you stumble over a word or forget something, just pause, take a breath, and carry on. The judges won't mind.
+- **Practice with your team** - running through your pitch a few times beforehand makes it feel more familiar and less daunting.
+- **Arrive early** - give yourself time to set up and get comfortable with the space before your slot.
 
 ### Other tips and tricks
 
 - Try to avoid complicated jargon; having a few technical terms is fine but what technologies/frameworks that you used isn't always the main point of the presentation!
 - During Q&A, listen fully to the question first before answering (it's rude to cut off your judges).
 - If you don't know the answer to a question, treat it as an opportunity to bring your project further! Phrase it as a chance for further development, rather than trying to hide a deficiency or shortcoming.
-- Time management - keep a close eye on the timer; the last thing you want is to have an abrupt ending to your pitch! Rehearse your timings well in advance.
+- **Time management** - keep a close eye on the timer; the last thing you want is to have an abrupt ending to your pitch! Rehearse your timings well in advance.
 
 > **Final Tip**: Practice, practice and practice! More practice perfects your pitch and puts you in a great position for the actual thing :) Good luck!
