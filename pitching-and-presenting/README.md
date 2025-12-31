@@ -21,7 +21,7 @@ We would advise you to cover the following in your pitches (not necessarily in t
 
 ## Preparing for the pitch
 
-As we have mentioned in our [project planning HackPack](../project-planning/), you should be working on preparing your pitch and demo in the last few hours of hacking.
+As we have mentioned in our [project planning HackPack](../project-planning/README.md), you should be working on preparing your pitch and demo in the last few hours of hacking.
 
 ### Slides
 
@@ -52,7 +52,7 @@ How you deliver your pitch makes a lasting impact and impression on the judges; 
 - **Body language** - a suitable amount of body gestures to emphasise key ideas is great (just don't overdo it)!
 - **Energy** - be passionate about your project!
 
-## Handling nerves
+### Handling nerves
 
 It's completely normal to feel nervous before presenting, especially if it's your first hackathon! Here are a few ways to manage those nerves:
 
