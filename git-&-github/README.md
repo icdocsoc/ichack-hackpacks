@@ -2,9 +2,9 @@
 
 In this guide, we wlll cover the basics for git, useful features on github, and some advice for using them as a team.
 
-## What is Git?
+## What is Git? What is the point?
 
-Git is a popular version control system that is often used to work with others. 
+Git is a popular version control system. Git is often used to work on code with others. Git also allows you to save an entire history of your codebase, go back to points in history, selectively undo changes and more. Git stores this information in the `.git` folder.
 
 ### Key Git Concepts
 
@@ -19,9 +19,9 @@ Git is a popular version control system that is often used to work with others.
 
 ### How to Install
 
-You can download Git for free from [git-scm.com](git-scm.com).
+You can download Git for free from [git-scm.com](git-scm.com). You will need to enter your email after installation.
 
-After installation, you will be able to use Git from your terminal or command prompt.
+Afterwards, you will be able to use Git from your terminal or command prompt.
 
 ## Git Basics
 
@@ -52,8 +52,20 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 > remove: Total 10 (delta 1), reused 10 (delta 1)
 > Unpacking objects: 100% (10/10), done.
 ```
-### 2. Check Repository Status
+### 2. Make a commit
+
+After you have cloned the repo, make some changes. You can then stage these changes using `git add .` which will stage all your changes. Then you can run `git commit -m "example commit message"` which will save your changes locally.
+
+If you do not want to commit all your changes, `git add` can be used selectively to add only files you are interested in. You can also add certain file extensions and folders to a `.gitignore` file to ensure they are never tracked.
+
+### 3. Pushing and pulling
 
 ## Useful Features
 
 ## How to use Git as a team?
+
+## Useful links
+
+- [dangitgit](https://dangitgit.com/en) is a good place to go if something has gone terribly wrong.
+- [Learn Git Branching](https://learngitbranching.js.org/) is a visual gamified way to learn git.
+- [Setting up an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) is a way to make authentication easier when pushing commits.
