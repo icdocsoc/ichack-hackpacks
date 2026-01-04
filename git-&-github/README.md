@@ -58,6 +58,8 @@ After you have cloned the repo, make some changes. You can then stage these chan
 
 If you do not want to commit all your changes, `git add` can be used selectively to add only files you are interested in. You can also add certain file extensions and folders to a `.gitignore` file to ensure they are never tracked.
 
+You can use `git status` at any time to check the state of your working directory and see which files are modified, staged, or untracked.
+
 ### 3. Pushing and pulling
 
 Before working with a remote repository, it’s important to ensure that your local clone is up to date. Running `git pull` updates your current local branch by fetching and merging the latest commits from the corresponding remote branch on GitHub.
@@ -66,6 +68,61 @@ After you have implemented a feature or fixed a bug, you should upload your loca
 
 > **Top Tip:**
 > Make sure to run `git pull` everytime before you run `git push` to ensure your local branch is up to date and most importantly to avoid merge conflicts!
+
+### 4. Checkout and Branch
+Branches allow you to work on new features or bug fixes without affecting the main codebase. This makes collaboration safer and more organized.
+
+To see all available branches, you can run `git branch`. Branches name will be shown and the one you are checking out right now will be highlighted with an asterisk (`*`)
+
+To create and switch to a new branch, run `git checkout -b branch-name` to create a new branch and immediately checks it out. If you only wants to create a new branch without switching to it, run `git branch branch-name` instead.
+
+If you want to switch to any existing branch, run `git checkout branch-name`. 
+
+Sometimes git might block your checkout if you have uncommitted changes that would be overwritten and shows 
+
+```bash
+error: Your local changes to the following files would be overwritten by checkout
+```
+If you want to switch branches and recieved this error, you can:
+
+**1. Commit your change**
+This is straightforward as you just commit all your changes to remote. 
+```bash
+git add .
+git commit -m "your commit message"
+```
+**2. Stash your changes**
+If you don't want to commit your changes yet but still want to save your progress, you can stash your change. **Stashing** means git saves your changes on a stack and temporally revert all the changes so that you can switch branches or do other changes safely. 
+```bash
+git stash #This will save your progress
+git checkout branch-name
+git stash pop #If you want to retrieve your progress, you can pop it out from the stack
+```
+
+**3. Discard your change (irreversible)**
+If you somehow wants to discard all the changes you made, you can:
+```bash
+git reset --hard
+```
+
+### 5. Merge branches
+Once your work on a branch is complete and tested, you can merge it back into another branch (usually main or master).
+
+![Diagram of merging branch.](assets\merging.png)
+
+```bash
+git checkout main                   #First, switch to the branch you want to merge into
+git pull                            #Make sure it is up to date before merging
+git merge feature-branch-name       #Then merge your feature branch into main
+```
+If there are no conflicts, Git will automatically complete the merge. If conflicts occur, Git will prompt you to resolve them manually before completing the merge. If you are using any IDE like VS code, they usually provide a conflict editor.
+After all conflicts are resolved, your branch will now be successfully merged into main.
+After a successful merge, you can optionally delete the feature branch:
+```bash
+git branch -d feature-branch-name
+```
+
+Alternatively, you can use **Pull Requests** on GitHub to merge branches into main. This is considered best practice, as it allows teammates to review the changes, provide feedback, and approve the merge before it is completed.
 
 ## Useful Features
 
