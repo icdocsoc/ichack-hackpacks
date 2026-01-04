@@ -60,12 +60,19 @@ If you do not want to commit all your changes, `git add` can be used selectively
 
 ### 3. Pushing and pulling
 
+Before working with a remote repository, it’s important to ensure that your local clone is up to date. Running `git pull` updates your current local branch by fetching and merging the latest commits from the corresponding remote branch on GitHub.
+
+After you have implemented a feature or fixed a bug, you should upload your local commits to the remote repository. Running `git push` sends all commits from your local branch to the corresponding branch on the remote.
+
+> **Top Tip:**
+> Make sure to run `git pull` everytime before you run `git push` to ensure your local branch is up to date and most importantly to avoid merge conflicts!
+
 ## Useful Features
 
 ## How to use Git as a team?
 
 ## Useful links
 
-- [dangitgit](https://dangitgit.com/en) is a good place to go if something has gone terribly wrong.
+- [dangitgit](https://dangitgit.com/en) and [Oh Shit, Git!?!](https://ohshitgit.com/) are good places to go if something has gone terribly wrong.
 - [Learn Git Branching](https://learngitbranching.js.org/) is a visual gamified way to learn git.
 - [Setting up an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) is a way to make authentication easier when pushing commits.
