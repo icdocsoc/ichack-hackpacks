@@ -7,8 +7,9 @@ Starting from IC Hack 26, the long-term volunteer team dedicated to 'Hacker Educ
 These HackPacks will then be rendered and displayed on the IC Hack dashboard, for participants to view before, during, and after the hackathon itself.
 
 ## Available HackPacks
-
- - [Databases](./databases/README.md)
+- **`project-planning`**
+- **`android-development`**
+- ** [databases](./databases/README.md) **
 
 ## Repository Structure
 
