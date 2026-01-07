@@ -126,6 +126,61 @@ Alternatively, you can use **Pull Requests** on GitHub to merge branches into ma
 
 ## Useful Features
 
+### Pull Request
+
+A **Pull Request (PR)** is a way to propose changes to a repository and request that those changes be reviewed and merged into another branch (usually main).
+
+In ICHACK or any team projects, it is well recommended to use PR instead of git-merge for merging branches. PR can allow your teammates to quickly review changes and catch bugs early, which can save you time to debug later.
+
+#### How to create a PR
+
+1. On GitHub, navigate to the main page of the repository.
+2. In the "Branch" menu, choose the branch that contains your commits.
+![Screenshot of PR branch.](assets\PR-branch.png)
+3. Above the list of files, in the yellow banner, click Compare & pull request to create a pull request for the associated branch.
+![Screenshot of pull-request-compare-pull-request.](assets\pull-request-compare-pull-request.png)
+4. Use the *base* branch dropdown menu to select the branch you'd like to merge your changes into, then use the compare branch drop-down menu to choose the topic branch you made your changes in.
+5. Type a title and description for your pull request.
+
+After your teammates have reviewed your PR, you will then safely merge it to main.
+
+[comment]: <> (Maybe include how to merge PR as well)
+
+### Issues
+
+An **Issue** is used to track tasks, bugs, feature requests, or discussions related to a repository.
+
+Although ICHACK focuses on shor-term projects, Github issues can be useful as a TO-Do list or Group Discussion about a new feature.
+
+Creating this type of issue can save your brainstroming process which will be helpful when writing your pitches or explain to the judges thinking process.
+
+#### How to Create an Issues
+
+1. On GitHub, navigate to the main page of the repository.
+
+2. Click the Issues tab at the top of the page.
+![Screenshot of repo-tabs-issues-global-nav-update.](assets\repo-tabs-issues-global-nav-update.png)
+
+3. Click New issue.
+
+4. If your repository uses issue templates, next to the type of issue you'd like to open, click Get started.
+
+    If the type of issue you'd like to open isn't included in the available options, click Open a blank issue.
+
+    ![Screenshot of blank-issue-link.](assets\blank-issue-link.png)
+
+5. Enter a clear and descriptive title.
+
+6. Use the description to explain:
+
+    - What needs to be done, fixed, or discussed
+
+    - Any relevant context or ideas
+
+7. (Optional) Assign the Issue to a teammate and add labels such as bug, feature, or task.
+
+8. Click Submit new issue.
+
 ## How to use Git as a team?
 
 ## Useful links
