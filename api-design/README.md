@@ -43,6 +43,8 @@ Example code will be provided, with full projects found at [`example-project/fas
   - [General Rules](#general-rules)
   - [Common Failures](#common-failures)
   - [Cheatsheet](#cheatsheet)
+- [Making Requests](#making-requests)
+  - [JS/TS](#jsts)
 - [Firebase Cloud Functions](#firebase-cloud-functions)
   - [Setup](#setup)
   - [Writing Cloud Functions](#writing-cloud-functions)
@@ -52,7 +54,12 @@ Example code will be provided, with full projects found at [`example-project/fas
     - [Writing RESTful Functions](#writing-restful-functions)
       - [Canonical RESTful](#canonical-restful)
       - [Hackathon Simple](#hackathon-simple)
+    - [Writing Callable Functions](#writing-callable-functions)
     - [Handling CORS](#handling-cors)
+  - [Making Requests](#making-requests-1)
+    - [Canonical HTTP Request](#canonical-http-request)
+    - [Callable Functions](#callable-functions)
+      - [JS/TS](#jsts-1)
 
 
 # General API Design
@@ -418,6 +425,64 @@ Improves request latency, but not worth it in a hackathon setting. This is alrea
 | HEAD    | ✅    | ✅          | Metadata / checks | Usually ignored                            |
 | OPTIONS | ✅    | ✅          | CORS info         | Framework handles                          |
 
+# Making Requests
+
+Since all backends are HTTP requests, there is a unified way to create a request from a frontend. 
+
+## JS/TS
+```ts
+const res = await fetch(url, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+```
+The above code demonstrates how to create and send a request in `JS` and `TS`. Note that all the extra arguments like `method`, `headers`, `body` are optional. Below are the defaults.
+| Option      | Default                    |
+| ----------- | -------------------------- |
+| method      | `"GET"`                    |
+| headers     | `{}`                       |
+| body        | `null`                     |
+
+>[!IMPORTANT]
+> Since HTTP requests use the network and are waiting for a response, they are **asynchronous**. This requires the `async` keyword and requires the function calling them to be `async` as well.
+
+Of course there may be errors with the request, so your frontend will need to adequately handle this. An example is shown below for simple error throwing.
+```ts
+if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`HTTP ${res.status}: ${errText}`);
+}
+```
+
+You can unpack the response data with 
+```ts
+const data = await res.json();
+```
+
+The only error that can occur with the request itself is a network error. This should be handled by wrapping the request in a `try ... catch ... ` block, like below
+
+```ts
+export async function createPost(text: string) {
+  try {
+    const res = await fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`HTTP ${res.status}: ${errText}`);
+    }
+    return res.json();
+  } catch (err) {
+    throw new Error("Network Error");
+  }
+}
+```
+The above demonstrates a full HTTP request with full error handling.
+
 # Firebase Cloud Functions
 Firebase Cloud Functions uses the Firebase framework so you can have one backend for your whole project. 
 This has the benefit of being **serverless**, so you do not have to manage the running of your API yourself.
@@ -579,6 +644,8 @@ const id = req.path.split("/")[1]; // /posts/{id}
 ```
 The above code gets the request path, and splits on the `/`. This will extract the `id` value so it can be used by our backend.
 
+[Click here for an example canonical Firebase backend](./example-project/cloud-functions/functions/src/canonical-restful.ts)
+
 #### Hackathon Simple
 
 For our hacky, simpler method, we just pack the request body with all the data we need. Requests will all go to the `/posts` endpoint but with different arguments.
@@ -592,6 +659,8 @@ The above unpacks the request body into the `id` and `text` fields.
 >[!WARNING]
 > This typically breaks caching, so the canonical method is preferred...
 
+[Click here for an example hacky Firebase backend](./example-project/cloud-functions/functions/src/request-packing.ts)
+
 In general, you send a simple string response with the
 ```ts
 res.send("Message");
@@ -600,6 +669,37 @@ and you send a `JSON` response with
 ```ts
 res.json(data)
 ```
+
+### Writing Callable Functions
+
+Firebase comes with a special type of API - a ***callable function***. 
+
+There are many benefits
+ - Auth tokens are automatically included and handled
+ - No need for custom parsing
+ - No need to explicitly handle HTTP error codes
+ - No need for CORS handling
+ - On the frontend, it is a simple function call
+
+To create a callable function, you just need to use the following structure
+
+```ts
+import { onCall, CallableRequest } from "firebase-functions/v2/https";
+
+export const fun = onCall(
+    async (request: CallableRequest<{ arg1?: number, arg2?: string,}>) => {
+        const { arg1, arg2 } = request.data;
+        // your function
+        const response = {
+            res1: val1,
+            res2: val2,
+            ok: true,
+        };
+        return response;
+    }
+);
+```
+[An example of this can be found by clicking here](./example-project/cloud-functions/functions/src/callable.ts)
 
 ### Handling CORS
 If you were to deploy and run your API and call these functions from a browser front-end, you will end up with CORS errors. 
@@ -625,4 +725,136 @@ export const helloWorld = functions.https.onRequest(
 >[!TIP]
 > Don't forget to redeploy your functions using `firebase deploy` after you edit them!
 
+## Making Requests
+
+Now that we know how to create the backend, we now need to know how to use it!
+
+As alluded to already, Firebase has 2 main ways to do this:
+ 1. The canonical HTTP request
+ 2. A callable function
+
+### Canonical HTTP Request
+This has been covered by [Making Requests](#making-requests). But I want to point out how the frontend requests differ based on the approach used.
+
+With the **RESTful** approach, we need to add the post ID to the API URL.
+```ts
+export async function updatePost(id: string, text: string) {
+  const url = `${API}/${id}`;
+  const res = await fetch(url, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text }),
+  });
+  return res.json();
+}
+```
+[Click here for a full example frontend for a RESTful Firebase backend](./example-project/frontend/src/classic_api.ts)
+
+Whereas with the ***hacky*** approach, we pack the ID into the request body.
+```ts
+export async function updatePost(id: string, text: string) {
+  const res = await fetch(API, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id, text }),
+  });
+  return res.json();
+}
+```
+
+### Callable Functions
+
+#### JS/TS
+If you have not done so yet, run the following in the root of the frontent
+```bash
+npm install firebase
+```
+
+Now add your web app.
+ 1. On [Firebase Console](https://console.firebase.google.com/u/0/), open your project
+ 2. Press the `+ Add app` button
+ 3. Select Web
+ 4. Copy the code shown, it should look something like
+    ```ts
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "__",
+      authDomain: "__",
+      projectId: "__",
+      storageBucket: "__",
+      messagingSenderId: "__",
+      appId: "__"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    ```
+  5. Copy this into a new file called `firebase.ts` (or `.js`) in `frontend/src`
+  6. Add the necessary code to import cloud functions, as shown below
+  ```ts
+    // Import the functions you need from the SDKs you need
+  import { initializeApp } from "firebase/app";
+  import { getFunctions } from "firebase/functions";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    ...
+  };
+
+  // Initialize Firebase
+  export const app = initializeApp(firebaseConfig);
+  export const functions = getFunctions(app);
+  // anything else you will need
+  ```
+
+  7. Now add the following to the top of your API file
+  ```ts
+  import { httpsCallable } from "firebase/functions";
+  import { functions } from "./firebase";
+
+  const yourFuncName = httpsCallable(functions, "yourFuncName");
+  ```
+  8. Call them like you would any other function!
+
+---
+Below is an example of a function from the [sample project](./example-project/frontend/src/callable_api.ts)
+
+```ts
+import { httpsCallable } from "firebase/functions";
+import { functions } from "./firebase";
+
+// Not necessary but good for consistency
+type PostsRequest = {
+  action: "create" | "get" | "update" | "delete"
+  id?: string
+  text?: string
+}
+
+type PostsResponse =
+  | { id: string }                 // create
+  | { ok: true }                   // update/delete
+  | { id: string; text: string }   // get single
+  | { id: string; text: string }[] // get all
+
+const postsCallable = httpsCallable<PostsRequest, PostsResponse>(functions, "postCallable");
+
+export async function getPosts(id?: string) {
+  try {
+    const res = await postsCallable({ action: "get", id });
+    return res.data;
+  } catch (err: any) {
+    throw new Error(err.message || "Network Error");
+  }
+}
+```
+
+TODO:
+ - Auth
+ - Android
+ - All of FastApi
 
