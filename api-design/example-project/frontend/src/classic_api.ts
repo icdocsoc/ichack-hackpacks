@@ -1,4 +1,5 @@
-const API = import.meta.env.VITE_CANONICAL_API_URL;
+//const API = import.meta.env.VITE_CANONICAL_API_URL;
+const API = import.meta.env.VITE_FASTAPI_URL;
 
 export async function getPosts(id?: string) {
   const url = id ? `${API}/${id}` : API;
