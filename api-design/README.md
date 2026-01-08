@@ -17,6 +17,33 @@ This HackPack will cover
 Example code will be provided, with full projects found at [`example-project/fastapi`](example-project/fastapi) and [`example-project/cloud-functions`](example-project/cloud-functions).
 
 ## Table Of Contents
+- [API Design](#api-design)
+  - [Table Of Contents](#table-of-contents)
+  - [General API Design](#general-api-design)
+    - [What Is an API?](#what-is-an-api)
+    - [REST and HTTP](#rest-and-http)
+    - [Resources and URLs](#resources-and-urls)
+    - [HTTP Methods](#http-methods)
+      - [GET](#get)
+      - [HEAD](#head)
+      - [OPTIONS](#options)
+      - [POST](#post)
+      - [PUT](#put)
+      - [PATCH](#patch)
+      - [DELETE](#delete)
+    - [Status Codes](#status-codes)
+    - [Request and Response Bodies](#request-and-response-bodies)
+    - [Versioning](#versioning)
+    - [Authentication and Authorisation](#authentication-and-authorisation)
+    - [Error Handling](#error-handling)
+    - [Extras](#extras)
+      - [Rate Limiting](#rate-limiting)
+      - [Pagination](#pagination)
+      - [Caching](#caching)
+    - [General Rules](#general-rules)
+    - [Common Failures](#common-failures)
+    - [Cheatsheet](#cheatsheet)
+
 
 ## General API Design
 
@@ -40,7 +67,7 @@ REST is a *design style*, not a protocol. You should follow REST conventions whe
 ### Resources and URLs
 We design URLs around **nouns** not verbs.
 
-The GOOD:
+***The GOOD:***
 ```
 GET /users
 GET /users/{userId}
@@ -48,12 +75,22 @@ POST /posts
 GET /posts/{postId}/comments
 ```
 
-The BAD:
+***The BAD:***
 ```
 GET /getUsers
 POST /createPost
 POST /deleteComment
 ```
+
+***The UGLY:***
+```
+DELETE /getUsers
+GET /incrementCounter
+PATCH /deletePost
+```
+
+>[!WARNING]
+> The BAD section would at least work and make sense, ***NEVER*** do anything from the UGLY!
 
 URLs should show a hierarchy, reflecting ownership or containment. 
 
@@ -79,14 +116,14 @@ We will be using several terms that need defining
 
 **Cacheable:** Intermediaries can cache the result
 
-### GET
+#### GET
 
-#### Semantics
+**Semantics**
  - Safe
  - Idempotent
  - Cacheable
 
-#### What GET must not do
+**What GET must not do**
  - Modify database state
  - Increment counters
  - Trigger any side effects
@@ -95,25 +132,26 @@ We will be using several terms that need defining
 >[!NOTE]
 > Logging for debugging is allowed, but anything user-visible or persistent is not
 
-#### What GET can do
+**What GET can do**
  - Read data
  - Filter via query parameters
  - Pagination
  - Sorting
 
-#### Example
+**Example**
 ```
 GET /posts?authorId=123
 ```
+---
 
-### HEAD
+#### HEAD
 
-#### Semantics
+**Semantics**
  - Safe
  - Idempotent
  - Cacheable
 
-#### Purpose
+**Purpose**
 
 Same as GET, but with **no response body**.
 
@@ -125,14 +163,16 @@ This is used for:
 >[!IMPORTANT]
 You will likely not need to use this
 
-### OPTIONS
+---
 
-#### Semantics
+#### OPTIONS
+
+**Semantics**
  - Safe
  - Idempotent
  - Can be Cacheable
 
-#### Purpose
+**Purpose**
 Returns the allowed methods and CORS info. This will likely be automatically handled for you by FastAPI and Firebase Cloud Functions.
 
 >[!WARNING]
@@ -141,14 +181,16 @@ Returns the allowed methods and CORS info. This will likely be automatically han
 >[!TIP]
 > If you are having problems with this, ask a mentor on the day for help!
 
-### POST
+---
 
-#### Semantics
+#### POST
+
+**Semantics**
  - Not safe
  - Not idempotent
  - Not cacheable
 
-#### Purpose
+**Purpose**
 POST can do pretty much any action or side-effect, such as:
 
  - Create resources
@@ -156,7 +198,7 @@ POST can do pretty much any action or side-effect, such as:
  - Perform non-idempotent operations
  - Accept complex input
 
-#### Typical uses
+**Typical uses**
 
 ```bash
 POST /posts    # create
@@ -165,31 +207,36 @@ POST /posts/123/like
 POST /search   # complex queries
 ```
 
-#### What POST does *not* guarantee
+**What POST does *not* guarantee**
 
 Since POST is not idempotent, if POST is retried, side effects may repeat. 
 
 >[!WARNING]
 > You may be tempted to use this for most API operations. Try to limit its use and use the other HTTP methods where possible.
 
-### PUT
+>[!TIP]
+> Treat this as a *'do anything'* method
 
-#### Semantics
+---
+
+#### PUT
+
+**Semantics**
  - Not Safe
  - Idempotent
  - Not Cacheable
 
-#### Purpose
+**Purpose**
 This is used for replacing the entire resource with the provided representation.
 
-#### Example
+**Example**
 ```
 PUT /users/123
 ```
 
 This will replace the resource with the data provided by the headers and body by the client.
 
-#### Rules
+**Rules**
  - The client supplies the full resource state
  - Server completely overwrites existing state
  - Repeating PUT results in the same final state
@@ -197,34 +244,39 @@ This will replace the resource with the data provided by the headers and body by
 >[!WARNING]
 > A common point of failure is using PUT for partial updates
 
-### PATCH
+---
 
-#### Semantics
+#### PATCH
+
+**Semantics**
  - Not Safe
  - Can be Idempotent
  - Not Cacheable
 
-#### Purpose
+**Purpose**
 Whereas PUT replaces the whole resource, PATCH partially modifies the resource with the provided data.
 
 
-#### Idempotence
+**Idempotence**
 Depending on the implementation, PATCH may or may not be idempotent
 
  - `set name = "Alice` is idempotent
  - `increment likes by 1` is not idempotent
 
+---
 
-### DELETE
+#### DELETE
 
-#### Semantics
+**Semantics**
  - Not Safe
  - Idempotent
  - Not Cacheable
 
-#### Rules
+**Rules**
  - Repeating DELETE should not change the state (after the first call anyway)
  - Subsequent calls should return errors
+
+---
 
 ### Status Codes
 Status codes are a key part of an API contract.
@@ -239,6 +291,8 @@ Common ones:
  - `404 Not Found` - resource does not exist
  - `409 Conflict` - constraint violation
  - `500 Internal Server Error` - server bug
+
+---
 
 ### Request and Response Bodies
 We use JSON as the format for passing data between the client and the backend. 
@@ -256,10 +310,12 @@ Example response:
 }
 ```
 
-#### Rules of thumb:
+**Rules of thumb:**
  - Always return the created resource on `POST`
  - Use ISO-8601 for timestamps
  - Prefer explicit fields over positional arrays
+
+---
 
 ### Versioning
 Since APIs evolve, we need versioning so clients don't break when we change contracts.
@@ -270,6 +326,8 @@ Common strategies:
 
 >[!TIP]
 > You can skip this entirely for a hackathon. 
+
+---
 
 ### Authentication and Authorisation
 Authentication verifies the user, and authorisation verifies what a user can do.
@@ -283,6 +341,8 @@ This is pretty straightforward for Cloud Functions since Firebase already includ
 
 >[!TIP]
 > Anonymous auth or hardcoded users are acceptable for a hackathon.
+
+---
 
 ### Error Handling
 
@@ -300,6 +360,8 @@ Example:
 
 The key is simplicity and consistency.
 
+---
+
 ### Extras
 The following are good practice in production but not necessary for hackathons!
 
@@ -312,10 +374,37 @@ Returning all the results can unnecesarily use up both server and client resourc
 #### Caching
 Improves request latency, but not worth it in a hackathon setting. This is already provided for you by Firebase. 
 
+---
+
 ### General Rules
  - **GET**, **HEAD** and **OPTIONS** should **NEVER** have any side effects or unsafe actions. 
  - Use of verbs
  - Inconsistent request and response shapes
  - Returning HTML
  - Silent failures
+
+---
+
+### Common Failures
+| Rule                         | What can go wrong if broken                           |
+| ---------------------------- | ----------------------------------------------------- |
+| GET modifies state           | Duplicate writes from prefetch, crawlers, retries     |
+| POST is used for reads       | Hard to cache, confusing for clients                  |
+| Inconsistent response shapes | Frontend bugs and unnecessary type-checking headaches |
+| DELETE non-idempotent        | Double deletions break demo logic                     |
+| Ignoring timestamps/IDs      | Hard to display ordered lists, detect duplicates      |
+
+---
+
+### Cheatsheet
+
+| Method  | Safe | Idempotent | Typical Use       | Notes                                      |
+| ------- | ---- | ---------- | ----------------- | ------------------------------------------ |
+| GET     | ✅    | ✅          | Read resources    | Never mutate state                         |
+| POST    | ❌    | ❌          | Create / actions  | Non-repeatable by default                  |
+| PUT     | ❌    | ✅          | Replace resource  | Full replacement, not partial              |
+| PATCH   | ❌    | ⚠️         | Partial update    | Can break idempotence if not careful       |
+| DELETE  | ❌    | ✅          | Delete resource   | Repeating should not fail catastrophically |
+| HEAD    | ✅    | ✅          | Metadata / checks | Usually ignored                            |
+| OPTIONS | ✅    | ✅          | CORS info         | Framework handles                          |
 
