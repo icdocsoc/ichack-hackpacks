@@ -33,11 +33,12 @@ setGlobalOptions({maxInstances: 10});
 import * as basic from "./basic";
 import * as requestPacking from "./request-packing";
 import * as canonicalRestful from "./canonical-restful";
+import * as callable from "./callable";
 
 export const db = admin.firestore();
 
 export const helloWorld = basic.helloWorld;
 export const postsCanonical = canonicalRestful.posts;
 export const postsPacked = requestPacking.posts;
-
+export const postCallable = callable.posts;
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPosts, createPost, updatePost, deletePost } from "./packed_api";
+import { getPosts, createPost, updatePost, deletePost } from "./callable_api";
 
 type Post = {
   id: string;
@@ -11,7 +11,7 @@ export default function App() {
   const [newText, setNewText] = useState("");
 
   async function refresh() {
-    const data = await getPosts();
+    const data = await getPosts() as Post[];
     setPosts(data);
   }
 
