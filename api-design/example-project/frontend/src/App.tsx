@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { getPosts, createPost, updatePost, deletePost } from "./callable_api";
+// Only use one of these at a time, all work the same
+//import { getPosts, createPost, updatePost, deletePost } from "./callable_api";
+//import { getPosts, createPost, updatePost, deletePost } from "./classic_api";
+import { getPosts, createPost, updatePost, deletePost } from "./packed_api";
+
 
 type Post = {
   id: string;
