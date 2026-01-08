@@ -1035,8 +1035,3 @@ uvicorn app.main:app --reload --host 1.2.3.4 --port 1234
 Since an API is a contract between a frontend and backend, with no implementation details being necessary, the example code is split into the frontend, and the backends.
 
 The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by changing the API URL [here](./example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by changing the imported middleware [here](./example-project/frontend/src/App.tsx#3)
-
-TODO:
- - Auth
- - Android
-
