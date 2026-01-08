@@ -14,7 +14,8 @@ This HackPack will cover
  2. FastAPI (Python) for fast iteration and typed safety
  3. Firebase Cloud Functions for serverless APIs
 
-Example code will be provided, with full projects found at [`example-project/fastapi`](example-project/fastapi) and [`example-project/cloud-functions`](example-project/cloud-functions).
+
+Example code will be provided, with more info [found here](#example-code).
 
 # Table Of Contents
 - [API Design](#api-design)
@@ -66,6 +67,7 @@ Example code will be provided, with full projects found at [`example-project/fas
     - [Typing](#typing)
     - [CORS](#cors)
   - [Deploying](#deploying)
+- [Example Code](#example-code)
 
 
 # General API Design
@@ -1029,6 +1031,10 @@ uvicorn app.main:app --reload --host 1.2.3.4 --port 1234
 >[!TIP]
 > Just use the defaults unless you have a good reason to not do so
 
+# Example Code
+Since an API is a contract between a frontend and backend, with no implementation details being necessary, the example code is split into the frontend, and the backends.
+
+The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by changing the API URL [here](./example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by changing the imported middleware [here](./example-project/frontend/src/App.tsx#3)
 
 TODO:
  - Auth
