@@ -23,11 +23,9 @@ flowchart TD
     D -->|No| F[Use a Document DB]
 ```
 
-## Deeper Dive into Differences
+## A Deeper Dive
 
-### Structured / Relational Databases
-
-#### What they are
+### Structured/Relational Databases
 
 Relational databases store data in **tables with fixed schemas**, with rows and columns. Relationships between entities are expressed using **foreign keys**.
 
@@ -59,9 +57,7 @@ Relational databases store data in **tables with fixed schemas**, with rows and 
 
 ### Document Databases
 
-#### What they are
-
-Document databases store data as **JSON-like documents**. Each document can have a flexible, heterogenous structure.
+Document databases store data as **JSON-like documents**. Each document can have a flexible, decentralised structure.
 
 #### Key properties
 
@@ -88,8 +84,6 @@ Document databases store data as **JSON-like documents**. Each document can have
 [Click here for the deep-dive](document.md)
 
 ### Graph Databases
-
-#### What they are
 
 Graph databases model data as **nodes** (entities) and **edges** (relationships).
 
