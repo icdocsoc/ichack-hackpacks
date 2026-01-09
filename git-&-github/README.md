@@ -19,7 +19,7 @@ Git is a popular version control system. Git is often used to work on code with 
 
 ### How to Install
 
-You can download Git for free from [git-scm.com](git-scm.com). You will need to enter your email after installation.
+You can download Git for free from [git-scm.com](https://git-scm.com). You will need to enter your email after installation.
 
 Afterwards, you will be able to use Git from your terminal or command prompt.
 
@@ -54,36 +54,78 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 ```
 ### 2. Make a commit
 
-After you have cloned the repo, make some changes. You can then stage these changes using `git add .` which will stage all your changes. Then you can run `git commit -m "example commit message"` which will save your changes locally.
+After you have cloned the repo, make some changes. You can then stage these changes using 
+```bash
+git add .
+```
+which will stage all your changes. 
 
-If you do not want to commit all your changes, `git add` can be used selectively to add only files you are interested in. You can also add certain file extensions and folders to a `.gitignore` file to ensure they are never tracked.
+Then you can run 
+```bash
+git commit -m "example commit message"
+``` 
+which will save your changes locally.
 
-You can use `git status` at any time to check the state of your working directory and see which files are modified, staged, or untracked.
+If you do not want to commit all your changes, 
+```bash
+git add
+``` 
+can be used selectively to add only files you are interested in. You can also add certain file extensions and folders to a `.gitignore` file to ensure they are never tracked.
+
+You can use 
+```bash
+git status
+``` 
+at any time to check the state of your working directory and see which files are modified, staged, or untracked.
 
 ### 3. Pushing and pulling
 
-Before working with a remote repository, it’s important to ensure that your local clone is up to date. Running `git pull` updates your current local branch by fetching and merging the latest commits from the corresponding remote branch on GitHub.
+Before working with a remote repository, it’s important to ensure that your local clone is up to date. Running 
+```bash
+git pull
+``` 
+updates your current local branch by fetching and merging the latest commits from the corresponding remote branch on GitHub.
 
-After you have implemented a feature or fixed a bug, you should upload your local commits to the remote repository. Running `git push` sends all commits from your local branch to the corresponding branch on the remote.
+After you have implemented a feature or fixed a bug, you should upload your local commits to the remote repository. Running 
+```bash
+git push
+``` 
+sends all commits from your local branch to the corresponding branch on the remote.
 
-> **Top Tip:**
+> [!TIP]
 > Make sure to run `git pull` everytime before you run `git push` to ensure your local branch is up to date and most importantly to avoid merge conflicts!
 
 ### 4. Checkout and Branch
 Branches allow you to work on new features or bug fixes without affecting the main codebase. This makes collaboration safer and more organized.
 
-To see all available branches, you can run `git branch`. Branches name will be shown and the one you are checking out right now will be highlighted with an asterisk (`*`)
+To see all available branches, you can run 
+```bash
+git branch
+```
+Branches name will be shown and the one you are checking out right now will be highlighted with an asterisk (`*`)
 
-To create and switch to a new branch, run `git checkout -b branch-name` to create a new branch and immediately checks it out. If you only wants to create a new branch without switching to it, run `git branch branch-name` instead.
+To create and switch to a new branch, run 
+```bash
+git checkout -b branch-name
+``` 
+to create a new branch and immediately check it out. 
 
-If you want to switch to any existing branch, run `git checkout branch-name`. 
+If you only want to create a new branch without switching to it, instead run 
+```bash
+git branch branch-name
+```
 
-Sometimes git might block your checkout if you have uncommitted changes that would be overwritten and shows 
+If you want to switch to any existing branch, run 
+```bash
+git checkout branch-name
+```  
+
+Sometimes Git might block your checkout if you have uncommitted changes that would be overwritten and shows 
 
 ```bash
 error: Your local changes to the following files would be overwritten by checkout
 ```
-If you want to switch branches and recieved this error, you can:
+If you want to switch branches and have received this error, you can:
 
 **1. Commit your change**
 This is straightforward as you just commit all your changes to remote. 
@@ -100,7 +142,7 @@ git stash pop #If you want to retrieve your progress, you can pop it out from th
 ```
 
 **3. Discard your change (irreversible)**
-If you somehow wants to discard all the changes you made, you can:
+If you want to discard all the changes you made, you can:
 ```bash
 git reset --hard
 ```
