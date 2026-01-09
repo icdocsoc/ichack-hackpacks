@@ -23,6 +23,12 @@ You can download Git for free from [git-scm.com](https://git-scm.com). You will 
 
 Afterwards, you will be able to use Git from your terminal or command prompt.
 
+You will likely be prompted to setup your account before you do anything with Git. Simply run the following commands
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
 ## Git Basics
 
 This section covers the most common Git commands you’ll use during the hackathon. You don’t need to know everything—just enough to collaborate smoothly.
@@ -105,7 +111,7 @@ You can stage a modified file by pressing the `+` as you hover over it. You can 
 
 To commit your staged changes, write your commit message at the top of the panel and click `Commit`. 
 
-Once committed, that `Commit` button becomes a 
+Once committed, that `Commit` button becomes a `Sync Changes`. This automatically `pull`s then `push`es your changes!
 
 ### 4. Checkout and Branch
 Branches allow you to work on new features or bug fixes without affecting the main codebase. This makes collaboration safer and more organized.
@@ -245,6 +251,86 @@ Many of you will be using VSCode as your IDE *(or text editor, whatever...)* of 
 You will see the above when you open a file with a current merge conflict. You can press the buttons above the conflict to quickly resolve.
 
 To finalise the resolution of a merge conflict, you must commit all the files whose merge conflicts you have resolved. 
+
+### 6. Undo Mistakes
+If you have made serious mistakes since the last commit, you can run the following to reset a single file to the version that was last committed
+```bash
+git restore <file> 
+```
+
+For more serious mistakes, you may want to reset your whole branch to the last commit made
+```bash
+git reset --hard 
+```
+
+If you want to change the commit message of the previous change, run
+```bash
+git commit --amend
+```
+
+If you forgot to add a file to a commit, just run
+```bash
+git add <file>
+git commit --amend
+```
+
+Don't like the changes made in a specific commit? Run
+```bash
+git revert <commit>
+```
+
+The `<commit>` is a commit hash, a unique identifier for a commit. These can be found by running 
+
+```bash
+git log
+```
+
+This prints the entire history of that branch.
+>[!IMPORTANT]
+> The full history may be truncated at first. If you see `:` at the bottom of the output, press `Enter` to get the next line. You can press `q` at any time to leave this view and get back to your terminal.
+
+One entry in the log will look like
+```bash
+commit 8d0fae1dc9da67058f27e86ee4e2b3f7c474a3fb (origin/git-github)
+Author: Timofey Kolesnichenko <tk1124@ic.ac.uk>
+Date:   Fri Jan 9 14:01:07 2026 +0000
+
+    Fix: Cleanup some of the formatting and fix typos.
+```
+where the `8d0fae1...` is the commit hash.
+
+>[!TIP]
+> Git is smart! You don't need the *full* commit hash in order to reference the commit. The first 7 characters are typically sufficient. You may need an 8th or 9th if there happen to be clashes!
+
+>[!IMPORTANT]
+> `git revert <commit>` does not delete any history or the changes made. 
+> This simply creates a new commit that undoes the changes made in commit `<commit>`
+
+Want to completely remove a commit but keep the changes?
+```bash
+git reset --soft HEAD~1
+```
+
+In fact, you can remove the previous `N` commits using
+```bash
+git reset --soft HEAD~N
+```
+
+All the changes made in those commits will still be present as local, unstaged changes. 
+
+
+Once you are happy, you need to `push` your changes to remote so your teammates can be on the same page.
+
+Since the above actions are destructive (apart from `revert`), you will need to use 
+```bash
+git push --force
+```
+
+>[!WARNING]
+> Ensure your teammates do not push any changes while you are force-pushing! 
+
+>[!IMPORTANT]
+> For your teammates to see changes, they must `pull`!
 
 ## Useful Features
 
