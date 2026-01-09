@@ -152,7 +152,7 @@ Use Pydantic for the validation instead of manual checks
 
 ### Chain of Thought
 
-For more complex reasoning tasks, ask the LLM to show its work and though process. 
+For more complex reasoning tasks, ask the LLM to show its work and thought process. 
 
 **Example:**
 ```txt
@@ -162,7 +162,7 @@ their remaining stock. How many apples do they have now?
 Solve this step by step, showing your calculation at each stage.
 ```
 
-### Trigger Review
+### Comparative Analysis
 
 For important decisions (maybe about the direction of your project), ask the model to consider multiple approaches.
 
