@@ -332,6 +332,9 @@ git push --force
 >[!IMPORTANT]
 > For your teammates to see changes, they must `pull`!
 
+[See here](#useful-links) for 2 good websites that have information on how to deal with practically any issue with Git.
+
+
 ## Useful Features
 
 ### Pull Request
@@ -353,6 +356,7 @@ In ICHACK or any team projects, it is well recommended to use PR instead of git-
 After your teammates have reviewed your PR, you will then safely merge it to main.
 
 [comment]: <> (Maybe include how to merge PR as well)
+[comment]: <> (Has been included under 5. Merge branches)
 
 ### Issues
 
