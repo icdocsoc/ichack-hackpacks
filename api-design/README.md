@@ -87,7 +87,7 @@ Most modern APIs are **RESTful** and built on HTTP.
  - Operations are expressed via **HTTP methods**
  - State is transferred using **representations** (JSON)
 
-REST is a *design style*, not a protocol. You should follow REST conventions where they help clarity and speed, and ignore the when they slow you down.
+REST is a *design style*, not a protocol. You should follow REST conventions where they help clarity and speed, and ignore them when they slow you down.
 
 ## Resources and URLs
 We design URLs around **nouns** not verbs.
@@ -114,8 +114,7 @@ GET /incrementCounter
 PATCH /deletePost
 ```
 
->[!WARNING]
-> The BAD section would at least work and make sense, ***NEVER*** do anything from the UGLY!
+>⚠️ The BAD section would at least work and make sense, ***NEVER*** do anything from the UGLY!
 
 URLs should show a hierarchy, reflecting ownership or containment. 
 
@@ -124,9 +123,9 @@ URLs should show a hierarchy, reflecting ownership or containment.
 
 ## HTTP Methods
 
-Here are the HTTP methods that you can use for your API
+The subsections below after the glossary show the HTTP methods that you can use for your API.
 
-We will be using several terms that need defining
+### Glossary
 
 **Safe:** Does not change server state
 
@@ -154,8 +153,7 @@ We will be using several terms that need defining
  - Trigger any side effects
  - Create audit events that affect behaviour
 
->[!NOTE]
-> Logging for debugging is allowed, but anything user-visible or persistent is not
+> 📢 Logging for debugging is allowed, but anything user-visible or persistent is not
 
 **What GET can do**
  - Read data
@@ -185,8 +183,7 @@ This is used for:
  - Metadata
  - Caching validation
 
->[!IMPORTANT]
-You will likely not need to use this
+> 📢 You will likely not need to use this.
 
 ---
 
@@ -198,13 +195,12 @@ You will likely not need to use this
  - Can be Cacheable
 
 **Purpose**
+
 Returns the allowed methods and CORS info. This will likely be automatically handled for you by FastAPI and Firebase Cloud Functions.
 
->[!WARNING]
-> Since these are automatically handled, don't use this
+>⚠️ Since these are automatically handled, don't use this
 
->[!TIP]
-> If you are having problems with this, ask a mentor on the day for help!
+>📢 If you are having problems with this, ask a mentor on the day for help!
 
 ---
 
@@ -216,8 +212,8 @@ Returns the allowed methods and CORS info. This will likely be automatically han
  - Not cacheable
 
 **Purpose**
-POST can do pretty much any action or side-effect, such as:
 
+POST can do pretty much any action or side-effect, such as:
  - Create resources
  - Trigger actions
  - Perform non-idempotent operations
@@ -236,11 +232,9 @@ POST /search   # complex queries
 
 Since POST is not idempotent, if POST is retried, side effects may repeat. 
 
->[!WARNING]
-> You may be tempted to use this for most API operations. Try to limit its use and use the other HTTP methods where possible.
+>⚠️ You may be tempted to use POST for most API operations. Try to limit its use and use the other HTTP methods where possible.
 
->[!TIP]
-> Treat this as a *'do anything'* method
+>📢 Treat this as a *'do anything'* method
 
 ---
 
@@ -252,6 +246,7 @@ Since POST is not idempotent, if POST is retried, side effects may repeat.
  - Not Cacheable
 
 **Purpose**
+
 This is used for replacing the entire resource with the provided representation.
 
 **Example**
@@ -266,8 +261,7 @@ This will replace the resource with the data provided by the headers and body by
  - Server completely overwrites existing state
  - Repeating PUT results in the same final state
 
->[!WARNING]
-> A common point of failure is using PUT for partial updates
+>⚠️ A common point of failure is using PUT for partial updates
 
 ---
 
@@ -279,13 +273,14 @@ This will replace the resource with the data provided by the headers and body by
  - Not Cacheable
 
 **Purpose**
+
 Whereas PUT replaces the whole resource, PATCH partially modifies the resource with the provided data.
 
-
 **Idempotence**
+
 Depending on the implementation, PATCH may or may not be idempotent
 
- - `set name = "Alice` is idempotent
+ - `set name = "Alice"` is idempotent
  - `increment likes by 1` is not idempotent
 
 ---
@@ -322,8 +317,7 @@ Common ones:
 ## Request and Response Bodies
 We use JSON as the format for passing data between the client and the backend. 
 
->[!TIP]
-> Choose a schema and stick with it. Document it too!
+>📢 Choose a schema and stick with it. Document it too!
 
 Example response:
 ```JS
@@ -349,8 +343,7 @@ Common strategies:
  - URL versioning: `/v1/posts`
  - Header versioning: `Accept: application/vnd.myapi.v1+json`
 
->[!TIP]
-> You can skip this entirely for a hackathon. 
+>📢 You can skip this entirely for a hackathon. 
 
 ---
 
@@ -364,8 +357,7 @@ The common mechanisms include:
 
 This is pretty straightforward for Cloud Functions since Firebase already includes Auth. 
 
->[!TIP]
-> Anonymous auth or hardcoded users are acceptable for a hackathon.
+>📢 Anonymous auth or hardcoded users are acceptable for a hackathon.
 
 ---
 
@@ -437,7 +429,7 @@ Improves request latency, but not worth it in a hackathon setting. This is alrea
 
 Since all backends are HTTP requests, there is a unified way to create a request from a frontend. 
 
-## JS/TS
+## JavaScript/TypeScript
 ```ts
 const res = await fetch(url, {
     method: "GET",
@@ -502,8 +494,7 @@ This has the benefit of being **serverless**, so you do not have to manage the r
  4. On the left hand pane, click on `Build` -> `Functions`
  5. As `Functions` is not included in the `Spark` (default) plan, you will have to upgrade to the `Blaze` plan
 
->[!WARNING]
-> The Blaze plan will cost you if your quota runs out, so be careful with your usage! You are very unlikely to run out of your quota within the timeframe of a hackathon!
+>⚠️ The Blaze plan will cost you if your quota runs out, so be careful with your usage! You are very unlikely to run out of your quota within the timeframe of a hackathon!
  6. Create a Cloud Billing Account
  7. Follow the instructions in the new window
  8. Click `Get Started` once you have changed to the `Blaze` plan
@@ -594,8 +585,7 @@ There is a high chance that there will be deployment failures due to ESLint erro
 > ```
 > This is Google rate-limiting you when you are enabling the various APIs. Wait for a minute or two and retry.
 
->[!NOTE]
-> The deployment may take a short while, be patient!
+> 📢 The deployment may take a short while, be patient!
 
 Once the process is complete, you will be provided with the URL where your function can be accessed.
 For me, this was
@@ -603,11 +593,11 @@ For me, this was
 Function URL (helloWorld(us-central1)): https://us-central1-sample-project-44e1c.cloudfunctions.net/helloWorld
 ```
 
->[!IMPORTANT]
+>📢 
 > Once the setup is complete, you may be asked
-> ```bash
+> ```
 > How many days do you want to keep container images before they're deleted?
-> ````
+> ```
 > To avoid surprise bills, press 1 and `Enter`. This cleans up the containers for tasks older than a day.
 
 ### Writing RESTful Functions
@@ -664,7 +654,7 @@ const { id, text } = req.body;
 
 The above unpacks the request body into the `id` and `text` fields.  
 
->[!WARNING]
+>⚠️
 > This typically breaks caching, so the canonical method is preferred...
 
 [Click here for an example hacky Firebase backend](./example-project/cloud-functions/functions/src/request-packing.ts)
@@ -725,12 +715,12 @@ export const helloWorld = functions.https.onRequest(
 );
 ```
 
->[!WARNING]
+>⚠️
 > Do not use this in production. This allows requests from any source. Instead you should use `{cors: [your_domain_one.com, ...]}`
 > 
 > However this is perfectly fine for hackathons!
 
->[!TIP]
+>📢
 > Don't forget to redeploy your functions using `firebase deploy` after you edit them!
 
 ## Making Requests
@@ -881,7 +871,7 @@ We will be using MongoDB as our database. [Click here for the document databases
  ```bash
  pip install fastapi uvicorn
  ```
- >[!TIP]
+ >📢
  > Run the following in the root of your FastAPI
  > ```bash
  > pip freeze > requirements.txt
@@ -1001,7 +991,7 @@ app.add_middleware(
 )
 ```
 
->[!WARNING]
+>⚠️
 > This allows all origins and methods and users. Perfectly fine for a hackathon but do not use in production code!
 
 Since we separated `main.py` with all the logic, and applied it to the whole app, we do not need any further modifications.
@@ -1013,7 +1003,7 @@ Since we are self-hosting this, deploying is as simple as running the following 
 uvicorn app.main:app --reload
 ```
 
->[!TIP]
+>📢
 > Since we used `--reload`, the backend will redeploy every time you edit any of your backend code, so no need to manually rerun this command!
 
 Upon startup, you will get a message along the lines of 
@@ -1028,7 +1018,7 @@ If you want to specify your own host address and port, you can using the argumen
 uvicorn app.main:app --reload --host 1.2.3.4 --port 1234
 ```
 
->[!TIP]
+>📢
 > Just use the defaults unless you have a good reason to not do so
 
 # Example Code
