@@ -3,6 +3,7 @@
 For your ICHack project, you will almost certainly need to store data. This HackPack gives a **high-level** overview of the main database paradigms you are likely to use, and how to choose between them.
 
 We have deep dives into 3 types:
+
  - [Structured (Relational) Databases - PostgreSQL]()
  - [Document Databases - Firestore](document.md)
  - [Graph Databases - [NOT SURE]]()
@@ -25,16 +26,20 @@ flowchart TD
 ## Deeper Dive into Differences
 
 ### Structured / Relational Databases
+
 #### What they are
+
 Relational databases store data in **tables with fixed schemas**, with rows and columns. Relationships between entities are expressed using **foreign keys**.
 
 #### Key properties
- - Strong, explicit schema
- - ACID transactions
- - Powerful querying via SQL
- - Referential integrity guarantees
+
+- Strong, explicit schema
+- ACID transactions
+- Powerful querying via SQL
+- Referential integrity guarantees
   
 #### Pros/Cons
+
 ✅ Clear, stable data structure \
 ✅ Complex queries and joins supported \
 ✅ Strong consistency and reliability \
@@ -42,26 +47,31 @@ Relational databases store data in **tables with fixed schemas**, with rows and 
 ❌ Less flexible for rapidly evolving data
 
 #### Example use cases
- - User accounts and auth
- - Financial data
- - Inventory
- - Leaderboards
 
-[Click here for the deep-dive]()
+- User accounts and auth
+- Financial data
+- Inventory
+- Leaderboards
+
+[Click here for the deep-dive.]()
 
 ---
 
 ### Document Databases
+
 #### What they are
-Document databases store data as **JSON-like documents**. Each document can have a flexible, heterogenous structure. 
+
+Document databases store data as **JSON-like documents**. Each document can have a flexible, heterogenous structure.
 
 #### Key properties
- - Schema-flexible
- - Documents are often denormalised
- - Easy to map directly to application objects
- - Supports nested data structures
+
+- Schema-flexible
+- Documents are often denormalised
+- Easy to map directly to application objects
+- Supports nested data structures
   
 #### Pros/Cons
+
 ✅ Rapid prototyping \
 ✅ Flexible and evolving data structures \
 ✅ Naturally hierarchical or nested data \
@@ -69,23 +79,28 @@ Document databases store data as **JSON-like documents**. Each document can have
 ❌ Joins are complex
 
 #### Example use cases
- - User profiles with optional fields
- - Content platforms (posts, comments)
- - Logs, events and analytics
- - Chat apps
+
+- User profiles with optional fields
+- Content platforms (posts, comments)
+- Logs, events and analytics
+- Chat apps
   
 [Click here for the deep-dive](document.md)
 
 ### Graph Databases
+
 #### What they are
-Graph databases model data as **nodes** (entities) and **edges** (relationships). 
+
+Graph databases model data as **nodes** (entities) and **edges** (relationships).
 
 #### Key Properties
- - Explicit relationship modelling
- - Efficient traversal of deep connections
- - Query languages based on graph patterns
+
+- Explicit relationship modelling
+- Efficient traversal of deep connections
+- Query languages based on graph patterns
 
 #### Pros/Cons
+
 ✅ Excellent for relationship-heavy data \
 ✅ Fast traversal for complex connections \
 ✅ Queries like "friends of friends" or "shortest path" are efficient \
@@ -93,9 +108,10 @@ Graph databases model data as **nodes** (entities) and **edges** (relationships)
 ❌ Can be harder to integrate with traditional apps
 
 #### Example use cases
- - Social networks
- - Recommendation systems
- - Dependency graphs
- - Knowledge graphs
+
+- Social networks
+- Recommendation systems
+- Dependency graphs
+- Knowledge graphs
 
 [Click here for the deep-dive]()
