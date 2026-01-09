@@ -35,7 +35,7 @@ Sample code will be provided, with example programs found in `databases/example-
   - [Indexes](#indexes)
   - [Quota](#quota)
   - [Authentication](#authentication)
-    - [Setup](#setup-1)
+    - [Setup](#authentication-setup)
     - [Use](#use)
   - [Example](#example)
     - [Auth](#auth)
@@ -49,21 +49,21 @@ Sample code will be provided, with example programs found in `databases/example-
 
 Firestore is a **managed, serverless document database** designed primarily for **web and mobile applications**. It shines when you want to move fast, avoid backend infrastructure, and build real-time features.
 
-This deep dive will focus on **web apps** (React / Vue / plain JS), however links to the official Firestore docs will be provided to find alternatives (Python, Kotlin, Java, etc).
+This deep dive will focus on integrating Firestore into **web apps** (React / Vue / plain JS), however links to the official Firestore docs will be provided to find alternatives (Python, Kotlin, Java, etc).
 
 ## Setup
 
 ### Create a Firebase project
 
- 0. Ensure you have already set up a JS project (we will be using `npm` with `React` and `TypeScript`)
- 1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/)
+ 0. Ensure you have already set up a JS project (we will be using [`npm` with `React` and `TypeScript`](/databases/example-project/sample-document-app/))
+ 1. Go to [console.firebase.google.com](https://console.firebase.google.com/)
  2. Create a new project
  3. Wait for project to be created
  4. On the left hand pane, click on `Build` -> `Firestore Database`
  5. Press `Create database`
  6. Pick `Standard edition`
  7. The default location is fine, but Europe, or even better, London, can be selected for lower latency.
- 8. For ICHack, we recommend you select `test mode`, so you do not have to deal with access issues.
+ 8. For IC Hack, we recommend you select `test mode`, so you do not have to deal with access issues.
 
  > [!IMPORTANT]
  > This will revert to `production mode` within 30 days, so fixes may be needed if you continue to work on your project.
@@ -107,7 +107,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 ```
 
- 1. Paste all this into a new file, `project-root/src/firebase.ts`. This should now appear next to `main.tsx`.
+ 1. Paste all this into a new file, [`project-root/src/firebase.ts`](/databases/example-project/sample-document-app/src/firebase.ts). This should now appear next to `main.tsx`.
  2. Add the following 2 lines to that file
 
  ```ts
@@ -135,7 +135,7 @@ users (collection)
          └─ postId456
 ```
 
-A **collection** is a set of documents, here we have the `users` collection holding many user documents. Each document needs a unique name (this is analogous to a primary key). Like JSON objects, these documents have fields. In the above example, we have 3 fields: `name`, `email` and `posts`. The first two are ordinary fields. The latter however is a **subcollection**. This is a nested collection of documents, a collection of "post" documents in this case.
+A **collection** is a set of documents, here we have the `users` collection holding many user documents. Each document needs a unique name (this is analogous to a primary key in traditional relational databases). Like JSON objects, these documents have fields. In the above example, we have 3 fields: `name`, `email` and `posts`. The first two are ordinary fields. The latter however is a **subcollection**. This is a nested collection of documents, a collection of "post" documents in this case.
 
 Since Firestore does not support joins, you have to instead store data in a denormalised manner, often leading to duplication of data. Each post may have a subcollection of viewers, to keep track of who has viewed a post. You will either need to store references to all the user documents that have viewed the post, or embed the data.
 
@@ -181,7 +181,7 @@ Above is an example of each of the datatypes.
 
 ---
 
-As you can see from the example, all Firestore objects are stored as `Map` or `Dictionary` objects.
+As you can see from the example, all Firestore objects are stored as `Map` or `Dictionary` objects within TypeScript.
 In order to store custom classes, you must create a converter.
 
 ```ts
@@ -337,7 +337,7 @@ const q = query(collection(db, "users"), and(
 ```
 
 > [!WARNING]
-> The 30 term limit described in the previous section extends to this too. Your total query must have a maximum of 30 disjunctions after Firestore converts your query into disjunctive normal form.
+> The 30 term limit described in the previous section extends to this too. Your total query must have a maximum of 30 disjunctions after Firestore converts your query into [disjunctive normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form).
 
 > [!IMPORTANT]
 > You cannot combine `not-in` with any of `in`, `array-contains-any` or `or` in the same query.
@@ -368,7 +368,7 @@ querySnapshot.forEach((doc) => {
 
 #### Order and limit data
 
-A Firestore query by default returns all the documents that satisfy your query, in ascending document ID. Often this is far too many documents and you want to limit it to the top N results.
+A Firestore query by default returns all the documents that satisfy your query, in ascending document ID. Often this is far too many documents and you want to limit it to the top *N* results.
 
 ```ts
 const q = query(collection(db, "users"), orderBy("name"), orderBy("email", "desc"), limit(5));
@@ -651,7 +651,7 @@ Your limits are:
 
 You will likely want some sort of authentication, even anonymous (using just the browser session). This will give each user a unique authentication ID, which becomes the document name for their user document.
 
-### Setup
+### Authentication Setup
 
  1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/)
  2. Open your project
