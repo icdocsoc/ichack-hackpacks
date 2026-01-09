@@ -1,15 +1,13 @@
 # Document Databases
 
-Document databases store data as **self-contained JSON-like documents**. Unlike relational databases, they allow each record (document) to have a **flexible, potentially heterogeneous schema**. Relationships are often embedded rather than joined.
+Document databases store data as **self-contained JSON-like documents**. Unlike relational databases, they allow each record (document) to have a **flexible structure, where different records can have different fields**. Relationships are often embedded rather than joined.
 
-This deep-dive covers the theory, then two practical implementations: **Firestore** and **MongoDB**.
+This deep-dive HackPack covers the theory behind document databases, then two practical implementations: **Firestore** and **MongoDB**.
 
 Sample code will be provided, with example programs found in `databases/example-project`.
 
 ## Table of Contents
 
-- [Document Databases](#document-databases)
-- [Table of Contents](#table-of-contents)
 - [Firestore](#firestore)
   - [Setup](#setup)
     - [Create a Firebase project](#create-a-firebase-project)
