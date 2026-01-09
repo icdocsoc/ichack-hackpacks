@@ -95,6 +95,18 @@ sends all commits from your local branch to the corresponding branch on the remo
 > [!TIP]
 > Make sure to run `git pull` everytime before you run `git push` to ensure your local branch is up to date and most importantly to avoid merge conflicts!
 
+Since you are likely using an IDE to code your ICHack submission, you can utilise the inbuilt tools to make commiting changes simple. 
+
+For VSCode, any changes you make since the last commit will be shown in the left hand panel by clicking on the graph symbol.
+
+![VSCode Git Commit Panel](./assets/vs-code-commit-panel.png)
+
+You can stage a modified file by pressing the `+` as you hover over it. You can also preview the changes by clicking on the file in that panel, and even revert the changes!
+
+To commit your staged changes, write your commit message at the top of the panel and click `Commit`. 
+
+Once committed, that `Commit` button becomes a 
+
 ### 4. Checkout and Branch
 Branches allow you to work on new features or bug fixes without affecting the main codebase. This makes collaboration safer and more organized.
 
@@ -110,6 +122,13 @@ git checkout -b branch-name
 ``` 
 to create a new branch and immediately check it out. 
 
+>[!WARNING]
+> This command creates a new branch that originates at the currently checked-out branch. Ensure that you are on the right branch
+> Alternatively, specify the source
+> ```bash
+> git checkout -b branch-name source-branch
+> ```
+
 If you only want to create a new branch without switching to it, instead run 
 ```bash
 git branch branch-name
@@ -119,6 +138,27 @@ If you want to switch to any existing branch, run
 ```bash
 git checkout branch-name
 ```  
+
+Since we are using Git to work collaboratively, it is useful to know how to create branches on the *remote*. This is just your branch being published to GitHub (most likely!), so your teammates can see your work and contribute alongside.
+
+Once you have created your *local* branch, simply run
+```bash
+git push -u origin branch-name
+```
+
+If you **already** have a remote branch, that you want to have as a *local* branch, run
+```bash
+git fetch
+git checkout -b branch-name --track origin/remote-branch-name
+```
+
+To easily see the list of remote branches, run
+```bash
+git fetch
+git branch -r
+```
+
+---
 
 Sometimes Git might block your checkout if you have uncommitted changes that would be overwritten and shows 
 
@@ -165,6 +205,46 @@ git branch -d feature-branch-name
 ```
 
 Alternatively, you can use **Pull Requests** on GitHub to merge branches into main. This is considered best practice, as it allows teammates to review the changes, provide feedback, and approve the merge before it is completed.
+
+>[!TIP]
+> Try to keep branches small, ideally one branch should be one feature!
+> 
+> Large branches can cause serious merge conflicts!
+
+#### Merge Conflicts
+
+In the ***very*** unfortunate scenario that you have merge conflicts that Git can't automatically resolve, it is up to you to fix it!
+
+Here is an example of what you will see in a file with a merge conflict
+```
+Hello World
+<<<<<<< HEAD
+Feature B
+=======
+Feature A
+>>>>>>> branch-a
+```
+
+The bits between `HEAD` and the `=======` denote the code that is on your branch. The bit between the `=======` and `branch-name` are the incoming changes. 
+
+To resolve, you must remove all of the below characters in a text editor
+```
+<<<<<<< HEAD
+=======
+>>>>>>> branch-a
+```
+
+And you must also resolve the conflict as you see fit! This typically involves either keeping your change, the incoming change, both, or a mix of both. 
+
+This process can be made simpler through the use of GitHub's UI, which will highlight these conflicts.
+
+Many of you will be using VSCode as your IDE *(or text editor, whatever...)* of choice. 
+
+![VSCode Merge Conflict Resolver](./assets/merge-conflict.png)
+
+You will see the above when you open a file with a current merge conflict. You can press the buttons above the conflict to quickly resolve.
+
+To finalise the resolution of a merge conflict, you must commit all the files whose merge conflicts you have resolved. 
 
 ## Useful Features
 
