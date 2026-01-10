@@ -170,7 +170,7 @@ The subsections below after the glossary show the HTTP methods that you can use 
  - Trigger any side effects
  - Create audit events that affect behaviour
 
-> 📢 Logging for debugging is allowed, but anything user-visible or persistent is not
+> 📢 It’s acceptable to use logging for debugging purposes, but nothing should be user-visible or persisted.
 
 **What GET can do**
  - Read data
@@ -182,26 +182,6 @@ The subsections below after the glossary show the HTTP methods that you can use 
 ```
 GET /posts?authorId=123
 ```
----
-
-### HEAD
-
-**Semantics**
- - Safe
- - Idempotent
- - Cacheable
-
-**Purpose**
-
-Same as GET, but with **no response body**.
-
-This is used for:
- - Existence checks
- - Metadata
- - Caching validation
-
-> 📢 You will likely not need to use this.
-
 ---
 
 ### OPTIONS
@@ -353,17 +333,6 @@ Example response:
 
 ---
 
-## Versioning
-Since APIs evolve, we need versioning so clients don't break when we change contracts.
-
-Common strategies:
- - URL versioning: `/v1/posts`
- - Header versioning: `Accept: application/vnd.myapi.v1+json`
-
->📢 You can skip this entirely for a hackathon. 
-
----
-
 ## Authentication and Authorisation
 Authentication verifies the user, and authorisation verifies what a user can do.
 
@@ -406,7 +375,16 @@ This should be done to prevent abuse. This adds unnecesarry complexity in a hack
 Returning all the results can unnecesarily use up both server and client resources. You will be unlikely to have enough data to require this in a hackathon setting.
 
 ### Caching
-Improves request latency, but not worth it in a hackathon setting. This is already provided for you by Firebase. 
+Improves request latency, but not worth it in a hackathon setting. This is already provided for you by Firebase.
+
+### Versioning
+Since APIs evolve, we need versioning so clients don't break when we change contracts.
+
+Common strategies:
+ - URL versioning: `/v1/posts`
+ - Header versioning: `Accept: application/vnd.myapi.v1+json`
+
+Since you are not in a production setting, you can quickly migrate anything, so this shouldn't be needed.
 
 ---
 
