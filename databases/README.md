@@ -90,7 +90,7 @@ Graph databases model data as **nodes** (entities) and **edges** (relationships)
 
 - Explicit relationship modelling
 - Efficient traversal of deep connections
-- Query languages based on graph patterns
+- Queries expressed as traversals and subgraph patterns
 
 #### Pros/Cons
 
