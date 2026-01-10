@@ -92,6 +92,11 @@ REST is a *design style*, not a protocol. You should follow REST conventions whe
 ## Resources and URLs
 We design URLs around **nouns** not verbs.
 
+URLs should show a hierarchy, reflecting ownership or containment. 
+
+ - `/users/{id}/posts` are the posts owned by a user
+ - `/posts/{id}/comments` are the comments belonging to a post
+
 ***The GOOD:***
 ```
 GET /users
@@ -100,12 +105,24 @@ POST /posts
 GET /posts/{postId}/comments
 ```
 
+**Why?**
+
+ - Nouns, not verbs
+ - Predictable and consistent, you can guess how to interact with the API even without documentation
+ - Hierarchical structure. `/posts/{postId}/comments` clearly shows that comments belong to a post
+ - Follows standard REST conventions: URLs represent entities, HTTP methods represent actions
+
 ***The BAD:***
 ```
 GET /getUsers
 POST /createPost
 POST /deleteComment
 ```
+
+**Why?**
+
+ - Mixing verbs and nouns: `GET /getUsers` is redundant, since `GET` already implies that we are fetching
+ - Inconsistent naming- you may end up confusing endpoints like `POST /createPost` and `POST /addPost`, two verbs for the same action
 
 ***The UGLY:***
 ```
@@ -114,12 +131,12 @@ GET /incrementCounter
 PATCH /deletePost
 ```
 
+**Why?**
+
+ - HTTP method conflicts with verb in URL
+ - Very hard to maintain, you will struggle to guess what an endpoint does  
+
 >⚠️ The BAD section would at least work and make sense, ***NEVER*** do anything from the UGLY!
-
-URLs should show a hierarchy, reflecting ownership or containment. 
-
- - `/users/{id}/posts` are the posts owned by a user
- - `/posts/{id}/comments` are the comments belonging to a post
 
 ## HTTP Methods
 
