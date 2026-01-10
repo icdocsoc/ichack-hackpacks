@@ -717,9 +717,14 @@ where `Loading`, `Dashboard` and `SignIn` are React components.
 Click on the following for examples of those components
 
 - [`Loading`](./example-project/sample-document-app/src/components/LoadingSpinner.tsx)
+  ![Loading Spinner Component](./assets/loading-spinner.png)
 - [`Dashboard`](./example-project/sample-document-app/src/pages/Dashboard.tsx)
+  ![Simple Message Dashboard](./assets/simple-dashboard.png)
 - [Anonymous `SignIn`](./example-project/sample-document-app/src/components/SignInAnonymous.tsx)
+  ![Anonymous Sign In](./assets/anonymous-sign-in.png)
 - [Email/Password `SignIn`](./example-project/sample-document-app/src/components/SignInPassword.tsx)
+  ![Email/Password Sign in](./assets/email-password-sign-in.png)
+  ![Invalid Email/Password Sign in](./assets/invalid-email-sign-in.png)
 - [`App.tsx`](./example-project/sample-document-app/src/App.tsx)
 
 ## Example
