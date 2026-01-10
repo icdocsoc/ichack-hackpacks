@@ -4,7 +4,7 @@ Document databases store data as **self-contained JSON-like documents**. Unlike 
 
 This deep-dive HackPack covers the theory behind document databases, then two practical implementations: **Firestore** and **MongoDB**.
 
-Sample code will be provided, with example programs found in `databases/example-project`.
+Sample code will be provided, with example programs found in [`example-project`](/databases/example-project/).
 
 ## Table of Contents
 
