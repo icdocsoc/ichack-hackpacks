@@ -259,6 +259,7 @@ This will replace the resource with the data provided by the headers and body by
  - Repeating PUT results in the same final state
 
 >⚠️ A common point of failure is using PUT for partial updates
+>Using `PUT` for partial updates can overwrite fields you didn’t intend to change. Use `PATCH` for updating just specific fields.
 
 ---
 
