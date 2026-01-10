@@ -13,10 +13,12 @@ In this HackPack, we will focus on creating an API that is
 This HackPack will cover
 
  1. General API Design
- 2. FastAPI (Python) for fast iteration and typed safety
- 3. Firebase Cloud Functions for serverless APIs
+ 2. Firebase Cloud Functions for serverless APIs
+ 3. FastAPI (Python) for fast iteration and typed safety
 
 Example code will be provided, with more info [found here](#example-code).
+
+It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Click here to find out more](../databases/README.md)
 
 # Table Of Contents- [API Design](#api-design)
 
@@ -1009,7 +1011,7 @@ FastAPI is a popular Python library that can make an API too. The main differenc
 
 For the purposes of a hackathon, this will likely mean self-hosting to `localhost`.
 
-We will be using MongoDB as our database. [Click here for the document databases HackPack](../databases/document.md#mongodb)
+We will be using MongoDB as our database. [Click here for the document databases HackPack](../databases/document.md)
 
 ## Setup
 
@@ -1200,3 +1202,6 @@ uvicorn app.main:app --reload --host 1.2.3.4 --port 1234
 Since an API is a contract between a frontend and backend, with no implementation details being necessary, the example code is split into the frontend, and the backends.
 
 The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by [changing the API URL](./example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](./example-project/frontend/src/App.tsx#3)
+
+[See here for more information about Firestore and document databases](../databases/document.md)
+[See here for more information abour databases in general](../databases/README.md) 
