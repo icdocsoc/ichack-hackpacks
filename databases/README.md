@@ -27,12 +27,12 @@ flowchart TD
 
 ### Structured/Relational Databases
 
-Relational databases store data in **tables with fixed schemas**, with rows and columns. Relationships between entities are expressed using **foreign keys**.
+Relational databases store data in **tables with fixed schemas**, with rows and columns. Tables have **primary keys** comprising one or several columns, that uniquely identify a row. Relationships between entities are expressed using **foreign keys**: columns whose values must reference an existing **primary key** in another (or same) table. This enforces **referential integrity**, meaning the database prevents references to non-existent rows and keeps related data consistent. 
 
 #### Key properties
 
 - Strong, explicit schema
-- ACID transactions
+- ACID transactions (safe, reliable updates despite failures and concurrent access)
 - Powerful querying via SQL
 - Referential integrity guarantees
   
@@ -41,8 +41,7 @@ Relational databases store data in **tables with fixed schemas**, with rows and 
 ✅ Clear, stable data structure \
 ✅ Complex queries and joins supported \
 ✅ Strong consistency and reliability \
-❌ Schema changes require migrations \
-❌ Less flexible for rapidly evolving data
+❌ Schema changes require migrations, making rapid schema evolution cumbersome 
 
 #### Example use cases
 
