@@ -1,3 +1,4 @@
+// Your API URL
 const API = import.meta.env.VITE_PACKED_API_URL;
 
 export async function getPosts() {
