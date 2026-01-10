@@ -334,7 +334,7 @@ Common ones:
 ## Request and Response Bodies
 We use JSON as the format for passing data between the client and the backend. 
 
->📢 Choose a schema and stick with it. Document it too!
+>📢 Choose a JSON schema and stick with it. Document it too!
 
 Example response:
 ```JS
