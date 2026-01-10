@@ -17,9 +17,57 @@ This HackPack will cover
 
 Example code will be provided, with more info [found here](#example-code).
 
-# Table Of Contents
+# Table Of Contents- [API Design](#api-design)
+- [General API Design](#general-api-design)
+  - [What Is an API?](#what-is-an-api)
+  - [REST and HTTP](#rest-and-http)
+  - [Resources and URLs](#resources-and-urls)
+  - [HTTP Methods](#http-methods)
+    - [Glossary](#glossary)
+    - [GET](#get)
+    - [OPTIONS](#options)
+    - [POST](#post)
+    - [PUT](#put)
+    - [PATCH](#patch)
+    - [DELETE](#delete)
+  - [Status Codes](#status-codes)
+  - [Request and Response Bodies](#request-and-response-bodies)
+  - [Authentication and Authorisation](#authentication-and-authorisation)
+  - [Error Handling](#error-handling)
+  - [Extras](#extras)
+    - [Rate Limiting](#rate-limiting)
+    - [Pagination](#pagination)
+    - [Caching](#caching)
+    - [Versioning](#versioning)
+  - [General Rules](#general-rules)
+  - [Common Failures](#common-failures)
+  - [Cheatsheet](#cheatsheet)
+- [Making Requests](#making-requests)
+  - [JavaScript/TypeScript](#javascripttypescript)
+- [Firebase Cloud Functions](#firebase-cloud-functions)
+  - [Setup](#setup)
+  - [Writing Cloud Functions](#writing-cloud-functions)
+    - [Setup `index.ts`](#setup-indexts)
+    - [Create Your Functions](#create-your-functions)
+    - [Deploy Your Functions](#deploy-your-functions)
+    - [Writing RESTful Functions](#writing-restful-functions)
+      - [Canonical RESTful](#canonical-restful)
+      - [Hackathon Simple](#hackathon-simple)
+    - [Writing Callable Functions](#writing-callable-functions)
+    - [Handling CORS](#handling-cors)
+  - [Making Requests](#making-requests-1)
+    - [Canonical HTTP Request](#canonical-http-request)
+    - [Callable Functions](#callable-functions)
+      - [JS/TS](#jsts)
+- [FastAPI](#fastapi)
+  - [Setup](#setup-1)
+  - [Writing Functions](#writing-functions)
+    - [Typing](#typing)
+    - [CORS](#cors)
+  - [Deploying](#deploying)
+- [Example Code](#example-code)
+
 - [API Design](#api-design)
-- [Table Of Contents](#table-of-contents)
 - [General API Design](#general-api-design)
   - [What Is an API?](#what-is-an-api)
   - [REST and HTTP](#rest-and-http)
@@ -142,6 +190,19 @@ PATCH /deletePost
 
 The subsections below after the glossary show the HTTP methods that you can use for your API.
 
+For the examples provided for each of the HTTP methods, we will be using an in-memory 'database'
+```py
+users = {}
+```
+
+Our 'database' will store users, with documents having the following schema
+
+```py
+class User(BaseModel):
+    name: str
+    email: str
+```
+
 ### Glossary
 
 **Safe:** Does not change server state
@@ -179,9 +240,17 @@ The subsections below after the glossary show the HTTP methods that you can use 
  - Sorting
 
 **Example**
+
+```py
+@app.get("/users/{user_id}")
+def get_user(user_id: int):
+    if user_id not in users:
+        raise HTTPException(status_code=404, detail="User not found")
+    return users[user_id]
 ```
-GET /posts?authorId=123
-```
+
+As you can see, the above `GET` API call would retrieve a user based on the `user_id` of the resource. 
+
 ---
 
 ### OPTIONS
@@ -233,6 +302,19 @@ Since POST is not idempotent, if POST is retried, side effects may repeat.
 
 >📢 Treat this as a *'do anything'* method
 
+**Example**
+
+```py
+@app.post("/users", status_code=201)
+def create_user(user_id: int, user: User):
+    if user_id in users:
+        raise HTTPException(status_code=400, detail="User already exists")
+    users[user_id] = user
+    return user
+```
+
+The above example creates a new `user` entry in our database given a `user_id` and a `user` document.
+
 ---
 
 ### PUT
@@ -246,11 +328,6 @@ Since POST is not idempotent, if POST is retried, side effects may repeat.
 
 This is used for replacing the entire resource with the provided representation.
 
-**Example**
-```
-PUT /users/123
-```
-
 This will replace the resource with the data provided by the headers and body by the client.
 
 **Rules**
@@ -260,6 +337,19 @@ This will replace the resource with the data provided by the headers and body by
 
 >⚠️ A common point of failure is using PUT for partial updates
 >Using `PUT` for partial updates can overwrite fields you didn’t intend to change. Use `PATCH` for updating just specific fields.
+
+**Example**
+
+```py
+@app.put("/users/{user_id}")
+def replace_user(user_id: int, user: User):
+    if user_id not in users:
+        raise HTTPException(status_code=404, detail="User not found")
+    users[user_id] = user  # Replaces the entire user object
+    return user
+```
+
+This looks very similar to `POST`, however this isn't creating a new resource, instead it is replacing the resource with new data: a new `user`. This will override all the fields.
 
 ---
 
@@ -281,6 +371,22 @@ Depending on the implementation, PATCH may or may not be idempotent
  - `set name = "Alice"` is idempotent
  - `increment likes by 1` is not idempotent
 
+**Example**
+
+```py
+@app.patch("/users/{user_id}")
+def update_user(user_id: int, user: dict):
+    if user_id not in users:
+        raise HTTPException(status_code=404, detail="User not found")
+    # Update only the provided fields
+    updated = users[user_id].dict()
+    updated.update(user)
+    users[user_id] = User(**updated)
+    return users[user_id]
+```
+
+Like `PUT`, but only the supplied fields are updated. Missing fields remain unchanged.
+
 ---
 
 ### DELETE
@@ -293,6 +399,19 @@ Depending on the implementation, PATCH may or may not be idempotent
 **Rules**
  - Repeating DELETE should not change the state (after the first call anyway)
  - Subsequent calls should return errors
+
+**Example**
+
+```py
+@app.delete("/users/{user_id}")
+def delete_user(user_id: int):
+    if user_id not in users:
+        raise HTTPException(status_code=404, detail="User not found")
+    del users[user_id]
+    return {"detail": "User deleted"}
+```
+
+The above code does as we expect, deletes a user with the given `user_id`, if they exist. 
 
 ---
 
