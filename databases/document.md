@@ -147,6 +147,7 @@ The latter is preferred for **small**, mostly **read-only** data, since it avoid
 > Firestore is optimised for **reads**, **real-time updates** and **velocity**, not **relational correctness** or **complex querying**
 
 ### Projects Firebase / Firestore is well suited for
+
 - Real-time chat or messaging apps
 - Collaborative tools (e.g., live editing, shared dashboards)
 - Social feeds or activity streams
@@ -154,6 +155,7 @@ The latter is preferred for **small**, mostly **read-only** data, since it avoid
 - Rapid prototypes or MVPs where speed of development matters
 
 ### Projects Firebase / Firestore is **NOT** well suited for
+
 - Traditional relational applications (Enterprise Resource Planning, Customer Relationship Management) with complex data integrity
 - Systems requiring strict ACID across many entities (e.g, financial systems, accounting systems)
 - Analytics-heavy platforms with large, complex queries or aggregations
@@ -194,9 +196,9 @@ Above is an example of the date/timestamp and object datatypes.
 
 As you can see from the example, all Firestore objects are stored as `Map` or `Dictionary` objects, in particular
 
- - **JS/TS:** `Map` or `Record<string, any>`
- - **Python:** `dict`
- - **Java/Kotlin:** `Map<String, Object>` or `data class`
+- **JS/TS:** `Map` or `Record<string, any>`
+- **Python:** `dict`
+- **Java/Kotlin:** `Map<String, Object>` or `data class`
 
 In order to store custom classes, you must create a converter.
 
