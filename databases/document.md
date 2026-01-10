@@ -14,6 +14,8 @@ Sample code will be provided, with example programs found in `databases/example-
     - [Install Firebase SDK](#install-firebase-sdk)
     - [Initialise Firebase](#initialise-firebase)
   - [Firestore Data Model](#firestore-data-model)
+    - [Projects Firebase / Firestore is well suited for](#projects-firebase--firestore-is-well-suited-for)
+    - [Projects Firebase / Firestore is **NOT** well suited for](#projects-firebase--firestore-is-not-well-suited-for)
     - [Data Types](#data-types)
   - [Core Database Operations](#core-database-operations)
     - [Create Data](#create-data)
@@ -35,7 +37,7 @@ Sample code will be provided, with example programs found in `databases/example-
   - [Indexes](#indexes)
   - [Quota](#quota)
   - [Authentication](#authentication)
-    - [Setup](#authentication-setup)
+    - [Setup](#setup-1)
     - [Use](#use)
   - [Example](#example)
     - [Auth](#auth)
@@ -144,6 +146,20 @@ The latter is preferred for **small**, mostly **read-only** data, since it avoid
 > [!IMPORTANT]
 > Firestore is optimised for **reads**, **real-time updates** and **velocity**, not **relational correctness** or **complex querying**
 
+### Projects Firebase / Firestore is well suited for
+- Real-time chat or messaging apps
+- Collaborative tools (e.g., live editing, shared dashboards)
+- Social feeds or activity streams
+- Mobile apps with frequent reads/writes and offline support
+- Rapid prototypes or MVPs where speed of development matters
+
+### Projects Firebase / Firestore is **NOT** well suited for
+- Traditional relational applications (Enterprise Resource Planning, Customer Relationship Management) with complex data integrity
+- Systems requiring strict ACID across many entities (e.g, financial systems, accounting systems)
+- Analytics-heavy platforms with large, complex queries or aggregations
+- Apps with intricate cross-collection transactions
+
+
 ---
 
 ### Data Types
@@ -160,12 +176,7 @@ Firestore can store
 
 ```ts
 const docData = {
-    stringExample: "Hello world!",
-    booleanExample: true,
-    numberExample: 3.14159265,
     dateExample: Timestamp.fromDate(new Date("December 10, 1815")),
-    arrayExample: [5, true, "hello"],
-    nullExample: null,
     objectExample: {
         a: 5,
         b: {
@@ -175,13 +186,18 @@ const docData = {
 };
 ```
 
-Above is an example of each of the datatypes.
+Above is an example of the date/timestamp and object datatypes.
 > [!NOTE]
 > Firestore stores all numbers as doubles.
 
 ---
 
-As you can see from the example, all Firestore objects are stored as `Map` or `Dictionary` objects within TypeScript.
+As you can see from the example, all Firestore objects are stored as `Map` or `Dictionary` objects, in particular
+
+ - **JS/TS:** `Map` or `Record<string, any>`
+ - **Python:** `dict`
+ - **Java/Kotlin:** `Map<String, Object>` or `data class`
+
 In order to store custom classes, you must create a converter.
 
 ```ts
@@ -651,7 +667,7 @@ Your limits are:
 
 You will likely want some sort of authentication, even anonymous (using just the browser session). This will give each user a unique authentication ID, which becomes the document name for their user document.
 
-### Authentication Setup
+### Setup
 
  1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/)
  2. Open your project
