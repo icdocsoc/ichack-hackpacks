@@ -56,12 +56,12 @@ Relational databases store data in **tables with fixed schemas**, with rows and 
 
 ### Document Databases
 
-Document databases store data as **JSON-like documents**. Each document can have a flexible, decentralised structure.
+Document databases store data as **JSON-like documents**. Each document can have a flexible, decentralised structure. Relationships are typically represnted by embedding related data within a document, or by storing references, rather than using joins.
 
 #### Key properties
 
 - Schema-flexible
-- Documents are often denormalised
+- Documents are often denormalised, storing related data together to optimise reads but increasing redundancy
 - Easy to map directly to application objects
 - Supports nested data structures
   
