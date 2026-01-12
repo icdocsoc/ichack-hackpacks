@@ -6,6 +6,88 @@ In this guide you will find useful information about setting up APIs for differe
 
 Prompt engineering is a new and emerging art of crafting instructions to get LLMs like [ChatGPT](https://chatgpt.com), [Claude](https://claude.ai/), [Gemini](https://gemini.google.com/) and others, to produce the output you want. The better the instructions, the better the results!
 
+## Copy-paste prompts
+
+
+### Example for Code Review:
+````txt
+Review this [LANGUAGE] code for:
+- Bugs and logical errors
+- Performance issues
+- Security vulnerabilities
+- Code style and best practices
+
+Code:
+```[LANGUAGE]
+[CODE]
+```
+
+
+Provide specific line-by-line feedback.
+````
+
+### Project planner
+```txt
+You are a startup CTO.
+
+My idea:
+<DESCRIBE YOUR IDEA>
+
+I have 48 hours.
+
+Generate:
+1. Feature set
+2. System architecture
+3. Folder structure
+4. First 5 implementation steps
+Keep everything minimal.
+```
+### Test generation
+```txt
+You are an expert QA engineer and software tester.
+
+Given this function or module:
+<PASTE CODE>
+
+Do the following:
+
+1. Identify all normal cases and edge cases.
+2. Generate unit tests covering these cases.
+3. Use the language and testing framework specified: <LANGUAGE + FRAMEWORK>.
+4. Ensure tests are ready to run (copy-pasteable).
+5. Label each test clearly.
+6. If the code has potential bugs or risky behavior, include a failing test case to catch it.
+```
+### UI generation
+```txt
+You are a senior frontend designer and UX engineer.
+
+We are building:
+<PROJECT IDEA>
+
+Do the following:
+1. Generate a list of screens/components needed.
+2. Suggest a simple component hierarchy.
+3. Recommend Tailwind (or CSS) classes for styling.
+4. Provide a minimal mobile-first layout plan.
+5. Include placeholder content for testing.
+```
+### Refactor code
+```txt
+You are an expert software engineer.
+
+Given this code:
+<PASTE CODE>
+
+Do the following:
+1. Refactor for readability and performance.
+2. Add error handling where appropriate.
+3. Remove any dead or redundant code.
+4. Keep the output minimal and functional.
+
+Return only the improved code.
+```
+
 ## Core Principles
 
 ### 1. Be Specific and Detailed
@@ -172,26 +254,39 @@ Propose three different architectures for this microservices system,
 then evaluate the pros and cons of each.
 ```
 
-### Prompt Templates
 
-Create reusable templates for common tasks.
+### Control techniques
 
-**Example for Code Review:**
-````txt
-Review this [LANGUAGE] code for:
-- Bugs and logical errors
-- Performance issues
-- Security vulnerabilities
-- Code style and best practices
+AI's often "reinvent" your code 
+Use a prompt like this to ensure it stays consistent the whole time:
+```txt
+For the rest of this conversation, do not change variable names, project architecture, or function signatures unless I explicitly say "ARCHITECTURE RESET".
+```
 
-Code:
-```[LANGUAGE]
-[CODE]
+Use a critique loop to refine the solution.
+```txt
+Step 1: Generate the initial solution for this task:
+<TASK DESCRIPTION>
+
+Step 2: Critique your own solution, identifying mistakes or improvements.
+
+Step 3: Produce a final improved version, incorporating all critiques.
+
+Return ONLY the final version, along with a short bullet list of what changed.
+```
+
+Ensure the output is in one format
+```txt
+Return all output in this exact format:
+<SPECIFY FORMAT: JSON, markdown table, numbered list, etc.>
+
+Do NOT add explanations or commentary unless asked.
 ```
 
 
-Provide specific line-by-line feedback.
-````
+
+
+
 
 ## ICHack-Specific Tips
 
