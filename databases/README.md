@@ -6,7 +6,7 @@ We have deep dives into 3 types:
 
  - [Structured (Relational) Databases - PostgreSQL]()
  - [Document Databases - Firestore](document.md)
- - [Graph Databases - [NOT SURE]]()
+ - [Graph Databases - Neo4j](graph.md)
 
 Use the decision tree below to choose your database.
   
