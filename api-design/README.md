@@ -20,10 +20,8 @@ Example code will be provided, with more info [found here](#example-code).
 
 It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Click here to find out more](../databases/README.md)
 
-# Table Of Contents- [API Design](#api-design)
+# Table Of Contents
 
-- [API Design](#api-design)
-- [Table Of Contents- API Design](#table-of-contents--api-design)
 - [General API Design](#general-api-design)
   - [What Is an API?](#what-is-an-api)
   - [REST and HTTP](#rest-and-http)
@@ -50,6 +48,10 @@ It may be a good idea to first familiarise yourself with databases, since a lot 
   - [Cheatsheet](#cheatsheet)
 - [Making Requests](#making-requests)
   - [JavaScript/TypeScript](#javascripttypescript)
+- [Secrets](#secrets)
+  - [Python](#python)
+  - [Vite](#vite)
+  - [JS/TS](#jsts)
 - [Firebase Cloud Functions](#firebase-cloud-functions)
   - [Setup](#setup)
   - [Writing Cloud Functions](#writing-cloud-functions)
@@ -64,7 +66,7 @@ It may be a good idea to first familiarise yourself with databases, since a lot 
   - [Making Requests](#making-requests-1)
     - [Canonical HTTP Request](#canonical-http-request)
     - [Callable Functions](#callable-functions)
-      - [JS/TS](#jsts)
+      - [JS/TS](#jsts-1)
 - [FastAPI](#fastapi)
   - [Setup](#setup-1)
   - [Writing Functions](#writing-functions)
@@ -603,6 +605,84 @@ export async function createPost(text: string) {
 ```
 
 The above demonstrates a full HTTP request with full error handling.
+
+# Secrets
+
+Unless you are using Firebase (which has its own user authentication and deployment system), you will likely need to store some sensitive API keys.
+
+You do ***not*** want to be publishing them on a public platform. The best way to handle this is to create a local `.env` file in the root of your backend.
+
+Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Click here for more information about Git and `.gitignore`](../git-&-github/README.md#gitignore)
+
+Your `.env` file may look something like this
+
+```txt
+DB_HOST=localhost
+DB_PORT=5432
+SECRET_KEY=supersecret
+```
+
+where the left hand side are the names of the environment variables, and the right hand side the value.
+
+## Python
+
+For Python, you will first need to install the `python-dotenv` library to your virtual environment. First, complete up to [Step 3 of the FastAPI setup guide](#setup-1).
+
+Run
+
+```bash
+pip install python-dotenv
+```
+
+Now, wherever you need to access those environment variables, add this to the top of that file
+
+```py
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+host = os.getenv("DB_HOST")
+```
+
+where `DB_HOST` is the name of the environment variable we want.
+
+## Vite
+
+If you have created your JS/TS project using Vite, there is an easy way to extract environment variables.
+
+Any environment variables in your `.env` file must first be prefixed with `VITE_` to make them available.
+
+```txt
+VITE_DB_HOST=localhost
+VITE_DB_PORT=5432
+VITE_SECRET_KEY=supersecret
+```
+
+Unlike Python, you do not need to import or install any modules. Simply use
+
+```JS
+const host = import.meta.env.VITE_DB_HOST;
+```
+
+## JS/TS
+
+Follow these instructions if you did not use Vite as your build tool.
+
+In your backend root, first run
+
+```bash
+npm i dotenv
+```
+
+to install the `dotenv` package to your project.
+
+Wherever you need your environment variable, use
+
+```ts
+import 'dotenv/config';
+
+const host = process.env.DB_HOST;
+```
 
 # Firebase Cloud Functions
 
