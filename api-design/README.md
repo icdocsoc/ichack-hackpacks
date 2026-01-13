@@ -85,6 +85,8 @@ It defines the **inputs**, consisting of the request method, URL, headers and bo
 
 An API should be treated as a black box, with the client not caring *how* the backend server is implemented, only that it obeys this contract.
 
+![API framework at a glance](./assets/web-api.webp)
+
 ## REST and HTTP
 
 Most modern APIs are **RESTful** and built on HTTP.
