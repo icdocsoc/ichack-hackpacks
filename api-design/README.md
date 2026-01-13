@@ -145,7 +145,8 @@ PATCH /deletePost
 - HTTP method conflicts with verb in URL
 - Very hard to maintain, you will struggle to guess what an endpoint does  
 
->⚠️ The BAD section would at least work and make sense, ***NEVER*** do anything from the UGLY!
+>[!WARNING]
+>The BAD section would at least work and make sense, ***NEVER*** do anything from the UGLY!
 
 ## HTTP Methods
 
@@ -196,7 +197,8 @@ class User(BaseModel):
 - Trigger any side effects
 - Create audit events that affect behaviour
 
-> 📢 It’s acceptable to use logging for debugging purposes, but nothing should be user-visible or persisted.
+>[!NOTE]
+>It’s acceptable to use logging for debugging purposes, but nothing should be user-visible or persisted.
 
 **What GET can do**
 
@@ -231,9 +233,11 @@ As you can see, the above `GET` API call would retrieve a user based on the `use
 
 Returns the allowed methods and CORS info. This will likely be automatically handled for you by FastAPI and Firebase Cloud Functions.
 
->⚠️ Since these are automatically handled, don't use this
+>[!WARNING]
+>Since these are automatically handled, don't use this
 
->📢 If you are having problems with this, ask a mentor on the day for help!
+>[!TIP]
+>If you are having problems with this, ask a mentor on the day for help!
 
 ---
 
@@ -267,9 +271,11 @@ POST /search   # complex queries
 
 Since POST is not idempotent, if POST is retried, side effects may repeat.
 
->⚠️ You may be tempted to use POST for most API operations. Try to limit its use and use the other HTTP methods where possible.
+>[!WARNING]
+>You may be tempted to use POST for most API operations. Try to limit its use and use the other HTTP methods where possible.
 
->📢 Treat this as a *'do anything'* method
+>[!TIP]
+>Treat this as a *'do anything'* method
 
 **Example**
 
@@ -306,7 +312,8 @@ This will replace the resource with the data provided by the headers and body by
 - Server completely overwrites existing state
 - Repeating PUT results in the same final state
 
->⚠️ A common point of failure is using PUT for partial updates
+>[!WARNING]
+>A common point of failure is using PUT for partial updates
 >Using `PUT` for partial updates can overwrite fields you didn’t intend to change. Use `PATCH` for updating just specific fields.
 
 **Example**
@@ -409,9 +416,10 @@ Common ones:
 
 ## Request and Response Bodies
 
-We use JSON as the format for passing data between the client and the backend. 
+We use JSON as the format for passing data between the client and the backend.
 
->📢 Choose a JSON schema and stick with it. Document it too!
+>[!TIP]
+>Choose a JSON schema and stick with it. Document it too!
 
 Example response:
 
@@ -442,9 +450,10 @@ The common mechanisms include:
 - OAuth2 / JWT (industry standard)
 - Session cookies (web apps)
 
-This is pretty straightforward for Cloud Functions since Firebase already includes Auth. 
+This is pretty straightforward for Cloud Functions since Firebase already includes Auth.
 
->📢 Anonymous auth or hardcoded users are acceptable for a hackathon.
+>[!TIP]
+>Anonymous auth or hardcoded users are acceptable for a hackathon.
 
 ---
 
@@ -499,7 +508,7 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 
 ## General Rules
 
-- **GET**, **HEAD** and **OPTIONS** should **NEVER** have any side effects or unsafe actions. 
+- **GET**, **HEAD** and **OPTIONS** should **NEVER** have any side effects or unsafe actions.
 - Use of verbs
 - Inconsistent request and response shapes
 - Returning HTML
@@ -608,7 +617,8 @@ This has the benefit of being **serverless**, so you do not have to manage the r
  4. On the left hand pane, click on `Build` -> `Functions`
  5. As `Functions` is not included in the `Spark` (default) plan, you will have to upgrade to the `Blaze` plan
 
->⚠️ The Blaze plan will cost you if your quota runs out, so be careful with your usage! You are very unlikely to run out of your quota within the timeframe of a hackathon!
+>[!WARNING]
+>The Blaze plan will cost you if your quota runs out, so be careful with your usage! You are very unlikely to run out of your quota within the timeframe of a hackathon!
 
  6. Create a Cloud Billing Account
  7. Follow the instructions in the new window
@@ -714,7 +724,8 @@ There is a high chance that there will be deployment failures due to ESLint erro
 >
 > This is Google rate-limiting you when you are enabling the various APIs. Wait for a minute or two and retry.
 
-> 📢 The deployment may take a short while, be patient!
+>[!NOTE]
+>The deployment may take a short while, be patient!
 
 Once the process is complete, you will be provided with the URL where your function can be accessed.
 For me, this was
@@ -723,7 +734,7 @@ For me, this was
 Function URL (helloWorld(us-central1)): https://us-central1-sample-project-44e1c.cloudfunctions.net/helloWorld
 ```
 
->📢
+>[!IMPORTANT]
 > Once the setup is complete, you may be asked
 >
 > ```txt
@@ -790,7 +801,7 @@ const { id, text } = req.body;
 
 The above unpacks the request body into the `id` and `text` fields.  
 
->⚠️
+>[!WARNING]
 > This typically breaks caching, so the canonical method is preferred...
 
 [Click here for an example hacky Firebase backend](./example-project/cloud-functions/functions/src/request-packing.ts)
@@ -812,6 +823,7 @@ res.json(data)
 Firebase comes with a special type of API - a ***callable function***.
 
 There are many benefits:
+
 - Auth tokens are automatically included and handled
 - No need for custom parsing
 - No need to explicitly handle HTTP error codes
@@ -856,12 +868,12 @@ export const helloWorld = functions.https.onRequest(
 );
 ```
 
->⚠️
+>[!WARNING]
 > Do not use this in production. This allows requests from any source. Instead you should use `{cors: [your_domain_one.com, ...]}`
 >
 > However this is perfectly fine for hackathons!
 
->📢
+>[!TIP]
 > Don't forget to redeploy your functions using `firebase deploy` after you edit them!
 
 ## Making Requests
@@ -1007,7 +1019,7 @@ export async function getPosts(id?: string) {
 
 # FastAPI
 
-FastAPI is a popular Python library that can make an API too. The main differences are that FastAPI does not have Firebase's whole framework and easily interoperability with Firebase. It is also not serverless, so must be hosted. 
+FastAPI is a popular Python library that can make an API too. The main differences are that FastAPI does not have Firebase's whole framework and easily interoperability with Firebase. It is also not serverless, so must be hosted.
 
 For the purposes of a hackathon, this will likely mean self-hosting to `localhost`.
 
@@ -1032,7 +1044,7 @@ We will be using MongoDB as our database. [Click here for the document databases
  pip install fastapi uvicorn
  ```
 
- >📢
+ >[!TIP]
  > Run the following in the root of your FastAPI
  >
  > ```bash
@@ -1164,7 +1176,7 @@ app.add_middleware(
 )
 ```
 
->⚠️
+>[!WARNING]
 > This allows all origins and methods and users. Perfectly fine for a hackathon but do not use in production code!
 
 Since we separated `main.py` with all the logic, and applied it to the whole app, we do not need any further modifications.
@@ -1177,7 +1189,7 @@ Since we are self-hosting this, deploying is as simple as running the following 
 uvicorn app.main:app --reload
 ```
 
->📢
+>[!TIP]
 > Since we used `--reload`, the backend will redeploy every time you edit any of your backend code, so no need to manually rerun this command!
 
 Upon startup, you will get a message along the lines of
@@ -1190,11 +1202,11 @@ This is the base URL at which you can access your backend. The defined routes ca
 
 If you want to specify your own host address and port, you can using the arguments
 
-```
+```bash
 uvicorn app.main:app --reload --host 1.2.3.4 --port 1234
 ```
 
->📢
+>[!TIP]
 > Just use the defaults unless you have a good reason to not do so
 
 # Example Code
@@ -1204,4 +1216,4 @@ Since an API is a contract between a frontend and backend, with no implementatio
 The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by [changing the API URL](./example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](./example-project/frontend/src/App.tsx#3)
 
 [See here for more information about Firestore and document databases](../databases/document.md)
-[See here for more information abour databases in general](../databases/README.md) 
+[See here for more information abour databases in general](../databases/README.md)
