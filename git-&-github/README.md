@@ -38,7 +38,7 @@ This section covers the most common Git commands you’ll use during the hackath
 To start off, you can create a new repository on github and share it with your teammates.
 
 1. Go onto the main page of the repository and click `<> Code`. Then, copy the url for the repository.
-![Screenshot of <>Code.](assets\https-url-clone-cli.png)
+![Screenshot of <>Code.](./assets/https-url-clone-cli.png)
 
 2. Open Git Bash.
 
@@ -196,7 +196,7 @@ git reset --hard
 ### 5. Merge branches
 Once your work on a branch is complete and tested, you can merge it back into another branch (usually main or master).
 
-![Diagram of merging branch.](assets\merging.png)
+![Diagram of merging branch.](./assets/merging.png)
 
 ```bash
 git checkout main                   #First, switch to the branch you want to merge into
@@ -347,9 +347,9 @@ In ICHACK or any team projects, it is well recommended to use PR instead of git-
 
 1. On GitHub, navigate to the main page of the repository.
 2. In the "Branch" menu, choose the branch that contains your commits.
-![Screenshot of PR branch.](assets\PR-branch.png)
+![Screenshot of PR branch.](./assets/PR-branch.png)
 3. Above the list of files, in the yellow banner, click Compare & pull request to create a pull request for the associated branch.
-![Screenshot of pull-request-compare-pull-request.](assets\pull-request-compare-pull-request.png)
+![Screenshot of pull-request-compare-pull-request.](./assets/pull-request-compare-pull-request.png)
 4. Use the *base* branch dropdown menu to select the branch you'd like to merge your changes into, then use the compare branch drop-down menu to choose the topic branch you made your changes in.
 5. Type a title and description for your pull request.
 
@@ -371,7 +371,7 @@ Creating this type of issue can save your brainstroming process which will be he
 1. On GitHub, navigate to the main page of the repository.
 
 2. Click the Issues tab at the top of the page.
-![Screenshot of repo-tabs-issues-global-nav-update.](assets\repo-tabs-issues-global-nav-update.png)
+![Screenshot of repo-tabs-issues-global-nav-update.](./assets/repo-tabs-issues-global-nav-update.png)
 
 3. Click New issue.
 
@@ -379,7 +379,7 @@ Creating this type of issue can save your brainstroming process which will be he
 
     If the type of issue you'd like to open isn't included in the available options, click Open a blank issue.
 
-    ![Screenshot of blank-issue-link.](assets\blank-issue-link.png)
+    ![Screenshot of blank-issue-link.](./assets/blank-issue-link.png)
 
 5. Enter a clear and descriptive title.
 
