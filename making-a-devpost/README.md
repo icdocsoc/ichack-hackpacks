@@ -185,7 +185,7 @@ Perhaps you could link these to the challenges you faced.
 
 ## Demo Video
 
-###  Video Rules
+### Video Rules
 
 - 2-3 minutes
 - Screen recording with voice
@@ -224,3 +224,18 @@ Useful:
 - Vague problem description
 - Buzzwords without explanation
 - Overclaiming features
+
+## Judge Mindset
+
+Judges are
+
+- Speed-reading
+- Comparing dozens of projects
+
+Help them by being:
+
+- Clear
+- Structured
+- Honest
+
+**Good luck**- and remember: ***presentation is part of engineering!***
