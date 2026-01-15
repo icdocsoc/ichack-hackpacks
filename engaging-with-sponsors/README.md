@@ -6,7 +6,7 @@
 
 In this HackPack, we'll take a brief look at how to maximise your time at IC Hack, not just by developing an interesting project, but also by taking advantage of the extensive in-person sponsor presence.
 
-IC Hack is **the largest student-run hackathon in Europe**, and that's only possible thanks to the support of [our sponsors](https://ichack.org/#sponsors). This year, we're proud to welcome `{final number of sponsors}` to IC Hack, with `{final number of gold/silver sponsors}` attending in-person, across a variety of different sectors (tech, finance, AI and more!).
+IC Hack is **the largest student-run hackathon in Europe**, and that's only possible thanks to the support of [our sponsors](https://ichack.org/#sponsors). This year, we're proud to welcome **23 sponsors** to IC Hack, with **16** attending in-person, across a variety of different sectors (tech, finance, AI and more!).
 
 But, *why do our sponsors actually attend*? Well, they want access to **you**: they're scouting for talent to hire in the future by promoting themselves through sponsor booths, talks and categories. So, how can you make the most of that interest?
 
@@ -42,7 +42,7 @@ The physical booth is another great opportunity to market yourself as a potentia
 
 ## Making the most of challenges
 
-At IC Hack 26, you'll have the opportunity to participate in one of our `{number of regular challenges}` challenges, and our `{number of BUO challenges}` 'Best use of' challenges. These can be a great way to impress the respective sponsors associated with each!
+At IC Hack 26, you'll have the opportunity to participate in one of our five sponsor category challenges, five DoCSoc category challenges, and three 'Best use of' challenges. These can be a great way to impress the respective sponsors associated with each!
 
 ### Regular sponsor tracks
 
