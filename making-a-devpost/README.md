@@ -61,7 +61,7 @@ Keep it:
 
 - Short (1-2 words if possible)
 - Pronounceable
-- Relevant
+- Relevant to your project
 
 ---
 
@@ -86,10 +86,10 @@ This is pretty much the ***first*** thing judges will read.
 This should take the structure of:
 `Verb + what it does (+ for whom)`
 
-Examples:
+Below are some examples of informative, but still concise taglines.
 
-- `Real-time sign language translation using computer vision`
-- `Automatically generate revision notes from lecture slides`
+- "*Real-time sign language translation using computer vision*"
+- "*Automatically generate revision notes from lecture slides*"
 
 > [!TIP]
 > If a judge reads ***only*** your tagline, they should still understand your idea.
