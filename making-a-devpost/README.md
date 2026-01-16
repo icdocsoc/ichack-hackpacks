@@ -7,14 +7,17 @@ The goal is simple:
 
 ## What is Devpost?
 
-*Devpost* is the platform used to submit your ICHack project. The judges will:
+[*Devpost*](https://devpost.com/) is the platform used to submit your IC Hack project. When reading through your Devpost, judges tend to:
 
 - Skim your title & tagline
 - Read your description
 - Look at your demo
 - Look at the tech stack & challenges
 
-The judges will ***not*** read your entire GitHub repo!
+> [!CAUTION]
+> The judges will most likely ***not*** have the time to review your entire GitHub repo!
+
+This makes it very important for you to have a strong Devpost submission.
 
 Your Devpost entry should tell a **clear** story of:
 
@@ -22,6 +25,8 @@ Your Devpost entry should tell a **clear** story of:
 2. Your solution
 3. How it works
 4. Why it is impressive
+
+Additionally, adding **screenshots** or a **demo video** gives judges a clear visual of your project.
 
 ## Before You Start Writing
 
