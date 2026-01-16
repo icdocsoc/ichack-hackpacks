@@ -145,25 +145,26 @@ Talk about:
 - What you had to redesign
 - Trade-offs you made
 
-Judges tend to *love* this, because it proves that
+Judges tend to *love* this
+(it's usually one of the first follow-up questions they ask!), because it proves that
 
 - You actually built it
 - You understand your system
 
 ## Accomplishments That You're Proud Of
 
-Use this to highlight achievements that set your project apart. Think beyond just "it works", focus on what makes your project special, innovative or impactful.
+Highlight achievements that set your project apart. Think beyond "it works" and focus on what makes your project special, innovative, or impactful.
 
 **Examples**:
 
 - Successfully integrating a complex API or algorithm
 - Overcoming a technical challenge in a creative way
-- Optimising performance
-- Developing as hackers
+- Achieving a specific performance milestone (e.g., "reduced latency from 2s to 200ms")
+- Learning a new technology under time pressure
 
 ## Learnings
 
-Reflect on what your team gained from the experience. Tie it in to your challenges:
+Reflect on what your team gained from the experience and tie it in to your challenges:
 
 - What technical skills did you develop?
 - What project management or teamwork lessons emerged?
@@ -203,9 +204,11 @@ Perhaps you could link these to the challenges you faced.
 - Highlight of standout features (30s)
 
 > [!TIP]
-> Make your project obvious in the first 60 seconds
+> Make your project obvious in the first 60 seconds.
 
-For ease of uploading and use, upload your video to YouTube (as an unlisted video).
+For recording, tools like **OBS**, **Loom**, or the built-in screen recorder on your OS work well.
+
+Upload your video to YouTube as an **unlisted video** for easy embedding.
 
 ## Tech Stack
 
@@ -226,21 +229,26 @@ Useful:
 
 ## Common Mistakes
 
-- Vague problem description
-- Buzzwords without explanation
-- Overclaiming features
+- **Vague problem description**: "We wanted to help people" doesn't tell judges anything
+- **Buzzwords without explanation**: Saying "AI-powered" means nothing if you don't explain *how*
+- **Overclaiming features**: Only list what actually works; judges will test it
+- **Wall of text**: Use bullet points, headers, and whitespace
+- **No visuals**: Screenshots and diagrams make your project tangible
 
 ## Judge Mindset
 
-Judges are
+Judges are:
 
-- Speed-reading
-- Comparing dozens of projects
+- Speed-reading dozens of submissions
+- Looking for projects that *clearly* explain their value
+- Checking if your demo actually works
 
 Help them by being:
 
-- Clear
-- Structured
-- Honest
+- **Clear** — No jargon without explanation
+- **Structured** — Easy to skim with headers and bullets
+- **Honest** — Acknowledge limitations; it shows maturity
 
-**Good luck**- and remember: ***presentation is part of engineering!***
+---
+
+**Good luck**—and remember: ***presentation is part of engineering!***
