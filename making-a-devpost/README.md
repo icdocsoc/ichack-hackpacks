@@ -122,7 +122,7 @@ Mention **key features**, not implementation details (this belongs in the next s
 
 ## How It Works
 
-This is where the more technical projects can shine through.
+This is where the more technically-impressive projects can shine through.
 
 Include:
 
