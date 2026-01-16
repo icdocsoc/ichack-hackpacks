@@ -1,11 +1,11 @@
 # Writing a Devpost
 
-In this HackPack, we will cover how to create a **strong** Devpost submission.
+In this HackPack, we will cover how to create and enter a **strong** Devpost submission for your IC Hack project!
 
 The goal is simple:
->Make it *easy* for judges to **understand** your project, your **technical depth**, and **why it matters**, in under a few minutes
+>Make it *easy* for judges to **understand** your project, your **technical depth**, and **why it matters**, in under a few minutes.
 
-## What is a Devpost?
+## What is Devpost?
 
 *Devpost* is the platform used to submit your ICHack project. The judges will:
 
