@@ -104,7 +104,7 @@ This is the section that sets apart winners from runners-up.
 - Who does it affect?
 - Why does it matter *now*?
 
-Keep it precise
+Keep it precise (but also don't get too technical just yet).
 
 **Bad**: "People struggle with productivity"
 
@@ -118,7 +118,7 @@ Keep it precise
 - How does it solve the problem?
 - What makes it different?
 
-Mention **key features**, not implementation details.
+Mention **key features**, not implementation details (this belongs in the next section).
 
 ## How It Works
 
