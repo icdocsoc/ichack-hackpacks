@@ -10,7 +10,7 @@ This guide walks you through setting up a local **Django** backend for a simple 
 
 1. **Install Python (3.8+).**
 
-    - **Windows:** Download from [python.org](python.org). Run the installer and check *"Add Python to PATH"*.
+    - **Windows:** Download from [python.org](https://www.python.org/). Run the installer and check *"Add Python to PATH"*.
     - **macOS:** Python 3 is often pre-installed. If not, use *Homebrew* (`brew install python3`) or download from python.org.
     - **Linux (Ubuntu/Debian):** Use your package manager. For example:
 
