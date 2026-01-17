@@ -177,7 +177,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
         python manage.py runserver
     ```
 
-    Go to [http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/) in your browser. You should see a list (likely empty) and a form to create new notes.
+8. Go to [http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/) in your browser. You should see a list (likely empty) and a form to create new notes.
 
     > ✅ **Checkpoint:** Try creating a note using the form at the bottom of the page! Fill in a title and content, then click POST. Your note should appear in the list above.
 
