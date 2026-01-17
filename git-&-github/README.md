@@ -395,8 +395,52 @@ Creating this type of issue can save your brainstroming process which will be he
 
 ## How to use Git as a team?
 
+**1. Conventional commit messages**
+
+Although this sounds like a hassle, writing conventional commit messages is actually very useful when working in a team. Conventional commit messages help your teammates to understand what has changed in that commit and who did that quickly. This will be helpful if you want to go back to a specific commit or ask your teammates about a change in a commit they did.
+
+A good conventional commit message should look like this:
+```[Teammates involved]<type>[optional scope]: <description>```
+
+>**What is Type?**
+Some common types are ``fix:`` and ``feat:``, which representing fixing a bug and introduce a new feature respectively. Some other types are ``build:``, ``chore:``, ``ci:``, ``docs:``, ``style:``, ``refactor:``, ``perf:``, ``test:``, and others.
+
+**2. Make Small, Focused Commits**
+
+Always commit with small changes or a single feature. When commiting with a lot of features or changes, it will be hard to debug if one of those goes wrong. 
+
+Bad example:
+```bash
+feat: login, fix tests, formatting, random cleanup
+```
+We can see that in this example we included a lot of features in different scope. This will make this commit hard to maintain and debug if we are trying to undo or fix one of the feature.
+
+Better example:
+```bash
+feat(login): add email validation
+fix(login): prevent crash on empty password
+style(login): run formatter
+```
+In this example, we have splited the changes into small commits such that it will be easier to review and revert.
+
+**3. Agree on a branching strategy**
+
+For most teams, your branching strategy should be having an always deployable main and has short-lived branches that will be merge into main onced finished.
+
+```bash
+main        → always deployable
+feature/*   → short-lived branches
+```
+Your team can establish some rules to maintain branching such as:
+- Never commit directly to ``main``
+- Merge via Pull Requests
+- Delete branches after merge
+- etc
+
+
 ## Useful links
 
 - [dangitgit](https://dangitgit.com/en) and [Oh Shit, Git!?!](https://ohshitgit.com/) are good places to go if something has gone terribly wrong.
 - [Learn Git Branching](https://learngitbranching.js.org/) is a visual gamified way to learn git.
 - [Setting up an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) is a way to make authentication easier when pushing commits.
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) has a detail explaination on writing good conventional commit messages
