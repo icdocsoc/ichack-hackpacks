@@ -21,6 +21,8 @@ This guide walks you through setting up a local **Django** backend for a simple 
 
 2. **Verify installation** by running `python3 --version` and `pip3 --version` (should show Python 3.x).
 
+    > ✅ **Checkpoint:** You should see something like `Python 3.11.4` and `pip 23.1.2`. The exact numbers may differ, but as long as Python is 3.8+, you're good!
+
 3. **Create a virtual environment.** This keeps project dependencies isolated, so packages you install for this project won't conflict with other Python projects on your machine. From your project folder, run:
 
     ```bash
@@ -32,11 +34,15 @@ This guide walks you through setting up a local **Django** backend for a simple 
         source venv/bin/activate
     ```
 
+    > ✅ **Checkpoint:** After activation, you should see `(venv)` at the beginning of your terminal prompt. This confirms you're working inside the virtual environment.
+
 4. **Install Django and DRF.** With Python ready, install the required packages via `pip`:
 
     ```bash
     pip install django djangorestframework
     ```
+
+    > ✅ **Checkpoint:** Run `pip list` to verify. You should see `Django` and `djangorestframework` in the list of installed packages.
 
 ## Creating a Django Project and App
 
@@ -55,6 +61,23 @@ In Django, a **project** is your entire web application, while an **app** is a s
     ```bash
         python manage.py startapp notesapp
     ```
+
+    > ✅ **Checkpoint:** You should now have a folder structure like this:
+    > ```
+    > myproject/
+    > ├── manage.py
+    > ├── myproject/
+    > │   ├── __init__.py
+    > │   ├── settings.py
+    > │   ├── urls.py
+    > │   └── wsgi.py
+    > └── notesapp/
+    >     ├── __init__.py
+    >     ├── admin.py
+    >     ├── models.py
+    >     ├── views.py
+    >     └── ...
+    > ```
 
 3. **Register the app.** Django needs to know about your app before it can use it. Open `myproject/settings.py` and add your new app (and DRF) to the `INSTALLED_APPS` list:
 
@@ -115,6 +138,8 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
         from .models import Note
         admin.site.register(Note)
     ```
+
+    > ✅ **Checkpoint:** To test the admin panel, first create a superuser by running `python manage.py createsuperuser` and following the prompts. Then start the server (`python manage.py runserver`) and go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). Log in and you should see "Notes" listed!
 
 4. **Create a serializer.** When your API sends data to a browser or app, it needs to be in a format they can understand (usually **JSON**). A *serializer* handles this conversion. It turns Python objects into JSON (and vice versa). In `notesapp` folder create a file `serializers.py` and add:
 
