@@ -89,29 +89,35 @@ Similar to `requirements.txt` in Python, you might also have a `package.json` fi
 
 ## Useful terminal commands
 
-As programmers, we often have to work with the terminal to perform various tasks. It's therefore useful to know the following commands (these commands work on both Windows **PowerShell** (different to Command Prompt) and macOS Terminal):
+As programmers, we often have to work with the terminal to perform various tasks. You therefore might find some of these commands useful. They work on both the Windows PowerShell and macOS Terminal.
+
+> [!WARNING]
+> If you're on Windows, don't get the *PowerShell* mixed up with *Command Prompt*. They are different applications!
 
 | Action | Command |
 | --- | --- |
 | Show current folder | `pwd` |
 | List files in current location | `ls` |
-| Change to a different folder/directory | `cd folder_name` |
+| Change to a different folder/directory | `cd [folder_name]` |
 | Go back to parent folder/directory | `cd ..` |
-| Make new folder | `mkdir folder_name` |
-| Delete file | `rm file.txt` |
+| Make new folder | `mkdir [folder_name]` |
+| Delete file | `rm [filename]` |
+| Move file | `mv [filename] [folder_name]` |
+| Copy file | `cp [filename] [folder_name]` |
+| Run multiple commands at once | `[command_1] && [command_2]` |
 
-For Git commands, refer back to our [Git HackPack](../git-&-github/README.md)!
+For Git-specific commands, refer back to our [Git HackPack](../git-&-github/README.md)!
 
 ## Other useful resources
 
 - [Read the HackPacks](../README.md) that may be relevant to your project!
-- Use our Discord: we have mentors that can help you on `#coach-support`!
-- Make good use of Google, [Stack Overflow](https://stackoverflow.com/) and your favourite LLMs to answer your technical questions if our mentors are not available!
+- Use our Discord. We have mentors on-call throughout to help you in `#coach-support`!
+- Make good use of Google, [Stack Overflow](https://stackoverflow.com/) and your favourite LLMs to answer your technical questions if you're unable to reach us.
 
 ## Recommended HackPacks for further reading
 
 - Backend development: [API Design](../api-design/README.md), [Databases](../databases/README.md), [Python (Django)](../djangostart/README.md), [Machine Learning](../machine_learning/README.md)
 - Frontend development: [ReactJS](../frontend-development/react-example-tutorial/README.md), [Vue.js](../vuejs/README.md)
 - Android app development: [Android Development](../android-development/README.md)
-- How to get most of the hackathon: [General project planning](../project-planning/README.md), [Engaging with sponsors](../engaging-with-sponsors/README.md)
-- Before final submission: [Pitching and presenting](../pitching-and-presenting/README.md), [DevPost submission guide](../making-a-devpost/README.md)
+- How to get the most out of the hackathon: [Project planning](../project-planning/README.md), [Engaging with sponsors](../engaging-with-sponsors/README.md)
+- Preparing for submission & judging: [Pitching and presenting](../pitching-and-presenting/README.md), [DevPost submission guide](../making-a-devpost/README.md)
