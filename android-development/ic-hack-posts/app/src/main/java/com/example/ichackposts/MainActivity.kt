@@ -30,7 +30,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.ichackposts.ui.theme.ICHackPostsTheme
 import io.ktor.client.HttpClient
@@ -158,21 +157,5 @@ fun PostCard(post: Post) {
                 color = MaterialTheme.colorScheme.outline
             )
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ICHackPostsTheme {
-        Greeting("Android")
     }
 }
