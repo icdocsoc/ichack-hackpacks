@@ -12,6 +12,7 @@ To follow along, you'll probably also want to download **Android Studio**, the o
   - [Table of Contents](#table-of-contents)
   - [An IC Hack Greeting App](#an-ic-hack-greeting-app)
     - [Basic Set-up](#basic-set-up)
+    - [Running on a physical device](#running-on-a-physical-device)
     - [Understanding the generated code](#understanding-the-generated-code)
     - [Composable Functions](#composable-functions)
       - [Examples of composable functions](#examples-of-composable-functions)
@@ -75,6 +76,52 @@ Follow the instructions below to initialise the empty project we'll be able to b
 
 > [!WARNING]
 > **Having trouble?** If Gradle sync fails or you see "No devices available", grab one of the mentors — they'll help you get set up!
+
+### Running on a physical device
+
+The Android emulator works great, but you can also run your app directly on your phone! This is often faster and lets you test real-world features like the camera or sensors.
+
+#### Enabling Developer Options
+
+First, you need to unlock Developer Options on your Android device:
+
+1. Open **Settings** on your phone
+2. Go to **About phone** (sometimes under **System**)
+3. Find **Build number** and tap it **7 times** — you'll see a toast message saying "You are now a developer!"
+4. Go back to Settings — you should now see **Developer options**
+
+#### Enabling USB Debugging
+
+1. Open **Developer options**
+2. Find **USB debugging** and turn it on
+3. Confirm the warning dialog
+
+#### Connecting to your laptop
+
+1. Plug your phone into your laptop with a USB cable
+2. Your phone will show a prompt: "Allow USB debugging?" — tap **Allow** (you can tick "Always allow from this computer" for convenience)
+3. In Android Studio, click the device dropdown next to the Run button — your phone should appear in the list
+4. Select your phone and click Run!
+
+> [!TIP]
+> If your phone doesn't appear, try a different USB cable (some cables are charge-only), or check that you've accepted the debugging prompt on your phone.
+
+#### Debugging with Logcat
+
+When something goes wrong, **Logcat** is your best friend. It shows all the log messages from your app (and the system) in real-time.
+
+To open Logcat, click **View → Tool Windows → Logcat** (or press `Alt+6`).
+
+You can add your own log messages in code:
+
+```kotlin
+import android.util.Log
+
+Log.d("MyApp", "Button was clicked!")  // Debug message
+Log.e("MyApp", "Something went wrong: $error")  // Error message
+```
+
+Filter by your app's package name or search for your tag (like "MyApp") to find your messages among the noise.
 
 ### Understanding the generated code
 
