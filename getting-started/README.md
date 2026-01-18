@@ -40,7 +40,7 @@ We recommend using [Visual Studio Code (VS Code)](#visual-studio-code) for devel
 
 ## Choosing a programming language
 
-Now we have our IDE set up, we can decide what language you want to use for the rest of IC Hack! The following decision tree below can help you choose a suitable language based on your use case:
+Now we have our IDE set up, we can decide what language to use for the rest of IC Hack! The decision tree below can help you choose a suitable language based on your use case:
 
 ```mermaid
 graph TD
@@ -65,7 +65,7 @@ graph TD
     BeExp -- "Advanced" --> BeOtherEnd["Other Languages (you're experienced enough to make a good choice!)"]
 ```
 
-Discuss with your team members on what languages/frameworks to use!
+A lot of this depends as well on the experience level of your teammates, so make sure to discuss the choice of language/frameworks between yourselves.
 
 ## Setting up programming languages
 
