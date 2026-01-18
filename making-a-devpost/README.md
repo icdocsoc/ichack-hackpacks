@@ -149,24 +149,11 @@ Judges tend to *love* this
 - You actually built it
 - You understand your system
 
-## Accomplishments That You're Proud Of
+## Learnings & Accomplishments
 
-Highlight achievements that set your project apart. Think beyond "it works" and focus on what makes your project special, innovative, or impactful.
+Briefly highlight what makes your project stand out and what you learned while building it. Focus on one meaningful achievement or challenge, and explain what they taught you.
 
-**Examples**:
-
-- Successfully integrating a complex API or algorithm
-- Overcoming a technical challenge in a creative way
-- Achieving a specific performance milestone (e.g., "reduced latency from 2s to 200ms")
-- Learning a new technology under time pressure
-
-## Learnings
-
-Reflect on what your team gained from the experience and tie it in to your challenges:
-
-- What technical skills did you develop?
-- What project management or teamwork lessons emerged?
-- How did solving a problem change your understanding of the system?
+This could include solving a tricky technical problem, integrating an unfamiliar technnology, or improving performance or reliability. Keep it concise, the goal is to show growth without going into deep implementation detail.
 
 **Example**:
 
