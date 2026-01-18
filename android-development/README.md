@@ -37,7 +37,7 @@ To follow along, you'll probably also want to download **Android Studio**, the o
   - [Connecting to a Backend API](#connecting-to-a-backend-api)
     - [Project Set-up](#project-set-up-1)
       - [Adding dependencies](#adding-dependencies)
-      - [Adding internet permission](#adding-internet-permission)
+      - [Adding internet permissions](#adding-internet-permissions)
     - [Understanding the API](#understanding-the-api)
     - [Step 1: Define the data model](#step-1-define-the-data-model)
     - [Step 2: Create the HTTP client](#step-2-create-the-http-client)
@@ -466,7 +466,7 @@ id("org.jetbrains.kotlin.plugin.serialization") version "1.9.21"
 
 Click **Sync Now** when Android Studio prompts you.
 
-#### Adding internet permission
+#### Adding internet permissions
 
 Your app needs permission to access the internet. Open `AndroidManifest.xml` (in `app/src/main`) and add this line inside the `<manifest>` tag, before `<application>`:
 
@@ -505,7 +505,7 @@ data class Post(
 )
 ```
 
-The `@Serializable` annotation tells kotlinx.serialization how to convert JSON to and from this class. You'll need to import it, so press `Alt+Shift+Enter` when you see the red underline.
+The `@Serializable` annotation tells `kotlinx.serialization` how to convert JSON to and from this class. You'll need to import it, so press `Alt+Shift+Enter` when you see the red underline.
 
 ### Step 2: Create the HTTP client
 
