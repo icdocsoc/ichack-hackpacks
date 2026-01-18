@@ -1,0 +1,117 @@
+# Getting Started
+
+Welcome to IC Hack! Get ready to kickstart 24 hours of intense coding. Every year, our hackers come from different backgrounds and all kinds of prior programming experience. Some are experienced programmers while some could be beginners; this HackPack aims to get your technical setup ready for coding, especially if you have not coded before!
+
+## Table of contents
+
+- [Getting Started](#getting-started)
+  - [Table of contents](#table-of-contents)
+  - [Setting up an IDE](#setting-up-an-ide)
+    - [Visual Studio Code](#visual-studio-code)
+  - [Choosing a programming language](#choosing-a-programming-language)
+  - [Setting up programming languages](#setting-up-programming-languages)
+    - [Python](#python)
+    - [JavaScript / Typescript](#javascript--typescript)
+  - [Useful terminal commands](#useful-terminal-commands)
+  - [Other useful resources](#other-useful-resources)
+  - [Recommended HackPacks for further reading](#recommended-hackpacks-for-further-reading)
+
+## Setting up an IDE
+
+We recommend the using [Visual Studio Code (VS Code)](#visual-studio-code) for development which is also fairly easy to setup.
+
+> [!NOTE]
+> If you are a complete beginner to programming, we would recommend you using Python (with VS Code); if you wish to use JVM languages (e.g. Java, Kotlin, Scala) then you should consider using [IntelliJ IDEA](https://www.jetbrains.com/idea/), or in the case of Android Development using Kotlin, [Android Studio](https://developer.android.com/studio).
+
+### Visual Studio Code
+
+Part of the material in this part is adapted from the [VS Code Docs](https://code.visualstudio.com/docs/getstarted/getting-started).
+
+1. [Install VS Code](https://code.visualstudio.com/Download) according to your operating system (for most people, this will be Windows or macOS).
+2. Follow the instructions on the installer. When you launch VS Code post-installation, you should get something similar to this: ![VS Code homepage](https://code.visualstudio.com/assets/docs/getstarted/getting-started/vscode-folder-opened.png)
+3. Once you got VS Code up and running, we will want to install a few more pieces of software and plugins to aid development. Here are some of our recommendations:
+
+   - [Git](https://git-scm.com/install/). Follow the instructions on the installer. For detailed use of Git, check out [our HackPack](../git-&-github/README.md)! On VS Code, we use the Source Control feature to manage Git (the third icon on the left hand sidebar).
+   - [The Live Share extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare). Go to the Extension icon on the left hand sidebar and search for `Live Share`: ![Installing Live Share](./assets/live_share_install.png) This allows you to live share your workspace with another team member and code together; the Live Share logo should show up on the left hand sidebar once installed.
+   - Extensions for your programming languages. For example, if you want to install the extension for Python, you can go to the Extension icon on the left hand sidebar and search for `Python`: ![Installing Python extension](./assets/python_extension_vscode.png)
+   - Your favourite LLMs! VS Code has GitHub Copilot built-in - you can access it from the top bar: ![GitHub Copilot in VS Code](./assets/github_copilot_vscode.png) You can integrate other LLMs into VS Code through the extensions as well: `Codex` for OpenAI (ChatGPT), `Claude Code for VS Code` for Anthropic (Claude), `Gemini Code Assist` for Google (Gemini). If you don't mind setting up API keys then `Cline` is a good one as well. See our [prompt engineering HackPack](../prompt-engineering/README.md) as well!
+
+4. Now everything is set up! Feel free to open/create a new file and start coding! ![Open file in VS Code](./assets/open_file_vscode.png)
+
+## Choosing a programming language
+
+Now we have our IDE set up, we can decide what language you want to use for the rest of IC Hack! The following decision tree below can help you choose a suitable language based on your use case:
+
+```mermaid
+graph TD
+    Start["START: What are you building?"] --> Decision{"Choose your Project Type"}
+
+    %% Branch 1: Data/ML
+    Decision -- "Data / Machine Learning" --> DataEnd["Python"]
+
+    %% Branch 2: Mobile
+    Decision -- "Mobile App" --> MobileOS{"Which Mobile OS?"}
+    MobileOS -- Android --> KotlinEnd["Kotlin"]
+    MobileOS -- iOS --> SwiftEnd["Swift"]
+
+    %% Branch 3: Frontend
+    Decision -- "Frontend (Web UI)" --> FeExp{"Experience Level?"}
+    FeExp -- "Beginner" --> FePyEnd["HTML (no interactive element) / built-in frontend for some Python frameworks"]
+    FeExp -- "Advanced" --> FeJsEnd["TypeScript / JavaScript"]
+
+    %% Branch 4: Backend
+    Decision -- "Backend (Server/API)" --> BeExp{"Experience Level?"}
+    BeExp -- "Beginner" --> BePyEnd["Python<br/>(Django/Flask/FastAPI)"]
+    BeExp -- "Advanced" --> BeOtherEnd["Other Languages (you're experienced enough to make a good choie!)"]
+```
+
+Discuss with your team members on what languages/frameworks to use!
+
+## Setting up programming languages
+
+### Python
+
+To install Python, visit [this page](https://www.python.org/downloads/) to download the installer.
+
+If you want to install individual Python packages (e.g. packages/frameworks you see in our other HackPacks for machine learning/frontend/backend/etc), you can do so by `pip install <package-name>`.
+
+Alternatively, you can list all the packages and the versions that you wish to install in a file named `requirements.txt`, and then do `pip install -r requirements.txt` to install all the listed packages.
+
+### JavaScript / Typescript
+
+Install [`node.js`](https://nodejs.org/en/download) and scroll down until you see "Or get a prebuilt Node.js for Windows running a x64 architecture." Change the operating system and architecture type according to your computer, before downloading the installer.
+
+This allows you to run JavaScript applications (in frameworks like React), and most importantly you get the `npm` package manager (similar to `pip` in Python) for external packages.
+
+To install individual packages, you do `npm install <package-name>`.
+
+Similar to `requirements.txt` in Python, normally you have a file named `package.json` that lists all the required packages and versions. Then you run `npm install` to install all the listed packages.
+
+## Useful terminal commands
+
+As programmers, we often have to work with the terminal to perform various tasks. It's therefore useful to know the following commands (these commands work on both Windows **PowerShell** (different to Command Prompt) and macOS Terminal):
+
+| Action | Command |
+| --- | --- |
+| Show current folder | `pwd` |
+| List files in current location | `ls` |
+| Change to a different folder/directory | `cd folder_name` |
+| Go back to parent folder/directory | `cd ..` |
+| Make new folder | `mkdir folder_name` |
+| Delete file | `rm file.txt` |
+
+For Git commands, refer back to our [Git HackPack](../git-&-github/README.md)!
+
+## Other useful resources
+
+- [Read the HackPacks](../README.md) that may be relevant to your project!
+- Use our Discord: we have mentors that can help with you on `#coach-support`!
+- Make good use of Google, [Stack Overflow](https://stackoverflow.com/) and your favourite LLMs to answer your technical questions if our mentors are not available!
+
+## Recommended HackPacks for further reading
+
+- Backend development: [API Design](../api-design/README.md), [Databases](../databases/README.md), [Python (Django)](../djangostart/README.md), [Machine Learning](../machine_learning/README.md)
+- Frontend development: [ReactJS](../frontend-development/react-example-tutorial/README.md), [Vue.js](../vuejs/README.md)
+- Android app development: [Android Development](../android-development/README.md)
+- How to get most of the hackathon: [General project planning](../project-planning/README.md), [Engaging with sponsors](../engaging-with-sponsors/README.md)
+- Before final submission: [Pitching and presenting](../pitching-and-presenting/README.md), [DevPost submission guide](../making-a-devpost/README.md)
