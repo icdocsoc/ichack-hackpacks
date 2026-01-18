@@ -73,6 +73,7 @@ Follow the instructions below to initialise the empty project we'll be able to b
 
 ![Screenshot with 'Hello Android!' text.](assets/hello-android.png)
 
+> [!WARNING]
 > **Having trouble?** If Gradle sync fails or you see "No devices available", grab one of the mentors — they'll help you get set up!
 
 ### Understanding the generated code
@@ -152,6 +153,8 @@ Each modifier in the chain is applied in order, which can affect the result — 
 ---
 
 Now we're ready to update our code! We'll make these changes step by step.
+
+> [!TIP]
 > Android Studio should prompt you to add imports automatically as you type (just press `Alt+Enter` when you see a red underline).
 
 #### Step 1: Wrap your `Text` in a `Column`
@@ -205,6 +208,7 @@ Mine looks like this:
 
 ![Screenshot of example app.](assets/welcome-to-ic-hack.png)
 
+> [!TIP]
 > **Stuck?** The complete example is available in the [`welcome-to-ic-hack` directory](/android-development/welcome-to-ic-hack/). Compare your code to `MainActivity.kt` if you need a hint!
 
 ## An IC Hack Countdown Timer
@@ -427,6 +431,7 @@ Mine looks like this:
 
 ![Screenshot of example app.](assets/ic-hack-countdown.png)
 
+> [!TIP]
 > **Stuck?** The complete example is available in the [`ic-hack-countdown` directory](/android-development/ic-hack-countdown/).
 
 ## Connecting to a Backend API
