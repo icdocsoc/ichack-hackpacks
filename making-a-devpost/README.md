@@ -234,6 +234,22 @@ Help them by being:
 - **Structured** — Easy to skim with headers and bullets
 - **Honest** — Acknowledge limitations; it shows maturity
 
+*But remember...*
+
+**You are here to win your category** *(... and have fun)*!
+
+Tailor your submission to your categories!
+For general categories, you will want to target your category in the ***Problem*** section, since the vast majority involve creating a product for a certain demographic or to address a specific scenario.
+
+For 'Best Use Of' categories, you will want to state the technology in your ***Tech Stack***, but also you will want to be explicit in how you have used that technology in your ***Solution*** section.
+
+## Past Examples
+
+Take a [look here](https://ic-hack-25.devpost.com/project-gallery) for last years' DevPost submissions.
+
+>[!TIP]
+>Look out for the `Winner` banner, these are the winners or runners-up of a category. They likely did something right in their DevPost!
+
 ---
 
 **Good luck**—and remember: ***presentation is part of engineering!***
