@@ -11,6 +11,7 @@ Welcome to IC Hack! Get ready for **24 hours** of *intense* coding. Every year, 
   - [Choosing a programming language](#choosing-a-programming-language)
   - [Setting up programming languages](#setting-up-programming-languages)
     - [Python](#python)
+      - [Python virtual environments](#python-virtual-environments)
     - [JavaScript / TypeScript](#javascript--typescript)
   - [Useful terminal commands](#useful-terminal-commands)
   - [Other useful resources](#other-useful-resources)
@@ -82,7 +83,20 @@ A lot of this depends as well on the experience level of your teammates, so **ma
 
 If you want to install individual Python packages (these may be ones you see in our other HackPacks for machine learning, backend development, etc.), you can do so with the terminal command `pip install <package-name>`.
 
-Alternatively, you can list all the packages and the versions that you wish to install in a file named `requirements.txt`, and then do `pip install -r requirements.txt` to install all the listed packages.
+Alternatively, you can list all the packages and the versions that you wish to install in a file named `requirements.txt`, and then do `pip install -r requirements.txt` to install all the listed packages. (also see below for section on [virtual environments](#python-virtual-environments))
+
+#### Python virtual environments
+
+Developers often find *virtual environments* in Python useful as it allows different programmers to share the same setup (in particular, having the same versions of packages installed), reducing compatibility issues between developers.
+
+To share and set up a virtual environment:
+
+1. Run `pip freeze > requirements.txt`. This saves the versions of all current Python libraries installed onto `requirements.txt`, and you can share this text file with your team members.
+2. Once you have the `requirements.txt` file, run `python -m venv <path_to_env>` to create a new virtual environment.
+3. To activate the virtual environment, run `<path_to_env>\Scripts\activate.bat` (Windows Command Prompt) or `<path_to_env>\Scripts\Activate.ps1>` (Windows PowerShell) or `source <path_to_env>/bin/activate`. You will then see the environment activated, and its name prepended to your terminal.
+4. Once you're in the virtual environment, if you have not installed packages on this environment before, run `pip install -r requirements.txt` (as in the section above).
+5. Start coding - you now have the same setup as everybody else!
+6. You can leave the virtual environment by typing `deactivate` in the terminal.
 
 ### JavaScript / TypeScript
 
