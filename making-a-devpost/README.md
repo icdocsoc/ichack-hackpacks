@@ -241,7 +241,9 @@ Help them by being:
 Tailor your submission to your categories!
 For general categories, you will want to target your category in the ***Problem*** section, since the vast majority involve creating a product for a certain demographic or to address a specific scenario.
 
-For 'Best Use Of' categories, you will want to state the technology in your ***Tech Stack***, but also you will want to be explicit in how you have used that technology in your ***Solution*** section.
+For 'Best Use Of' categories, you will want to state the technology in your ***Tech Stack***, but also you will want to be explicit in how you have used that technology in your ***How it Works*** section.
+
+*Some* categories fit neither of the two above. For example, at ICHack 25, JetBrains' category was a **no-code approach to learning**. This would be best prioritised in the ***Solution*** section.
 
 ## Past Examples
 
@@ -249,6 +251,22 @@ Take a [look here](https://ic-hack-25.devpost.com/project-gallery) for last year
 
 >[!TIP]
 >Look out for the `Winner` banner, these are the winners or runners-up of a category. They likely did something right in their DevPost!
+
+## Final Check
+
+- **Name + Tagline:** Instantly understandable in one read
+- **Problem:** Specific, real and relevant
+- **Solution:** What you built
+- **How it Works:** High-level architecture
+- **Challenges:** What broke, trade-offs, redesigns
+- **Learnings & Accomplishments:** 1 key achievement + takeaway
+- **What's Next:** Realistic next steps
+- **Tech Stack:** Only what you actually used
+- **Demo Video:** Shows the product working
+
+- **Easy to skim**
+- **Honest**
+- **Value of project immediately clear**
 
 ---
 
