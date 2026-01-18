@@ -71,21 +71,21 @@ A lot of this depends as well on the experience level of your teammates, so make
 
 ### Python
 
-To install Python, visit [this page](https://www.python.org/downloads/) to download the installer.
+First, [download the installer](https://www.python.org/downloads/).
 
-If you want to install individual Python packages (e.g. packages/frameworks you see in our other HackPacks for machine learning/frontend/backend/etc), you can do so by `pip install <package-name>`.
+If you want to install individual Python packages (these may be ones you see in our other HackPacks for machine learning, backend development, etc.), you can do so with the terminal command `pip install <package-name>`.
 
 Alternatively, you can list all the packages and the versions that you wish to install in a file named `requirements.txt`, and then do `pip install -r requirements.txt` to install all the listed packages.
 
 ### JavaScript / Typescript
 
-Install [`node.js`](https://nodejs.org/en/download) and, on the download page, scroll down until you see the text "Or get a prebuilt Node.js for Windows running a x64 architecture." Change the operating system and architecture type according to your computer before downloading the installer.
+Scroll down on the [`node.js` download page](https://nodejs.org/en/download) until you see "*Or get a prebuilt Node.js for Windows running a x64 architecture*". Switch the operating system and architecture to your computer's before downloading the installer.
 
 This allows you to run JavaScript applications (in frameworks like React), and most importantly you get the `npm` package manager (similar to `pip` in Python) for external packages.
 
-To install individual packages, you do `npm install <package-name>`.
+To install individual packages, run `npm install <package-name>`.
 
-Similar to `requirements.txt` in Python, normally you have a file named `package.json` that lists all the required packages and versions, then run `npm install` to install all the listed packages.
+Similar to `requirements.txt` in Python, you might also have a `package.json` file that lists all the required packages and versions, then run `npm install` to install all the listed packages.
 
 ## Useful terminal commands
 
