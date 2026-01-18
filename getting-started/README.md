@@ -1,6 +1,6 @@
 # Getting Started
 
-Welcome to IC Hack! Get ready to kickstart 24 hours of intense coding. Every year, our hackers come from different backgrounds and all kinds of prior programming experience. Some are experienced programmers while some could be beginners; this HackPack aims to get your technical setup ready for coding, especially if you have not coded before!
+Welcome to IC Hack! Get ready for 24 hours of intense coding. Every year, our hackers come from different backgrounds and all kinds of prior programming experience. Some of you may be experienced programmers who've been to many hackathons before while some may be complete beginners; this HackPack aims to get your technical setup ready for hacking, especially if you have not coded before!
 
 ## Table of contents
 
