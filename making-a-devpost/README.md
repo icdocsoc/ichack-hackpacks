@@ -5,6 +5,17 @@ In this HackPack, we will cover how to create and enter a **strong** Devpost sub
 The goal is simple:
 >Make it *easy* for judges to **understand** your project, your **technical depth**, and **why it matters**, in under a few minutes.
 
+Before even starting a Devpost, make sure you have the following:
+
+- A project name (short, memorable)
+- A 1-sentence elevator pitch
+- A working demo (even if scrappy)
+- A GitHub repo
+- A short demo video (2-3 mins)
+
+> [!IMPORTANT]
+> A project that ***works a bit*** but is *well-explained* scores higher than a complex project nobody understands.
+
 ## What is Devpost?
 
 [*Devpost*](https://devpost.com/) is the platform used to submit your IC Hack project. When reading through your Devpost, judges tend to:
@@ -27,19 +38,6 @@ Your Devpost entry should tell a **clear** story of:
 4. Why it is impressive
 
 Additionally, adding **screenshots** or a **demo video** gives judges a clear visual of your project.
-
-## Before You Start Writing
-
-Before even starting a Devpost, make sure you have the following:
-
-- A project name (short, memorable)
-- A 1-sentence elevator pitch
-- A working demo (even if scrappy)
-- A GitHub repo
-- A short demo video (2-3 mins)
-
-> [!IMPORTANT]
-> A project that ***works a bit*** but is *well-explained* scores higher than a complex project nobody understands.
 
 ## Create Your Devpost Project
 
