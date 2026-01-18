@@ -18,10 +18,10 @@ Welcome to IC Hack! Get ready to kickstart 24 hours of intense coding. Every yea
 
 ## Setting up an IDE
 
-We recommend the using [Visual Studio Code (VS Code)](#visual-studio-code) for development which is also fairly easy to setup.
+We recommend using [Visual Studio Code (VS Code)](#visual-studio-code) for development which is also fairly easy to setup.
 
 > [!NOTE]
-> If you are a complete beginner to programming, we would recommend you using Python (with VS Code); if you wish to use JVM languages (e.g. Java, Kotlin, Scala) then you should consider using [IntelliJ IDEA](https://www.jetbrains.com/idea/), or in the case of Android Development using Kotlin, [Android Studio](https://developer.android.com/studio).
+> If you are a complete beginner to programming, we would recommend you use Python (with VS Code); if you wish to use JVM languages (e.g. Java, Kotlin, Scala) then you should consider using [IntelliJ IDEA](https://www.jetbrains.com/idea/), or in the case of Android Development using Kotlin, [Android Studio](https://developer.android.com/studio).
 
 ### Visual Studio Code
 
@@ -31,10 +31,10 @@ Part of the material in this part is adapted from the [VS Code Docs](https://cod
 2. Follow the instructions on the installer. When you launch VS Code post-installation, you should get something similar to this: ![VS Code homepage](https://code.visualstudio.com/assets/docs/getstarted/getting-started/vscode-folder-opened.png)
 3. Once you got VS Code up and running, we will want to install a few more pieces of software and plugins to aid development. Here are some of our recommendations:
 
-   - [Git](https://git-scm.com/install/). Follow the instructions on the installer. For detailed use of Git, check out [our HackPack](../git-&-github/README.md)! On VS Code, we use the Source Control feature to manage Git (the third icon on the left hand sidebar).
+   - [Git](https://git-scm.com/install/). Follow the instructions on the installer. For detailed use of Git, check out [our HackPack](../git-&-github/README.md). On VS Code, we use the Source Control feature to manage Git (the third icon on the left hand sidebar).
    - [The Live Share extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare). Go to the Extension icon on the left hand sidebar and search for `Live Share`: ![Installing Live Share](./assets/live_share_install.png) This allows you to live share your workspace with another team member and code together; the Live Share logo should show up on the left hand sidebar once installed.
    - Extensions for your programming languages. For example, if you want to install the extension for Python, you can go to the Extension icon on the left hand sidebar and search for `Python`: ![Installing Python extension](./assets/python_extension_vscode.png)
-   - Your favourite LLMs! VS Code has GitHub Copilot built-in - you can access it from the top bar: ![GitHub Copilot in VS Code](./assets/github_copilot_vscode.png) You can integrate other LLMs into VS Code through the extensions as well: `Codex` for OpenAI (ChatGPT), `Claude Code for VS Code` for Anthropic (Claude), `Gemini Code Assist` for Google (Gemini). If you don't mind setting up API keys then `Cline` is a good one as well. See our [prompt engineering HackPack](../prompt-engineering/README.md) as well!
+   - Your favourite LLMs! VS Code has GitHub Copilot built-in - you can access it from the top bar: ![GitHub Copilot in VS Code](./assets/github_copilot_vscode.png) You can integrate other LLMs into VS Code through the extensions as well: `Codex` for OpenAI (ChatGPT), `Claude Code for VS Code` for Anthropic (Claude), `Gemini Code Assist` for Google (Gemini). If you don't mind setting up API keys, then `Cline` is a good one as well. See our [prompt engineering HackPack](../prompt-engineering/README.md) as well!
 
 4. Now everything is set up! Feel free to open/create a new file and start coding! ![Open file in VS Code](./assets/open_file_vscode.png)
 
@@ -62,7 +62,7 @@ graph TD
     %% Branch 4: Backend
     Decision -- "Backend (Server/API)" --> BeExp{"Experience Level?"}
     BeExp -- "Beginner" --> BePyEnd["Python<br/>(Django/Flask/FastAPI)"]
-    BeExp -- "Advanced" --> BeOtherEnd["Other Languages (you're experienced enough to make a good choie!)"]
+    BeExp -- "Advanced" --> BeOtherEnd["Other Languages (you're experienced enough to make a good choice!)"]
 ```
 
 Discuss with your team members on what languages/frameworks to use!
@@ -79,13 +79,13 @@ Alternatively, you can list all the packages and the versions that you wish to i
 
 ### JavaScript / Typescript
 
-Install [`node.js`](https://nodejs.org/en/download) and scroll down until you see "Or get a prebuilt Node.js for Windows running a x64 architecture." Change the operating system and architecture type according to your computer, before downloading the installer.
+Install [`node.js`](https://nodejs.org/en/download) and, on the download page, scroll down until you see the text "Or get a prebuilt Node.js for Windows running a x64 architecture." Change the operating system and architecture type according to your computer before downloading the installer.
 
 This allows you to run JavaScript applications (in frameworks like React), and most importantly you get the `npm` package manager (similar to `pip` in Python) for external packages.
 
 To install individual packages, you do `npm install <package-name>`.
 
-Similar to `requirements.txt` in Python, normally you have a file named `package.json` that lists all the required packages and versions. Then you run `npm install` to install all the listed packages.
+Similar to `requirements.txt` in Python, normally you have a file named `package.json` that lists all the required packages and versions, then run `npm install` to install all the listed packages.
 
 ## Useful terminal commands
 
@@ -105,7 +105,7 @@ For Git commands, refer back to our [Git HackPack](../git-&-github/README.md)!
 ## Other useful resources
 
 - [Read the HackPacks](../README.md) that may be relevant to your project!
-- Use our Discord: we have mentors that can help with you on `#coach-support`!
+- Use our Discord: we have mentors that can help you on `#coach-support`!
 - Make good use of Google, [Stack Overflow](https://stackoverflow.com/) and your favourite LLMs to answer your technical questions if our mentors are not available!
 
 ## Recommended HackPacks for further reading
