@@ -18,10 +18,12 @@ Welcome to IC Hack! Get ready for **24 hours** of *intense* coding. Every year, 
 
 ## Setting up an IDE
 
+An Integrated Development Environment (IDE) is a software application that provides and combines the necessary tools for programming, like code editor, debugger, compiler, and more, into a single graphical user interface. Generally, we write our code in IDEs rather than plain text editors as it can increase programmer productivity with the tools.
+
 We **recommend** using [Visual Studio Code (VS Code)](#visual-studio-code) for development which is also fairly easy to setup.
 
 > [!NOTE]
-> If you are a complete beginner to programming, we would recommend you use **Python** (with VS Code); if you wish to use JVM languages (e.g. Java, Kotlin, Scala) then you should consider using [IntelliJ IDEA](https://www.jetbrains.com/idea/), or in the case of Android Development using Kotlin, [Android Studio](https://developer.android.com/studio).
+> If you are a complete beginner to programming, we would recommend you read the later section on [choosing a programming language](#choosing-a-programming-language) first; if you wish to use JVM languages (e.g. Java, Kotlin, Scala) then you should consider using [IntelliJ IDEA](https://www.jetbrains.com/idea/), or in the case of Android Development using Kotlin, [Android Studio](https://developer.android.com/studio). For other use cases, Visual Studio Code is fine.
 
 ### Visual Studio Code
 
@@ -30,13 +32,11 @@ We **recommend** using [Visual Studio Code (VS Code)](#visual-studio-code) for d
 
 1. [Install VS Code](https://code.visualstudio.com/Download) according to your operating system (for most people, this will be Windows or macOS).
 2. Follow the instructions on the installer. When you launch VS Code post-installation, it should look similar to this: ![VS Code homepage](https://code.visualstudio.com/assets/docs/getstarted/getting-started/vscode-folder-opened.png)
-3. Once you get VS Code up and running, we recommend installing a few more pieces of software and plugins:
+3. Feel free to try opening/creating a new file and start coding! ![Open file in VS Code](./assets/open_file_vscode.png)
+4. Once you get VS Code up and running, we recommend installing a few more pieces of software and plugins:
    - [Git](https://git-scm.com/install/). Follow the instructions on the installer. For detailed use of Git, check out [our HackPack](../git-&-github/README.md). On VS Code, we use the **Source Control** feature to manage Git (the third icon on the left hand sidebar).
-   - [The Live Share extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare). Go to the Extension icon on the left hand sidebar and search for `Live Share`: ![Installing Live Share](./assets/live_share_install.png) This allows you to *live share your workspace* with another team member and **code together**; the Live Share logo should show up on the left hand sidebar once installed.
    - **Extensions** for whichever programming languages you use. For example, if you want to install the extension for Python, you can go to the Extension icon on the left hand sidebar and search for `Python`: ![Installing Python extension](./assets/python_extension_vscode.png)
    - Access to your favourite **LLMs**! VS Code has GitHub Copilot *built-in* from an icon on the top bar: ![GitHub Copilot in VS Code](./assets/github_copilot_vscode.png) You can integrate other LLMs into VS Code through the extensions as well: `Codex` for OpenAI (ChatGPT), `Claude Code for VS Code` for Anthropic (Claude), `Gemini Code Assist` for Google (Gemini). If you don't mind setting up API keys, then `Cline` is a good one as well. See our [prompt engineering HackPack](../prompt-engineering/README.md) for more info on how to get the most of those LLMs!
-
-4. Now feel free to open/create a new file and start coding! ![Open file in VS Code](./assets/open_file_vscode.png)
 
 ## Choosing a programming language
 
