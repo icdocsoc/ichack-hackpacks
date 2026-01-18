@@ -77,6 +77,9 @@ A lot of this depends as well on the experience level of your teammates, so **ma
 
 *First*, [download the installer](https://www.python.org/downloads/).
 
+> [!IMPORTANT]
+> The following assumes knowledge of terminal commands. You may wish to read [this section](#useful-terminal-commands) before coming back and continuing from here.
+
 If you want to install individual Python packages (these may be ones you see in our other HackPacks for machine learning, backend development, etc.), you can do so with the terminal command `pip install <package-name>`.
 
 Alternatively, you can list all the packages and the versions that you wish to install in a file named `requirements.txt`, and then do `pip install -r requirements.txt` to install all the listed packages.
@@ -87,13 +90,26 @@ Scroll down on the [`node.js` download page](https://nodejs.org/en/download) unt
 
 This allows you to run JavaScript applications (in frameworks like React), and most importantly you get the `npm` package manager (similar to `pip` in Python) for external packages.
 
+> [!IMPORTANT]
+> The following assumes knowledge of terminal commands. You may wish to read [this section](#useful-terminal-commands) before coming back and continuing from here.
+
 To install individual packages, run `npm install <package-name>`.
 
 Similar to `requirements.txt` in Python, you might also have a `package.json` file that lists all the required packages and versions, then run `npm install` to install all the listed packages.
 
 ## Useful terminal commands
 
-As programmers, we often have to work with the terminal to perform various tasks. You therefore might find some of these commands useful. They work on both the Windows PowerShell and macOS Terminal.
+As programmers, we often have to work with the terminal to perform various tasks. To access your computer's terminal, you can either
+
+- Windows: Type `Powershell` in Windows search.
+- macOS: Type `Terminal` in Spotlight.
+- VS Code: `Ctrl+Shift+'` on Windows, or `` Ctrl+Shift+` `` on macOS.
+
+You will then get something like this: 
+![terminal example](https://media.geeksforgeeks.org/wp-content/uploads/20200925114701/terminal2.png)
+where you can now interact with your computer through text-based commands!
+
+You might find some of these commands useful. They work on both the Windows PowerShell and macOS Terminal.
 
 > [!WARNING]
 > If you're on Windows, don't get the *PowerShell* mixed up with *Command Prompt*. They are **different** applications!
