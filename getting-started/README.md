@@ -40,6 +40,9 @@ We **recommend** using [Visual Studio Code (VS Code)](#visual-studio-code) for d
 
 ## Choosing a programming language
 
+> [!NOTE]
+> Don't be afraid to pick up new programming languages - our [prompt engineering HackPack](../prompt-engineering/README.md) combined with LLMs can help you get started on new languages quickly!
+
 Now we have our IDE set up, we can decide what language to use for the rest of IC Hack! The decision tree below can help you choose a suitable language based on your use case:
 
 ```mermaid
@@ -55,9 +58,10 @@ graph TD
     MobileOS -- iOS --> SwiftEnd["Swift"]
 
     %% Branch 3: Frontend
-    Decision -- "Frontend (Web UI)" --> FeExp{"Experience Level?"}
-    FeExp -- "Beginner" --> FePyEnd["HTML (no interactive element) / built-in frontend for some Python frameworks"]
-    FeExp -- "Advanced" --> FeJsEnd["TypeScript / JavaScript"]
+    Decision -- "Frontend (Web UI)" --> FeUse{"Use case?"}
+    FeUse -- "Simple web page with no interactive elements" --> FeSimpleEnd["HTML with CSS"]
+    FeUse -- "Somewhat familar with HTML, not much coding logic" --> FeVueEnd["Vue.js"]
+    FeUse -- "Complex frontend coding logic (requests and calls to backend)" --> FeReactEnd["React.js"]
 
     %% Branch 4: Backend
     Decision -- "Backend (Server/API)" --> BeExp{"Experience Level?"}
