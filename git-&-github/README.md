@@ -362,9 +362,9 @@ After your teammates have reviewed your PR, you will then safely merge it to mai
 
 An **Issue** is used to track tasks, bugs, feature requests, or discussions related to a repository.
 
-Although ICHACK focuses on shor-term projects, Github issues can be useful as a TO-Do list or Group Discussion about a new feature.
+Although ICHACK focuses on short-term projects, Github issues can be useful as a TODO list or Group Discussion about a new feature.
 
-Creating this type of issue can save your brainstroming process which will be helpful when writing your pitches or explain to the judges thinking process.
+Creating this type of issue can save your brainstroming process which will be helpful when writing your pitches or explaining your thinking process to the judges.
 
 #### How to Create an Issues
 
@@ -425,7 +425,7 @@ In this example, we have splited the changes into small commits such that it wil
 
 **3. Agree on a branching strategy**
 
-For most teams, your branching strategy should be having an always deployable main and has short-lived branches that will be merge into main onced finished.
+For most teams, your branching strategy should be having an always deployable main and has short-lived branches that will be merge into main once finished.
 
 ```bash
 main        → always deployable
