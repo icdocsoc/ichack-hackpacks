@@ -379,9 +379,293 @@ Mine looks like this:
 
 > **Stuck?** The complete example is available in the [`ic-hack-countdown` directory](/android-development/ic-hack-countdown/).
 
+## Connecting to a Backend API
+
+Most hackathon projects need to fetch data from the internet. Let's build a third app that displays posts from an API — this will teach you how to make network requests, handle loading states, and display dynamic lists in Compose.
+
+We'll use **[JSONPlaceholder](https://jsonplaceholder.typicode.com/)**, a free fake REST API that's perfect for prototyping. It provides endpoints like `/posts`, `/users`, and `/comments` with realistic sample data — no authentication or setup required!
+
+### Project Set-up
+
+Create a new *Empty Activity* project in Android Studio. I've named mine 'IC Hack Posts'.
+
+#### Adding dependencies
+
+We need to add two libraries to our project:
+
+- **Ktor Client** — A Kotlin-first HTTP client from JetBrains
+- **kotlinx.serialization** — For parsing JSON into Kotlin data classes
+
+Open your **module-level** `build.gradle.kts` (the one inside the `app` folder) and add these dependencies inside the `dependencies { }` block:
+
+```kotlin
+// Ktor Client
+implementation("io.ktor:ktor-client-android:2.3.7")
+implementation("io.ktor:ktor-client-content-negotiation:2.3.7")
+implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.7")
+
+// Serialization
+implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+```
+
+Also add the serialization plugin at the top of the same file, inside `plugins { }`:
+
+```kotlin
+id("org.jetbrains.kotlin.plugin.serialization") version "1.9.21"
+```
+
+Click **Sync Now** when Android Studio prompts you.
+
+#### Adding internet permission
+
+Your app needs permission to access the internet. Open `AndroidManifest.xml` (in `app/src/main`) and add this line inside the `<manifest>` tag, before `<application>`:
+
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
+### Understanding the API
+
+Before we write any code, let's understand what we're working with. Open your browser and visit **[https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)**.
+
+You'll see a JSON array containing 100 posts. Each post looks like this:
+
+```json
+{
+    "userId": 1,
+    "id": 1,
+    "title": "sunt aut facere repellat provident...",
+    "body": "quia et suscipit\nsuscipit recusandae..."
+}
+```
+
+Our goal is to fetch this data and display it in a scrollable list. We'll build this up piece by piece.
+
+### Step 1: Define the data model
+
+To work with this JSON in Kotlin, we need a **data class** that matches its structure. Add this above your `MainActivity` class:
+
+```kotlin
+@Serializable
+data class Post(
+    val id: Int,
+    val userId: Int,
+    val title: String,
+    val body: String
+)
+```
+
+The `@Serializable` annotation tells kotlinx.serialization how to convert JSON to and from this class. You'll need to import it, so press `Alt+Shift+Enter` when you see the red underline.
+
+### Step 2: Create the HTTP client
+
+Now we need an HTTP client to make requests. Add this below your `Post` class:
+
+```kotlin
+val client = HttpClient(Android) {
+    install(ContentNegotiation) {
+        json(Json {
+            ignoreUnknownKeys = true
+        })
+    }
+}
+```
+
+This creates a Ktor client configured to automatically parse JSON responses. The `ignoreUnknownKeys = true` option means your app won't crash if the API adds new fields later.
+
+Android Studio will show red underlines for the missing imports. Press `Alt+Shift+Enter` on each one, or add these at the top of your file:
+
+```kotlin
+import io.ktor.client.*
+import io.ktor.client.call.*
+import io.ktor.client.engine.android.*
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.request.*
+import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.json.Json
+```
+
+### Step 3: Create a basic PostsScreen
+
+Let's start with a simple composable that just shows a loading indicator. Create a new composable function:
+
+```kotlin
+@Composable
+fun PostsScreen(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        CircularProgressIndicator()
+    }
+}
+```
+
+Update your `onCreate()` to use this new composable instead of the default `Greeting`. Run your app — you should see a spinning progress indicator in the centre of the screen.
+
+![Screenshot showing loading spinner.](assets/ic-hack-posts-loading.png)
+
+### Step 4: Add state for the posts
+
+Now let's add state to hold our posts once they're fetched. Think back to the countdown timer — what pieces of state do we need here?
+
+We need to track:
+
+1. The list of posts (initially empty)
+2. Whether we're still loading
+3. Any error message (if something goes wrong)
+
+Try adding these three state variables inside your `PostsScreen`, before the `Box`. What types should each one be?
+
+<details>
+<summary>Hint: <em>State declarations</em></summary>
+
+```kotlin
+var posts by remember { mutableStateOf<List<Post>>(emptyList()) }
+var isLoading by remember { mutableStateOf(true) }
+var errorMessage by remember { mutableStateOf<String?>(null) }
+```
+
+</details>
+
+### Step 5: Fetch the data
+
+Remember how we used `LaunchedEffect` to start the countdown timer? We'll use the same pattern here to fetch data when the screen appears.
+
+Add a `LaunchedEffect` block before the `Box`. Inside it, you'll need to:
+
+1. Make a GET request to `https://jsonplaceholder.typicode.com/posts`
+2. Store the result in your `posts` state
+3. Set `isLoading` to `false`
+4. Handle any exceptions by setting `errorMessage`
+
+The Ktor syntax for a GET request looks like this:
+
+```kotlin
+val result: List<Post> = client.get("https://...").body()
+```
+
+Try implementing the `LaunchedEffect` yourself, using a `try/catch` block to handle errors.
+
+<details>
+<summary>Hint: <em>LaunchedEffect implementation</em></summary>
+
+```kotlin
+LaunchedEffect(Unit) {
+    try {
+        posts = client.get("https://jsonplaceholder.typicode.com/posts").body()
+        isLoading = false
+    } catch (e: Exception) {
+        errorMessage = "Failed to load posts: ${e.message}"
+        isLoading = false
+    }
+}
+```
+
+</details>
+
+### Step 6: Show different UI based on state
+
+Right now we always show the loading spinner. Update your `Box` content to show different UI depending on the state:
+
+- If `isLoading` is true → show `CircularProgressIndicator()`
+- If `errorMessage` is not null → show the error in a `Text` composable
+- Otherwise → show the posts (we'll build this next)
+
+A `when` expression works well here. For now, just display `Text("Loaded ${posts.size} posts")` in the success case — we'll make it prettier shortly.
+
+Run your app. After a brief loading spinner, you should see "Loaded 100 posts"!
+
+![Screenshot showing 'Loaded 100 posts' text.](assets/ic-hack-posts-loaded.png)
+
+### Step 7: Display posts in a LazyColumn
+
+Now for the fun part: **displaying the actual posts**. `LazyColumn` is Compose's scrollable list component. Unlike a regular `Column`, it only renders the items currently visible on screen, making it efficient for long lists.
+
+Create a new composable to display the list:
+
+```kotlin
+@Composable
+fun PostsList(posts: List<Post>) {
+    LazyColumn(
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        items(posts) { post ->
+            // We'll create PostCard next
+            Text(post.title)
+        }
+    }
+}
+```
+
+Update your `PostsScreen` to call `PostsList(posts = posts)` in the success case.
+
+Run the app. You should see a list of post titles! Try scrolling through them.
+
+![Screenshot showing list of post titles.](assets/ic-hack-posts-titles.png)
+
+> [!NOTE]
+> In the Android emulator, there's no visible scrollbar. Just click and drag anywhere on the list to scroll, like you would on a real phone.
+
+### Step 8: Create a PostCard composable
+
+Plain text works, but let's make each post look like a proper card. Create a `PostCard` composable that takes a single `Post` and displays it nicely.
+
+Think about what you want to show:
+
+- The post title (prominent, maybe 2 lines max)
+- The post body (smaller, maybe 3 lines max)
+- Some metadata like "Post #1 by User 1"
+
+Try using:
+
+- `Card` with `CardDefaults.cardElevation()` for a nice shadow effect
+- `MaterialTheme.typography.titleMedium` and `bodyMedium` for text styles
+- `TextOverflow.Ellipsis` with `maxLines` to truncate long text
+- `Spacer` for spacing between elements
+
+Build this yourself, then check the [example project implementation](/android-development/ic-hack-posts/app/src/main/java/com/example/ichackposts/MainActivity.kt) if you need guidance!
+
+### Step 9: Wire it all together
+
+Update your `PostsList` to use `PostCard(post = post)` instead of the plain `Text`.
+
+Run your app one final time. You should see:
+
+1. A loading spinner briefly
+2. A scrollable list of nicely-formatted post cards
+3. If you turn off your internet and restart, an error message
+
+Congratulations! You've built an app that fetches and displays data from a real API!
+
+![Screenshot of final app with post cards.](assets/ic-hack-posts-final.png)
+
+> [!TIP]
+> **Stuck?** The complete example is available in the [`ic-hack-posts` directory](/android-development/ic-hack-posts/). Compare your code to `MainActivity.kt` if you need a hint!
+
+### Taking it further
+
+Here are some ideas to extend this example:
+
+- **Add pull-to-refresh** using `PullToRefreshBox` from Material 3
+- **Navigate to a detail screen** when a post is tapped (look into Compose Navigation)
+- **Add a search bar** to filter posts by title
+- **Create a new post** using `client.post()` — JSONPlaceholder accepts POST requests and returns the created object (though it won't actually persist)
+
+### Building your own backend
+
+Want to connect to your own API instead? Check out the **[API Design HackPack](../api-design/README.md)** which covers:
+
+- Building REST APIs with **FastAPI** (Python)
+- Serverless functions with **Firebase Cloud Functions**
+- Best practices for API design at hackathons
+
+The FastAPI example in that HackPack creates a `/posts` endpoint — you could run it locally and point your Android app at `http://10.0.2.2:8000/posts` (that's how the Android emulator reaches your host machine's localhost).
+
 ## Next Steps
 
-Congratulations — you've built two Android apps and learned the fundamentals of Jetpack Compose! Here are some directions you could explore next.
+Congratulations — you've built three Android apps and learned the fundamentals of Jetpack Compose! Here are some directions you could explore next.
 
 ### UI Design with Figma
 
@@ -403,28 +687,6 @@ Resources:
 
 - [Kotlin Coroutines Guide](https://kotlinlang.org/docs/coroutines-guide.html)
 - [Coroutines in Android](https://developer.android.com/kotlin/coroutines)
-
-### Connecting to APIs
-
-Most apps need to fetch data from the internet. The typical stack for Android includes:
-
-- **[Retrofit](https://square.github.io/retrofit/)** — A type-safe HTTP client that makes API calls feel like regular function calls
-- **[Ktor Client](https://ktor.io/docs/client.html)** — A Kotlin-first HTTP client from JetBrains, works nicely with coroutines
-- **[kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)** — Parse JSON responses into Kotlin data classes
-
-A simple example with Ktor:
-
-```kotlin
-val client = HttpClient(Android) {
-    install(ContentNegotiation) {
-        json()
-    }
-}
-
-suspend fun fetchHackers(): List<Hacker> {
-    return client.get("https://api.example.com/hackers").body()
-}
-```
 
 ### Working with Databases
 
