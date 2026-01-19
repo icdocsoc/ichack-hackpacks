@@ -83,7 +83,7 @@ A lot of this depends as well on the experience level of your teammates, so **ma
 
 If you want to install individual Python packages (these may be ones you see in our other HackPacks for machine learning, backend development, etc.), you can do so with the terminal command `pip install <package-name>`.
 
-Alternatively, you can list all the packages and the versions that you wish to install in a file named `requirements.txt`, and then do `pip install -r requirements.txt` to install all the listed packages. (also see below for section on [virtual environments](#python-virtual-environments))
+Alternatively, you can list all the packages and the versions that you wish to install in a file named `requirements.txt`, and then do `pip install -r requirements.txt` to install all the listed packages.
 
 #### Python virtual environments
 
@@ -119,7 +119,7 @@ As programmers, we often have to work with the terminal to perform various tasks
 - macOS: Type `Terminal` in Spotlight.
 - VS Code: `Ctrl+Shift+'` on Windows, or `` Ctrl+Shift+` `` on macOS.
 
-You will then get something like this: 
+You will then get something like this:
 ![terminal example](https://media.geeksforgeeks.org/wp-content/uploads/20200925114701/terminal2.png)
 where you can now interact with your computer through text-based commands!
 
