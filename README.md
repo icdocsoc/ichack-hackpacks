@@ -8,9 +8,12 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 
 ## Available HackPacks
 
-- **`project-planning`**
-- **`android-development`**
-- **`git-and-github`**
+- **[`project-planning`](./project-planning/README.md)**
+- **[`android-development`](./android-development/README.md)**
+- **[`databases`](./databases/README.md)**
+- **[`pitching-and-presenting`](./pitching-and-presenting/README.md)**
+- **[`api-design`](./api-design/README.md)**
+- **[`git-and-github`](./git-&-github/README.md)**
 
 ## Repository Structure
 
