@@ -118,7 +118,9 @@ at any time to check the state of your working directory and see which files are
 
 ### 3. Pushing and pulling
 
-Before working with a remote repository, it’s important to ensure that your local clone is up to date. Running
+Before working with a remote repository, it’s important to ensure that your **local clone is up to date**.
+
+Running
 
 ```bash
 git pull
@@ -126,7 +128,9 @@ git pull
 
 updates your current local branch by fetching and merging the latest commits from the corresponding remote branch on GitHub.
 
-After you have implemented a feature or fixed a bug, you should upload your local commits to the remote repository. Running
+After you have implemented a feature or fixed a bug, you should upload your local commits to the remote repository.
+
+Running
 
 ```bash
 git push
@@ -137,7 +141,7 @@ sends all commits from your local branch to the corresponding branch on the remo
 > [!TIP]
 > Make sure to run `git pull` everytime before you run `git push` to ensure your local branch is up to date and most importantly to avoid merge conflicts!
 
-Since you are likely using an IDE to code your ICHack submission, you can utilise the inbuilt tools to make commiting changes simple.
+Since you will likely be using an IDE for your IC Hack project, you can utilise the inbuilt version control tools to make commiting changes simple.
 
 For VSCode, any changes you make since the last commit will be shown in the left hand panel by clicking on the graph symbol.
 
@@ -147,7 +151,10 @@ You can stage a modified file by pressing the `+` as you hover over it. You can 
 
 To commit your staged changes, write your commit message at the top of the panel and click `Commit`.
 
-Once committed, that `Commit` button becomes a `Sync Changes`. This automatically `pull`s then `push`es your changes!
+Once committed, that `Commit` button becomes `Sync Changes`. This automatically pulls then pushes your changes!
+
+> ![TIP]
+> You can also click the drop-down arrow next to the `Commit` button if you would like to `Commit and Sync` or `Commit and Push` together!
 
 ### 4. Checkout and Branch
 
