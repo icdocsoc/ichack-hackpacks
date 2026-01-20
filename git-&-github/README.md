@@ -365,13 +365,15 @@ The `<commit>` is a commit hash, a unique identifier for a commit. These can be 
 git log
 ```
 
+or by copying the commit hash from the GitHub website.
+
 This prints the entire history of that branch.
 >[!IMPORTANT]
 > The full history may be truncated at first. If you see `:` at the bottom of the output, press `Enter` to get the next line. You can press `q` at any time to leave this view and get back to your terminal.
 
-One entry in the log will look like
+One entry in the log could look something like:
 
-```bash
+```txt
 commit 8d0fae1dc9da67058f27e86ee4e2b3f7c474a3fb (origin/git-github)
 Author: Timofey Kolesnichenko <tk1124@ic.ac.uk>
 Date:   Fri Jan 9 14:01:07 2026 +0000
@@ -414,9 +416,10 @@ git push --force
 > Ensure your teammates do not push any changes while you are force-pushing!
 
 >[!IMPORTANT]
-> For your teammates to see changes, they must `pull`!
+> For your teammates to see the changes you push, they must `pull`!
 
-[See here](#useful-links) for 2 good websites that have information on how to deal with practically any issue with Git.
+> [!TIP]
+> The websites [linked below](#useful-links) have information on how to deal with practically any issue within Git.
 
 ## Useful Features
 
