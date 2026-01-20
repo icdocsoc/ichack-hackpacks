@@ -158,15 +158,15 @@ Once committed, that `Commit` button becomes `Sync Changes`. This automatically 
 
 ### 4. Checkout and Branch
 
-Branches allow you to work on new features or bug fixes without affecting the main codebase. This makes collaboration safer and more organized.
+Branches allow you to work on new features or bug fixes without affecting the main codebase. This makes **collaboration safer and more organised**.
 
-To see all available branches, you can run
+To see all available branches, you can run:
 
 ```bash
 git branch
 ```
 
-Branches name will be shown and the one you are checking out right now will be highlighted with an asterisk (`*`)
+Branch names will be shown and the one you are 'checking out' right now will be highlighted with an asterisk (`*`).
 
 To create and switch to a new branch, run
 
@@ -177,7 +177,8 @@ git checkout -b branch-name
 to create a new branch and immediately check it out.
 
 >[!WARNING]
-> This command creates a new branch that originates at the currently checked-out branch. Ensure that you are on the right branch
+> This command creates a new branch that originates at the currently checked-out branch. Ensure that you are on the right branch.
+>
 > Alternatively, specify the source
 >
 > ```bash
@@ -196,6 +197,8 @@ If you want to switch to any existing branch, run
 git checkout branch-name
 ```  
 
+#### Remote branches
+
 Since we are using Git to work collaboratively, it is useful to know how to create branches on the *remote*. This is just your branch being published to GitHub (most likely!), so your teammates can see your work and contribute alongside.
 
 Once you have created your *local* branch, simply run
@@ -204,7 +207,7 @@ Once you have created your *local* branch, simply run
 git push -u origin branch-name
 ```
 
-If you **already** have a remote branch, that you want to have as a *local* branch, run
+If you **already** have a remote branch, that you want to clone as a *local* branch, run
 
 ```bash
 git fetch
@@ -218,17 +221,18 @@ git fetch
 git branch -r
 ```
 
----
+#### A common error
 
-Sometimes Git might block your checkout if you have uncommitted changes that would be overwritten and shows
+Sometimes Git might block your branch checkout if you have uncommitted changes that would be overwritten and shows
 
-```bash
+```txt
 error: Your local changes to the following files would be overwritten by checkout
 ```
 
-If you want to switch branches and have received this error, you can:
+If you want to switch branches and receive this error, you can:
 
-**1. Commit your change**
+##### 1. Commit your changes
+
 This is straightforward as you just commit all your changes to remote.
 
 ```bash
@@ -236,7 +240,8 @@ git add .
 git commit -m "your commit message"
 ```
 
-**2. Stash your changes**
+##### 2. Stash your changes
+
 If you don't want to commit your changes yet but still want to save your progress, you can stash your change. **Stashing** means git saves your changes on a stack and temporally revert all the changes so that you can switch branches or do other changes safely.
 
 ```bash
@@ -245,14 +250,15 @@ git checkout branch-name
 git stash pop #If you want to retrieve your progress, you can pop it out from the stack
 ```
 
-**3. Discard your change (irreversible)**
+##### 3. Discard your changes (*irreversible*)
+
 If you want to discard all the changes you made, you can:
 
 ```bash
 git reset --hard
 ```
 
-### 5. Merge branches
+### 4. Merge branches
 
 Once your work on a branch is complete and tested, you can merge it back into another branch (usually main or master).
 
@@ -316,7 +322,7 @@ You will see the above when you open a file with a current merge conflict. You c
 
 To finalise the resolution of a merge conflict, you must commit all the files whose merge conflicts you have resolved.
 
-### 6. Undo Mistakes
+### 5. Undo Mistakes
 
 If you have made serious mistakes since the last commit, you can run the following to reset a single file to the version that was last committed
 
