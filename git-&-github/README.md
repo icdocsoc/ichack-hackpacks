@@ -528,7 +528,7 @@ Your team could also establish some rules to maintain branching:
 
 ## Useful links
 
-- [dangitgit](https://dangitgit.com/en) and [Oh Shit, Git!?!](https://ohshitgit.com/) are good places to go if something has gone terribly wrong.
-- [Learn Git Branching](https://learngitbranching.js.org/) is a visual gamified way to learn git.
-- [Setting up an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) is a way to make authentication easier when pushing commits.
-- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) has a detail explaination on writing good conventional commit messages
+- [dangitgit](https://dangitgit.com/en) and [Oh Shit, Git!?!](https://ohshitgit.com/) if you need to fix something that's gone terribly wrong.
+- [Learn Git Branching](https://learngitbranching.js.org/) for a visual gamified way to learn Git.
+- [Setting up an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to make authentication easier when pushing commits.
+- [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for a detailed explaination on writing good conventional commit messages.
