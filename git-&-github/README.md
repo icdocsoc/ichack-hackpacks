@@ -1,6 +1,6 @@
-# Git & Github
+# Git & GitHub
 
-In this guide, we wlll cover the basics for git, useful features on github, and some advice for using them as a team.
+In this guide, we will cover the basics of Git, useful features on GitHub, and some advice for using these two tools as a team.
 
 ## What is Git? What is the point?
 
