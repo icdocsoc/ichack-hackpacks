@@ -427,36 +427,36 @@ git push --force
 
 A **Pull Request (PR)** is a way to propose changes to a repository and request that those changes be reviewed and merged into another branch (usually main).
 
-In ICHACK or any team projects, it is well recommended to use PR instead of git-merge for merging branches. PR can allow your teammates to quickly review changes and catch bugs early, which can save you time to debug later.
+In IC Hack or other team projects, it is recommended to use PR instead of git-merge for merging branches. PR can allow your teammates to quickly review changes and catch bugs early, which can save you time to debug later.
 
 #### How to create a PR
 
-1. On GitHub, navigate to the main page of the repository.
+1. On GitHub, navigate to the homepage of the repository.
 2. In the "Branch" menu, choose the branch that contains your commits.
 ![Screenshot of PR branch.](./assets/PR-branch.png)
-3. Above the list of files, in the yellow banner, click Compare & pull request to create a pull request for the associated branch.
+3. Above the list of files, in the yellow banner, click `Compare & pull request` to create a pull request for the associated branch.
 ![Screenshot of pull-request-compare-pull-request.](./assets/pull-request-compare-pull-request.png)
-4. Use the *base* branch dropdown menu to select the branch you'd like to merge your changes into, then use the compare branch drop-down menu to choose the topic branch you made your changes in.
-5. Type a title and description for your pull request.
+4. Use the *base* branch dropdown menu to select the branch you'd like to merge your changes into, then use the *compare* branch drop-down menu to choose the topic branch you made your changes in.
+5. Come up with a title and description for your pull request.
 
-After your teammates have reviewed your PR, you will then safely merge it to main.
+After your teammates have reviewed your PR, you should then be able to successfully merge it to main.
 
 ### Issues
 
 An **Issue** is used to track tasks, bugs, feature requests, or discussions related to a repository.
 
-Although ICHACK focuses on short-term projects, Github issues can be useful as a TODO list or Group Discussion about a new feature.
+Although IC Hack projects generally have a shorter timeline, GitHub issues can still be useful as a ***TODO* list** or for **group discussion** about a new feature.
 
-Creating this type of issue can save your brainstroming process which will be helpful when writing your pitches or explaining your thinking process to the judges.
+Creating this type of issue can record your brainstroming process, which will be helpful when writing your pitches or explaining your thinking process to the judges.
 
-#### How to Create an Issues
+#### How to Create an Issue
 
 1. On GitHub, navigate to the main page of the repository.
 
-2. Click the Issues tab at the top of the page.
+2. Click the `Issues` tab at the top of the page.
 ![Screenshot of repo-tabs-issues-global-nav-update.](./assets/repo-tabs-issues-global-nav-update.png)
 
-3. Click New issue.
+3. Click `New issue`.
 
 4. If your repository uses issue templates, next to the type of issue you'd like to open, click Get started.
 
@@ -472,35 +472,36 @@ Creating this type of issue can save your brainstroming process which will be he
 
     - Any relevant context or ideas
 
-7. (Optional) Assign the Issue to a teammate and add labels such as bug, feature, or task.
+7. (*Optional*) Assign the Issue to a teammate and add labels such as bug, feature, or task.
 
-8. Click Submit new issue.
+8. Click `Submit new issue`.
 
 ## How to use Git as a team?
 
 ### 1. Conventional commit messages
 
-Although this sounds like a hassle, writing conventional commit messages is actually very useful when working in a team. Conventional commit messages help your teammates to understand what has changed in that commit and who did that quickly. This will be helpful if you want to go back to a specific commit or ask your teammates about a change in a commit they did.
+Although this sounds like a hassle, writing conventional commit messages is actually very useful when **working in a team**. Conventional commit messages help your teammates understand what changed in that commit, quickly. This will be helpful if you want to go back to a specific commit or ask your teammates about a change in a commit they did.
 
 A good conventional commit message should look like this:
 ```[Teammates involved]<type>[optional scope]: <description>```
 
->**What is Type?**
+#### What is a `<type>`?
+
 Some common types are ``fix:`` and ``feat:``, which representing fixing a bug and introduce a new feature respectively. Some other types are ``build:``, ``chore:``, ``ci:``, ``docs:``, ``style:``, ``refactor:``, ``perf:``, ``test:``, and others.
 
 ### 2. Make Small, Focused Commits
 
-Always commit with small changes or a single feature. When commiting with a lot of features or changes, it will be hard to debug if one of those goes wrong.
+Always commit with small changes or a single feature. When commiting with a lot of features or changes, it can be hard to debug if just one of those changes causes an error.
 
-Bad example:
+*A bad example*:
 
-```bash
+```txt
 feat: login, fix tests, formatting, random cleanup
 ```
 
-We can see that in this example we included a lot of features in different scope. This will make this commit hard to maintain and debug if we are trying to undo or fix one of the feature.
+In this example we included a lot of features in different scopes. This will make this commit hard to maintain and debug if we are trying to undo or fix one of the features.
 
-Better example:
+*A better example:*
 
 ```bash
 feat(login): add email validation
@@ -508,23 +509,22 @@ fix(login): prevent crash on empty password
 style(login): run formatter
 ```
 
-In this example, we have splited the changes into small commits such that it will be easier to review and revert.
+In this example, we have split the changes into small commits so it would be easier to review and revert.
 
 ### 3. Agree on a branching strategy
 
-For most teams, your branching strategy should be having an always deployable main and has short-lived branches that will be merge into main once finished.
+Most teams should have an "always deployable" `main` branch and short-lived branches that will be merged into `main` once finished.
 
 ```bash
 main        → always deployable
 feature/*   → short-lived branches
 ```
 
-Your team can establish some rules to maintain branching such as:
+Your team could also establish some rules to maintain branching:
 
-- Never commit directly to ``main``
+- Never commit directly to `main`
 - Merge via Pull Requests
 - Delete branches after merge
-- etc
 
 ## Useful links
 
