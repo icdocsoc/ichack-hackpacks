@@ -4,7 +4,7 @@ In this guide, we will cover the basics of Git, useful features on GitHub, and s
 
 ## What is Git? What is the point?
 
-Git is a popular version control system. Git is often used to work on code with others. Git also allows you to save an entire history of your codebase, go back to points in history, selectively undo changes and more. Git stores this information in the `.git` folder.
+Git is a **popular version control system**. Git is often used to work on code with others. It also allows you to save the entire history of your codebase, go back to points in history, selectively undo changes and more. Git stores this information in the `.git` folder of a repository.
 
 ### Key Git Concepts
 
@@ -12,7 +12,7 @@ Git is a popular version control system. Git is often used to work on code with 
 - **Clone**: Make a copy of a remote repository on your computer.
 - **Stage**: Tell Git which changes you want to save next.
 - **Commit**: Save a snapshot of your staged changes.
-- **Branch**: Work on different versions or features at the same time.
+- **Branch**: Mechanism which allows you to work on different versions or features at the same time.
 - **Merge**: Combine changes from different branches.
 - **Pull**: Get the latest changes from a remote repository.
 - **Push**: Send your changes to a remote repository.
