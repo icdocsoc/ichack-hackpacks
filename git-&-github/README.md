@@ -260,25 +260,29 @@ git reset --hard
 
 ### 4. Merge branches
 
-Once your work on a branch is complete and tested, you can merge it back into another branch (usually main or master).
+Once your work on a branch is complete and tested, you can merge it back into another branch (usually `main` or `master`).
 
 ![Diagram of merging branch.](./assets/merging.png)
 
 ```bash
-git checkout main                   #First, switch to the branch you want to merge into
-git pull                            #Make sure it is up to date before merging
-git merge feature-branch-name       #Then merge your feature branch into main
+git checkout main                   # First, switch to the branch you want to merge into
+git pull                            # Make sure it is up to date before merging
+git merge feature-branch-name       # Then merge your feature branch into main
 ```
 
-If there are no conflicts, Git will automatically complete the merge. If conflicts occur, Git will prompt you to resolve them manually before completing the merge. If you are using any IDE like VS code, they usually provide a conflict editor.
-After all conflicts are resolved, your branch will now be successfully merged into main.
+If there are no conflicts, Git will automatically complete the merge. If conflicts occur, Git will prompt you to resolve them manually before completing the merge. If you are using any IDE like VS code, they usually provide a **conflict editor**.
+
+After all conflicts are resolved, your branch will now be successfully merged into `main`.
+
 After a successful merge, you can optionally delete the feature branch:
 
 ```bash
 git branch -d feature-branch-name
 ```
 
-Alternatively, you can use **Pull Requests** on GitHub to merge branches into main. This is considered best practice, as it allows teammates to review the changes, provide feedback, and approve the merge before it is completed.
+Alternatively, you can use **Pull Requests** on GitHub to merge branches into main.
+
+This is considered best practice, as it allows teammates to review the changes, provide feedback, and approve the merge before it is completed.
 
 >[!TIP]
 > Try to keep branches small, ideally one branch should be one feature!
@@ -287,9 +291,9 @@ Alternatively, you can use **Pull Requests** on GitHub to merge branches into ma
 
 #### Merge Conflicts
 
-In the ***very*** unfortunate scenario that you have merge conflicts that Git can't automatically resolve, it is up to you to fix it!
+In the *very* unfortunate scenario that you have merge conflicts that Git can't automatically resolve, it is up to you to fix it!
 
-Here is an example of what you will see in a file with a merge conflict
+This is what you could see in a file with a merge conflict:
 
 ```txt
 Hello World
@@ -300,7 +304,7 @@ Feature A
 >>>>>>> branch-a
 ```
 
-The bits between `HEAD` and the `=======` denote the code that is on your branch. The bit between the `=======` and `branch-name` are the incoming changes.
+The text between `HEAD` and `=======` denote the code on your branch. The text between `=======` and `branch-a` are the incoming changes.
 
 To resolve, you must remove all of the below characters in a text editor
 
@@ -312,13 +316,13 @@ To resolve, you must remove all of the below characters in a text editor
 
 And you must also resolve the conflict as you see fit! This typically involves either keeping your change, the incoming change, both, or a mix of both.
 
-This process can be made simpler through the use of GitHub's UI, which will highlight these conflicts.
+This process can be made *much simpler* through the use of GitHub's UI, which will highlight these conflicts.
 
 Many of you will be using VSCode as your IDE *(or text editor, whatever...)* of choice.
 
 ![VSCode Merge Conflict Resolver](./assets/merge-conflict.png)
 
-You will see the above when you open a file with a current merge conflict. You can press the buttons above the conflict to quickly resolve.
+You will see the above when you open a file with a current merge conflict. You can **press the buttons** above the conflict to quickly resolve conflicts on an individual basis, or across an entire file.
 
 To finalise the resolution of a merge conflict, you must commit all the files whose merge conflicts you have resolved.
 
