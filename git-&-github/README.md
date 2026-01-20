@@ -43,7 +43,7 @@ To start off, you can create a new repository on GitHub and share it with your t
 
 2. Open Git Bash.
 
-3. Make sure the terminal's current working directory is the location you want the cloned repository to exist.
+3. Make sure the terminal's current working directory is the location you want the cloned repository to exist in.
 
 4. Type `git clone`, and then paste the URL you copied earlier.
 
@@ -64,15 +64,13 @@ To start off, you can create a new repository on GitHub and share it with your t
 
 ### 2. Make a commit
 
-After you have cloned the repo, make some changes. You can then stage these changes using
+After you have cloned the repo, make some changes. You can then stage them using the command:
 
 ```bash
 git add .
 ```
 
-which will stage all your changes.
-
-Then you can run
+Then, you can run
 
 ```bash
 git commit -m "example commit message"
@@ -83,10 +81,12 @@ which will save your changes locally.
 If you do not want to commit all your changes,
 
 ```bash
-git add
+git add [filename]
 ```
 
-can be used selectively to add only files you are interested in. You can also add certain file extensions and folders to a `.gitignore` file to ensure they are never tracked. Place the `.gitignore` file in the root of your repo. You may also want to refer to [the documentation and template `.gitignore` files](https://docs.github.com/en/get-started/git-basics/ignoring-files?platform=linux). Here is an example stolen from the git docs:
+can be used selectively to add only files you are interested in. You can also add certain file extensions and folders to a `.gitignore` file to ensure they are **never tracked**. Place the `.gitignore` file in the root of your repo. You may also want to refer to [the documentation and template `.gitignore` files](https://docs.github.com/en/get-started/git-basics/ignoring-files?platform=linux).
+
+Here is an example stolen from the Git docs:
 
 ```bash
 # ignore all .a files
