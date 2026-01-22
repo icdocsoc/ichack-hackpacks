@@ -1,10 +1,10 @@
-# Docker and containerisation
+# Docker & Containerisation
 
-Containerisation is a concept in software engineering that helps complex applications be re-usable and portable; by putting apps or other processes in _containers_ (similar to, but not quite identical to, virtual machines). A container is the running object, but the files upon that container are known as the respective _container image_.
+**Containerisation** is a concept in software engineering that helps complex applications be **re-usable** and **portable**; by putting apps or other processes in _containers_ (similar to, but not quite identical to, virtual machines). A container is the running object itself, but the files in that container are known as the respective _container image_.
 
-Simply put, while developers typically distribute just the source code (as Git repos), containerisation lets you ship the source code, all its dependencies, everything else it needs, and indeed (almost) the entire operating system to ensure that the app will run, and in the same way, in one place as another. Thanks to [various OS tricks](https://en.wikipedia.org/wiki/Linux_namespaces) performance isn't significantly impacted; and you also get the advantage of complete separation between two running containers EMDASH neither needs to know that the other exists, and so if one breaks then the rest of the machine is completely unaffected.
+Simply put, while developers typically distribute just the **source code** (typically as Git repos), containerisation lets you ship the source code, all its **dependencies**,and everything else it needs, including (almost) the entire operating system, ensuring the app will run (near) identically across platforms. Thanks to [various OS tricks](https://en.wikipedia.org/wiki/Linux_namespaces), performance isn't significantly impacted; and you also get the advantage of complete separation between two running containers – neither needs to know that the other exists, and so if one breaks then the rest of the machine is completely unaffected.
 
-**Docker** is one of the most popular tools for managing both running containers; and images. It's incredibly useful in a hackathon EMDASH the ability to simply get something that works on one machine to work just as well on another is invaluable, and using existing container images for various parts of a project is a commonly used strategy.
+**Docker** is one of the most popular tools for managing both running containers; and images. It's incredibly useful in a hackathon – the ability to simply get something that works on one machine to work just as well on another is invaluable, and you can also rely on existing container images for various parts of a project.
 
 ## Getting started
 
@@ -28,7 +28,7 @@ Ways to change the behaviour of an image include:
 
 - Environment variables: add a `-e VARIABLE_NAME=variable-value` flag to your `docker run` command. You can add multiple.
 - Ports: to bind a port from the image to a port on the host, use the `-p` flag: `-p 8080:80` will forward _container port 80_ to _host port 8080_, i.e. navigating to `localhost:8080` in a web browser will show whatever is on the container's port `80`.
-- Volumes (data volumes): You can pass files or directories to the container with the `-v` flag: `-v ./some_local_data:/var/app/some_other_data` means that `./some_local_data` on the host (relative to where the docker command was run) is bound to `/var/app/some_other_data` in the container; whether it be a directory or a file. Volumes are two-way EMDASH if the container makes changes to the mounted data, the host can see this.
+- Volumes (data volumes): You can pass files or directories to the container with the `-v` flag: `-v ./some_local_data:/var/app/some_other_data` means that `./some_local_data` on the host (relative to where the docker command was run) is bound to `/var/app/some_other_data` in the container; whether it be a directory or a file. Volumes are two-way – if the container makes changes to the mounted data, the host can see this.
 
 Other useful flags include:
 
@@ -40,7 +40,7 @@ Other useful flags include:
 
 Docker containers can, by default, access each-other by IP address. They can't access the host, however. To let running containers access the host, the network type has to be changed.
 
-Docker has networks that define how containers connect to each other, the host machine, and the outside world. When docker starts-up initially, one network called "bridge" is created. It uses the "bridge" network driver, which (unsurprisingly) bridges the network to the outside world EMDASH containers on a bridge network can see each other (on the same network) and the outside world, but not the host.
+Docker has networks that define how containers connect to each other, the host machine, and the outside world. When docker starts-up initially, one network called "bridge" is created. It uses the "bridge" network driver, which (unsurprisingly) bridges the network to the outside world – containers on a bridge network can see each other (on the same network) and the outside world, but not the host.
 
 The other commonly-used network driver, **host**, allows containers to see the host (as well as each other). If two containers don't share a network; even if the networks they're on have the same network type; they can't access each-other.
 
@@ -92,7 +92,7 @@ Run this with `docker compose up -d` (where the `-d` detatches you from the stdi
 
 ### Dockerfiles and building
 
-Docker also allows you to build images yourself. This can be useful for sharing environments between team members, or potentially deploying somewhere. In order to do this, we're going to "dockerize" an existing application EMDASH specifically some arbitrary Python Flask backend. I've created an incredibly simple `main.py`, but running it isn't as simple EMDASH we need to have python installed, and ideally also gunicorn.
+Docker also allows you to build images yourself. This can be useful for sharing environments between team members, or potentially deploying somewhere. In order to do this, we're going to "dockerize" an existing application – specifically some arbitrary Python Flask backend. I've created an incredibly simple `main.py`, but running it isn't as simple – we need to have python installed, and ideally also gunicorn.
 
 In order to make a docker image, we need a Dockerfile, which is a list of instructions for docker to follow to construct the image. Dockerfiles look something like this (this is for the python app):
 
