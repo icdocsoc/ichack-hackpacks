@@ -1,6 +1,6 @@
 # Vue.js, the progressive JavaScript framework
 
-# Overview of Vue.js
+## Overview of Vue.js
 
 Vue.js is a JavaScript framework for building user interfaces and single-page applications. It builds on top of standard web technology — HTML, CSS and JavaScript — to allow incremental adoption, or the ability to add it seamlessly on top of vanilla websites without changing existing code (much). It's best known for its component-based architecture, allowing you to use the existing component style of HTML with what feel like custom elements.
 
@@ -8,8 +8,7 @@ Vue.js is a JavaScript framework for building user interfaces and single-page ap
 
 Vue.js provides two key improvements over vanilla HTML/JS:
 
-- **Reactivity**: Vue.js automatically changes the DOM (the actual document displayed to the user) in response to JavaScript state changes, without having to explicitly 
-  dispatch updates.
+- **Reactivity**: Vue.js automatically changes the DOM (the actual document displayed to the user) in response to JavaScript state changes, without having to explicitly dispatch updates.
 - **Declarativeness**: Vue.js allows for declarative rendering and building of components — the say-what-you-want style, as opposed to the say-how-to-make-it.
 
 ### Components
@@ -22,7 +21,7 @@ Vue.js talks about "components" a lot — they're simply reusable pieces of an a
 
 Vue.js also uses lifecycle hooks in order to manage component creation and destruction. These can be hooked into in order to run constructor code when your component needs to. There's a lot of them, 8 in total, but it's worth being aware of their existence — running code that depends on child components will need to be delegated to one of these, since the parent component is initialised before any child is.
 
-# Getting Started
+## Getting Started
 
 ### Devtools and IDE Setup
 
@@ -35,11 +34,10 @@ exist to streamline this process — not least the various npm scripts. After yo
 
 You'll want to enable [TypeScript](TYPESCRIPT HACKPACK HERE), the Router (we'll go into this later!), and optionally ESLint and Prettier. The name doesn't matter yet, we'll just be looking at the example here before starting from scratch properly, so keep the example code, since we want to observe the resultant directory structure:
 
-- `public/`: Anything in this directory will be served statically. Use this for assets that don't change, like images or icons (here, it contains the favicon) that you don't 
-  want to use directly in your code.
+- `public/`: Anything in this directory will be served statically. Use this for assets that don't change, like images or icons (here, it contains the favicon) that you don't want to use directly in your code.
 - `src/assets/`: Much like `public/`, files that aren't intended to change are stored here, but you can import files from here. Use this for elements that you might need to use within your app directly, like stylesheets — in the example, `src/assets/main.css` is imported within `src/main.ts`
 - `src/components/`: This directory holds the components that you define.
-- `src/router/`:  This directory holds files relevant to the routing of your app — essentially how URLs map to components or pages. 
+- `src/router/`:  This directory holds files relevant to the routing of your app — essentially how URLs map to components or pages.
 - `src/views/`: This directory holds your views (analogous to pages). While components are intended to be reusable, pages should not be, so this directory creates a purely
   semantic distinction.
 - `src/main.ts`: This file contains the "bootstrapping" of the app — you can see it just mounts an App component (`src/App.vue`) to a `<div>` with id `app`.
@@ -50,13 +48,11 @@ You'll want to enable [TypeScript](TYPESCRIPT HACKPACK HERE), the Router (we'll 
 
 > You can rejig almost all of this (save for `index.html` and `public/`) by updating where things are imported from — however, for beginners, this isn't recommended, since the provided file structure helps to organize things.
 
-There's an awful lot of pre-existing code in here, most of which we don't really care about. We're going to remember how these directories are set up, and delete the old 
-project. Run `npm create vue@latest` again with the same settings, but choose a relevant name here and don't include the example code. Now is also a good time to set-up [Git](GIT HACKPACK HERE). 
+There's an awful lot of pre-existing code in here, most of which we don't really care about. We're going to remember how these directories are set up, and delete the old project. Run `npm create vue@latest` again with the same settings, but choose a relevant name here and don't include the example code. Now is also a good time to set-up [Git](GIT HACKPACK HERE).
 
 ### Running your app
 
-In order to run it this project, first run `npm install` to fetch required dependencies. After this completes, you should be able to run `npm run dev` to run a development 
-version of your app. Visiting the URL it displays, you should get a minimal welcome page congratulating you on doing it. Because it's in development mode, you'll get things like hot-reloading when you edit code in your editor.
+In order to run it this project, first run `npm install` to fetch required dependencies. After this completes, you should be able to run `npm run dev` to run a development version of your app. Visiting the URL it displays, you should get a minimal welcome page congratulating you on doing it. Because it's in development mode, you'll get things like hot-reloading when you edit code in your editor.
 
 > When you're done with your project and want to host it somewhere, potentially, just run `npm run build` — you'll get a load of HTML, CSS and JS files in the `dist/` directory of your project, which you can simply host from the root of your site.
 
@@ -90,7 +86,7 @@ This is already a fair amount of code, so let's break it down line-by-line befor
 - `<style scoped>` and `</style>`: This section is optional, but allows us to define CSS limited to this component only.
 
 > If we were using the Composition API instead of Options, we'd have `<script setup lang="ts">` instead of `<script lang="ts">`, where the `setup` label tells Vue that this is a special kind of `<script>`, and it would automatically import various things for us, and set certain behaviours. Composition allows for more powerful code patterns, but removes the explicitness in exporting one comprehensive object that beginners generally benefit from.
-> 
+>
 > You can mix-and-match APIs within the same project, just not within the same component.
 
 Now that we know what's going on, let's proceed. Let's add a button that we can click to update some number. Within the `<template>` section, add:
@@ -101,7 +97,7 @@ Now that we know what's going on, let's proceed. Let's add a button that we can 
 
 #### Using a component
 
-Now that we have a component, we need to use it somewhere. Within `App.vue`, we can reference the component by name - insert a `<Counter />` (or `<Counter></Counter>`, they're equivalent) tag somewhere within the `<template>` section. Vue won't know what we're talking about currently, and won't actually display any button - we need to first import the Counter component. 
+Now that we have a component, we need to use it somewhere. Within `App.vue`, we can reference the component by name - insert a `<Counter />` (or `<Counter></Counter>`, they're equivalent) tag somewhere within the `<template>` section. Vue won't know what we're talking about currently, and won't actually display any button - we need to first import the Counter component.
 
 Inside the `<script>`, import it as such:
 
@@ -178,17 +174,17 @@ You can also call TypeScript methods within the `<template>` block, but only spe
 
 #### Lifecycle hooks and raw HTML
 
-This section is more of an explainer 
+This section is more of an explainer
 
 Congratulations! You've successfully made your first component in Vue.js. We'll now try and make something a bit more complex and involved using similar principles — a full app (albeit a very simple one).
 
-# The Todo App whirlwind tour.
+## The Todo App whirlwind tour
 
 We're going to build a very, very simple todo app, that has a list of tasks, allows you to complete them, and add new tasks. There'll be a little bit of Router in there too, for good measure.
 
 If you want to follow along, you'll need the standard basic Vue.js project setup that we used in the last example.
 
-If you're following along, you might want to style this slightly; CSS compatible with the class names used here can be found [here](TODO) — this should go in `src/assets/main.css` and imported from `main.ts` with `import "./assets/main.css"`.
+If you're following along, you might want to style this slightly; play around with [the CSS compatible with the class names used here](TODO) — this should go in `src/assets/main.css` and imported from `main.ts` with `import "./assets/main.css"`.
 
 ### Props, events and the task component
 
@@ -369,10 +365,10 @@ Again, there's not much new here, just Router components. Using `<RouterView to.
 
 `<RouterView />` is where the router outputs the current view, as defined by the current URL. Since it's in a component, we can move it around as we like — here we've defined a navbar first, then the page beneath.
 
-# Other useful resources
+## Other useful resources
 
 While using Vue.js like this is useful sometimes, it's often nice to use component libraries — these build more complex components with consistent styling for you. Commonly used ones include [Vuetify](https://vuetifyjs.com) and [Nuxt UI](https://ui.nuxt.com/).
 
 [Nuxt](https://nuxt.com/) is a fullstack framework using Vue, which integrates backend and frontend into the same project.
 
-Fetching data can either be done pre- or post-navigation (detailed [here](https://router.vuejs.org/guide/advanced/data-fetching)), and common JS http request libraries include [Axios](https://github.com/axios/axios), which is compatible with the RESTful backends discussed in the [Backend hackpacks](TODO), or [VueFire](https://vuefire.vuejs.org/) for [Firebase](TODO) integration.
+Fetching data can either be done [pre- or post-navigation](https://router.vuejs.org/guide/advanced/data-fetching), and common JS http request libraries include [Axios](https://github.com/axios/axios), which is compatible with the RESTful backends discussed in the [Backend hackpacks](TODO), or [VueFire](https://vuefire.vuejs.org/) for [Firebase](TODO) integration.
