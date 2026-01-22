@@ -463,23 +463,17 @@ Creating this type of issue can record your brainstroming process, which will be
 
 3. Click `New issue`.
 
-4. If your repository uses issue templates, next to the type of issue you'd like to open, click Get started.
+4. Enter a clear and descriptive title.
 
-    If the type of issue you'd like to open isn't included in the available options, click Open a blank issue.
-
-    ![Screenshot of blank-issue-link.](./assets/blank-issue-link.png)
-
-5. Enter a clear and descriptive title.
-
-6. Use the description to explain:
+5. Use the description to explain:
 
     - What needs to be done, fixed, or discussed
 
     - Any relevant context or ideas
 
-7. (*Optional*) Assign the Issue to a teammate and add labels such as bug, feature, or task.
+6. (*Optional*) Assign the Issue to a teammate and add labels such as bug, feature, or task.
 
-8. Click `Submit new issue`.
+7. Click `Submit new issue`.
 
 ## How to use Git as a team?
 
