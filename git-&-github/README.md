@@ -4,7 +4,11 @@ In this guide, we will cover the basics of Git, useful features on GitHub, and s
 
 ## What is Git? What is the point?
 
-Git is a **popular version control system**. Git is often used to work on code with others. It also allows you to save the entire history of your codebase, go back to points in history, selectively undo changes and more. Git stores this information in the `.git` folder of a repository.
+Git is a **popular what is version control system **, which tracks and manages changes to files (like source code) over time, creating a complete history, enabling collaboration, and allowing developers to revert to previous versions if errors occur. 
+
+Git is often used to work on code with others. It also allows you to save the entire history of your codebase, go back to points in history, selectively undo changes and more. Git stores this information in the `.git` folder of a repository.
+
+There are other version control systems such as SVN and Mercurial. However, since Git is decentralized, more flexible than these systems, and widely used in the industry, we will focus only on Git here.
 
 ### Key Git Concepts
 
