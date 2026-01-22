@@ -8,11 +8,21 @@ Simply put, while developers typically distribute just the **source code** (typi
 
 ## Getting started
 
-Installing Docker varies on a per-OS basis, but on MacOS and Windows [Docker Desktop](https://docs.docker.com/desktop/) is available. Linux has [Docker Engine](https://docs.docker.com/engine/install/) which is also available in [binaries](https://docs.docker.com/engine/install/binaries/). The binaries are available for Windows too, but they don't include Compose, which we'll use later.
+Installing Docker varies by OS.
 
-You can also install [Podman](https://podman.io/docs/installation), a drop-in replacement for Docker for Windows, Linux and MacOS (just replace the `docker` in commands with `podman`).
+On MacOS and Windows, download [Docker Desktop](https://docs.docker.com/desktop/).
 
-Once you have a working `docker` command (try `docker run hello-world`; docker commands might need root permission if your user isn't in the `docker` group) you can proceed with the rest of this guide.
+Linux has [Docker Engine](https://docs.docker.com/engine/install/) which is also available in [binaries](https://docs.docker.com/engine/install/binaries/).
+
+> [!NOTE]
+> The binaries are available for Windows too, but they don't include _Compose_, which we'll use later.
+
+You can also install [_Podman_](https://podman.io/docs/installation), a drop-in replacement for Docker for Windows, Linux and MacOS (just replace the `docker` in commands with `podman`).
+
+Once you have a working `docker` command (see below), you can proceed with the rest of this guide.
+
+> [!TIP]
+> Try running `docker run hello-world`; docker commands might need root permission if your user isn't in the `docker` group.
 
 ## Running an image
 
