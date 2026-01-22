@@ -30,26 +30,24 @@ TODO
 
 ### Building an app
 
-While Vue.js was originally designed around incremental adoption, it's very common to build complete applications in it, which is what we'll be doing here. A number of tools
-exist to streamline this process — not least the various npm scripts. After you've [installed NodeJS and NPM](TODO!!!), running `npm create vue@latest` will create a blank Vue.js app we can use as a template to build upon.  
+While Vue.js was originally designed around incremental adoption, it's very common to build complete applications in it, which is what we'll be doing here. A number of tools exist to streamline this process — not least the various npm scripts. After you've [installed NodeJS and NPM](/getting-started/README.md#javascript--typescript), running `npm create vue@latest` will create a blank Vue.js app we can use as a template to build upon.  
 
-You'll want to enable [TypeScript](TYPESCRIPT HACKPACK HERE), the Router (we'll go into this later!), and optionally ESLint and Prettier. The name doesn't matter yet, we'll just be looking at the example here before starting from scratch properly, so keep the example code, since we want to observe the resultant directory structure:
+You'll want to [enable TypeScript](TYPESCRIPT HACKPACK HERE), the *Router* (we'll go into this later!), and optionally *ESLint* and *Prettier*. The name doesn't matter yet as we'll just be looking at the example here before starting from scratch properly, so keep the example code, since we want to observe the resultant directory structure:
 
-- `public/`: Anything in this directory will be served statically. Use this for assets that don't change, like images or icons (here, it contains the favicon) that you don't want to use directly in your code.
-- `src/assets/`: Much like `public/`, files that aren't intended to change are stored here, but you can import files from here. Use this for elements that you might need to use within your app directly, like stylesheets — in the example, `src/assets/main.css` is imported within `src/main.ts`
-- `src/components/`: This directory holds the components that you define.
+- `public/`: Anything in this directory will be served **statically**. Use this for assets that don't change, like images or icons (here, it contains [the favicon](/vuejs/vue-project/public/favicon.ico)) that you don't want to use directly in your code.
+- `src/assets/`: Much like `public/`, files that aren't intended to change are stored here, but you can import files from here. Use this for static elements that you might need to use within your app directly, like stylesheets. In the example, `src/assets/main.css` is imported within `src/main.ts`
+- `src/components/`: This directory holds the **components** that you define.
 - `src/router/`:  This directory holds files relevant to the routing of your app — essentially how URLs map to components or pages.
-- `src/views/`: This directory holds your views (analogous to pages). While components are intended to be reusable, pages should not be, so this directory creates a purely
-  semantic distinction.
+- `src/views/`: This directory holds your **views** (analogous to pages). While components are intended to be reusable, pages should not be, so this directory creates a purely semantic distinction.
 - `src/main.ts`: This file contains the "bootstrapping" of the app — you can see it just mounts an App component (`src/App.vue`) to a `<div>` with id `app`.
-- `index.html`: This is the only file that's truly fixed in location apart from `public/` — everything else is imported (directly or indirectly) from this. You can see
-  how all it really does is define an empty `<div>` with id `app`, and then import `src/main.ts` (which mounts the app to said `<div>`).
+- `index.html`: This is the only file that's truly fixed in location apart from `public/` — everything else is imported (directly or indirectly) from this. All it really does is define an empty `<div>` with id `app`, and then import `src/main.ts` (which mounts the app to said `<div>`).
 - `vite.config.ts`: This file configures how [Vite](https://vite.dev/) (the default build tool for Vue.js) turns our code into HTML for actual viewing in a browser. It's pretty minimal, but we can see it alias `@` to the `./src/` URL — which is then used within `src/App.vue` for example.
 - `tsconfig.json`, `tsconfig.app.json` and `tsconfig.node.json`: These files configure how [TypeScript](TYPESCRIPT HACKPACK HERE) is setup within this project.
 
-> You can rejig almost all of this (save for `index.html` and `public/`) by updating where things are imported from — however, for beginners, this isn't recommended, since the provided file structure helps to organize things.
+> [!NOTE] File structure
+> You can rejig almost all of these files and directories (save for `index.html` and `public/`) by updating where things are imported from — however, for beginners, this isn't recommended, since the provided file structure helps to organize things.
 
-There's an awful lot of pre-existing code in here, most of which we don't really care about. We're going to remember how these directories are set up, and delete the old project. Run `npm create vue@latest` again with the same settings, but choose a relevant name here and don't include the example code. Now is also a good time to set-up [Git](GIT HACKPACK HERE).
+There's an awful lot of pre-existing code in here, most of which we don't really care about. We're going to remember how these directories are set up, and **delete the old project**. Run `npm create vue@latest` again with the same settings, but choose a relevant name here and *don't include the example code*. Now is also a good time to [set-up Git](/git-&-github/README.md).
 
 ### Running your app
 
