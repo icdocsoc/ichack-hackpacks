@@ -26,25 +26,29 @@ Once you have a working `docker` command (see below), you can proceed with the r
 
 ## Running an image
 
-Creating a container and running an image is as simple as `docker run <image name>`. Here, we'll work with the [Postgres](https://hub.docker.com/_/postgres) example image (here hosted on [Docker Hub](https://hub.docker.com/); much akin to GitHub in the sense that it's a repository, but of images).
+Creating a container and running an image is as simple as `docker run <image name>`. Here, we'll work with the [Postgres](https://hub.docker.com/_/postgres) example image (hosted on [Docker Hub](https://hub.docker.com/); similar to GitHub in the sense that it's a repository, but of images).
 
-Running postgres is as simple as `docker run postgres`. If you try this, you'll see it complains about environment variables, and we come to the next major point of running images: configuring them.
+Running that Postgres image is as simple as `docker run postgres`. But if you try this straight out of the box, you'll see it complains about environment variables, and we come to the next major point of running images: **configuring** them.
 
 ### Configuring your image
 
-There are many ways to customize the behaviour of an image. Many are specified by the image authors (read the documentation!!).
+There are many ways to customize the behaviour of an image. Many are specified by the image authors (so read the documentation!!).
 
-Ways to change the behaviour of an image include:
+We can change the behaviour of an image by utilising:
 
-- Environment variables: add a `-e VARIABLE_NAME=variable-value` flag to your `docker run` command. You can add multiple.
-- Ports: to bind a port from the image to a port on the host, use the `-p` flag: `-p 8080:80` will forward _container port 80_ to _host port 8080_, i.e. navigating to `localhost:8080` in a web browser will show whatever is on the container's port `80`.
-- Volumes (data volumes): You can pass files or directories to the container with the `-v` flag: `-v ./some_local_data:/var/app/some_other_data` means that `./some_local_data` on the host (relative to where the docker command was run) is bound to `/var/app/some_other_data` in the container; whether it be a directory or a file. Volumes are two-way – if the container makes changes to the mounted data, the host can see this.
+- **Environment variables**: add a `-e VARIABLE_NAME=variable-value` flag to your `docker run` command. You can add multiple.
+- **Ports**: to bind a port from the image to a port on the host, use the `-p` flag. `-p 8080:80` will forward _container port 80_ to _host port 8080_. So, navigating to `localhost:8080` in a web browser will show whatever is on the container's port `80`.
+- **Volumes** (data volumes): You can pass files or directories to the container with the `-v` flag. The flag below binds `./some_local_data` on the host to `var/app/some_other_data` in the container. This could be a directory or a file. Volumes are two-way, so if the container makes changes to the mounted data, the host can see this.
+
+    ```bash
+    -v ./some_local_data:/var/app/some_other_data
+    ```
 
 Other useful flags include:
 
-- `--rm`: Automatically remove the container once the process exits
-- `-i` and `-t`: Together, this allows you to interface with the container in a shell-like way; you'll often see the `-it` (or `-ti`) flags on containers to be interacted with.
-- `--name <some container name>`: Specifies the name of the container, often making it easier to refer to with other commands or containers.
+- `--rm` automatically **removes the container** once the process exits.
+- `-i` & `-t`, together, allow you to interface with the container in a **shell-like way**; you'll often see the `-it` (or `-ti`) flags on containers to be interacted with.
+- `--name <some container name>` specifies the **name of the container**, often making it easier to refer to with other commands or containers.
 
 ### Networking
 
