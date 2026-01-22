@@ -6,20 +6,21 @@ Vue.js is a JavaScript framework for building user interfaces and single-page ap
 
 ### Key concepts
 
-Vue.js provides two key improvements over vanilla HTML/JS:
+Vue.js provides two key improvements over 'vanilla' HTML/JS:
 
 - **Reactivity**: Vue.js automatically changes the DOM (the actual document displayed to the user) in response to JavaScript state changes, without having to explicitly dispatch updates.
 - **Declarativeness**: Vue.js allows for declarative rendering and building of components — the say-what-you-want style, as opposed to the say-how-to-make-it.
 
 ### Components
 
-Vue.js talks about "components" a lot — they're simply reusable pieces of an app (think HTML elements that you can slot in anywhere). They're slightly more flexible than HTML elements, and interoperate with Vue.js much better and most importantly you can define completely custom ones. They're used like any other HTML element, however, with HTML-style tags within the HTML section of a component file.
+Vue.js talks about "components" a lot — they're simply reusable pieces of an app (think HTML elements that you can slot in anywhere). They're slightly more flexible than HTML elements, and interoperate with Vue.js much better. Most importantly, you can define completely custom ones. They're used like any other HTML element, however, with HTML-style tags within the HTML section of a component file.
 
-> Vue.js has two different APIs for defining custom components — Options and Composition. This guide uses Options, since it's generally considered more beginner friendly — the Composition API will still be mentioned throughout the guide.
+> [!IMPORTANT]
+> Vue.js has two different APIs for defining custom components — *Options* and *Composition*. This guide uses Options, since it's generally considered more beginner friendly — the Composition API will still be mentioned throughout the guide.
 
 #### Lifecycle hooks
 
-Vue.js also uses lifecycle hooks in order to manage component creation and destruction. These can be hooked into in order to run constructor code when your component needs to. There's a lot of them, 8 in total, but it's worth being aware of their existence — running code that depends on child components will need to be delegated to one of these, since the parent component is initialised before any child is.
+Vue.js also uses **lifecycle hooks** to manage component creation and destruction. These can be hooked into to run constructor code when your component needs to. There's a lot of them (eight in total) but it's worth being aware of their existence. Running code that depends on child components will need to be delegated to one of these, since the parent component is initialised before any child is.
 
 ## Getting Started
 
