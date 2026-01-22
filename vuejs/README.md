@@ -44,23 +44,25 @@ You'll want to [enable TypeScript](TYPESCRIPT HACKPACK HERE), the *Router* (we'l
 - `vite.config.ts`: This file configures how [Vite](https://vite.dev/) (the default build tool for Vue.js) turns our code into HTML for actual viewing in a browser. It's pretty minimal, but we can see it alias `@` to the `./src/` URL — which is then used within `src/App.vue` for example.
 - `tsconfig.json`, `tsconfig.app.json` and `tsconfig.node.json`: These files configure how [TypeScript](TYPESCRIPT HACKPACK HERE) is setup within this project.
 
-> [!NOTE] File structure
+> [!NOTE]
 > You can rejig almost all of these files and directories (save for `index.html` and `public/`) by updating where things are imported from — however, for beginners, this isn't recommended, since the provided file structure helps to organize things.
 
 There's an awful lot of pre-existing code in here, most of which we don't really care about. We're going to remember how these directories are set up, and **delete the old project**. Run `npm create vue@latest` again with the same settings, but choose a relevant name here and *don't include the example code*. Now is also a good time to [set-up Git](/git-&-github/README.md).
 
 ### Running your app
 
-In order to run it this project, first run `npm install` to fetch required dependencies. After this completes, you should be able to run `npm run dev` to run a development version of your app. Visiting the URL it displays, you should get a minimal welcome page congratulating you on doing it. Because it's in development mode, you'll get things like hot-reloading when you edit code in your editor.
+In order to **run** this project, first run `npm install` to fetch all required dependencies. After this completes, you should be able to run `npm run dev` to run a development version of your app. Visiting the URL displayed in your terminal, you should see a minimal welcome page congratulating you on doing so. Because it's in development mode, you'll get things like hot-reloading when you edit code in your editor.
 
-> When you're done with your project and want to host it somewhere, potentially, just run `npm run build` — you'll get a load of HTML, CSS and JS files in the `dist/` directory of your project, which you can simply host from the root of your site.
+>[!TIP]
+> When you're done with your project and want to host it somewhere, just run `npm run build` — you'll get a load of HTML, CSS and JS files in the `dist/` directory of your project, which can simply be moved to the root of your site.
 
 ### Your First Component
 
-Now that we've got something running, let's explore the first aspect of Vue.js — reactivity, or the ability to dynamically update the DOM when JavaScript/TypeScript state is changed. We'll make a simple counter component, that increments a number when a button is pressed.
+Now that we've got something running, let's explore the first aspect of Vue.js — *reactivity*, or the ability to dynamically update the DOM when JavaScript/TypeScript state is changed. We'll make a simple counter component, that increments a number when a button is pressed.
 
 Within `src/components/` (create the directory if it doesn't exist), let's make a new component: `Counter.vue`.
 
+> [!NOTE]
 > `.vue` files are called "single-file components" (i.e. everything for one component is within one file). It's possible to split them up, but again, this is not recommended for beginners due to the added complexity.
 
 `Counter.vue` needs some skeleton code, so here's the most minimal definition of any Vue.js component:
@@ -80,7 +82,7 @@ export default {}
 This is already a fair amount of code, so let's break it down line-by-line before we proceed:
 
 - `<script lang="ts">` and `</script>`: in HTML style, this defines an inline portion of code, where we set the language to TypeScript. This can be omitted.
-- `export default {}`: Because we're using the Options API, we should export an object that defines aspects of our component — here, we simply export an empty object.
+- `export default {}`: Because we're using the *Options API*, we should export an object that defines aspects of our component — here, we simply export an empty object.
 - `<template>` and `</template>`: This section of the file contains the actual HTML(-esque) code that makes up the visual aspect of the template — again, left blank.
 - `<style scoped>` and `</style>`: This section is optional, but allows us to define CSS limited to this component only.
 
@@ -88,7 +90,7 @@ This is already a fair amount of code, so let's break it down line-by-line befor
 >
 > You can mix-and-match APIs within the same project, just not within the same component.
 
-Now that we know what's going on, let's proceed. Let's add a button that we can click to update some number. Within the `<template>` section, add:
+Now that we know what's going on, let's proceed. Let's **add a button** that we can click to update some number. Within the `<template>` section, add:
 
 ```html
 <button>Count is:</button>
@@ -96,7 +98,7 @@ Now that we know what's going on, let's proceed. Let's add a button that we can 
 
 #### Using a component
 
-Now that we have a component, we need to use it somewhere. Within `App.vue`, we can reference the component by name - insert a `<Counter />` (or `<Counter></Counter>`, they're equivalent) tag somewhere within the `<template>` section. Vue won't know what we're talking about currently, and won't actually display any button - we need to first import the Counter component.
+Now that we have a component, we need to use it somewhere. Within `App.vue`, we can reference the component by name - insert a `<Counter />` (or `<Counter></Counter>`, they're equivalent) tag somewhere within the `<template>` section. Vue won't know what we're talking about currently, and won't actually display any button - we need to first import the `Counter` component.
 
 Inside the `<script>`, import it as such:
 
@@ -104,9 +106,9 @@ Inside the `<script>`, import it as such:
 import Counter from './components/Counter.vue';
 ```
 
-We should also tell Vue that we're using the Counter component in our App component. Via the Options API, this is done by exporting it as part of the exported object (note the script is not marked setup!):
+We should also tell Vue that we're using the Counter component in our App component. Via the Options API, we export it as part of the exported object (note the script is not marked setup!):
 
-```vuejs
+```vue
 <script lang="ts">
 import Counter from './components/Counter.vue';
 
@@ -116,13 +118,14 @@ export default {
 </script>
 ```
 
-> If you leave this out, then Vue won't know what to use when you talk about the Counter component. The Composition API does this exporting automatically when you import a component, but we're using Options here for the nice explicitness.
+> [!WARNING]
+> If you leave this snippet out, then Vue won't know what to use when you talk about the Counter component. The Composition API handles this exporting automatically when you import a component, but we're using Options here because it makes things more explicit.
 
-When you revisit your rendered website, you should find (wherever you put the component in `App.vue`) a button!
+When you revisit your rendered website, you should find (wherever you put the component in `App.vue`) **a button**!
 
 #### Reactive state, and using values in HTML
 
-It's now time to use one of the underpinning features of Vue.js — reactivity. In order to define some sort of state upon our component that can be used from the HTML, we need to add to the exported object. Specifically, we define a `data()` function which returns the reactive state of our object:
+It's now time to use one of the underpinning features of Vue.js — *reactivity*. In order to define some sort of state for our component that can be used from the HTML, we need to add to the exported object. Specifically, we define a `data()` function which returns the reactive state of our object:
 
 ```typescript
 export default {
@@ -153,9 +156,7 @@ this.someData = newObject
 
 `newObject` does not become reactive, and while updating `newObject` will update `someData`, it won't trigger components that depend upon `someData` to re-compute their state. Always use `this` to update reactive state.
 
-</blockquote>
-
-In order to have a DOM element that does this, we can use template syntax - Vue.js uses a Handlebars style. Writing double-braces in the HTML results in the contained TypeScript code being executed, and the result spliced into the DOM where the braces were.
+To have a DOM element that does this, we can use template syntax - Vue.js uses a Handlebars style. Writing double-braces in the HTML results in the contained TypeScript code being executed, and the result spliced into the DOM where the braces were.
 
 To achieve this, change the text in the `<button>` to something like `Count is: {{ count }}`, and you should see the button's text become `Count is: 0`.
 
@@ -165,6 +166,7 @@ In order to update the count when the button is pressed, we need to get the butt
 
 Vue directives are HTML attributes used by Vue. There are [very, very many of these](https://vuejs.org/api/built-in-directives.html), ranging from event handling to conditional rendering to memoization. We're interested in `v-on`, the event listener directive. By attaching something to the `click` event, we can achieve the desired behaviour — `<button v-on:click="something here">`.
 
+> [!NOTE]
 > If you've read the `v-on` section of the docs page, you might notice it can be aliased as `@` — this just means instead of `v-on:click=` we can write `@click=` as shorthand.
 
 Directives like this can take multiple values — inline TypeScript is often the simplest option (`v-on:click="count++"`) Adding this, you should see the value on your button update when you click it.
@@ -175,7 +177,7 @@ You can also call TypeScript methods within the `<template>` block, but only spe
 
 This section is more of an explainer
 
-Congratulations! You've successfully made your first component in Vue.js. We'll now try and make something a bit more complex and involved using similar principles — a full app (albeit a very simple one).
+Congratulations! You've successfully made your first component in Vue.js. We'll now try and make something a bit more complex and involved using similar principles — a full app (albeit still a very simple one).
 
 ## The Todo App whirlwind tour
 
