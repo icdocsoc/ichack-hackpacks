@@ -215,7 +215,7 @@ If you **already** have a remote branch, that you want to clone as a *local* bra
 
 ```bash
 git fetch
-git checkout -b branch-name --track origin/remote-branch-name
+git checkout remote-branch-name
 ```
 
 To easily see the list of remote branches, run
