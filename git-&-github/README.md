@@ -485,8 +485,8 @@ A good conventional commit message should look like this:
 ```
 <type>[optional scope]: <description>
 
-Co-authored-by: AAA
-Co-authored-by: BBB
+Co-authored-by: AAA <ic@hack.com>
+Co-authored-by: BBB <hack@ic.com>
 ```
 
 #### What is a `<type>`?
