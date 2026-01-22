@@ -179,15 +179,15 @@ This section is more of an explainer
 
 Congratulations! You've successfully made your first component in Vue.js. We'll now try and make something a bit more complex and involved using similar principles — a full app (albeit still a very simple one).
 
-## The Todo App whirlwind tour
+## The Todo App: A Whirlwind Tour
 
-We're going to build a very, very simple todo app, that has a list of tasks, allows you to complete them, and add new tasks. There'll be a little bit of Router in there too, for good measure.
+We're going to build a *very, very simple* todo app, that has a list of tasks, allows you to complete them, and add new tasks. There'll be a little bit of *Router* in there too, for good measure.
 
 If you want to follow along, you'll need the standard basic Vue.js project setup that we used in the last example.
 
-If you're following along, you might want to style this slightly; play around with [the CSS compatible with the class names used here](TODO) — this should go in `src/assets/main.css` and imported from `main.ts` with `import "./assets/main.css"`.
+You might also want to style this slightly; play around with [the CSS compatible with the class names used here](TODO), which should go in [`src/assets/main.css`](/vuejs/todo-app/src/assets/main.css) and imported from [`src/main.ts`](/vuejs/todo-app/src/main.ts) with `import "./assets/main.css"`.
 
-### Props, events and the task component
+### Props, events and the [task component](/vuejs/todo-app/src/components/Task.vue)
 
 ```html
 <!-- src/components/Task.vue -->
@@ -213,19 +213,23 @@ export default {
 </template>
 ```
 
-This component uses concepts we've seen before, and two we havent: Props and Events. Props are parameters passed to a component, similar to how `<a>` tags take a `href` — you could think of the `href` being a "prop" for the `<a>` tag. Props are then accessible on `this`, but cannot be used as reactive state — prop updates are not propagated to the parent, you should use events for this.
+This component uses concepts we've seen before, and two we havent: *Props* and *Events*. Props are parameters passed to a component, similar to how `<a>` tags take a `href` — you could think of the `href` being a "prop" for the `<a>` tag. Props can then be accessed through `this`, but *cannot be used as reactive state*. Prop updates are not propagated to the parent, so you should use events for this.
 
-> `v-model` is usable on component props, but this requires some logic within the component with the update event — see [Component v-model](https://vuejs.org/guide/components/v-model.html) for details.
+> [!INFO]
+> `v-model` is usable on component props, but this requires some logic within the component containing the update event — see [Component v-model](https://vuejs.org/guide/components/v-model.html) for details.
 
 To allow your component to take props, simply add the `props` field to the exported object, containing the name of the prop and its corresponding type (technically, the constructor function of the corresponding type).
 
-The other new thing here are Events. Events already exist in HTML, as things like the `click` event, or `input`. Vue allows us to create custom events and listen for them using the `v-on` directive.
+The other new thing here are Events. Events already exist in HTML (see the `click` event, or `input`). Vue allows us to create custom events and listen for them using the `v-on` directive.
 
-> `v-on` will only catch custom events if it's on a custom component, not a regular HTML element.
+> [!WARNING]
+> `v-on` will only catch custom events in a custom component, not a regular HTML element.
 
-We can emit events using `this.$emit(event_name, event_data)` (where event_data is optional, and it can be just `$emit(...)` in the `<template>` body where `this` is implied). We'd then catch this using `... v-on:event_name = "some_function_using($event)" ...` where `$event` is a built-in variable within v-on clauses that is the event data, if provided. Most native events have data, see [the MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Event) for details.
+We can emit events using `this.$emit(event_name, event_data)`. The `event_data` parameter is optional. In the `<template>` body, you can use just `$emit(...)` since `this` is implied there.
 
-### The About page
+We'd then catch this using `... v-on:event_name = "some_function_using($event)" ...` where `$event` is a built-in variable within `v-on` clauses that is the event data, if provided. Most native events have data; see [the MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Event) for details.
+
+### [The About page](/vuejs/todo-app/src/views/AboutView.vue)
 
 ```html
 <!-- src/views/AboutView.vue -->
@@ -237,7 +241,7 @@ We can emit events using `this.$emit(event_name, event_data)` (where event_data 
 
 There's nothing interesting at all here, apart from the lack of a `<script>` tag — like the `<style>` tag, this is optional.
 
-### The Home page
+### [The Home page](/vuejs/todo-app/src/views/HomeView.vue)
 
 ```html
 <!-- src/views/HomeView.vue -->
@@ -318,13 +322,13 @@ h4 {
 
 It looks like there's a lot going on here, but there's very little new — just `v-if`, `v-for` and the `<Teleport>` component.
 
-`v-if` is a directive that takes an expression value, and conditionally renders the tag it's attached to. It creates and destroys the component upon the variable updating from true to false and vice versa respectively. Here, it's used to only show the modal (popup) if the variable `new_open` is true (which is updated in the `open_modal` function).
+`v-if` is a directive that takes an **expression value**, and conditionally renders the tag it's attached to. It creates and destroys the component upon the variable updating from true to false, and vice versa. Here, it's used to only show the modal (popup) if the variable `new_open` is true (which is updated in the `open_modal` function).
 
 `v-for` is a directive that, attached to a tag, duplicates the tag over some sort of list. Here, we're iterating over the `tasks` list, and binding the specific task to the `task` variable, which is then accessible from TypeScript snippets on DOM elements within the `v-for`-ed element.
 
-The `<Teleport>` component is a built-in component from Vue.js itself. It takes a DOM element that logically belongs somewhere (here, the modal logically belongs within the Home page), but should be rendered somewhere else — the most common use is to move modals to the `<body>` tag, as done here and [documented on the Vue.js docs](https://vuejs.org/guide/built-ins/teleport.html).
+The `<Teleport>` component is a built-in component from Vue.js. It takes a DOM element that logically belongs somewhere (here, the modal logically belongs within the Home page), but should be rendered somewhere else — the most common use is to move modals to the `<body>` tag, as done here (and [documented on the Vue.js docs](https://vuejs.org/guide/built-ins/teleport.html)).
 
-### The Router
+### [The Router](/vuejs/todo-app/src/router/index.ts)
 
 ```typescript
 // src/router/index.ts
@@ -341,9 +345,11 @@ const router = createRouter({
 export default router
 ```
 
-This is pretty similar to the pre-provided Router file. We've just registered two paths, Home and About, using the lazy-load syntax. Since we've specified the components as lambdas that return the components needed, instead of just providing the components, Vue.js Router will lazy-load those components in when needed — potentially slowing navigation very slightly, but greatly improving initial page load speed.
+This is pretty similar to the pre-provided Router file. We've just registered two paths, Home and About, using the lazy-load syntax.
 
-### The App itself
+Since we've specified the components as lambdas that return the components needed, instead of just providing the components, Vue.js Router will lazy-load those components in when needed — potentially slowing navigation very slightly, but greatly improving initial page load speed.
+
+### [The App](/vuejs/todo-app/src/App.vue) itself
 
 ```html
 <!-- src/App.vue -->
@@ -372,4 +378,4 @@ While using Vue.js like this is useful sometimes, it's often nice to use compone
 
 [Nuxt](https://nuxt.com/) is a fullstack framework using Vue, which integrates backend and frontend into the same project.
 
-Fetching data can either be done [pre- or post-navigation](https://router.vuejs.org/guide/advanced/data-fetching), and common JS http request libraries include [Axios](https://github.com/axios/axios), which is compatible with the RESTful backends discussed in the [Backend hackpacks](TODO), or [VueFire](https://vuefire.vuejs.org/) for [Firebase](TODO) integration.
+Fetching data can either be done [pre- or post-navigation](https://router.vuejs.org/guide/advanced/data-fetching), and common JS http request libraries include [Axios](https://github.com/axios/axios), which is compatible with the RESTful backends discussed in the [Backend hackpacks](/backend-development/), or [VueFire](https://vuefire.vuejs.org/) for [Firebase](/api-design/README.md#firebase-cloud-functions) integration.
