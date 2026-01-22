@@ -186,7 +186,8 @@ to create a new branch and immediately check it out.
 > Alternatively, specify the source
 >
 > ```bash
-> git checkout -b branch-name source-branch
+> git checkout source-branch
+> git checkout -b branch-name
 > ```
 
 If you only want to create a new branch without switching to it, instead run
