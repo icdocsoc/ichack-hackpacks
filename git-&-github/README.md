@@ -488,7 +488,12 @@ Creating this type of issue can record your brainstroming process, which will be
 Although this sounds like a hassle, writing conventional commit messages is actually very useful when **working in a team**. Conventional commit messages help your teammates understand what changed in that commit, quickly. This will be helpful if you want to go back to a specific commit or ask your teammates about a change in a commit they did.
 
 A good conventional commit message should look like this:
-```[Teammates involved]<type>[optional scope]: <description>```
+```
+<type>[optional scope]: <description>
+
+Co-authored-by: AAA
+Co-authored-by: BBB
+```
 
 #### What is a `<type>`?
 
