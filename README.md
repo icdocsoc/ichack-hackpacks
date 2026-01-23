@@ -13,6 +13,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 - **[`databases`](./databases/README.md)**
 - **[`pitching-and-presenting`](./pitching-and-presenting/README.md)**
 - **[`api-design`](./api-design/README.md)**
+- **[`git-and-github`](./git-&-github/README.md)**
 
 ## Repository Structure
 
