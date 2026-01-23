@@ -52,28 +52,33 @@ Other useful flags include:
 
 ### Networking
 
-Docker containers can, by default, access each-other by IP address. They can't access the host, however. To let running containers access the host, the network type has to be changed.
+Docker containers can, by default, access each-other by IP address. They **can't access the host**, however. To let running containers access the host, the network type has to be changed.
 
-Docker has networks that define how containers connect to each other, the host machine, and the outside world. When docker starts-up initially, one network called "bridge" is created. It uses the "bridge" network driver, which (unsurprisingly) bridges the network to the outside world – containers on a bridge network can see each other (on the same network) and the outside world, but not the host.
+Docker has **networks** that define how containers connect to each other, the host machine, and the outside world. When Docker starts-up initially, a network called "**bridge**" is created. It uses the "bridge" network driver, which (unsurprisingly) bridges the network to the outside world – containers on a bridge network can see each other (on the same network) and the outside world, but not the host.
 
-The other commonly-used network driver, **host**, allows containers to see the host (as well as each other). If two containers don't share a network; even if the networks they're on have the same network type; they can't access each-other.
+The other commonly-used network driver, "**host**", allows containers to see the host (as well as each other). If two containers don't share a network; even if the networks they're on have the same network type; they can't access each-other.
 
-Containers can by default only access each other by IP (which you can find by inspecting the `docker inspect <container name or id>` command; which gives a lot of useful information about any container); but on any user-created (none-default) network the container name will resolve to the container of interest; provided it's on the same network.
+Containers can, by default, only access each other by IP, but on any user-created (non-default) network the container name will resolve to the container of interest; provided it's on the same network.
 
-Networking isn't massively useful in a hackathon context, since isolation isn't a massive concern, but it can be useful to know how to allow containers to connect to host services:  
-`docker network create -d host my_network` to create a network named "my_network" with the host driver, and then  
-`docker run --network name=my_network <container image and other flags>` to allow that container to access the host on `localhost` (the container must then use its own IP to address itself).
+> [!TIP]
+> You can find the IP of a network by inspecting the `docker inspect <container name or id>` command. This also gives a lot of general useful information about any container.
+
+Networking isn't massively useful in a hackathon context, since the isolation of containers isn't a massive concern, but it can be useful to know how to allow containers to connect to host services:  
+
+- `docker network create -d host my_network` creates a network named "my_network" with the host driver,
+- `docker run --network name=my_network <container image and other flags>` allows that container to access the host on `localhost` (the container must then use its own IP to address itself).
 
 ### Other useful commands
 
 Other commands that might prove useful include:
 
-- `docker exec [-it] <container_name> <command>`: Run a command in a running container
-- `docker ps`: Show running containers
-- `docker kill <container_name>` and `docker restart <container_name`: Kills (and removes) or restarts a running container
-- `docker rm <container_name>`: Removes a non-running container
-- `docker stop <container_name>`: Stops (without removing) a running container
-An exhaustive list can be seen with `docker --help`.
+- `docker exec [-it] <container_name> <command>` runs a **shell command** in a running container.
+- `docker ps` shows all **running containers**.
+- `docker kill <container_name>` or `docker restart <container_name` kills & removes, or restarts a _running_ container.
+- `docker rm <container_name>` removes a _non-running container_.
+- `docker stop <container_name>` **stops** (without removing) a running container.
+
+`docker --help` will give you an exhaustive list including any that we've missed.
 
 ### Compose
 
