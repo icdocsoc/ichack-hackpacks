@@ -82,15 +82,27 @@ Other commands that might prove useful include:
 
 ### Compose
 
-So, in order to get postgres working, you need to set an environment variable for the password: `docker run postgres -e POSTGRES_PASSWORD=some_password`
+To get Postgres working, you need to set an environment variable for the password:
 
-But if you want to be able to access it from localhost, you need to forward the relevant port: `docker run postgres -e POSTGRES_PASSWORD=some_password -p 5432:5432`
+```bash
+docker run postgres -e POSTGRES_PASSWORD=some_password
+```
 
-And if you want to have access to the data yourself, you need to bind the volume: `docker run postgres -e POSTGRES_PASSWORD=some_password -p 5432:5432 -v ./my/own/datadir:/var/lib/postgresql`
+But if you want to be able to access it from `localhost`, you need to forward the relevant port:
 
-As you can imagine, this gets unwieldly rather fast, especially if you have multiple containers, and you need to iterate quickly on setup and configuration. That's where Docker Compose comes in!
+```bash
+docker run postgres -e POSTGRES_PASSWORD=some_password -p 5432:5432
+```
 
-Docker Compose is a declarative way of creating and running groups of containers and networks. Containers and networks are defined in a `docker-compose.yml` file, which looks something like this:
+And if you want to have access to the data yourself, you need to bind the volume:
+
+```bash
+docker run postgres -e POSTGRES_PASSWORD=some_password -p 5432:5432 -v ./my/own/datadir:/var/lib/postgresql
+```
+
+As you can imagine, this gets unwieldly rather fast, especially if you have multiple containers, and you need to iterate quickly on setup and configuration. That's where **Docker Compose** comes in!
+
+**Docker Compose** is a declarative way of creating and running groups of containers and networks. Containers and networks are defined in a `docker-compose.yml` file, which looks something like this:
 
 ```yaml
 services:
@@ -107,13 +119,23 @@ services:
         image: something_else:latest
 ```
 
-Run this with `docker compose up -d` (where the `-d` detatches you from the stdin/stdout of the containers). You can specify individual containers by name (`docker compose up -d some_other_container`). Similarly, you can also remove or restart containers from the Compose or the entire Compose (`docker down -d <container>` and `docker restart -d <container>`).
+We can run this configuration with `docker compose up -d` (where the `-d` detatches you from the `stdin`/`stdout` of the containers). You can specify individual containers by name:
 
-### Dockerfiles and building
+```bash
+docker compose up -d some_other_container
+```
 
-Docker also allows you to build images yourself. This can be useful for sharing environments between team members, or potentially deploying somewhere. In order to do this, we're going to "dockerize" an existing application – specifically some arbitrary Python Flask backend. I've created an incredibly simple `main.py`, but running it isn't as simple – we need to have python installed, and ideally also gunicorn.
+Similarly, you can also remove (`docker down -d <container>`) or restart (`docker restart -d <container>`) containers from the Compose.
 
-In order to make a docker image, we need a Dockerfile, which is a list of instructions for docker to follow to construct the image. Dockerfiles look something like this (this is for the python app):
+### Dockerfiles & Building
+
+Docker also allows you to build images yourself. This can be useful for sharing environments between team members, or potentially deploying somewhere. To do this, we're going to "dockerize" an existing application – specifically, some arbitrary Python Flask backend.
+
+I've created an incredibly simple [`main.py`](/docker/example_app/main.py), but running it isn't as simple – we need to have python installed, and ideally also gunicorn.
+
+In order to create a Docker image, we need a **Dockerfile**, which is a list of instructions for Docker to follow to construct the image.
+
+[Our Dockerfile for `main.py`](/docker/example_app/Dockerfile) looks as follows:
 
 ```Dockerfile
 FROM python:latest
@@ -129,17 +151,37 @@ EXPOSE 8000
 CMD ["gunicorn", "main:app", "-b", "0.0.0.0:8000"]
 ```
 
-The commands shown are the most commonly used ones in Dockerfile. Here's what they do:
+The commands shown are the **most commonly-used** ones in Dockerfile. Here's what they do:
 
 - `FROM`: This is (almost) always the first command in any Dockerfile. It specifies a "base" image to build upon.
-- `WORKDIR`: This sets the current working directory for following commands (used here by `COPY` and `RUN`)
-- `COPY`: This copies a file or files from the directory on the host where the `docker build` command is run into the container image.
+- `WORKDIR`: This sets the current working directory for the following commands (such as `COPY` or `RUN`, in this case).
+- `COPY`: This copies a file (or files) from the directory on the host where the `docker build` command is run, into the container image.
 - `RUN`: This runs a command in the container. Here, it installs dependencies for the app that aren't included in the base image.
 - `EXPOSE`: Exposes a port on the container. It doesn't do much internally, but acts as a sort-of documentation for users of the image.
-- `CMD`: This specifies the default command to run when the container is started with `docker run`
+- `CMD`: This specifies the default command to run when the container is started with `docker run`.
 
-In order to actually build this, use the command `docker build . -t <a name for your image>`; which will then allow you to run it with `docker run <a name for your image>`. Using `docker run <a name for your image> -p 8000:8000` will allow you to visit `localhost:8000` and see the results of the app!
+In order to actually build this image, use the command:
+
+```bash
+docker build . -t <"a name for your image">
+```
+
+The image can then be built with:
+
+```bash
+docker run <"a name for your image">
+```
+
+Finally, `docker run <a name for your image> -p 8000:8000` allows you to visit `localhost:8000` and see your working app!
 
 ### Publishing to Docker Hub
 
-Sharing images between people is often useful. Images can be published to Docker Hub if you have a Docker Hub account and have logged-in (`docker login`) with `docker push <image name>`. In that case, your image name (used in `docker build`) should follow the format of `<username>/<project name>:<version>`. You need to create the repository to store the image first, however (on Docker Hub itself). After publishing, other people can use your image with `docker run <username>/<project name>:<version>`.
+Sharing images between members of your group can often be useful. Images can be published to Docker Hub if you have a Docker Hub account and have logged-in (`docker login`) with `docker push <image name>`.
+
+If you do publish your image, its name (used in `docker build`) should follow the format of `<username>/<project name>:<version>`.
+
+To store the image, however, you first nee to create a repository (on Docker Hub itself). After publishing, other people can use your image with:
+
+```bash
+docker run <username>/<project name>:<version>
+```
