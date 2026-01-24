@@ -59,15 +59,13 @@ graph TD
     MobileOS -- iOS --> SwiftEnd["Swift"]
 
     %% Branch 3: Frontend
-    Decision -- "Frontend (Web UI)" --> FeUse{"Use case?"}
-    FeUse -- "Simple web page with no interactive elements" --> FeSimpleEnd["HTML with CSS"]
-    FeUse -- "Somewhat familar with HTML, not much coding logic" --> FeVueEnd["Vue.js"]
-    FeUse -- "Complex frontend coding logic (requests and calls to backend)" --> FeReactEnd["React.js"]
+    Decision -- "Frontend (Web UI)" --> Fe["See our Frontend HackPack"]
 
     %% Branch 4: Backend
-    Decision -- "Backend (Server/API)" --> BeExp{"Experience Level?"}
-    BeExp -- "Beginner" --> BePyEnd["Python<br/>(Django/Flask/FastAPI)"]
-    BeExp -- "Advanced" --> BeOtherEnd["Other Languages (you're experienced enough to make a good choice!)"]
+    Decision -- "Backend (Server/API)" --> Be["See our Backend HackPack"]
+
+    click Fe "../frontend-development/README.md"
+    click Be "../backend-development/README.md"
 ```
 
 A lot of this depends as well on the experience level of your teammates, so **make sure to discuss** the choice of language/frameworks between yourselves.
