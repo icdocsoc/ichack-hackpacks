@@ -76,12 +76,31 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 > **Disclaimer:**
 > Don't feel obligated to follow this too closely! It's just a suggestion to hopefully streamline your hacking process a bit more.
 
+### 9:00 – 11:00: Arrival & Opening Ceremony (Pre-Hack)
+- Arrive, get seated, and attend the opening ceremony
+- Learn about:
+    - Hackathon rules
+    - Tracks & categories
+    - Sponsors and prizes
+
+---
+
+### 11:00 – 12:00: Merch, Food & Team Formation
+- Collect merch from ICME
+- Grab lunch at **12:00**
+- Finalise your team if you haven’t already
+- Start brainstorming ideas casually
+
+---
+
 ### 12:00PM – 2:00PM (Hour 0–2): Problem Selection & Planning
 
 - Finalise your problem statement
 - Decide on your solution approach
 - Assign roles and responsibilities
 - and enjoy your lunch!
+
+> **Pro tip**: Sponsor talks later may reveal “category secrets” — keep your idea flexible early on.
 
 ---
 
@@ -93,21 +112,52 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 ---
 
-### 3:00PM - 12:00AM (Hours 3–12): Core Development
+### 3:00 – 6:30 PM (Hour 3–6.5): Core Development (with Sponsor Talks)
 
-- Implement core features
-- Set up frontend, backend, and infrastructure
-- Focus on getting a working MVP
+- Start building core features
+- Attend relevant Sponsor Talks (13:30–18:30) — especially those aligned with your category
+- Adjust your idea if a sponsor drops useful hints or APIs
 
->**Tip:** Track progress against milestones and adjust scope if needed.
+> **FOOD**:
+> - 15:30 Bubble Tea!!
+> - 19:00 Dinner 
 
-### 12:00AM - 6:00AM (Hours 12–18): Refinement & Testing
+---
 
-- Polish key features
+### 6:30 – 10:00 PM (Hour 6.5–10): MVP Push
+
+- Aim to have a working MVP
+- Connect frontend ↔ backend
+- Get something demo-able ASAP
+
+> **Fun game to attend and relax**:
+> - 20:00 Scavenger Hunt
+> - 21:30 Assassination Game
+
+---
+
+### 10:00 PM – 00:00 AM (Hour 10–12): Feature Freeze (Mostly)
+
+- Finalise core functionality
+- Avoid adding risky new features
+- Clean up UX and flows
+- Prepare for late-night polish
+
+> **FOOD**:
+> - 00:00 Pizza / Midnight Food !!!
+
+### 00:00AM - 6:00AM (Hours 12–18): Refinement & Testing
+
 - Fix bugs and edge cases
-- Ensure the demo flow works smoothly
+- Improve performance and reliability
+- Write your Devpost description draft
+- Add screenshots / diagrams
 
 >**Tip:** Try to allocate everyone to have some rest in this period of time as well
+>**Fun events** to join if you aren't taking rest: 
+> - 1:00 Mario Kart 
+> - 2:00 Karaoke 
+> - 4:30 Bingo/Clash Royale 
 
 ---
 
@@ -117,13 +167,20 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Create slides and project description
 - Craft a clear and compelling pitch
 
+> **FOOD**:
+> - 10:45 Brunch
+
 ---
 
 ### 10:00AM - 12:00PM (Hours 22–24): Final Sprint & Submission
 
 - Final bug fixes and polish
 - Rehearse demo and pitch
-- Submit on time
+- Submit on time:
+    - Internal website submission by 11:00
+    - Devpost by 12:05 
+
+Hacking ends at 12:00
 
 ---
 
