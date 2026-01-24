@@ -177,7 +177,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Final bug fixes and polish
 - Rehearse demo and pitch
 - Submit on time:
-    - Internal website submission by 11:00
+    - Internal website submission by 11:00 (my.ichack.com/team)
     - Devpost by 12:05 
 
 Hacking ends at 12:00
