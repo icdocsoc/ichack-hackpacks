@@ -22,6 +22,8 @@ It may be a good idea to first familiarise yourself with databases, since a lot 
 
 # Table Of Contents
 
+- [API Design](#api-design)
+- [Table Of Contents](#table-of-contents)
 - [General API Design](#general-api-design)
   - [What Is an API?](#what-is-an-api)
   - [REST and HTTP](#rest-and-http)
@@ -614,7 +616,7 @@ Unless you are using Firebase (which has its own user authentication and deploym
 
 You do ***not*** want to be publishing them on a public platform. The best way to handle this is to create a local `.env` file in the root of your backend.
 
-Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Click here for more information about Git and `.gitignore`](../git-&-github/README.md#gitignore)
+Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Click here for more information about Git and `.gitignore`](../git-and-github/README.md#gitignore)
 
 Your `.env` file may look something like this
 

@@ -35,7 +35,7 @@ We **recommend** using [Visual Studio Code (VS Code)](#visual-studio-code) for d
 2. Follow the instructions on the installer. When you launch VS Code post-installation, it should look similar to this: ![VS Code homepage](https://code.visualstudio.com/assets/docs/getstarted/getting-started/vscode-folder-opened.png)
 3. Feel free to try opening/creating a new file and start coding! ![Open file in VS Code](./assets/open_file_vscode.png)
 4. Once you get VS Code up and running, we recommend installing a few more pieces of software and plugins:
-   - [Git](https://git-scm.com/install/). Follow the instructions on the installer. For detailed use of Git, check out [our HackPack](../git-&-github/README.md). On VS Code, we use the **Source Control** feature to manage Git (the third icon on the left hand sidebar).
+   - [Git](https://git-scm.com/install/). Follow the instructions on the installer. For detailed use of Git, check out [our HackPack](../git-and-github/README.md). On VS Code, we use the **Source Control** feature to manage Git (the third icon on the left hand sidebar).
    - **Extensions** for whichever programming languages you use. For example, if you want to install the extension for Python, you can go to the Extension icon on the left hand sidebar and search for `Python`: ![Installing Python extension](./assets/python_extension_vscode.png)
    - Access to your favourite **LLMs**! VS Code has GitHub Copilot *built-in* from an icon on the top bar: ![GitHub Copilot in VS Code](./assets/github_copilot_vscode.png) You can integrate other LLMs into VS Code through the extensions as well: `Codex` for OpenAI (ChatGPT), `Claude Code for VS Code` for Anthropic (Claude), `Gemini Code Assist` for Google (Gemini). If you don't mind setting up API keys, then `Cline` is a good one as well. See our [prompt engineering HackPack](../prompt-engineering/README.md) for more info on how to get the most of those LLMs!
 
@@ -138,7 +138,7 @@ You might find some of these commands useful. They work on both the Windows Powe
 | Copy file | `cp [filename] [folder_name]` |
 | Run multiple commands at once | `[command_1] && [command_2]` |
 
-For Git-specific commands, refer back to our [Git HackPack](../git-&-github/README.md)!
+For Git-specific commands, refer back to our [Git HackPack](../git-and-github/README.md)!
 
 ## Other useful resources
 
