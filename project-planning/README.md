@@ -66,7 +66,7 @@ Effective time management is crucial to success at IC Hack. Making good use of t
 
 **Hacking Period:**
 
-- 🕛 **Start:** Saturday 31st Jan, 12:00 
+- 🕛 **Start:** Saturday 31st Jan, 12:00
 - 🕛 **Deadline:** Sunday 1st Feb, 12:00
 
 You can expect to spend around **1–2 hours before hacking starts** to attend the opening ceremony, potentially form your team, and do some initial planning.
@@ -77,15 +77,17 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 > Don't feel obligated to follow this too closely! It's just a suggestion to hopefully streamline your hacking process a bit more.
 
 ### 08:45 – 11:00: Arrival & Opening Ceremony (Pre-Hack)
+
 - Arrive, get seated, and attend the opening ceremony
 - Learn about:
-    - Hackathon logistics & activities
-    - Tracks & categories
-    - Sponsors attending
+  - Hackathon logistics & activities
+  - Tracks & categories
+  - Sponsors attending
 
 ---
 
 ### 11:00 – 12:00: Merch, Food & Team Formation
+
 - Collect merch from Main Entrance
 - Grab lunch at **12:00**
 - Finalise your team if you haven’t already
@@ -119,8 +121,9 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Adjust your idea if a sponsor drops useful hints or APIs
 
 > **FOOD**:
+>
 > - 15:30 Bubble Tea!!
-> - 19:00 Dinner 
+> - 19:00 Dinner
 
 ---
 
@@ -131,6 +134,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Get something demo-able ASAP
 
 > **Fun game to attend and relax**:
+>
 > - 20:00 Scavenger Hunt
 > - 21:30 Assassination Game
 
@@ -144,6 +148,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Prepare for late-night polish
 
 > **FOOD**:
+>
 > - 00:00 Pizza / Midnight Food !!!
 
 ### 00:00 - 06:00 (Hours 12–18): Refinement & Testing
@@ -153,11 +158,12 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Write your Devpost description draft
 - Add screenshots / diagrams
 
->**Tip:** Try to allocate everyone to have some rest in this period of time as well
->**Fun events** to join if you aren't taking rest: 
-> - 01:00 Mario Kart 
-> - 02:00 Karaoke 
-> - 04:30 Bingo/Clash Royale 
+> **Tip:** Try to allocate everyone to have some rest in this period of time as well
+> **Fun events** to join if you aren't taking rest:
+>
+> - 01:00 Mario Kart
+> - 02:00 Karaoke
+> - 04:30 Bingo/Clash Royale
 
 ---
 
@@ -168,6 +174,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Craft a clear and compelling pitch
 
 > **FOOD**:
+>
 > - 10:45 Brunch
 
 ---
@@ -177,8 +184,8 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Final bug fixes and polish
 - Rehearse demo and pitch
 - Submit on time:
-    - [Internal website submission](my.ichack.com/team) by 11:00
-    - Devpost by 12:00
+  - [Internal website submission](my.ichack.com/team) by 11:00
+  - Devpost by 12:00
 
 ---
 
