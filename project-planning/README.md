@@ -85,7 +85,7 @@ While working flexibly between different components of your project is important
 - **Product/presentation leads** focus on developing your documentation, demo, and final pitch.
 
 > **Top Tip:**  
-> Assign at least two team members to focus on the **presentation, demo, and DevPost documentation/submission** in the last few hours of hacking. It can be easy to get wrapped up in your project after that much time spent coding, but planning ahead to ensure you're able to clearly explain your project and present well can make a massive difference.
+> Assign at least two team members to focus on the **presentation, demo, and Devpost documentation/submission** in the last few hours of hacking. It can be easy to get wrapped up in your project after that much time spent coding, but planning ahead to ensure you're able to clearly explain your project and present well can make a massive difference.
 
 ## Time management
 
@@ -105,7 +105,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 ### 08:45 – 11:00: Arrival & Opening Ceremony (Pre-Hack)
 
-- Arrive, get seated, and attend the opening ceremony
+- Arrive, get seated, and attend the **opening ceremony** at the Royal Geographical Society
 - Learn about:
   - Hackathon logistics & activities
   - Tracks & categories
@@ -115,7 +115,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 ### 11:00 – 12:00: Merch, Food & Team Formation
 
-- Collect merch from Main Entrance
+- Collect merch from the Imperial College Main Entrance
 - Grab lunch at **12:00**
 - Finalise your team if you haven’t already
 - Start brainstorming ideas casually
@@ -124,19 +124,20 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 ### 12:00 – 14:00 (Hour 0–2): Problem Selection & Planning
 
-- Finalise your problem statement
-- Decide on your solution approach
+- Finalise the problem you're working on
+- Decide what solution you'll build to counter it
 - Assign roles and responsibilities
 - and enjoy your lunch!
 
-> **Pro tip**: Sponsor talks later may reveal “category secrets” — keep your idea flexible early on.
+> [!tip]
+> Sponsor talks later may reveal “category secrets”, so keep your idea flexible early on.
 
 ---
 
 ### 14:00 – 15:00 (Hour 2-3): Overall Design Layout
 
 - Design the overall layout for your solution
-- Break down problems into small tasks
+- Break down problems into smaller tasks
 - Assign tasks to every team member
 
 ---
@@ -147,48 +148,50 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Attend relevant Sponsor Talks (13:30–18:30) — especially those aligned with your category
 - Adjust your idea if a sponsor drops useful hints or APIs
 
-> **FOOD**:
+> [!info] Afternoon/evening food & drink
 >
-> - 15:30 Bubble Tea!!
+> - Churros, waffles & candy floss throughout the afternoon
+> - 15:30 Bubble Tea by The Trade Desk!
 > - 19:00 Dinner
+> - 21:00 Bubble tea again! Served with pastel de nata or Krispy Kreme doughnuts
 
 ---
 
 ### 18:30 – 22:00 (Hour 6.5–10): MVP Push
 
-- Aim to have a working MVP
-- Connect frontend ↔ backend
-- Get something demo-able ASAP
+- Aim to have a working 'minimum viable product'
+- Connect your frontend and backend, if applicable
+- Get something demo-able if the above steps work out
 
-> **Fun game to attend and relax**:
+> [!info] Fun games to attend and relax for a bit
 >
-> - 20:00 Scavenger Hunt
+> - 20:00 Scavenger hunt
 > - 21:30 Assassination Game
 
 ---
 
 ### 22:00 – 00:00 (Hour 10–12): Feature Freeze (Mostly)
 
-- Finalise core functionality
+- Finalise the core functionality of your project
 - Avoid adding risky new features
-- Clean up UX and flows
-- Prepare for late-night polish
+- Clean up the user experience and the 'flow' of your application
+- Prepare for a late-night polish...
 
-> **FOOD**:
->
-> - 00:00 Pizza / Midnight Food !!!
+> [!info] PIZZA TIME
+> Midnight pizza by G-Research!
 
 ### 00:00 - 06:00 (Hours 12–18): Refinement & Testing
 
 - Fix bugs and edge cases
-- Improve performance and reliability
-- Write your Devpost description draft
-- Add screenshots / diagrams
+- Improve the performance and reliability, if this is an issue
+- Write your **Devpost** description draft
+- Add screenshots & diagrams
 
-> **Tip:** Try to allocate everyone to have some rest in this period of time as well
-> **Fun events** to join if you aren't taking rest:
+> [!tip]
+> Try to allocate everyone to have some rest in this period of time as well.
+> **Fun events** to join if not...
 >
-> - 01:00 Mario Kart
+> - 01:00 Mario
 > - 02:00 Karaoke
 > - 04:30 Bingo/Clash Royale
 
@@ -196,24 +199,24 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 ### 06:00 - 10:00 (Hours 18–22): Presentation Preparation
 
-- Prepare demo flow
-- Create slides and project description
-- Craft a clear and compelling pitch
+- Prepare the flow of your demo
+- Create slides and finalise your project description
+- Craft a clear and compelling pitch to judges
 
-> **FOOD**:
->
-> - 10:45 Brunch
+> [!info] Breakfast & Brunch
+> 7:00 Breakfast
+> 10:45 Brunch
 
 ---
 
 ### 10:00 - 12:00 (Hours 22–24): Final Sprint & Submission
 
 - Final bug fixes and polish
-- Rehearse demo and pitch
-- Submit on time:
+- Rehearse your demo and pitch
+- **Submit on time**!
   - [Internal website submission](my.ichack.com/team) by 11:00
-  - Devpost by 12:00
+  - IC Hack Devpost by 12:00
 
 ---
 
-Good time management helps your team balance **building**, **polishing**, and **presenting** - all of which are critical to success at IC Hack!
+Good time management helps your team balance **building**, **refining**, and **presenting** - all of which are critical to success at IC Hack!
