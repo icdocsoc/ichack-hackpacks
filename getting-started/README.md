@@ -15,6 +15,7 @@ Welcome to IC Hack! Get ready for **24 hours** of *intense* coding. Every year, 
     - [JavaScript / TypeScript](#javascript--typescript)
   - [Useful terminal commands](#useful-terminal-commands)
   - [Other useful resources](#other-useful-resources)
+    - [GitHub Copilot](#github-copilot)
   - [Recommended HackPacks for further reading](#recommended-hackpacks-for-further-reading)
 
 ## Setting up an IDE
@@ -145,6 +146,18 @@ For Git-specific commands, refer back to our [Git HackPack](../git-&-github/READ
 - [Read the HackPacks](../README.md) that may be relevant to your project!
 - Use our **Discord**. We have *mentors on-call* throughout to help you in `#coach-support`!
 - Make good use of Google, [Stack Overflow](https://stackoverflow.com/) and your favourite LLMs to answer your technical questions if you're unable to reach us.
+
+### GitHub Copilot
+
+Students gain free access to [GitHub Copilot Pro](https://docs.github.com/en/copilot/how-tos/manage-your-account/get-free-access-to-copilot-pro) as part of the [GitHub Student Developer Pack](https://github.com/education/students) - we strongly encourage you to sign up to make use of the increased usage limits and advanced models!
+
+It could take a few days to verify your student status, so we would advise you to sign up before IC Hack in order for it to be approved in time for the weekend. You may find the application instructions [here](https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student). 
+
+Make sure to do the following before applying (else you may get rejected):
+
+- Your GitHub display name matches your student ID name;
+- You have enabled multi-factor authentication on your GitHub account;
+- You have included a billing address on your GitHub account.
 
 ## Recommended HackPacks for further reading
 
