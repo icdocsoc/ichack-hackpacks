@@ -6,6 +6,19 @@ This guide walks you through setting up a local **Django** backend for a simple 
 - **What is Django REST Framework?** DRF is *"a powerful and flexible toolkit for building Web APIs"*. It makes it easy to expose your data (e.g. notes) as JSON over HTTP so that any frontend (mobile app, web UI, etc.) can use it.
 - **Local deployment:** All steps below target running Django on your own machine. We'll use **SQLite** (the default database), which requires no extra installation. No cloud or complex servers are needed.
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Django Backend HackPack](#django-backend-hackpack)
+  - [Table of Contents](#table-of-contents)
+  - [Prerequisites \& Setup](#prerequisites--setup)
+  - [Creating a Django Project and App](#creating-a-django-project-and-app)
+  - [Database Setup (SQLite)](#database-setup-sqlite)
+  - [Building a Simple CRUD API (Notes)](#building-a-simple-crud-api-notes)
+
+<!-- /TOC -->
+
 ## Prerequisites & Setup
 
 1. **Install Python (3.8+).**
@@ -63,7 +76,8 @@ In Django, a **project** is your entire web application, while an **app** is a s
     ```
 
     > ✅ **Checkpoint:** You should now have a folder structure like this:
-    > ```
+    >
+    > ```text
     > myproject/
     > ├── manage.py
     > ├── myproject/
