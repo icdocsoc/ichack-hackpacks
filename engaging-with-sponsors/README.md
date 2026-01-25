@@ -1,6 +1,6 @@
 # Engaging with Sponsors
 
-*This HackPack is heavily adapted from [DurHack's 'Hacking Your Future' HackPack](https://medium.com/@DurHack_press/hacking-your-future-how-to-best-engage-with-sponsors-in-a-hackathon-47423f3959e9). Thank you to Adrienne Lam and the DurHack team for this resource.*
+*This HackPack uses content from [DurHack's 'Hacking Your Future' HackPack](https://medium.com/@DurHack_press/hacking-your-future-how-to-best-engage-with-sponsors-in-a-hackathon-47423f3959e9). Thank you to Adrienne Lam and the DurHack team for this resource.*
 
 ---
 
