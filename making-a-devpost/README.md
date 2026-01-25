@@ -16,6 +16,36 @@ Before even starting a Devpost, make sure you have the following:
 > [!IMPORTANT]
 > A project that ***works a bit*** but is *well-explained* scores higher than a complex project nobody understands.
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Writing a Devpost](#writing-a-devpost)
+  - [Table of Contents](#table-of-contents)
+  - [What is Devpost?](#what-is-devpost)
+  - [Create Your Devpost Project](#create-your-devpost-project)
+  - [Project Name \& Tagline](#project-name--tagline)
+    - [Project Name](#project-name)
+    - [Tagline](#tagline)
+  - [Project Description](#project-description)
+    - [Problem](#problem)
+    - [Solution](#solution)
+  - [How It Works](#how-it-works)
+  - [Challenges](#challenges)
+  - [Learnings \& Accomplishments](#learnings--accomplishments)
+  - [What's Next](#whats-next)
+  - [Demo Video](#demo-video)
+    - [Video Rules](#video-rules)
+    - [Suggested Structure](#suggested-structure)
+  - [Tech Stack](#tech-stack)
+  - [GitHub Repo](#github-repo)
+  - [Common Mistakes](#common-mistakes)
+  - [Judge Mindset](#judge-mindset)
+  - [Past Examples](#past-examples)
+  - [Final Check](#final-check)
+
+<!-- /TOC -->
+
 ## What is Devpost?
 
 [*Devpost*](https://devpost.com/) is the platform used to submit your IC Hack project. When reading through your Devpost, judges tend to:
