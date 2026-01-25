@@ -4,9 +4,9 @@ For your ICHack project, you will almost certainly need to store data. This Hack
 
 We have deep dives into 3 types:
 
- - [Structured (Relational) Databases - PostgreSQL]()
- - [Document Databases - Firestore](document.md)
- - [Graph Databases - [NOT SURE]]()
+- [Structured (Relational) Databases - PostgreSQL]()
+- [Document Databases - Firestore](document.md)
+- [Graph Databases - [NOT SURE]]()
 
 Use the decision tree below to choose your database.
   
@@ -23,11 +23,31 @@ flowchart TD
     D -->|No| F[Use a Document DB]
 ```
 
+## Table of Contents
+<!-- TOC -->
+
+- [Databases](#databases)
+  - [Table of Contents](#table-of-contents)
+  - [A Deeper Dive](#a-deeper-dive)
+    - [Structured/Relational Databases](#structuredrelational-databases)
+      - [Key properties](#key-properties)
+      - [Pros/Cons](#proscons)
+      - [Example use cases](#example-use-cases)
+    - [Document Databases](#document-databases)
+      - [Key properties](#key-properties-1)
+      - [Pros/Cons](#proscons-1)
+      - [Example use cases](#example-use-cases-1)
+    - [Graph Databases](#graph-databases)
+      - [Key Properties](#key-properties-2)
+      - [Pros/Cons](#proscons-2)
+      - [Example use cases](#example-use-cases-2)
+
+<!-- /TOC -->
 ## A Deeper Dive
 
 ### Structured/Relational Databases
 
-Relational databases store data in **tables with fixed schemas**, with rows and columns. Tables have **primary keys** comprising one or several columns, that uniquely identify a row. Relationships between entities are expressed using **foreign keys**: columns whose values must reference an existing **primary key** in another (or same) table. This enforces **referential integrity**, meaning the database prevents references to non-existent rows and keeps related data consistent. 
+Relational databases store data in **tables with fixed schemas**, with rows and columns. Tables have **primary keys** comprising one or several columns, that uniquely identify a row. Relationships between entities are expressed using **foreign keys**: columns whose values must reference an existing **primary key** in another (or same) table. This enforces **referential integrity**, meaning the database prevents references to non-existent rows and keeps related data consistent.
 
 #### Key properties
 
@@ -41,7 +61,7 @@ Relational databases store data in **tables with fixed schemas**, with rows and 
 ✅ Clear, stable data structure \
 ✅ Complex queries and joins supported \
 ✅ Strong consistency and reliability \
-❌ Schema changes require migrations, making rapid schema evolution cumbersome 
+❌ Schema changes require migrations, making rapid schema evolution cumbersome
 
 #### Example use cases
 

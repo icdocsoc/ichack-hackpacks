@@ -8,11 +8,17 @@ To follow along, you'll probably also want to download **Android Studio**, the o
 
 ## Table of Contents
 
+<!-- TOC -->
+
 - [Android Development with Kotlin](#android-development-with-kotlin)
   - [Table of Contents](#table-of-contents)
   - [An IC Hack Greeting App](#an-ic-hack-greeting-app)
     - [Basic Set-up](#basic-set-up)
     - [Running on a physical device](#running-on-a-physical-device)
+      - [Enabling Developer Options](#enabling-developer-options)
+      - [Enabling USB Debugging](#enabling-usb-debugging)
+      - [Connecting to your laptop](#connecting-to-your-laptop)
+      - [Debugging with Logcat](#debugging-with-logcat)
     - [Understanding the generated code](#understanding-the-generated-code)
     - [Composable Functions](#composable-functions)
       - [Examples of composable functions](#examples-of-composable-functions)
@@ -56,6 +62,8 @@ To follow along, you'll probably also want to download **Android Studio**, the o
     - [More on Coroutines](#more-on-coroutines)
     - [Working with Databases](#working-with-databases)
     - [Official Resources](#official-resources)
+
+<!-- /TOC -->
 
 ## An IC Hack Greeting App
 
