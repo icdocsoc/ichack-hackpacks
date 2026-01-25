@@ -1,5 +1,32 @@
 # Vue.js, the progressive JavaScript framework
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Vue.js, the progressive JavaScript framework](#vuejs-the-progressive-javascript-framework)
+  - [Table of Contents](#table-of-contents)
+  - [Overview of Vue.js](#overview-of-vuejs)
+    - [Key concepts](#key-concepts)
+    - [Components](#components)
+  - [Getting Started](#getting-started)
+    - [Devtools and IDE Setup](#devtools-and-ide-setup)
+    - [Building an app](#building-an-app)
+    - [Running your app](#running-your-app)
+    - [Your First Component](#your-first-component)
+      - [Using a component](#using-a-component)
+      - [Reactive state, and using values in HTML](#reactive-state-and-using-values-in-html)
+      - [Vue directives, component methods, and updating values from HTML](#vue-directives-component-methods-and-updating-values-from-html)
+  - [The Todo App: A Whirlwind Tour](#the-todo-app-a-whirlwind-tour)
+    - [Props, events and the task component](#props-events-and-the-task-component)
+    - [The About page](#the-about-page)
+    - [The Home page](#the-home-page)
+    - [The Router](#the-router)
+    - [The App itself](#the-app-itself)
+  - [Other useful resources](#other-useful-resources)
+
+<!-- /TOC -->
+
 ## Overview of Vue.js
 
 Vue.js is a JavaScript framework for building user interfaces and single-page applications. It builds on top of standard web technology — HTML, CSS and JavaScript — to allow incremental adoption, or the ability to add it seamlessly on top of vanilla websites without changing existing code (much). It's best known for its component-based architecture, allowing you to use the existing component style of HTML with what feel like custom elements.
@@ -10,7 +37,6 @@ Vue.js provides two key improvements over 'vanilla' HTML/JS:
 
 - **Reactivity**: Vue.js automatically changes the DOM (the actual document displayed to the user) in response to JavaScript state changes, without having to explicitly dispatch updates.
 - **Declarativeness**: Vue.js allows for declarative rendering and building of components — you can say what you want and brush over the implementation details, letting Vue.js handle the nitty-gritty of webdev.
-
 
 ### Components
 
@@ -29,7 +55,7 @@ TODO
 
 While Vue.js was originally designed around incremental adoption, it's very common to build complete applications in it, which is what we'll be doing here. A number of tools exist to streamline this process — not least the various npm scripts. After you've [installed NodeJS and NPM](/getting-started/README.md#javascript--typescript), running `npm create vue@latest` will create a blank Vue.js app we can use as a template to build upon.  
 
-You'll want to [enable TypeScript](TYPESCRIPT HACKPACK HERE), the *Router* (we'll go into this later!), and optionally *ESLint* and *Prettier*. The name doesn't matter yet as we'll just be looking at the example here before starting from scratch properly (so you can enter anything you like), so keep the example code, since we want to observe the resultant directory structure (you can see the example project for this [here](https://github.com/icdocsoc/ichack-hackpacks/tree/main/frontend-development/vuejs/vue-project):
+You'll want to [enable TypeScript](TYPESCRIPT HACKPACK HERE), the *Router* (we'll go into this later!), and optionally *ESLint* and *Prettier*. The name doesn't matter yet as we'll just be looking at the example here before starting from scratch properly (so you can enter anything you like), so keep the example code, since we want to observe the resultant directory structure (you can see the example project for this [here](https://github.com/icdocsoc/ichack-hackpacks/tree/main/frontend-development/vuejs/vue-project)):
 
 - `public/`: Anything in this directory will be served **statically**. Use this for assets that don't change, like images or icons (here, it contains [the favicon](/vuejs/vue-project/public/favicon.ico)) that you don't want to use directly in your code.
 - `src/assets/`: Much like `public/`, files that aren't intended to change are stored here, but you can import files from here. Use this for static elements that you might need to use within your app directly, like stylesheets. In the example, `src/assets/main.css` is imported within `src/main.ts`
@@ -78,7 +104,7 @@ export default {}
 
 This is already a fair amount of code, so let's break it down line-by-line before we proceed:
 
-- `<script lang="ts">` and `</script>`: in HTML style, this defines an inline portion of code, where we set the language to TypeScript. This can be omitted. Code in here is the "constructor code", and is run once when the component is first loaded. You can use [lifecycle hooks](https://vuejs.org/guide/essentials/lifecycle) to control when specifically code is run over the lifetime of a component. 
+- `<script lang="ts">` and `</script>`: in HTML style, this defines an inline portion of code, where we set the language to TypeScript. This can be omitted. Code in here is the "constructor code", and is run once when the component is first loaded. You can use [lifecycle hooks](https://vuejs.org/guide/essentials/lifecycle) to control when specifically code is run over the lifetime of a component.
 - `export default {}`: Because we're using the *Options API*, we should export an object that defines aspects of our component — here, we simply export an empty object.
 - `<template>` and `</template>`: This section of the file contains the actual HTML(-esque) code that makes up the visual aspect of the template — again, left blank.
 - `<style scoped>` and `</style>`: This section is optional, but allows us to define CSS limited to this component only.
