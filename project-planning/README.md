@@ -66,8 +66,8 @@ Effective time management is crucial to success at IC Hack. Making good use of t
 
 **Hacking Period:**
 
-- 🕛 **Start:** Saturday 31st Jan, 12:00 PM  
-- 🕛 **Deadline:** Sunday 1st Feb, 12:00 PM
+- 🕛 **Start:** Saturday 31st Jan, 12:00 
+- 🕛 **Deadline:** Sunday 1st Feb, 12:00
 
 You can expect to spend around **1–2 hours before hacking starts** to attend the opening ceremony, potentially form your team, and do some initial planning.
 
@@ -76,24 +76,24 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 > **Disclaimer:**
 > Don't feel obligated to follow this too closely! It's just a suggestion to hopefully streamline your hacking process a bit more.
 
-### 9:00 – 11:00: Arrival & Opening Ceremony (Pre-Hack)
+### 08:45 – 11:00: Arrival & Opening Ceremony (Pre-Hack)
 - Arrive, get seated, and attend the opening ceremony
 - Learn about:
-    - Hackathon rules
+    - Hackathon logistics & activities
     - Tracks & categories
-    - Sponsors and prizes
+    - Sponsors attending
 
 ---
 
 ### 11:00 – 12:00: Merch, Food & Team Formation
-- Collect merch from ICME
+- Collect merch from Main Entrance
 - Grab lunch at **12:00**
 - Finalise your team if you haven’t already
 - Start brainstorming ideas casually
 
 ---
 
-### 12:00PM – 2:00PM (Hour 0–2): Problem Selection & Planning
+### 12:00 – 14:00 (Hour 0–2): Problem Selection & Planning
 
 - Finalise your problem statement
 - Decide on your solution approach
@@ -104,7 +104,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 ---
 
-### 2:00PM – 3:00PM (Hour 2-3): Overall Design Layout
+### 14:00 – 15:00 (Hour 2-3): Overall Design Layout
 
 - Design the overall layout for your solution
 - Break down problems into small tasks
@@ -112,7 +112,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 ---
 
-### 3:00 – 6:30 PM (Hour 3–6.5): Core Development (with Sponsor Talks)
+### 15:00 – 18:30 (Hour 3–6.5): Core Development (with Sponsor Talks)
 
 - Start building core features
 - Attend relevant Sponsor Talks (13:30–18:30) — especially those aligned with your category
@@ -124,7 +124,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 ---
 
-### 6:30 – 10:00 PM (Hour 6.5–10): MVP Push
+### 18:30 – 22:00 (Hour 6.5–10): MVP Push
 
 - Aim to have a working MVP
 - Connect frontend ↔ backend
@@ -136,7 +136,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 ---
 
-### 10:00 PM – 00:00 AM (Hour 10–12): Feature Freeze (Mostly)
+### 22:00 – 00:00 (Hour 10–12): Feature Freeze (Mostly)
 
 - Finalise core functionality
 - Avoid adding risky new features
@@ -146,7 +146,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 > **FOOD**:
 > - 00:00 Pizza / Midnight Food !!!
 
-### 00:00AM - 6:00AM (Hours 12–18): Refinement & Testing
+### 00:00 - 06:00 (Hours 12–18): Refinement & Testing
 
 - Fix bugs and edge cases
 - Improve performance and reliability
@@ -155,13 +155,13 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 >**Tip:** Try to allocate everyone to have some rest in this period of time as well
 >**Fun events** to join if you aren't taking rest: 
-> - 1:00 Mario Kart 
-> - 2:00 Karaoke 
-> - 4:30 Bingo/Clash Royale 
+> - 01:00 Mario Kart 
+> - 02:00 Karaoke 
+> - 04:30 Bingo/Clash Royale 
 
 ---
 
-### 6:00AM - 10:00AM (Hours 18–22): Presentation Preparation
+### 06:00 - 10:00 (Hours 18–22): Presentation Preparation
 
 - Prepare demo flow
 - Create slides and project description
@@ -172,12 +172,12 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 
 ---
 
-### 10:00AM - 12:00PM (Hours 22–24): Final Sprint & Submission
+### 10:00 - 12:00 (Hours 22–24): Final Sprint & Submission
 
 - Final bug fixes and polish
 - Rehearse demo and pitch
 - Submit on time:
-    - Internal website submission by 11:00 (my.ichack.com/team)
+    - [Internal website submission](my.ichack.com/team) by 11:00
     - Devpost by 12:00
 
 ---
