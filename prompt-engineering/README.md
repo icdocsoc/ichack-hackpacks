@@ -8,8 +8,8 @@ Prompt engineering is a new and emerging art of crafting instructions to get LLM
 
 ## Copy-paste prompts
 
+### Example for Code Review
 
-### Example for Code Review:
 ````txt
 Review this [LANGUAGE] code for:
 - Bugs and logical errors
@@ -27,6 +27,7 @@ Provide specific line-by-line feedback.
 ````
 
 ### Project planner
+
 ```txt
 You are a startup CTO.
 
@@ -42,7 +43,9 @@ Generate:
 4. First 5 implementation steps
 Keep everything minimal.
 ```
+
 ### Test generation
+
 ```txt
 You are an expert QA engineer and software tester.
 
@@ -58,7 +61,9 @@ Do the following:
 5. Label each test clearly.
 6. If the code has potential bugs or risky behavior, include a failing test case to catch it.
 ```
+
 ### UI generation
+
 ```txt
 You are a senior frontend designer and UX engineer.
 
@@ -72,7 +77,9 @@ Do the following:
 4. Provide a minimal mobile-first layout plan.
 5. Include placeholder content for testing.
 ```
+
 ### Refactor code
+
 ```txt
 You are an expert software engineer.
 
@@ -95,25 +102,31 @@ Return only the improved code.
 Vague prompts get vague results. Include details such as the language, format, length, style and constraints.
 
 ❌ **Weak:**
+
 ```txt
 Write a function to sort data
 ```
 
 ✅ **Strong:**
+
 ```txt
 Write a Python function that takes a list of dictionaries representing users 
 (with 'name', 'age', 'score' fields) and returns them sorted by score in 
 descending order. Include type hints and a docstring.
 ```
+
 ### 2. Provide Context
 
 Give the LLM all the information it needs. This includes relevant code, error messages, requirements and background.
 
 ❌ **Weak:**
+
 ```txt
 Fix this bug
 ```
+
 ✅ **Strong:**
+
 ```txt
 I'm getting a "TypeError: 'NoneType' object is not subscriptable" error on line 45.
 Here's the relevant code:
@@ -130,14 +143,16 @@ Tell the LLM what perspective to take. This helps shape the tone, depth and appr
 
 **Examples:**
 
- - "You are an expert Python developer reviewing code for security vulnerabilities..."
- - "Act as a patient teacher explaining React hooks to a beginner..."
- - "You are a technical documentation writer creating API reference docs..."
+- "You are an expert Python developer reviewing code for security vulnerabilities..."
+- "Act as a patient teacher explaining React hooks to a beginner..."
+- "You are a technical documentation writer creating API reference docs..."
 
 ### 4. Use Examples
+
 Show the model what you want with 1-3 examples. This can be incredibly powerful for formatting and style.
 
 **Example:**
+
 ```txt
 Convert these user inputs into structured JSON:
 
@@ -154,6 +169,7 @@ Output:
 ### 5. Break Down Complex Tasks
 
 ❌ **Weak:**
+
 ```txt
 Build me a complete web scraper that extracts product data, stores it in a database, and generates visualizations
 ```
@@ -177,6 +193,7 @@ Create a visualization function that plots price trends over time
 Be explicit about how you want your response to be structured.
 
 **Examples:**
+
 - "Respond only with valid JSON, no explanation"
 - "Format your response as a numbered list"
 - "Write this as a Git commit message following conventional commits format"
@@ -187,6 +204,7 @@ Be explicit about how you want your response to be structured.
 Use markers to separate different parts of your prompt, especially when including code, error messages or data.
 
 **Example:**
+
 ````txt
 Analyze this code for bugs:
 ```python
@@ -202,10 +220,10 @@ Tell the model explicitly what ***not*** to do or what limits to expect.
 
 **Examples:**
 
- - "Keep your response under 100 words"
- - "Don't use any external libraries beyond the Python standard library"
- - "Avoid using deprecated jQuery methods"
- - "Don't include any placeholder or TODO comments—only working code"
+- "Keep your response under 100 words"
+- "Don't use any external libraries beyond the Python standard library"
+- "Avoid using deprecated jQuery methods"
+- "Don't include any placeholder or TODO comments—only working code"
 
 ### 9. Iterate and Refine
 
@@ -225,18 +243,19 @@ Use Pydantic for the validation instead of manual checks
 
 ## Common Pitfalls to Avoid
 
- - **Being Too Polite** - LLMs don't have feelings, be direct and clear
- - **Assuming Context** - The model may not accurately remember past conversation. This is especially true in API calls. Always provide full context.
- - **Asking Multiple Unrelated Questions** - Stick to one task per prompt.
- - **Ignoring Token Limits** - Very long prompts or requests for large outputs can hit limits and degrade quality. Prefer smaller chunks.
+- **Being Too Polite** - LLMs don't have feelings, be direct and clear
+- **Assuming Context** - The model may not accurately remember past conversation. This is especially true in API calls. Always provide full context.
+- **Asking Multiple Unrelated Questions** - Stick to one task per prompt.
+- **Ignoring Token Limits** - Very long prompts or requests for large outputs can hit limits and degrade quality. Prefer smaller chunks.
 
 ## More Advanced Techniques
 
 ### Chain of Thought
 
-For more complex reasoning tasks, ask the LLM to show its work and thought process. 
+For more complex reasoning tasks, ask the LLM to show its work and thought process.
 
 **Example:**
+
 ```txt
 A store has 15 apples. They sell 40% and then receive a shipment that doubles 
 their remaining stock. How many apples do they have now?
@@ -249,21 +268,23 @@ Solve this step by step, showing your calculation at each stage.
 For important decisions (maybe about the direction of your project), ask the model to consider multiple approaches.
 
 **Example:**
+
 ```txt
 Propose three different architectures for this microservices system, 
 then evaluate the pros and cons of each.
 ```
 
-
 ### Control techniques
 
-AI's often "reinvent" your code 
+AI's often "reinvent" your code
 Use a prompt like this to ensure it stays consistent the whole time:
+
 ```txt
 For the rest of this conversation, do not change variable names, project architecture, or function signatures unless I explicitly say "ARCHITECTURE RESET".
 ```
 
 Use a critique loop to refine the solution.
+
 ```txt
 Step 1: Generate the initial solution for this task:
 <TASK DESCRIPTION>
@@ -276,6 +297,7 @@ Return ONLY the final version, along with a short bullet list of what changed.
 ```
 
 Ensure the output is in one format
+
 ```txt
 Return all output in this exact format:
 <SPECIFY FORMAT: JSON, markdown table, numbered list, etc.>
@@ -283,27 +305,22 @@ Return all output in this exact format:
 Do NOT add explanations or commentary unless asked.
 ```
 
-
-
-
-
-
 ## ICHack-Specific Tips
 
 ### Rapid Prototyping
 
- - Start with "Create a minimal working example of..."
- - Ask for "Quick and dirty" solutions first, optimise later
- - Request boilerplate, LLMs often strip it
+- Start with "Create a minimal working example of..."
+- Ask for "Quick and dirty" solutions first, optimise later
+- Request boilerplate, LLMs often strip it
 
 ### Debugging Under Pressure
 
- - Include the full error traceback
- - Mention the steps you have already tried
- - Ask for multiple potential causes
+- Include the full error traceback
+- Mention the steps you have already tried
+- Ask for multiple potential causes
 
 ### For Learning New Tech Fast
 
- - "Explain [TECHNOLOGY] as if I am familiar with [TECHNOLOGY YOU KNOW]"
- - Tell the LLM about your technical background
- - Request minimal examples: "Show me the simplest way to..."
+- "Explain [TECHNOLOGY] as if I am familiar with [TECHNOLOGY YOU KNOW]"
+- Tell the LLM about your technical background
+- Request minimal examples: "Show me the simplest way to..."
