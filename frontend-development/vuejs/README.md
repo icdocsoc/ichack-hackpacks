@@ -9,7 +9,8 @@ Vue.js is a JavaScript framework for building user interfaces and single-page ap
 Vue.js provides two key improvements over 'vanilla' HTML/JS:
 
 - **Reactivity**: Vue.js automatically changes the DOM (the actual document displayed to the user) in response to JavaScript state changes, without having to explicitly dispatch updates.
-- **Declarativeness**: Vue.js allows for declarative rendering and building of components — the say-what-you-want style, as opposed to the say-how-to-make-it.
+- **Declarativeness**: Vue.js allows for declarative rendering and building of components — you can say what you want and brush over the implementation details, letting Vue.js handle the nitty-gritty of webdev.
+
 
 ### Components
 
@@ -17,10 +18,6 @@ Vue.js talks about "components" a lot — they're simply reusable pieces of an a
 
 > [!IMPORTANT]
 > Vue.js has two different APIs for defining custom components — *Options* and *Composition*. This guide uses Options, since it's generally considered more beginner friendly — the Composition API will still be mentioned throughout the guide.
-
-#### Lifecycle hooks
-
-Vue.js also uses **lifecycle hooks** to manage component creation and destruction. These can be hooked into to run constructor code when your component needs to. There's a lot of them (eight in total) but it's worth being aware of their existence. Running code that depends on child components will need to be delegated to one of these, since the parent component is initialised before any child is.
 
 ## Getting Started
 
@@ -32,7 +29,7 @@ TODO
 
 While Vue.js was originally designed around incremental adoption, it's very common to build complete applications in it, which is what we'll be doing here. A number of tools exist to streamline this process — not least the various npm scripts. After you've [installed NodeJS and NPM](/getting-started/README.md#javascript--typescript), running `npm create vue@latest` will create a blank Vue.js app we can use as a template to build upon.  
 
-You'll want to [enable TypeScript](TYPESCRIPT HACKPACK HERE), the *Router* (we'll go into this later!), and optionally *ESLint* and *Prettier*. The name doesn't matter yet as we'll just be looking at the example here before starting from scratch properly, so keep the example code, since we want to observe the resultant directory structure:
+You'll want to [enable TypeScript](TYPESCRIPT HACKPACK HERE), the *Router* (we'll go into this later!), and optionally *ESLint* and *Prettier*. The name doesn't matter yet as we'll just be looking at the example here before starting from scratch properly (so you can enter anything you like), so keep the example code, since we want to observe the resultant directory structure (you can see the example project for this [here](https://github.com/icdocsoc/ichack-hackpacks/tree/main/frontend-development/vuejs/vue-project):
 
 - `public/`: Anything in this directory will be served **statically**. Use this for assets that don't change, like images or icons (here, it contains [the favicon](/vuejs/vue-project/public/favicon.ico)) that you don't want to use directly in your code.
 - `src/assets/`: Much like `public/`, files that aren't intended to change are stored here, but you can import files from here. Use this for static elements that you might need to use within your app directly, like stylesheets. In the example, `src/assets/main.css` is imported within `src/main.ts`
@@ -81,7 +78,7 @@ export default {}
 
 This is already a fair amount of code, so let's break it down line-by-line before we proceed:
 
-- `<script lang="ts">` and `</script>`: in HTML style, this defines an inline portion of code, where we set the language to TypeScript. This can be omitted.
+- `<script lang="ts">` and `</script>`: in HTML style, this defines an inline portion of code, where we set the language to TypeScript. This can be omitted. Code in here is the "constructor code", and is run once when the component is first loaded. You can use [lifecycle hooks](https://vuejs.org/guide/essentials/lifecycle) to control when specifically code is run over the lifetime of a component. 
 - `export default {}`: Because we're using the *Options API*, we should export an object that defines aspects of our component — here, we simply export an empty object.
 - `<template>` and `</template>`: This section of the file contains the actual HTML(-esque) code that makes up the visual aspect of the template — again, left blank.
 - `<style scoped>` and `</style>`: This section is optional, but allows us to define CSS limited to this component only.
@@ -100,13 +97,13 @@ Now that we know what's going on, let's proceed. Let's **add a button** that we 
 
 Now that we have a component, we need to use it somewhere. Within `App.vue`, we can reference the component by name - insert a `<Counter />` (or `<Counter></Counter>`, they're equivalent) tag somewhere within the `<template>` section. Vue won't know what we're talking about currently, and won't actually display any button - we need to first import the `Counter` component.
 
-Inside the `<script>`, import it as such:
+Inside the `<script>` (in App.vue), import it as such:
 
 ```typescript
 import Counter from './components/Counter.vue';
 ```
 
-We should also tell Vue that we're using the Counter component in our App component. Via the Options API, we export it as part of the exported object (note the script is not marked setup!):
+We should also tell Vue that we're using the Counter component in our App component (still in App.vue). Via the Options API, we export it as part of the exported object (note the script is not marked setup!):
 
 ```vue
 <script lang="ts">
@@ -125,7 +122,7 @@ When you revisit your rendered website, you should find (wherever you put the co
 
 #### Reactive state, and using values in HTML
 
-It's now time to use one of the underpinning features of Vue.js — *reactivity*. In order to define some sort of state for our component that can be used from the HTML, we need to add to the exported object. Specifically, we define a `data()` function which returns the reactive state of our object:
+It's now time to use one of the underpinning features of Vue.js — *reactivity*. In order to define some sort of state for our component that can be used from the HTML, we need to add to the exported object. Specifically, we define a `data()` function (within the exported object, in Counter.vue) which returns the reactive state of our object:
 
 ```typescript
 export default {
@@ -139,7 +136,7 @@ export default {
 
 The object returned from `data()` is merged with the component, so we can now access `this.count`. Importantly, updating this from the code-side will dynamically update any DOM elements that use the data.
 
-Vue's reactive state uses reactive proxies under-the-hood. The only important thing to keep in mind is non-reactive things do not become reactive when copied. In the following case:
+Vue's reactive state uses something called reactive proxies under-the-hood. The specific implementation details aren't too important here, but can be found [on the Vue.js docs](https://vuejs.org/guide/extras/reactivity-in-depth). The only important thing to keep in mind is non-reactive things (things that don't update when things they depend on do) do not become reactive when copied. In the following case:
 
 ```typescript
 export default {
@@ -156,7 +153,7 @@ this.someData = newObject
 
 `newObject` does not become reactive, and while updating `newObject` will update `someData`, it won't trigger components that depend upon `someData` to re-compute their state. Always use `this` to update reactive state.
 
-To have a DOM element that does this, we can use template syntax - Vue.js uses a Handlebars style. Writing double-braces in the HTML results in the contained TypeScript code being executed, and the result spliced into the DOM where the braces were.
+To have a DOM element that does this, we can use template syntax (a way of writing "template HTML" such that it's used to generate real HTML) - Vue.js uses a Handlebars style. Writing double-braces in the HTML results in the contained TypeScript code being executed, and the result spliced into the DOM where the braces were.
 
 To achieve this, change the text in the `<button>` to something like `Count is: {{ count }}`, and you should see the button's text become `Count is: 0`.
 
@@ -172,10 +169,6 @@ Vue directives are HTML attributes used by Vue. There are [very, very many of th
 Directives like this can take multiple values — inline TypeScript is often the simplest option (`v-on:click="count++"`) Adding this, you should see the value on your button update when you click it.
 
 You can also call TypeScript methods within the `<template>` block, but only specific ones. Exporting or defining methods within the `methods` block of the exported object allows this — we'll see more of this later.
-
-#### Lifecycle hooks and raw HTML
-
-This section is more of an explainer
 
 Congratulations! You've successfully made your first component in Vue.js. We'll now try and make something a bit more complex and involved using similar principles — a full app (albeit still a very simple one).
 
@@ -225,7 +218,7 @@ The other new thing here are Events. Events already exist in HTML (see the `clic
 > [!WARNING]
 > `v-on` will only catch custom events in a custom component, not a regular HTML element.
 
-We can emit events using `this.$emit(event_name, event_data)`. The `event_data` parameter is optional. In the `<template>` body, you can use just `$emit(...)` since `this` is implied there.
+We can emit events (cause one to happen and be subsequently processed, probably somewhere else) using `this.$emit(event_name, event_data)`. The `event_data` parameter is optional. In the `<template>` body, you can use just `$emit(...)` since `this` is implied there.
 
 We'd then catch this using `... v-on:event_name = "some_function_using($event)" ...` where `$event` is a built-in variable within `v-on` clauses that is the event data, if provided. Most native events have data; see [the MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Event) for details.
 
@@ -368,7 +361,7 @@ Since we've specified the components as lambdas that return the components neede
 </template>
 ```
 
-Again, there's not much new here, just Router components. Using `<RouterView to...>` instead of `<a href...>` enables the router to switch components fluidly, enabling the SPA feel and preventing page loads.
+Again, there's not much new here, just Router components. Using `<RouterView to...>` instead of `<a href...>` enables the router to switch components fluidly, enabling the SPA feel (single-page application) and preventing janky page loads in the browser itself, which is the hallmark of non-SPA apps.
 
 `<RouterView />` is where the router outputs the current view, as defined by the current URL. Since it's in a component, we can move it around as we like — here we've defined a navbar first, then the page beneath.
 
