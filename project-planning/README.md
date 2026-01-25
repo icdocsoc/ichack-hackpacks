@@ -2,6 +2,33 @@
 
 In this guide, you will find information on how to form a team and manage your time at IC Hack successfully.
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Project Planning](#project-planning)
+  - [Table of Contents](#table-of-contents)
+  - [How to form a team](#how-to-form-a-team)
+    - [`#looking-for-team`](#looking-for-team)
+  - [Tips to form an effective team](#tips-to-form-an-effective-team)
+    - [What kind of product do you want to build?](#what-kind-of-product-do-you-want-to-build)
+    - [Common Skills](#common-skills)
+  - [Work allocation](#work-allocation)
+  - [Time management](#time-management)
+  - [Suggested Hackathon Timeline](#suggested-hackathon-timeline)
+    - [08:45 – 11:00: Arrival \& Opening Ceremony (Pre-Hack)](#0845--1100-arrival--opening-ceremony-pre-hack)
+    - [11:00 – 12:00: Merch, Food \& Team Formation](#1100--1200-merch-food--team-formation)
+    - [12:00 – 14:00 (Hour 0–2): Problem Selection \& Planning](#1200--1400-hour-02-problem-selection--planning)
+    - [14:00 – 15:00 (Hour 2-3): Overall Design Layout](#1400--1500-hour-2-3-overall-design-layout)
+    - [15:00 – 18:30 (Hour 3–6.5): Core Development (with Sponsor Talks)](#1500--1830-hour-365-core-development-with-sponsor-talks)
+    - [18:30 – 22:00 (Hour 6.5–10): MVP Push](#1830--2200-hour-6510-mvp-push)
+    - [22:00 – 00:00 (Hour 10–12): Feature Freeze (Mostly)](#2200--0000-hour-1012-feature-freeze-mostly)
+    - [00:00 - 06:00 (Hours 12–18): Refinement \& Testing](#0000---0600-hours-1218-refinement--testing)
+    - [06:00 - 10:00 (Hours 18–22): Presentation Preparation](#0600---1000-hours-1822-presentation-preparation)
+    - [10:00 - 12:00 (Hours 22–24): Final Sprint \& Submission](#1000---1200-hours-2224-final-sprint--submission)
+
+<!-- /TOC -->
+
 ## How to form a team
 
 Each team can have up to **6 members**. We strongly suggest finding a team well before IC Hack. Couldn't find a team or don't know where to do so? We have a team-building channel in **Discord** that you can use!
