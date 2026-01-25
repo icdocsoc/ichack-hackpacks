@@ -324,3 +324,29 @@ Do NOT add explanations or commentary unless asked.
 - "Explain [TECHNOLOGY] as if I am familiar with [TECHNOLOGY YOU KNOW]"
 - Tell the LLM about your technical background
 - Request minimal examples: "Show me the simplest way to..."
+
+## IDE Extensions
+
+Tired of `Alt + Tab`bing? You can now do all your LLM-powered work from right within your IDE!
+
+This quick guide will focus on VSCode, but setup is quite similar for JetBrains' products (IntelliJ, PyCharm, etc.).
+
+There are many extensions from all your popular LLM providers:
+
+- Claude Code for VS Code
+- Codex - OpenAI
+- GitHub Copilot Chat
+- Gemini Code Assist
+- BlackBox AI
+
+Of the above, the only *free* options are `GitHub Copilot Chat` (with expanded quotas if you have redeemed your free Education Pack...), `BlackBox AI` and ***MAYBE*** Gemini.
+
+The others all require the respective premium memberships for that provider.
+
+We will therefore be talking only about those free LLM extensions.
+
+To install any of these extensions, simply click the `Extensions` button on the left hand side to open the extensions panel. Then search for your LLM extension of choice from the list above.
+
+![Screenshot showing extension button to open the pane, and the search field to search for an extension](./assets/search-extensions.png)
+
+Once you have found your extension of choice, install it by pressing the `install` button, pressing `restart extensions` if prompted.
