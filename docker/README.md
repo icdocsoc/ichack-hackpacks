@@ -6,6 +6,23 @@ Simply put, while developers typically distribute just the **source code** (typi
 
 **Docker** is one of the most popular tools for managing both running containers; and images. It's incredibly useful in a hackathon – the ability to simply get something that works on one machine to work just as well on another is invaluable, and you can also rely on existing container images for various parts of a project.
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Docker \& Containerisation](#docker--containerisation)
+  - [Table of Contents](#table-of-contents)
+  - [Getting started](#getting-started)
+  - [Running an image](#running-an-image)
+    - [Configuring your image](#configuring-your-image)
+    - [Networking](#networking)
+    - [Other useful commands](#other-useful-commands)
+    - [Compose](#compose)
+    - [Dockerfiles \& Building](#dockerfiles--building)
+    - [Publishing to Docker Hub](#publishing-to-docker-hub)
+
+<!-- /TOC -->
+
 ## Getting started
 
 Installing Docker varies by OS.
