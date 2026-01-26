@@ -71,7 +71,7 @@ A well-rounded team often includes a mix of people with the following skills:
 
 Always remember not every team needs all of these roles filled, but you should still seek the skills most needed for your project! Also, if you've already formed a team and are missing some of these skills, don't worry! That's what the other HackPacks are for.
 
-> **Top Tip:**
+> [!tip]
 > It is important to have someone in your group who understands **UI/UX design and frontend development** as this is how judges *see* your idea working, not just hear about it. A good UI also makes demos smoother and pitch preparation much easier.
 
 ## Work allocation
@@ -84,7 +84,7 @@ While working flexibly between different components of your project is important
 - **Designers** handle UI/UX design, visuals, and graphics for your final pitch such as slides and animations.
 - **Product/presentation leads** focus on developing your documentation, demo, and final pitch.
 
-> **Top Tip:**  
+> [!tip] 
 > Assign at least two team members to focus on the **presentation, demo, and Devpost documentation/submission** in the last few hours of hacking. It can be easy to get wrapped up in your project after that much time spent coding, but planning ahead to ensure you're able to clearly explain your project and present well can make a massive difference.
 
 ## Time management
