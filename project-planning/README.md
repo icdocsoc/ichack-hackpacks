@@ -148,11 +148,8 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Attend relevant Sponsor Talks (13:30–18:30) — especially those aligned with your category
 - Adjust your idea if a sponsor drops useful hints or APIs
 
-> [!tip] Saturday afternoon and evening are also the best time for food & drink at IC Hack! You can expect...
-> Churros, waffles & candy floss throughout the afternoon,
-> 15:30 Bubble Tea by The Trade Desk!
-> 19:00 Dinner,
-> 21:00 Bubble tea again! Served with pastel de nata or Krispy Kreme doughnuts
+> [!tip]
+> Saturday afternoon and evening are also the best time for food & drink at IC Hack! You can expect... churros, waffles & candy floss throughout the afternoon, Bubble Tea (!!) by The Trade Desk at 15:30, dinner at 19:00, and bubble tea again (this time served with pastel de nata or doughnuts!!) at 21:00.
 
 ---
 
@@ -162,7 +159,8 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Connect your frontend and backend, if applicable
 - Get something demo-able if the above steps work out
 
-> [!info] Try the Treasure Hunt @ 20:00 or the Assassination Game at 21:30 if you're looking to take a break and relax for a bit.
+> [!info]
+> Try the Treasure Hunt @ 20:00 or the Assassination Game at 21:30 if you're looking to take a break and relax for a bit.
 
 ---
 
@@ -173,7 +171,8 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Clean up the user experience and the 'flow' of your application
 - Prepare for a late-night polish...
 
-> [!info] Midnight pizza by G-Research will be served at (you guessed it) midnight!
+> [!info]
+> Midnight pizza by G-Research will be served at (you guessed it) midnight!
 
 ### 00:00 - 06:00 (Hours 12–18): Refinement & Testing
 
@@ -194,7 +193,8 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Create slides and finalise your project description
 - Craft a clear and compelling pitch to judges
 
-> [!info] Make sure to grab some food from breakfast (7:00) and brunch (10:45).
+> [!info]
+> Make sure to grab some food from breakfast (7:00) and brunch (10:45).
 
 ---
 
