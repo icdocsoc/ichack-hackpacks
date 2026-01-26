@@ -49,6 +49,7 @@ It may be a good idea to first familiarise yourself with databases, since a lot 
   - [Common Failures](#common-failures)
   - [Cheatsheet](#cheatsheet)
 - [Making Requests](#making-requests)
+  - [JavaScript/TypeScript](#javascripttypescript)
 - [Secrets](#secrets)
   - [Python](#python)
   - [Vite](#vite)
@@ -531,7 +532,71 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 
 Since all backends are HTTP requests, there is a unified way to create a request from a frontend.
 
+Below are the links to the guides on how to call our API functions, from the respective frontend HackPacks.
 
+## JavaScript/TypeScript
+
+```ts
+const res = await fetch(url, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+```
+
+The above code demonstrates how to create and send a request in `JS` and `TS`. Note that all the extra arguments like `method`, `headers`, `body` are optional. Below are the defaults.
+
+| Option      | Default                    |
+| ----------- | -------------------------- |
+| method      | `"GET"`                    |
+| headers     | `{}`                       |
+| body        | `null`                     |
+
+>[!IMPORTANT]
+> Since HTTP requests use the network and are waiting for a response, they are **asynchronous**. This requires the `async` keyword and requires the function calling them to be `async` as well.
+
+Of course there may be errors with the request, so your frontend will need to adequately handle this. An example is shown below for simple error throwing.
+
+```ts
+if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`HTTP ${res.status}: ${errText}`);
+}
+```
+
+You can unpack the response data with
+
+```ts
+const data = await res.json();
+```
+
+The only error that can occur with the request itself is a network error. This should be handled by wrapping the request in a `try ... catch ...` block, like below
+
+```ts
+export async function createPost(text: string) {
+  try {
+    const res = await fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`HTTP ${res.status}: ${errText}`);
+    }
+    return res.json();
+  } catch (err) {
+    throw new Error("Network Error");
+  }
+}
+```
+
+The above demonstrates a full HTTP request with full error handling.
+
+You can use this as a function in your React or Vue app.
+
+[**Android**](../android-development/README.md#connecting-to-a-backend-api)
 
 # Secrets
 
