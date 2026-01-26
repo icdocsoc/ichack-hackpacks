@@ -50,6 +50,7 @@ It may be a good idea to first familiarise yourself with databases, since a lot 
   - [Cheatsheet](#cheatsheet)
 - [Making Requests](#making-requests)
   - [JavaScript/TypeScript](#javascripttypescript)
+  - [Idiomatic Methods](#idiomatic-methods)
 - [Secrets](#secrets)
   - [Python](#python)
   - [Vite](#vite)
@@ -596,7 +597,11 @@ The above demonstrates a full HTTP request with full error handling.
 
 You can use this as a function in your React or Vue app.
 
+## Idiomatic Methods
+
 Check out the Vue HackPack- [at the end](../frontend-development/vuejs/README.md#other-useful-resources) there are several useful links showing more idiomatic ways to call our backend.
+
+For React, there are some other idiomatic ways to call functions using libraries. [Check out the React HackPack](../frontend-development/react-example-tutorial/README.md#fastapi-default-path-frontend-serving) to see how to call FastAPI easier with a library!
 
 [**Android**](../android-development/README.md#connecting-to-a-backend-api)
 
