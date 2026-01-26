@@ -159,7 +159,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Connect your frontend and backend, if applicable
 - Get something demo-able if the above steps work out
 
-> [!info]
+> [!note]
 > Try the Treasure Hunt @ 20:00 or the Assassination Game at 21:30 if you're looking to take a break and relax for a bit.
 
 ---
@@ -171,7 +171,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Clean up the user experience and the 'flow' of your application
 - Prepare for a late-night polish...
 
-> [!info]
+> [!note]
 > Midnight pizza by G-Research will be served at (you guessed it) midnight!
 
 ### 00:00 - 06:00 (Hours 12–18): Refinement & Testing
@@ -193,7 +193,7 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 - Create slides and finalise your project description
 - Craft a clear and compelling pitch to judges
 
-> [!info]
+> [!note]
 > Make sure to grab some food from breakfast (7:00) and brunch (10:45).
 
 ---
