@@ -596,6 +596,8 @@ The above demonstrates a full HTTP request with full error handling.
 
 You can use this as a function in your React or Vue app.
 
+Check out the Vue HackPack- [at the end](../frontend-development/vuejs/README.md#other-useful-resources) there are several useful links showing more idiomatic ways to call our backend.
+
 [**Android**](../android-development/README.md#connecting-to-a-backend-api)
 
 # Secrets
