@@ -2,6 +2,33 @@
 
 In this guide, you will find information on how to form a team and manage your time at IC Hack successfully.
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Project Planning](#project-planning)
+  - [Table of Contents](#table-of-contents)
+  - [How to form a team](#how-to-form-a-team)
+    - [`#looking-for-team`](#looking-for-team)
+  - [Tips to form an effective team](#tips-to-form-an-effective-team)
+    - [What kind of product do you want to build?](#what-kind-of-product-do-you-want-to-build)
+    - [Common Skills](#common-skills)
+  - [Work allocation](#work-allocation)
+  - [Time management](#time-management)
+  - [Suggested Hackathon Timeline](#suggested-hackathon-timeline)
+    - [08:45 – 11:00: Arrival \& Opening Ceremony (Pre-Hack)](#0845--1100-arrival--opening-ceremony-pre-hack)
+    - [11:00 – 12:00: Merch, Food \& Team Formation](#1100--1200-merch-food--team-formation)
+    - [12:00 – 14:00 (Hour 0–2): Problem Selection \& Planning](#1200--1400-hour-02-problem-selection--planning)
+    - [14:00 – 15:00 (Hour 2-3): Overall Design Layout](#1400--1500-hour-2-3-overall-design-layout)
+    - [15:00 – 18:30 (Hour 3–6.5): Core Development (with Sponsor Talks)](#1500--1830-hour-365-core-development-with-sponsor-talks)
+    - [18:30 – 22:00 (Hour 6.5–10): MVP Push](#1830--2200-hour-6510-mvp-push)
+    - [22:00 – 00:00 (Hour 10–12): Feature Freeze (Mostly)](#2200--0000-hour-1012-feature-freeze-mostly)
+    - [00:00 - 06:00 (Hours 12–18): Refinement \& Testing](#0000---0600-hours-1218-refinement--testing)
+    - [06:00 - 10:00 (Hours 18–22): Presentation Preparation](#0600---1000-hours-1822-presentation-preparation)
+    - [10:00 - 12:00 (Hours 22–24): Final Sprint \& Submission](#1000---1200-hours-2224-final-sprint--submission)
+
+<!-- /TOC -->
+
 ## How to form a team
 
 Each team can have up to **6 members**. We strongly suggest finding a team well before IC Hack. Couldn't find a team or don't know where to do so? We have a team-building channel in **Discord** that you can use!
@@ -44,7 +71,7 @@ A well-rounded team often includes a mix of people with the following skills:
 
 Always remember not every team needs all of these roles filled, but you should still seek the skills most needed for your project! Also, if you've already formed a team and are missing some of these skills, don't worry! That's what the other HackPacks are for.
 
-> **Top Tip:**
+> [!tip]
 > It is important to have someone in your group who understands **UI/UX design and frontend development** as this is how judges *see* your idea working, not just hear about it. A good UI also makes demos smoother and pitch preparation much easier.
 
 ## Work allocation
@@ -57,8 +84,8 @@ While working flexibly between different components of your project is important
 - **Designers** handle UI/UX design, visuals, and graphics for your final pitch such as slides and animations.
 - **Product/presentation leads** focus on developing your documentation, demo, and final pitch.
 
-> **Top Tip:**  
-> Assign at least two team members to focus on the **presentation, demo, and DevPost documentation/submission** in the last few hours of hacking. It can be easy to get wrapped up in your project after that much time spent coding, but planning ahead to ensure you're able to clearly explain your project and present well can make a massive difference.
+> [!tip] 
+> Assign at least two team members to focus on the **presentation, demo, and Devpost documentation/submission** in the last few hours of hacking. It can be easy to get wrapped up in your project after that much time spent coding, but planning ahead to ensure you're able to clearly explain your project and present well can make a massive difference.
 
 ## Time management
 
@@ -66,8 +93,8 @@ Effective time management is crucial to success at IC Hack. Making good use of t
 
 **Hacking Period:**
 
-- 🕛 **Start:** Saturday 31st Jan, 12:00 PM  
-- 🕛 **Deadline:** Sunday 1st Feb, 12:00 PM
+- 🕛 **Start:** Saturday 31st Jan, 12:00
+- 🕛 **Deadline:** Sunday 1st Feb, 12:00
 
 You can expect to spend around **1–2 hours before hacking starts** to attend the opening ceremony, potentially form your team, and do some initial planning.
 
@@ -76,55 +103,109 @@ You can expect to spend around **1–2 hours before hacking starts** to attend t
 > **Disclaimer:**
 > Don't feel obligated to follow this too closely! It's just a suggestion to hopefully streamline your hacking process a bit more.
 
-### 12:00PM – 2:00PM (Hour 0–2): Problem Selection & Planning
+### 08:45 – 11:00: Arrival & Opening Ceremony (Pre-Hack)
 
-- Finalise your problem statement
-- Decide on your solution approach
-- Assign roles and responsibilities
-- and enjoy your lunch!
+- Arrive, get seated, and attend the **opening ceremony** at the Royal Geographical Society
+- Learn about:
+  - Hackathon logistics & activities
+  - Tracks & categories
+  - Sponsors attending
 
 ---
 
-### 2:00PM – 3:00PM (Hour 2-3): Overall Design Layout
+### 11:00 – 12:00: Merch, Food & Team Formation
+
+- Collect merch from the Imperial College Main Entrance
+- Grab lunch at **12:00**
+- Finalise your team if you haven’t already
+- Start brainstorming ideas casually
+
+---
+
+### 12:00 – 14:00 (Hour 0–2): Problem Selection & Planning
+
+- Finalise the problem you're working on
+- Decide what solution you'll build to counter it
+- Assign roles and responsibilities
+- and enjoy your lunch!
+
+> [!tip]
+> Sponsor talks later may reveal “category secrets”, so keep your idea flexible early on.
+
+---
+
+### 14:00 – 15:00 (Hour 2-3): Overall Design Layout
 
 - Design the overall layout for your solution
-- Break down problems into small tasks
+- Break down problems into smaller tasks
 - Assign tasks to every team member
 
 ---
 
-### 3:00PM - 12:00AM (Hours 3–12): Core Development
+### 15:00 – 18:30 (Hour 3–6.5): Core Development (with Sponsor Talks)
 
-- Implement core features
-- Set up frontend, backend, and infrastructure
-- Focus on getting a working MVP
+- Start building core features
+- Attend relevant Sponsor Talks (13:30–18:30) — especially those aligned with your category
+- Adjust your idea if a sponsor drops useful hints or APIs
 
->**Tip:** Track progress against milestones and adjust scope if needed.
+> [!tip]
+> Saturday afternoon and evening are also the best time for food & drink at IC Hack! You can expect... churros, waffles & candy floss throughout the afternoon, Bubble Tea (!!) by The Trade Desk at 15:30, dinner at 19:00, and bubble tea again (this time served with pastel de nata or doughnuts!!) at 21:00.
 
-### 12:00AM - 6:00AM (Hours 12–18): Refinement & Testing
+---
 
-- Polish key features
+### 18:30 – 22:00 (Hour 6.5–10): MVP Push
+
+- Aim to have a working 'minimum viable product'
+- Connect your frontend and backend, if applicable
+- Get something demo-able if the above steps work out
+
+> [!note]
+> Try the Treasure Hunt @ 20:00 or the Assassination Game at 21:30 if you're looking to take a break and relax for a bit.
+
+---
+
+### 22:00 – 00:00 (Hour 10–12): Feature Freeze (Mostly)
+
+- Finalise the core functionality of your project
+- Avoid adding risky new features
+- Clean up the user experience and the 'flow' of your application
+- Prepare for a late-night polish...
+
+> [!note]
+> Midnight pizza by G-Research will be served at (you guessed it) midnight!
+
+### 00:00 - 06:00 (Hours 12–18): Refinement & Testing
+
 - Fix bugs and edge cases
-- Ensure the demo flow works smoothly
+- Improve the performance and reliability, if this is an issue
+- Write your **Devpost** description draft
+- Add screenshots & diagrams
 
->**Tip:** Try to allocate everyone to have some rest in this period of time as well
-
----
-
-### 6:00AM - 10:00AM (Hours 18–22): Presentation Preparation
-
-- Prepare demo flow
-- Create slides and project description
-- Craft a clear and compelling pitch
+> [!tip]
+> Try to allocate everyone to have some rest in this period of time as well.
+> If not, you could join any of our three **fun events**: Mario Kart at 1:00, karaoke at 2:00, and Clash Royale at 4:30.
 
 ---
 
-### 10:00AM - 12:00PM (Hours 22–24): Final Sprint & Submission
+### 06:00 - 10:00 (Hours 18–22): Presentation Preparation
+
+- Prepare the flow of your demo
+- Create slides and finalise your project description
+- Craft a clear and compelling pitch to judges
+
+> [!note]
+> Make sure to grab some food from breakfast (7:00) and brunch (10:45).
+
+---
+
+### 10:00 - 12:00 (Hours 22–24): Final Sprint & Submission
 
 - Final bug fixes and polish
-- Rehearse demo and pitch
-- Submit on time
+- Rehearse your demo and pitch
+- **Submit on time**!
+  - [Internal website submission](my.ichack.com/team) by 11:00
+  - IC Hack Devpost by 12:00
 
 ---
 
-Good time management helps your team balance **building**, **polishing**, and **presenting** - all of which are critical to success at IC Hack!
+Good time management helps your team balance **building**, **refining**, and **presenting** - all of which are critical to success at IC Hack!

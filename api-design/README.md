@@ -411,7 +411,7 @@ We use JSON as the format for passing data between the client and the backend.
 
 Example response:
 
-```JS
+```js
 {
     "id": "123",
     "authorId": "abc",
@@ -454,7 +454,7 @@ Errors should be:
 
 Example:
 
-```JS
+```js
 {
     "error": "permission_denied",
     "message": "You cannot delete this post"
@@ -606,7 +606,7 @@ Unless you are using Firebase (which has its own user authentication and deploym
 
 You do ***not*** want to be publishing them on a public platform. The best way to handle this is to create a local `.env` file in the root of your backend.
 
-Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Click here for more information about Git and `.gitignore`](../git-&-github/README.md#gitignore)
+Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Click here for more information about Git and `.gitignore`](../git-and-github/README.md#gitignore)
 
 Your `.env` file may look something like this
 
@@ -654,7 +654,7 @@ VITE_SECRET_KEY=supersecret
 
 Unlike Python, you do not need to import or install any modules. Simply use
 
-```JS
+```js
 const host = import.meta.env.VITE_DB_HOST;
 ```
 
