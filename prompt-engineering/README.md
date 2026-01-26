@@ -339,7 +339,11 @@ There are many extensions from all your popular LLM providers:
 - Gemini Code Assist
 - BlackBox AI
 
-Of the above, the only *free* options are `GitHub Copilot Chat` (with expanded quotas if you have redeemed your free Education Pack...), `BlackBox AI` and ***MAYBE*** Gemini.
+Of the above, the only *free* options are `GitHub Copilot Chat` (with expanded quotas if you have redeemed your free Education Pack...), `BlackBox AI` and Gemini.
+
+>[!WARNING]
+> Only install one of these...
+> Performance tanks quickly once you install more than one.
 
 The others all require the respective premium memberships for that provider.
 
@@ -350,3 +354,55 @@ To install any of these extensions, simply click the `Extensions` button on the 
 ![Screenshot showing extension button to open the pane, and the search field to search for an extension](./assets/search-extensions.png)
 
 Once you have found your extension of choice, install it by pressing the `install` button, pressing `restart extensions` if prompted.
+
+Once installed, the extensions will appear in your editor.
+
+![Screenshot showing the buttons to open the various extensions](./assets/open-extensions.png)
+
+In the above screenshot, BlackBox AI is the lightning bolt on the left hand side. Gemini is teh Gemini logo just below the lightning bolt, and Copilot Chat is the chat logo on the top row.
+
+>[!TIP]
+> At this point, it is a good idea to restart VSCode to ensure the extensions can fully install
+
+With Gemini, you will be asked to sign in when you open the pane. If you activated your Developer Pack, you should also sign in with GitHub Copilot. Both authentication requests will open a window in your browser where you can sign in.
+
+You may notice that you have 3 more icons in the bottom right.
+
+![Screenshot showing the settings for our LLM extensions](./assets/manage-extensions.png)
+
+These are GitHub Copilot, BlackBox AI and Gemini, from left to right.
+
+For GitHub Copilot and Gemini, they feature AI code completion. The settings for this can be managed by clicking on their respective icons there.
+
+>[!IMPORTANT]
+> Even with the Student Developer Pack, GitHub Copilot still has quotas. There is a moderate chance you will reach those within the time span of ICHack. Don't worry, you will not be charged, it will just stop working!
+
+### Using LLM Extensions
+
+As mentioned above, you can click on the logos of the respective LLMs to open their chat panes.
+
+Since you are in an IDE, these LLMs are configured to already know the background context that you are a software engineer, and that you want some code-related task doing.
+
+To add context, you don't need to copy-paste swathes of code anymore either. For Gemini and Copilot, simply right-click on any file or directory in your current VSCode folder to add it as context.
+
+Use
+`Add File[/Folder] to Chat` for Copilot and `Add file[/folder] to Gemini context` for Gemini.
+
+For BlackBox, press the `+` button below the chat input box to add context. You may notice that you can also add `Problems`. Simply copy-paste your problem (normally a stack trace) after the `@problems`.
+
+All these AI tools have `agent` modes. These will complete actions for you (asking consent to actually apply the changes).
+
+Aside from the above exceptions, all other prompt generation recommendations [found here](#core-principles) apply.
+
+>[!TIP]
+> Always review the changes carefully! LLMs aren't perfect.
+
+### More information
+
+Here are some links to the official documentations of the above extensions for more information.
+
+[Gemini](https://docs.cloud.google.com/gemini/docs/codeassist/write-code-gemini)
+
+[GitHub Copilot](https://github.com/features/copilot/ai-code-editor)
+
+[BlackBox AI](https://docs.blackbox.ai/features/vscode-agent/getting-started)
