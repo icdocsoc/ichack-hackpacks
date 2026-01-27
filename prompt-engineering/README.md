@@ -60,7 +60,6 @@ Code:
 [CODE]
 ```
 
-
 Provide specific line-by-line feedback.
 ````
 
@@ -148,9 +147,7 @@ Write a function to sort data
 ✅ **Strong:**
 
 ```txt
-Write a Python function that takes a list of dictionaries representing users 
-(with 'name', 'age', 'score' fields) and returns them sorted by score in 
-descending order. Include type hints and a docstring.
+Write a Python function that takes a list of dictionaries representing users (with 'name', 'age', 'score' fields) and returns them sorted by score in descending order. Include type hints and a docstring.
 ```
 
 ### 2. Provide Context
@@ -295,10 +292,9 @@ For more complex reasoning tasks, ask the LLM to show its work and thought proce
 **Example:**
 
 ```txt
-A store has 15 apples. They sell 40% and then receive a shipment that doubles 
-their remaining stock. How many apples do they have now?
+A store has 15 apples. They sell 40% and then receive a shipment that doubles their remaining stock. How many apples do they have now?
 
-Solve this step by step, showing your calculation at each stage.
+Solve this step by step, showing your calculations at each stage.
 ```
 
 ### Comparative Analysis
@@ -308,13 +304,13 @@ For important decisions (maybe about the direction of your project), ask the mod
 **Example:**
 
 ```txt
-Propose three different architectures for this microservices system, 
-then evaluate the pros and cons of each.
+Propose three different architectures for this microservices system, then evaluate the pros and cons of each.
 ```
 
 ### Control techniques
 
-AI's often "reinvent" your code
+LLMs often "reinvent" your code.
+
 Use a prompt like this to ensure it stays consistent the whole time:
 
 ```txt
@@ -334,7 +330,7 @@ Step 3: Produce a final improved version, incorporating all critiques.
 Return ONLY the final version, along with a short bullet list of what changed.
 ```
 
-Ensure the output is in one format
+Ensure the output is in a fixed, predefined format.
 
 ```txt
 Return all output in this exact format:
@@ -343,7 +339,7 @@ Return all output in this exact format:
 Do NOT add explanations or commentary unless asked.
 ```
 
-## ICHack-Specific Tips
+## IC Hack Specific Tips
 
 ### Rapid Prototyping
 
@@ -365,7 +361,7 @@ Do NOT add explanations or commentary unless asked.
 
 ## IDE Extensions
 
-Tired of `Alt + Tab`bing? You can now do all your LLM-powered work from right within your IDE!
+Tired of `Alt + Tab`ing? You can now do all your LLM-powered work from right within your IDE!
 
 This quick guide will focus on VSCode, but setup is quite similar for JetBrains' products (IntelliJ, PyCharm, etc.).
 
@@ -391,7 +387,7 @@ To install any of these extensions, simply click the `Extensions` button on the 
 
 ![Screenshot showing extension button to open the pane, and the search field to search for an extension](./assets/search-extensions.png)
 
-Once you have found your extension of choice, install it by pressing the `install` button, pressing `restart extensions` if prompted.
+Once you have found your extension of choice, install it by selecting the `Install` button, then selecting `Restart Extensions` if prompted.
 
 Once installed, the extensions will appear in your editor.
 
@@ -400,9 +396,9 @@ Once installed, the extensions will appear in your editor.
 In the above screenshot, BlackBox AI is the lightning bolt on the left hand side. Gemini is teh Gemini logo just below the lightning bolt, and Copilot Chat is the chat logo on the top row.
 
 >[!TIP]
-> At this point, it is a good idea to restart VSCode to ensure the extensions can fully install
+> At this point, it is recommended that you should restart VS Code to ensure the extensions are properly installed.
 
-With Gemini, you will be asked to sign in when you open the pane. If you activated your Developer Pack, you should also sign in with GitHub Copilot. Both authentication requests will open a window in your browser where you can sign in.
+With Gemini, you will be asked to sign in when you open the pane. If you activated your GitHub Student Developer Pack, you should also sign in with GitHub Copilot. Both authentication requests will open a window in your browser where you can sign in.
 
 You may notice that you have 3 more icons in the bottom right.
 
@@ -413,7 +409,7 @@ These are GitHub Copilot, BlackBox AI and Gemini, from left to right.
 For GitHub Copilot and Gemini, they feature AI code completion. The settings for this can be managed by clicking on their respective icons there.
 
 >[!IMPORTANT]
-> Even with the Student Developer Pack, GitHub Copilot still has quotas. There is a moderate chance you will reach those within the time span of ICHack. Don't worry, you will not be charged, it will just stop working!
+> Even with the Student Developer Pack, GitHub Copilot still has rate limits and quotas. There is a moderate chance you will reach those within the time span of IC Hack. Don't worry, you will not be charged, it will just stop working!
 
 ### Using LLM Extensions
 
@@ -437,7 +433,7 @@ Aside from the above exceptions, all other prompt generation recommendations [fo
 
 ### More information
 
-Here are some links to the official documentations of the above extensions for more information.
+Here are some links to the official documentation of the above extensions for more information.
 
 [Gemini](https://docs.cloud.google.com/gemini/docs/codeassist/write-code-gemini)
 
