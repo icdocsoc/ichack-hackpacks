@@ -2,6 +2,44 @@
 
 In this guide you will find useful information about setting up APIs for different LLMs and also how to prompt them effectively.
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Prompt Engineering](#prompt-engineering)
+  - [Table of Contents](#table-of-contents)
+  - [What is Prompt Engineering?](#what-is-prompt-engineering)
+  - [Copy-paste prompts](#copy-paste-prompts)
+    - [Example for Code Review](#example-for-code-review)
+    - [Project planner](#project-planner)
+    - [Test generation](#test-generation)
+    - [UI generation](#ui-generation)
+    - [Refactor code](#refactor-code)
+  - [Core Principles](#core-principles)
+    - [1. Be Specific and Detailed](#1-be-specific-and-detailed)
+    - [2. Provide Context](#2-provide-context)
+    - [3. Set the Role / Persona](#3-set-the-role--persona)
+    - [4. Use Examples](#4-use-examples)
+    - [5. Break Down Complex Tasks](#5-break-down-complex-tasks)
+    - [6. Specify Output Format](#6-specify-output-format)
+    - [7. Use Delimiters for Clarity](#7-use-delimiters-for-clarity)
+    - [8. Set Constraints and Guardrails](#8-set-constraints-and-guardrails)
+    - [9. Iterate and Refine](#9-iterate-and-refine)
+  - [Common Pitfalls to Avoid](#common-pitfalls-to-avoid)
+  - [More Advanced Techniques](#more-advanced-techniques)
+    - [Chain of Thought](#chain-of-thought)
+    - [Comparative Analysis](#comparative-analysis)
+    - [Control techniques](#control-techniques)
+  - [IC Hack Specific Tips](#ic-hack-specific-tips)
+    - [Rapid Prototyping](#rapid-prototyping)
+    - [Debugging Under Pressure](#debugging-under-pressure)
+    - [For Learning New Tech Fast](#for-learning-new-tech-fast)
+  - [IDE Extensions](#ide-extensions)
+    - [Using LLM Extensions](#using-llm-extensions)
+    - [More information](#more-information)
+
+<!-- /TOC -->
+
 ## What is Prompt Engineering?
 
 Prompt engineering is a new and emerging art of crafting instructions to get LLMs like [ChatGPT](https://chatgpt.com), [Claude](https://claude.ai/), [Gemini](https://gemini.google.com/) and others, to produce the output you want. The better the instructions, the better the results!
