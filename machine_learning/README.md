@@ -301,6 +301,13 @@ model.to(device)
 print("Model loaded!")
 ```
 
+## Limitations of our project
+
+- Small dataset
+- An imbalanced training set - ideally, you have a balanced training set to prevent model from simply taking guesses at the class with the highest population of images
+- JCR/SCR and Queen's Tower Rooms look similar, leading to common misclassifications
+- Low image resolution tradeoff. We used a low image resolution, which allows for faster compute and therefore more possible experimentation. But it comes at the cost of potentially lower performance
+
 ## PyTorch
 
 ### Why use PyTorch
