@@ -76,10 +76,9 @@ Additionally, adding **screenshots** or a **demo video** gives judges a clear vi
 1.
 2. Click **Submit a project**
 3. Create a new project
-4. Add **all** teammates
 
 > [!NOTE]
-> Only one person needs to submit, but everyone must be added!
+> Only one person needs to submit!
 
 ## Project Name & Tagline
 
