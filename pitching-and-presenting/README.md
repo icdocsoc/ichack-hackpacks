@@ -4,6 +4,22 @@ After 24 hours of intense hacking, you (hopefully) have your end product. It's n
 
 In this guide, we will provide you with some tips and tricks on how to manage the pitching and presenting part at IC Hack successfully!
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Pitching and Presenting](#pitching-and-presenting)
+  - [Table of Contents](#table-of-contents)
+  - [Structure](#structure)
+  - [Preparing for the pitch](#preparing-for-the-pitch)
+    - [Slides](#slides)
+    - [Demo](#demo)
+    - [Delivery](#delivery)
+    - [Handling nerves](#handling-nerves)
+    - [Other tips and tricks](#other-tips-and-tricks)
+
+<!-- /TOC -->
+
 ## Structure
 
 You will have (approximately) **3 minutes** to pitch your project to the judges, followed by a quick Q&A session.
