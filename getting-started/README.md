@@ -99,14 +99,14 @@ To share and set up a virtual environment:
 
 ### JavaScript / TypeScript
 
-Scroll down on the [`node.js` download page](https://nodejs.org/en/download) until you see "*Or get a prebuilt Node.js for Windows running a x64 architecture*". Switch the operating system and architecture to your computer's *before* downloading the installer.
+Scroll down on the [node.js download page](https://nodejs.org/en/download) until you see "*Or get a prebuilt Node.js for Windows running a x64 architecture*". Switch the operating system and architecture to your computer's *before* downloading the installer.
 
 This allows you to run JavaScript applications (in frameworks like React), and most importantly you get the `npm` package manager (similar to `pip` in Python) for external packages.
 
 > [!IMPORTANT]
 > The following assumes knowledge of terminal commands. You may wish to read [this section](#useful-terminal-commands) before coming back and continuing from here.
 
-To install individual packages, run `npm install <package-name>`.
+To install individual packages, run `npm install package-name`.
 
 Similar to `requirements.txt` in Python, you might also have a `package.json` file that lists all the required packages and versions, then run `npm install` to install all the listed packages.
 
