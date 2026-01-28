@@ -17,6 +17,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 - **[`git-and-github`](./git-and-github/README.md)**
 - **[`pitching-and-presenting`](./pitching-and-presenting/README.md)**
 - **[`project-planning`](./project-planning/README.md)**
+- **[Frontend development with Vue.](./frontend-development/vuejs/README.md)**
 
 ## Repository Structure
 
