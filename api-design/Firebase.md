@@ -5,27 +5,28 @@ This has the benefit of being **serverless**, so you do not have to manage the r
 
 ## Setup
 
-1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/)
-2. Create a new project (or if you have already done this, open it by clicking on it)
-3. Wait for project to be created
-4. On the left hand pane, click on `Build` -> `Functions`
-5. As `Functions` is not included in the `Spark` (default) plan, you will have to upgrade to the `Blaze` plan
+1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/).
+2. Create a new project (or if you have already done this, open it by clicking on it).
+3. Wait for project to be created.
+4. On the left hand pane, click on `Build` -> `Functions`.
+5. As `Functions` is not included in the `Spark` (default) plan, you will have to upgrade to the `Blaze` plan.
 
     >[!WARNING]
     >The Blaze plan will cost you if your quota runs out, so be careful with your usage! You are very unlikely to run out of your quota within the timeframe of a hackathon!
 
-6. Create a Cloud Billing Account
-7. Follow the instructions in the new window
-8. Click `Get Started` once you have changed to the `Blaze` plan
+6. Create a Cloud Billing Account.
+7. Follow the instructions in the new window.
+8. Click `Get Started` once you have changed to the `Blaze` plan.
 9. As prompted, run `npm install -g firebase-tools`
-10. Run `firebase login`
-11. In your project root, run `firebase init`
+10. Run `firebase login`.
+11. In your project root, run `firebase init`.
 12. At the very least, select `Functions`.
 13. Select `Use an existing project` and select your project.
 14. Choose your language for Cloud Functions. For this guide, we will be using **TypeScript**, but links will be provided for Python alternatives.
-15. I recommend enabling ESLint.
+15. Enable ESLint (recommended, not required).
 16. Install dependencies as prompted.
-17. Firebase will have created a whole directory structure like the one below
+
+Firebase will have created a whole directory structure like the one below:
   
 ```bash
 example-project/
