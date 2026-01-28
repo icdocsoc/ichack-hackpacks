@@ -15,13 +15,13 @@ Other people:
 
 If your project is not deployed, it might seem to the judges that your project is unfinished.
 
-## Deployment approaches (in increasing difficulty)
+## Different deployment approaches
 
-We will cover three common approaches, from easiest to hardest:
+We will cover three common approaches to deploying web apps, from easiest to hardest:
 
-- Local hosting (temporary, fastest)
-- 3rd-party deployment services (still fast , long-term)
-- Personal server with NGINX (advanced, long-term)
+- **Local hosting** (temporary, fastest)
+- **3rd-party deployment services** (still fast, and more long-term)
+- **Personal server with NGINX** (advanced, future-proof)
 
 ## Local hosting
 
