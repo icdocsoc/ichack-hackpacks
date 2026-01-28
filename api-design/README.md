@@ -616,7 +616,7 @@ Unless you are using Firebase (which has its own user authentication and deploym
 
 You do ***not*** want to be publishing them on a public platform. The best way to handle this is to create a local `.env` file in the root of your backend.
 
-Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Click here for more information about Git and `.gitignore`](../git-and-github/README.md#gitignore)
+Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Click here for more information about Git and gitignore files](../git-and-github/README.md#gitignore)
 
 Your `.env` file may look something like this
 
@@ -1119,8 +1119,8 @@ We will be using MongoDB as our database. [Click here for the document databases
     source venv/bin/activate
     ```
 
-    >[!IMPORTANT]
-    > Add `venv` to your `.gitignore`. Your team members will thank you!
+    > [!IMPORTANT]
+    > Add **venv** to your **.gitignore**. Your team members will thank you!
 
 3. Run the following to install the necessary dependencies, and any other dependencies you want. For the example, since we are using a MongoDB database, we are adding `pymongo[srv]` and `python-dotenv` to our dependencies.
 
@@ -1128,19 +1128,13 @@ We will be using MongoDB as our database. [Click here for the document databases
     pip install fastapi uvicorn
     ```
 
-    >[!TIP]
-    > Run the following in the root of your FastAPI
-    >
-    > ```bash
-    > pip freeze > requirements.txt
-    > ```
-    >
-    > This will mean that the `venv` can be quickly restored by running
-    >
-    > ```bash
-    > pip install -r requirements.txt
-    > ```
-    >
+    > [!TIP]
+    > Run the following two commands in the root of your FastAPI to quickly restore your **venv**.
+
+    ```bash
+    pip freeze > requirements.txt
+    pip install -r requirements.txt
+    ```
 
 4. Create the following directory structure
 
@@ -1260,7 +1254,7 @@ app.add_middleware(
 )
 ```
 
->[!WARNING]
+> [!WARNING]
 > This allows all origins and methods and users. Perfectly fine for a hackathon but do not use in production code!
 
 Since we separated `main.py` with all the logic, and applied it to the whole app, we do not need any further modifications.
@@ -1273,7 +1267,7 @@ Since we are self-hosting this, deploying is as simple as running the following 
 uvicorn app.main:app --reload
 ```
 
->[!TIP]
+> [!TIP]
 > Since we used `--reload`, the backend will redeploy every time you edit any of your backend code, so no need to manually rerun this command!
 
 Upon startup, you will get a message along the lines of
@@ -1290,7 +1284,7 @@ If you want to specify your own host address and port, you can using the argumen
 uvicorn app.main:app --reload --host 1.2.3.4 --port 1234
 ```
 
->[!TIP]
+> [!TIP]
 > Just use the defaults unless you have a good reason to not do so
 
 # Example Code
