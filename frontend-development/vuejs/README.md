@@ -55,7 +55,7 @@ TODO
 
 While Vue.js was originally designed around incremental adoption, it's very common to build complete applications in it, which is what we'll be doing here. A number of tools exist to streamline this process — not least the various npm scripts. After you've [installed NodeJS and NPM](/getting-started/README.md#javascript--typescript), running `npm create vue@latest` will create a blank Vue.js app we can use as a template to build upon.  
 
-You'll want to enable TypeScript, the *Router* (we'll go into this later!), and optionally *ESLint* and *Prettier*. The name doesn't matter yet as we'll just be looking at the example here before starting from scratch properly (so you can enter anything you like), so keep the example code, since we want to observe the resultant directory structure. You can refer to [our example project](/frontend-development/vuejs/vue-project/) for more detail.
+You'll want to enable TypeScript, the *Router* (we'll go into this later!), and optionally *ESLint* and *Prettier*. The name of the project doesn't matter yet as we'll just be looking at the example here before starting from scratch properly (so you can enter anything you like). Make sure you keep the example code, since we want to observe the resultant directory structure. You can refer to [our example project](/frontend-development/vuejs/vue-project/) for more detail.
 
 - `public/`: Anything in this directory will be served **statically**. Use this for assets that don't change, like images or icons (here, it contains [the favicon](/vuejs/vue-project/public/favicon.ico)) that you don't want to use directly in your code.
 - `src/assets/`: Much like `public/`, files that aren't intended to change are stored here, but you can import files from here. Use this for static elements that you might need to use within your app directly, like stylesheets. In the example, `src/assets/main.css` is imported within `src/main.ts`
@@ -123,13 +123,13 @@ Now that we know what's going on, let's proceed. Let's **add a button** that we 
 
 Now that we have a component, we need to use it somewhere. Within `App.vue`, we can reference the component by name - insert a `<Counter />` (or `<Counter></Counter>`, they're equivalent) tag somewhere within the `<template>` section. Vue won't know what we're talking about currently, and won't actually display any button - we need to first import the `Counter` component.
 
-Inside the `<script>` (in App.vue), import it as such:
+Inside the `<script>` (in `App.vue`), import it as such:
 
 ```typescript
 import Counter from './components/Counter.vue';
 ```
 
-We should also tell Vue that we're using the Counter component in our App component (still in App.vue). Via the Options API, we export it as part of the exported object (note the script is not marked setup!):
+We should also tell Vue that we're using the Counter component in our App component (still in `App.vue`). Via the Options API, we export it as part of the exported object (note the script is not marked setup!):
 
 ```vue
 <script lang="ts">
@@ -148,7 +148,7 @@ When you revisit your rendered website, you should find (wherever you put the co
 
 #### Reactive state, and using values in HTML
 
-It's now time to use one of the underpinning features of Vue.js — *reactivity*. In order to define some sort of state for our component that can be used from the HTML, we need to add to the exported object. Specifically, we define a `data()` function (within the exported object, in Counter.vue) which returns the reactive state of our object:
+It's now time to use one of the underpinning features of Vue.js — *reactivity*. In order to define some sort of state for our component that can be used from the HTML, we need to add to the exported object. Specifically, we define a `data()` function (within the exported object, in `Counter.vue`) which returns the reactive state of our object:
 
 ```typescript
 export default {
