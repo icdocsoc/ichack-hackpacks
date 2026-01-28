@@ -45,42 +45,40 @@ This approach runs your app on your own laptop and exposes it to the internet.
 > [!WARNING]  
 > This is not production-grade, but very useful for quick demos!
 
-Assume you have a website running on your `http://localhost:3000`, it doesn't matter whether this is a DEV version of your
-server, `DOCKER EXPOSE` or something else.
+We assume you have a website running on `http://localhost:PORT_NUMBER`. it doesn't matter whether this is through a DEV version of your
+server, `DOCKER EXPOSE` or some other method.
 
-Now you can use *Tunneling Tools* to create a *temporary public URL* that forwards traffic to your local machine.
+Now you can use **Tunneling Tools** to create a *temporary public URL* that forwards traffic to your local machine.
 
-![img.png](assets/img.png)
-Popular options are:
+Popular tunneling tools include:
 
-- Ngrok [NGrok website](https://ngrok.com/)
-- Cloudflare tunnel [CF tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+- [NGrok](https://ngrok.com/)
+![Screenshot of NGrok homepage.](assets/ngrok-homepage.png)
+- [Cloudflare tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
-To use NGrok , first you need to set up an account by the link above. Then install it using:
+To use NGrok , first you need to set up an account using the link above. Then install it using:
 
 ```bash
 brew install ngrok
 ```
 
-Run the following command to add your authtoken to the default ngrok.yml configuration file.
+Run the following command to add your authtoken to the default `ngrok.yml` configuration file.
 
 ```bash
 ngrok config add-authtoken 1fmR26pVL0b5HM7AAYenEfavBE8_2X5Y6pvELCH7ezvu9R6r5
 ```
 
-Deploy the app (3000 is port you want to make public):
+Deploy the app (where `PORT_NUMBER` is port you want to make public):
 
 ```bash
-ngrok http 3000
+ngrok http PORT_NUMBER
 ```
 
-After the command you will see a terminal status window with current connections and your website link!
-![img.png](assets/ngrok-status.png)
+After runnning this command you will see a terminal status window with current connections and a link to your globally-accessible NGrok webpage!
+![Screenshot of NGrok status page](assets/ngrok-status.png)
 
 > [!CAUTION]
-> If you close your laptop, the site goes down  
-> If your internet disconnects, the site goes down  
-> URLs may change on restart
+> If your laptop powers off or goes to sleep, **the site goes down**. If your internet disconnects, **the site goes down**. The URL to your deployed page **may change on restart**.
 
 ### 3rd-party deployment services
 
