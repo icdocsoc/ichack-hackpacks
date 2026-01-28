@@ -57,9 +57,9 @@ Relational databases store data in **tables with fixed schemas**, with rows and 
 
 ### Pros/Cons
 
-✅ Clear, stable data structure
-✅ Complex queries and joins supported
-✅ Strong consistency and reliability
+✅ Clear, stable data structure \
+✅ Complex queries and joins supported \
+✅ Strong consistency and reliability \
 ❌ Schema changes require migrations, making rapid schema evolution cumbersome
 
 ### Example use cases
@@ -111,10 +111,10 @@ Graph databases model data as **nodes** (entities) and **edges** (relationships)
 
 #### Pros/Cons
 
-✅ Excellent for relationship-heavy data
-✅ Fast traversal for complex connections
-✅ Queries like "friends of friends" or "shortest path" are efficient
-❌ Overkill for simple or tabular data
+✅ Excellent for relationship-heavy data \
+✅ Fast traversal for complex connections \
+✅ Queries like "friends of friends" or "shortest path" are efficient \
+❌ Overkill for simple or tabular data \
 ❌ Can be harder to integrate with traditional apps
 
 #### Example use cases
