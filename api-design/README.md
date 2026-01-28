@@ -18,7 +18,7 @@ This HackPack will cover
 
 Example code will be provided, with more info [found here](#example-code).
 
-It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Click here to find out more](/databases/README.md)
+It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Click here to read more about databases](/databases/README.md).
 
 ## Table Of Contents
 
@@ -97,7 +97,7 @@ It may be a good idea to first familiarise yourself with databases, since a lot 
 
 ### What Is an API?
 
-An **Application Programming Interface** is the definition of a contract between a client and a server.
+An **Application Programming Interface** is the definition of a contract between a *client* and a *server*.
 
 It defines the **inputs**, consisting of the request method, URL, headers and body. The **outputs** are also defined, with a status code, headers and body.
 
@@ -174,13 +174,13 @@ PATCH /deletePost
 
 The subsections below after the glossary show the HTTP methods that you can use for your API.
 
-For the examples provided for each of the HTTP methods, we will be using an in-memory 'database'
+For the examples provided for each of the HTTP methods, we will be using an in-memory 'database'.
 
 ```py
 users = {}
 ```
 
-Our 'database' will store users, with documents having the following schema
+Our 'database' will store users, with documents having the following schema:
 
 ```py
 class User(BaseModel):
@@ -190,19 +190,15 @@ class User(BaseModel):
 
 #### Glossary
 
-**Safe:** Does not change server state
-
-**Server state:** Anything persistent or observable:
-
-- database rows
-- counters
-- logs
-- "last viewed" timestamps
-- cache entries
-
-**Idempotent:** Repeated calls do not change the result
-
-**Cacheable:** Intermediaries can cache the result
+- **Safe:** Does not change server state.
+- **Server state:** Anything persistent or observable:
+  - database rows,
+  - counters,
+  - logs,
+  - "last viewed" timestamps,
+  - cache entries.
+- **Idempotent:** Repeated calls do not change the result.
+- **Cacheable:** Intermediaries can cache the result.
 
 #### GET
 
@@ -457,7 +453,7 @@ Example response:
 #### Rules of thumb
 
 - Always return the created resource on `POST`
-- Use ISO-8601 for timestamps
+- Use [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) for timestamps
 - Prefer explicit fields over positional arrays
 
 ---
@@ -540,7 +536,7 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 
 ### Common Failures
 
-| Rule                         | What can go wrong if broken                           |
+| Rule broken                        | What can go wrong if broken                           |
 | ---------------------------- | ----------------------------------------------------- |
 | GET modifies state           | Duplicate writes from prefetch, crawlers, retries     |
 | POST is used for reads       | Hard to cache, confusing for clients                  |
@@ -632,11 +628,11 @@ You can use this as a function in your React or Vue app.
 
 ### Idiomatic Methods
 
-Check out the Vue HackPack- [at the end](/frontend-development/vuejs/README.md#other-useful-resources) there are several useful links showing more idiomatic ways to call our backend.
+Check out the Vue HackPack. [At the end](/frontend-development/vuejs/README.md#other-useful-resources) there are several useful links showing more idiomatic ways to call our backend.
 
 For React, there are some other idiomatic ways to call functions using libraries. [Check out the React HackPack](../frontend-development/react-example-tutorial/README.md#fastapi-default-path-frontend-serving) to see how to call FastAPI easier with a library!
 
-[**Android**](../android-development/README.md#connecting-to-a-backend-api)
+The Android development HackPack has [an entire section](../android-development/README.md#connecting-to-a-backend-api) on this exact topic!
 
 ## Secrets
 
@@ -660,13 +656,13 @@ where the left hand side are the names of the environment variables, and the rig
 
 For Python, you will first need to install the `python-dotenv` library to your virtual environment. First, complete up to [Step 3 of the FastAPI setup guide](FastAPI.md#setup).
 
-Run
+Run:
 
 ```bash
 pip install python-dotenv
 ```
 
-Now, wherever you need to access those environment variables, add this to the top of that file
+Now, wherever you need to access those environment variables, add this snippet to the top of that file
 
 ```py
 from dotenv import load_dotenv
@@ -733,7 +729,7 @@ The two backends we will be covering are **Firebase** and **FastAPI**.
 
 You would use this if you are using **Firestore** as your database, and are comfortable with JS/TS. Also use if you are not too comfortable with self-deploying an application.
 
-[Click here to go to the full Firebase HackPack](./Firebase.md)
+[Click here to go to the full Firebase HackPack](./Firebase.md).
 
 ### FastAPI
 
@@ -751,14 +747,14 @@ You would use this if you are using **Firestore** as your database, and are comf
 
 You would use **FastAPI** if you are comfortable with Python, are using machine learning (since Python ML integration is amazing), or want maximum flexibility.
 
-[Click here to go to the full FastAPI HackPack](./FastAPI.md)
+[Click here to go to the full FastAPI HackPack](./FastAPI.md).
 
 ## Example Code
 
 Since an API is a contract between a frontend and backend, with no implementation details being necessary, the example code is split into the frontend, and the backends.
 
-The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by [changing the API URL](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/App.tsx#3)
+The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by [changing the API URL](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/App.tsx#3).
 
-[Read more about Firestore and document databases.](../databases/document.md)
+[Read more about Firestore and document databases](../databases/document.md).
 
-[Read more about databases in general.](../databases/README.md)
+[Read more about databases in general](../databases/README.md).
