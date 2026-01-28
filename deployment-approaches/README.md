@@ -30,7 +30,6 @@ If your project is not deployed, it might seem to the judges that your project i
         - [Typical Build Command](#typical-build-command)
         - [Typical Start Command](#typical-start-command)
 
-
 ## Different deployment approaches
 
 We will cover three common approaches to deploying web apps, from easiest to hardest:
