@@ -20,49 +20,82 @@ Example code will be provided, with more info [found here](#example-code).
 
 It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Click here to find out more](../databases/README.md)
 
-# Table Of Contents
+## Table Of Contents
 
 - [API Design](#api-design)
-- [Table Of Contents](#table-of-contents)
-- [General API Design](#general-api-design)
-  - [What Is an API?](#what-is-an-api)
-  - [REST and HTTP](#rest-and-http)
-  - [Resources and URLs](#resources-and-urls)
-  - [HTTP Methods](#http-methods)
-    - [Glossary](#glossary)
-    - [GET](#get)
-    - [OPTIONS](#options)
-    - [POST](#post)
-    - [PUT](#put)
-    - [PATCH](#patch)
-    - [DELETE](#delete)
-  - [Status Codes](#status-codes)
-  - [Request and Response Bodies](#request-and-response-bodies)
-  - [Authentication and Authorisation](#authentication-and-authorisation)
-  - [Error Handling](#error-handling)
-  - [Extras](#extras)
-    - [Rate Limiting](#rate-limiting)
-    - [Pagination](#pagination)
-    - [Caching](#caching)
-    - [Versioning](#versioning)
-  - [General Rules](#general-rules)
-  - [Common Failures](#common-failures)
-  - [Cheatsheet](#cheatsheet)
-- [Making Requests](#making-requests)
-  - [JavaScript/TypeScript](#javascripttypescript)
-  - [Idiomatic Methods](#idiomatic-methods)
-- [Secrets](#secrets)
-  - [Python](#python)
-  - [Vite](#vite)
-  - [JS/TS](#jsts)
-- [Creating Your Own Backend](#creating-your-own-backend)
-  - [Firebase Cloud Functions](#firebase-cloud-functions)
-  - [FastAPI](#fastapi)
-- [Example Code](#example-code)
+  - [Table Of Contents](#table-of-contents)
+  - [General API Design](#general-api-design)
+    - [What Is an API?](#what-is-an-api)
+    - [REST and HTTP](#rest-and-http)
+    - [Resources and URLs](#resources-and-urls)
+      - [*The GOOD:*](#the-good)
+        - [Why?](#why)
+      - [*The BAD:*](#the-bad)
+        - [Why?](#why-1)
+      - [*The UGLY:*](#the-ugly)
+        - [Why?](#why-2)
+    - [HTTP Methods](#http-methods)
+      - [Glossary](#glossary)
+      - [GET](#get)
+        - [Semantics](#semantics)
+          - [What GET must not do](#what-get-must-not-do)
+          - [What GET can do](#what-get-can-do)
+        - [Example](#example)
+      - [OPTIONS](#options)
+        - [Semantics](#semantics-1)
+        - [Purpose](#purpose)
+      - [POST](#post)
+        - [Semantics](#semantics-2)
+        - [Purpose](#purpose-1)
+        - [Typical purposes](#typical-purposes)
+        - [What POST does *not* guarantee](#what-post-does-not-guarantee)
+        - [Example](#example-1)
+      - [PUT](#put)
+        - [Semantics](#semantics-3)
+        - [Purpose](#purpose-2)
+        - [Rules](#rules)
+        - [Example](#example-2)
+      - [PATCH](#patch)
+        - [Semantics](#semantics-4)
+        - [Purpose](#purpose-3)
+        - [Idempotence](#idempotence)
+        - [Example](#example-3)
+      - [DELETE](#delete)
+        - [Semantics](#semantics-5)
+        - [Rules](#rules-1)
+        - [Example](#example-4)
+    - [Status Codes](#status-codes)
+    - [Request and Response Bodies](#request-and-response-bodies)
+      - [Rules of thumb](#rules-of-thumb)
+    - [Authentication and Authorisation](#authentication-and-authorisation)
+    - [Error Handling](#error-handling)
+    - [Extras](#extras)
+      - [Rate Limiting](#rate-limiting)
+      - [Pagination](#pagination)
+      - [Caching](#caching)
+      - [Versioning](#versioning)
+    - [General Rules](#general-rules)
+    - [Common Failures](#common-failures)
+    - [Cheatsheet](#cheatsheet)
+  - [Making Requests](#making-requests)
+    - [JavaScript/TypeScript](#javascripttypescript)
+    - [Idiomatic Methods](#idiomatic-methods)
+  - [Secrets](#secrets)
+    - [Python](#python)
+    - [Vite](#vite)
+    - [JS/TS](#jsts)
+  - [Creating Your Own Backend](#creating-your-own-backend)
+    - [Firebase Cloud Functions](#firebase-cloud-functions)
+      - [Pros](#pros)
+      - [Cons](#cons)
+    - [FastAPI](#fastapi)
+      - [Pros](#pros-1)
+      - [Cons](#cons-1)
+  - [Example Code](#example-code)
 
-# General API Design
+## General API Design
 
-## What Is an API?
+### What Is an API?
 
 An **Application Programming Interface** is the definition of a contract between a client and a server.
 
@@ -72,7 +105,7 @@ An API should be treated as a black box, with the client not caring *how* the ba
 
 ![API framework at a glance](./assets/web-api.webp)
 
-## REST and HTTP
+### REST and HTTP
 
 Most modern APIs are **RESTful** and built on HTTP.
 
@@ -83,7 +116,7 @@ Most modern APIs are **RESTful** and built on HTTP.
 
 REST is a *design style*, not a protocol. You should follow REST conventions where they help clarity and speed, and ignore them when they slow you down.
 
-## Resources and URLs
+### Resources and URLs
 
 We design URLs around **nouns** not verbs.
 
@@ -92,7 +125,7 @@ URLs should show a hierarchy, reflecting ownership or containment.
 - `/users/{id}/posts` are the posts owned by a user
 - `/posts/{id}/comments` are the comments belonging to a post
 
-***The GOOD:***
+#### *The GOOD:*
 
 ```bash
 GET /users
@@ -101,14 +134,14 @@ POST /posts
 GET /posts/{postId}/comments
 ```
 
-**Why?**
+##### Why?
 
 - Nouns, not verbs
 - Predictable and consistent, you can guess how to interact with the API even without documentation
 - Hierarchical structure. `/posts/{postId}/comments` clearly shows that comments belong to a post
 - Follows standard REST conventions: URLs represent entities, HTTP methods represent actions
 
-***The BAD:***
+#### *The BAD:*
 
 ```bash
 GET /getUsers
@@ -116,12 +149,12 @@ POST /createPost
 POST /deleteComment
 ```
 
-**Why?**
+##### Why?
 
 - Mixing verbs and nouns: `GET /getUsers` is redundant, since `GET` already implies that we are fetching
 - Inconsistent naming- you may end up confusing endpoints like `POST /createPost` and `POST /addPost`, two verbs for the same action
 
-***The UGLY:***
+#### *The UGLY:*
 
 ```bash
 DELETE /getUsers
@@ -129,7 +162,7 @@ GET /incrementCounter
 PATCH /deletePost
 ```
 
-**Why?**
+##### Why?
 
 - HTTP method conflicts with verb in URL
 - Very hard to maintain, you will struggle to guess what an endpoint does  
@@ -137,7 +170,7 @@ PATCH /deletePost
 >[!WARNING]
 >The BAD section would at least work and make sense, ***NEVER*** do anything from the UGLY!
 
-## HTTP Methods
+### HTTP Methods
 
 The subsections below after the glossary show the HTTP methods that you can use for your API.
 
@@ -155,7 +188,7 @@ class User(BaseModel):
     email: str
 ```
 
-### Glossary
+#### Glossary
 
 **Safe:** Does not change server state
 
@@ -171,15 +204,15 @@ class User(BaseModel):
 
 **Cacheable:** Intermediaries can cache the result
 
-### GET
+#### GET
 
-**Semantics**
+##### Semantics
 
 - Safe
 - Idempotent
 - Cacheable
 
-**What GET must not do**
+###### What GET must not do
 
 - Modify database state
 - Increment counters
@@ -189,14 +222,14 @@ class User(BaseModel):
 >[!NOTE]
 >It’s acceptable to use logging for debugging purposes, but nothing should be user-visible or persisted.
 
-**What GET can do**
+###### What GET can do
 
 - Read data
 - Filter via query parameters
 - Pagination
 - Sorting
 
-**Example**
+##### Example
 
 ```py
 @app.get("/users/{user_id}")
@@ -210,15 +243,15 @@ As you can see, the above `GET` API call would retrieve a user based on the `use
 
 ---
 
-### OPTIONS
+#### OPTIONS
 
-**Semantics**
+##### Semantics
 
 - Safe
 - Idempotent
 - Can be Cacheable
 
-**Purpose**
+##### Purpose
 
 Returns the allowed methods and CORS info. This will likely be automatically handled for you by FastAPI and Firebase Cloud Functions.
 
@@ -226,19 +259,19 @@ Returns the allowed methods and CORS info. This will likely be automatically han
 >Since these are automatically handled, don't use this
 
 >[!TIP]
->If you are having problems with this, ask a mentor on the day for help!
+>If you are having problems with this, ask a coach on the day for help!
 
 ---
 
-### POST
+#### POST
 
-**Semantics**
+##### Semantics
 
 - Not safe
 - Not idempotent
 - Not cacheable
 
-**Purpose**
+##### Purpose
 
 `POST` can do pretty much any action or side-effect, such as:
 
@@ -247,16 +280,16 @@ Returns the allowed methods and CORS info. This will likely be automatically han
 - Perform non-idempotent operations
 - Accept complex input
 
-**Typical uses**
+##### Typical purposes
 
 ```bash
-POST /posts    # create
-POST /login    # auth
+POST /posts    ## create
+POST /login    ## auth
 POST /posts/123/like
-POST /search   # complex queries
+POST /search   ## complex queries
 ```
 
-**What POST does *not* guarantee**
+##### What POST does *not* guarantee
 
 Since POST is not idempotent, if POST is retried, side effects may repeat.
 
@@ -266,7 +299,7 @@ Since POST is not idempotent, if POST is retried, side effects may repeat.
 >[!TIP]
 >Treat this as a *'do anything'* method
 
-**Example**
+##### Example
 
 ```py
 @app.post("/users", status_code=201)
@@ -281,21 +314,21 @@ The above example creates a new `user` entry in our database given a `user_id` a
 
 ---
 
-### PUT
+#### PUT
 
-**Semantics**
+##### Semantics
 
 - Not Safe
 - Idempotent
 - Not Cacheable
 
-**Purpose**
+##### Purpose
 
 This is used for replacing the entire resource with the provided representation.
 
 This will replace the resource with the data provided by the headers and body by the client.
 
-**Rules**
+##### Rules
 
 - The client supplies the full resource state
 - Server completely overwrites existing state
@@ -305,14 +338,14 @@ This will replace the resource with the data provided by the headers and body by
 >A common point of failure is using PUT for partial updates
 >Using `PUT` for partial updates can overwrite fields you didn’t intend to change. Use `PATCH` for updating just specific fields.
 
-**Example**
+##### Example
 
 ```py
 @app.put("/users/{user_id}")
 def replace_user(user_id: int, user: User):
     if user_id not in users:
         raise HTTPException(status_code=404, detail="User not found")
-    users[user_id] = user  # Replaces the entire user object
+    users[user_id] = user  ## Replaces the entire user object
     return user
 ```
 
@@ -320,33 +353,33 @@ This looks very similar to `POST`, however this isn't creating a new resource, i
 
 ---
 
-### PATCH
+#### PATCH
 
-**Semantics**
+##### Semantics
 
 - Not Safe
 - Can be Idempotent
 - Not Cacheable
 
-**Purpose**
+##### Purpose
 
 Whereas PUT replaces the whole resource, PATCH partially modifies the resource with the provided data.
 
-**Idempotence**
+##### Idempotence
 
 Depending on the implementation, PATCH may or may not be idempotent
 
 - `set name = "Alice"` is idempotent
 - `increment likes by 1` is not idempotent
 
-**Example**
+##### Example
 
 ```py
 @app.patch("/users/{user_id}")
 def update_user(user_id: int, user: dict):
     if user_id not in users:
         raise HTTPException(status_code=404, detail="User not found")
-    # Update only the provided fields
+    ## Update only the provided fields
     updated = users[user_id].dict()
     updated.update(user)
     users[user_id] = User(**updated)
@@ -357,20 +390,20 @@ Like `PUT`, but only the supplied fields are updated. Missing fields remain unch
 
 ---
 
-### DELETE
+#### DELETE
 
-**Semantics**
+##### Semantics
 
 - Not Safe
 - Idempotent
 - Not Cacheable
 
-**Rules**
+##### Rules
 
 - Repeating DELETE should not change the state (after the first call anyway)
 - Subsequent calls should return errors
 
-**Example**
+##### Example
 
 ```py
 @app.delete("/users/{user_id}")
@@ -385,7 +418,7 @@ The above code does as we expect, deletes a user with the given `user_id`, if th
 
 ---
 
-## Status Codes
+### Status Codes
 
 Status codes are a key part of an API contract.
 
@@ -403,7 +436,7 @@ Common ones:
 
 ---
 
-## Request and Response Bodies
+### Request and Response Bodies
 
 We use JSON as the format for passing data between the client and the backend.
 
@@ -421,7 +454,7 @@ Example response:
 }
 ```
 
-**Rules of thumb:**
+#### Rules of thumb
 
 - Always return the created resource on `POST`
 - Use ISO-8601 for timestamps
@@ -429,7 +462,7 @@ Example response:
 
 ---
 
-## Authentication and Authorisation
+### Authentication and Authorisation
 
 Authentication verifies the user, and authorisation verifies what a user can do.
 
@@ -446,7 +479,7 @@ This is pretty straightforward for Cloud Functions since Firebase already includ
 
 ---
 
-## Error Handling
+### Error Handling
 
 Errors should be:
 
@@ -466,23 +499,23 @@ The key is simplicity and consistency.
 
 ---
 
-## Extras
+### Extras
 
 The following are good practice in production but not necessary for hackathons!
 
-### Rate Limiting
+#### Rate Limiting
 
-This should be done to prevent abuse. This adds unnecesarry complexity in a hackathon setting where you do not have real clients.
+This should be done to prevent abuse. This adds unnecessary complexity in a hackathon setting where you do not have real clients.
 
-### Pagination
+#### Pagination
 
 Returning all the results can unnecesarily use up both server and client resources. You will be unlikely to have enough data to require this in a hackathon setting.
 
-### Caching
+#### Caching
 
 Improves request latency, but not worth it in a hackathon setting. This is already provided for you by Firebase.
 
-### Versioning
+#### Versioning
 
 Since APIs evolve, we need versioning so clients don't break when we change contracts.
 
@@ -495,7 +528,7 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 
 ---
 
-## General Rules
+### General Rules
 
 - **GET**, **HEAD** and **OPTIONS** should **NEVER** have any side effects or unsafe actions.
 - Use of verbs
@@ -505,7 +538,7 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 
 ---
 
-## Common Failures
+### Common Failures
 
 | Rule                         | What can go wrong if broken                           |
 | ---------------------------- | ----------------------------------------------------- |
@@ -517,7 +550,7 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 
 ---
 
-## Cheatsheet
+### Cheatsheet
 
 | Method  | Safe | Idempotent | Typical Use       | Notes                                      |
 | ------- | ---- | ---------- | ----------------- | ------------------------------------------ |
@@ -529,13 +562,13 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 | HEAD    | ✅   | ✅         | Metadata / checks | Usually ignored                            |
 | OPTIONS | ✅   | ✅         | CORS info         | Framework handles                          |
 
-# Making Requests
+## Making Requests
 
 Since all backends are HTTP requests, there is a unified way to create a request from a frontend.
 
 Below are the links to the guides on how to call our API functions, from the respective frontend HackPacks.
 
-## JavaScript/TypeScript
+### JavaScript/TypeScript
 
 ```ts
 const res = await fetch(url, {
@@ -597,7 +630,7 @@ The above demonstrates a full HTTP request with full error handling.
 
 You can use this as a function in your React or Vue app.
 
-## Idiomatic Methods
+### Idiomatic Methods
 
 Check out the Vue HackPack- [at the end](../frontend-development/vuejs/README.md#other-useful-resources) there are several useful links showing more idiomatic ways to call our backend.
 
@@ -605,7 +638,7 @@ For React, there are some other idiomatic ways to call functions using libraries
 
 [**Android**](../android-development/README.md#connecting-to-a-backend-api)
 
-# Secrets
+## Secrets
 
 Unless you are using Firebase (which has its own user authentication and deployment system), you will likely need to store some sensitive API keys.
 
@@ -623,9 +656,9 @@ SECRET_KEY=supersecret
 
 where the left hand side are the names of the environment variables, and the right hand side the value.
 
-## Python
+### Python
 
-For Python, you will first need to install the `python-dotenv` library to your virtual environment. First, complete up to [Step 3 of the FastAPI setup guide](#setup-1).
+For Python, you will first need to install the `python-dotenv` library to your virtual environment. First, complete up to [Step 3 of the FastAPI setup guide](FastAPI.md#setup).
 
 Run
 
@@ -645,7 +678,7 @@ host = os.getenv("DB_HOST")
 
 where `DB_HOST` is the name of the environment variable we want.
 
-## Vite
+### Vite
 
 If you have created your JS/TS project using Vite, there is an easy way to extract environment variables.
 
@@ -663,7 +696,7 @@ Unlike Python, you do not need to import or install any modules. Simply use
 const host = import.meta.env.VITE_DB_HOST;
 ```
 
-## JS/TS
+### JS/TS
 
 Follow these instructions if you did not use Vite as your build tool.
 
@@ -683,18 +716,18 @@ import 'dotenv/config';
 const host = process.env.DB_HOST;
 ```
 
-# Creating Your Own Backend
+## Creating Your Own Backend
 
-The two backends we will be covering are **Firebase** and **FastAPI**. 
+The two backends we will be covering are **Firebase** and **FastAPI**.
 
-## Firebase Cloud Functions
+### Firebase Cloud Functions
 
-**Pros:**
+#### Pros
 
 - Faster to deploy: no self-hosting needed, deployment in minutes
 - Excellent integration with Firebase services: databases, authentication
 
-**Cons:**
+#### Cons
 
 - Deploy cycles are slower: local deployment is very fast once set up
 
@@ -702,15 +735,15 @@ You would use this if you are using **Firestore** as your database, and are comf
 
 [Click here to go to the full Firebase HackPack](./Firebase.md)
 
-## FastAPI
+### FastAPI
 
-**Pros:**
+#### Pros
 
 - It's Python!!
 - Very fast iteration: startup time is extremely fast
 - Freedom: you can use any service or database
 
-**Cons:**
+#### Cons
 
 - You have to self-host: fine for ICHack, but a small bump to get over first
 - More manual setup than Firebase
@@ -720,11 +753,12 @@ You would use **FastAPI** if you are comfortable with Python, are using machine 
 
 [Click here to go to the full FastAPI HackPack](./FastAPI.md)
 
-# Example Code
+## Example Code
 
 Since an API is a contract between a frontend and backend, with no implementation details being necessary, the example code is split into the frontend, and the backends.
 
 The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by [changing the API URL](./example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](./example-project/frontend/src/App.tsx#3)
 
-[See here for more information about Firestore and document databases](../databases/document.md)
-[See here for more information abour databases in general](../databases/README.md)
+[Read more about Firestore and document databases.](../databases/document.md)
+
+[Read more about databases in general.](../databases/README.md)
