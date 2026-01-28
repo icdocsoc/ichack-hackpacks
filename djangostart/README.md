@@ -23,7 +23,9 @@ This guide walks you through setting up a local **Django** backend for a simple 
     - [4. Database is locked](#4-database-is-locked)
   - [What's Next?](#whats-next)
     - [Phase 1: Pivot the Data Model](#phase-1-pivot-the-data-model)
+      - [*Example*: Building a Marketplace](#example-building-a-marketplace)
     - [Phase 2: Add Relations (Connecting Data)](#phase-2-add-relations-connecting-data)
+      - [*Example*: A `Category` can have many `Note`s](#example-a-category-can-have-many-notes)
     - [Phase 3: Handling Images](#phase-3-handling-images)
     - [Phase 4: Connecting the Frontend](#phase-4-connecting-the-frontend)
 
@@ -165,7 +167,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
     > ✅ **Checkpoint:** To test the admin panel, first create a superuser by running `python manage.py createsuperuser` and following the prompts. Then start the server (`python manage.py runserver`) and go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). Log in and you should see "Notes" listed!
 
- 4. **Create a serializer.** When your API sends data to a browser or app, it needs to be in a format they can understand (usually **JSON**). A *serializer* handles this conversion. It turns Python objects into JSON (and vice versa). In `notesapp` folder create a file `serializers.py` and add:
+4. **Create a serializer.** When your API sends data to a browser or app, it needs to be in a format they can understand (usually **JSON**). A *serializer* handles this conversion. It turns Python objects into JSON (and vice versa). In `notesapp` folder create a file `serializers.py` and add:
 
     ```python
     from rest_framework import serializers
@@ -177,27 +179,28 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
             fields = ['id', 'title', 'content', 'created_at']
     ```
 
-    > ** Code Breakdown:**
-    > * `class NoteSerializer(serializers.ModelSerializer)`: We are creating a class that inherits from DRF's `ModelSerializer` which means we can use all methods that are implemented in that class. This saves us time by automatically figuring out how to map database fields to JSON fields so we don't have to write that logic manually.
-    > * `class Meta`: In Django, an inner `Meta` class is used to provide configuration to the main class.
-    > * `model = Note`: This tells the serializer exactly which Database Model it should look at.
-    > * `fields = [...]`: This explicitly defines which pieces of data should be included in the API. If you left 'created_at' out of this list, the API would hide that timestamp from the user.
+    Here, we create a class (**`class NoteSerializer`**) that inherits from DRF's `ModelSerializer`, meaning we can use all methods that are implemented in that class. This saves us time by automatically figuring out how to map database fields to JSON fields so we don't have to write that logic manually.
+
+    - The inner `Meta` class is used to provide configuration to the main class.
+    - `model = Note` tells the serializer exactly which Database Model it should look at.
+    - `fields = [...]` explicitly defines which pieces of data should be included in the API. If you left 'created_at' out of this list, the API would hide that timestamp from the user.
 
 5. **Create a ViewSet.** A *view* handles incoming requests and returns responses. A `ViewSet` bundles all the CRUD operations together, so you don't have to write separate functions for listing, creating, updating, and deleting. In `notesapp/views.py`, add:
 
     ```python
-        from rest_framework import viewsets
-        from .models import Note
-        from .serializers import NoteSerializer
+    from rest_framework import viewsets
+    from .models import Note
+    from .serializers import NoteSerializer
 
-        class NoteViewSet(viewsets.ModelViewSet):
-            queryset = Note.objects.all()
-            serializer_class = NoteSerializer
+    class NoteViewSet(viewsets.ModelViewSet):
+        queryset = Note.objects.all()
+        serializer_class = NoteSerializer
     ```
-    > ** Code Breakdown:**
-    > * `class NoteViewSet(viewsets.ModelViewSet)`: By inheriting from `ModelViewSet`, we get the logic for Create, Read, Update, and Delete for free. We don't have to write the functions ourselves!
-    > * `queryset = Note.objects.all()`: This defines the *data source*. It tells the view: "When someone asks for notes, look at the `Note` table and get `all()` of them."
-    > * `serializer_class = NoteSerializer`: This defines the *translator*. It tells the view: "When you get that data, use `NoteSerializer` to turn it into JSON before sending it to the user."
+
+    In this case, by inheriting from `ModelViewSet` our **`class NoteViewSet(viewsets.ModelViewSet)`** gets the logic for *Create*, *Read*, *Update*, and *Delete* for free. We don't have to write the functions ourselves!
+
+    - `queryset = Note.objects.all()` defines the *data source*. It tells the view: "When someone asks for notes, look at the `Note` table and get `all()` of them."
+    - `serializer_class = NoteSerializer` defines the *translator*. It tells the view: "When you get that data, use `NoteSerializer` to turn it into JSON before sending it to the user."
 
 6. **Configure URLs.** URLs define the *endpoints* of your API—the addresses where clients send requests. A *router* automatically generates standard REST URLs for your ViewSet (like `/api/notes/` for listing and `/api/notes/1/` for a specific note). Create `notesapp/urls.py` and set up a router:
 
@@ -243,28 +246,32 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
 ## Troubleshooting Common Issues
 
-If you run into errors, check these common pitfalls:
+If you run into errors, check out these common pitfalls:
 
 ### 1. `python` command not found
-* **The Issue:** On some systems (especially Mac/Linux), the command `python` refers to an old version (Python 2) or doesn't exist, while `python3` is the correct command.
-* **The Fix:** If `python manage.py ...` fails, try running `python3 manage.py ...` instead. On Windows, you might also try `py manage.py ...`.
+
+- **The Issue:** On some systems (especially Mac/Linux), the command `python` refers to an old version (Python 2) or doesn't exist, while `python3` is the correct command.
+- **The Fix:** Refer to the [`manage.py`](https://github.com/icdocsoc/ichack-hackpacks/tree/main/django/manage.py) script. If `python manage.py ...` fails, try running `python3 manage.py ...` instead. On Windows, you might also try `py manage.py ...`.
 
 ### 2. `ModuleNotFoundError: No module named 'django'`
-* **The Issue:** You likely installed Django, but your **Virtual Environment (venv)** is not active. Libraries are installed *inside* the environment, so if you aren't "inside" it, the computer can't find them.
-* **The Fix:**
-    1.  Look at your terminal prompt. Does it start with `(venv)` or `(.venv)`?
-    2.  If not, activate it again:
-        * **Windows:** `venv\Scripts\activate`
-        * **Mac/Linux:** `source venv/bin/activate`
-    3.  Once activated, try the command again.
+
+- **The Issue:** You likely installed Django, but your **Virtual Environment (venv)** is not active. Libraries are installed *inside* the environment, so if you aren't "inside" it, the computer can't find them.
+- **The Fix:**
+    1. Look at your terminal prompt. Does it start with `(venv)` or `(.venv)`?
+    2. If not, activate it again:
+        - **Windows:** `venv\Scripts\activate`
+        - **Mac/Linux:** `source venv/bin/activate`
+    3. Once activated, try the command again.
 
 ### 3. Permissions Errors (Mac/Linux)
-* **The Issue:** You see "Permission denied" errors when running commands.
-* **The Fix:** Avoid using `sudo` to install packages globally. Ensure you are using a virtual environment (see above), which creates a safe space where you have full permissions.
+
+- **The Issue:** You see "Permission denied" errors when running commands.
+- **The Fix:** Avoid using `sudo` to install packages globally. Ensure you are using a virtual environment (see above), which creates a safe space where you have full permissions.
 
 ### 4. Database is locked
-* **The Issue:** SQLite throws a "database is locked" error.
-* **The Fix:** This usually happens if you have a database viewer open (like 'DB Browser for SQLite') while the server is trying to write to it. Close any programs that are viewing the `db.sqlite3` file and try again.
+
+- **The Issue:** SQLite throws a "database is locked" error.
+- **The Fix:** This usually happens if you have a database viewer open (like 'DB Browser for SQLite') while the server is trying to write to it. Close any programs that are viewing the `db.sqlite3` file and try again.
 
 ## What's Next?
 
@@ -273,38 +280,52 @@ You now have a working backend engine. While "Notes" are simple, this exact same
 Here is how to take this template and twist it into the project you want to build.
 
 ### Phase 1: Pivot the Data Model
+
 The `Note` model is just a placeholder. Change `models.py` to fit your idea:
-* **Building a Marketplace?**
-    * Rename `Note` -> `Product`.
-    * Fields: `price` (DecimalField), `stock_count` (IntegerField), `description` (TextField).
+
+#### *Example*: Building a Marketplace
+
+- Rename `Note` -> `Product`.
+- Fields: `price` (DecimalField), `stock_count` (IntegerField), `description` (TextField).
 
 *(Remember: Every time you change `models.py`, run `python manage.py makemigrations` and `python manage.py migrate`!)*
 
 ### Phase 2: Add Relations (Connecting Data)
+
 Real apps have data that relates to other data. You can link models using **Foreign Keys**.
-* **Example:** A `Category` can have many `Notes`.
-    1.  Create a `Category` model.
-    2.  Add `category = models.ForeignKey(Category, on_delete=models.CASCADE)` to your `Note` model.
-    3.  Now your API will let you link notes to specific categories!
-    4.  
-More on databases you can read in the Databases HackPack!
+
+#### *Example*: A `Category` can have many `Note`s
+
+1. Create a `Category` model.
+2. Add `category = models.ForeignKey(Category, on_delete=models.CASCADE)` to your `Note` model.
+3. Now your API will let you link notes to specific categories!
+
+You can read more about **databases** in [their dedicated hackpack](/databases/README.md)!
 
 ### Phase 3: Handling Images
+
 Hackathon projects love visuals. To let users upload images:
-1.  Install the image handler: `pip install Pillow`
-2.  Add a field to your model: `image = models.ImageField(upload_to='uploads/')`
-3.  Add `image` to your `serializers.py` fields list.
-4.  Now your API accepts file uploads!
+
+1. Install the image handler: `pip install Pillow`
+2. Add a field to your model: `image = models.ImageField(upload_to='uploads/')`
+3. Add `image` to your `serializers.py` fields list.
+4. Now your API accepts file uploads!
 
 ### Phase 4: Connecting the Frontend
+
 Your backend is running on port 8000. Now you need a frontend (React, Vue, Mobile App) to talk to it.
-* **The Endpoint:** `http://127.0.0.1:8000/api/notes/`
-* **The Fetch:** Use standard HTTP requests.
+
+- **The Endpoint:** `http://127.0.0.1:8000/api/notes/`
+- **The Fetch:** Use standard HTTP requests.
+
     ```javascript
     // Example JavaScript fetch
     fetch('[http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/)')
       .then(response => response.json())
       .then(data => console.log(data));
     ```
-More on this in Front-End HackPack
-> **Tip: If your frontend is blocked by "CORS" errors, install `django-cors-headers`. It's the most common "gotcha" when connecting frontends to backends!
+
+This topic is covered extensively in [the API design HackPack](/api-design/README.md).
+
+> [!tip]
+> If your frontend is blocked by "CORS" errors, install `django-cors-headers`. It's the most common "gotcha" when connecting frontends to backends!
