@@ -2,7 +2,7 @@
 
 [IC Hack](https://ichack.org) is the largest student-run hackathon in Europe, organised by the Department of Computing Society ([DoCSoc](http://docsoc.co.uk)) of Imperial College London.
 
-Starting from IC Hack 26, the long-term volunteer team dedicated to 'Hacker Education' will publish education tutorials and resources under this repository, with the goal of introducing participants, especially first-time hackers, to basic technical concepts and frameworks, and the soft skills needed to succeed.
+Starting from IC Hack 26, the long-term volunteer team dedicated to 'Hacker Education' will publish education tutorials and resources under this repository, to introduce participants, especially first-time hackers, to basic technical concepts and frameworks, and the soft skills needed to succeed.
 
 These HackPacks will then be rendered and displayed on the IC Hack dashboard, for participants to view before, during, and after the hackathon itself.
 
@@ -11,6 +11,8 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 - **[`getting-started`](./getting-started/README.md)**
 - **[`android-development`](./android-development/README.md)**
 - **[`api-design`](./api-design/README.md)**
+  - **[`Firebase`](./api-design/Firebase.md)**
+  - **[`FastAPI`](./api-design/FastAPI.md)**
 - **[`databases`](./databases/README.md)**
 - **[`making-a-devpost`](./making-a-devpost/README.md)**
 - **[`engaging-with-sponsors`](./engaging-with-sponsors/README.md)**
@@ -18,6 +20,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 - **[`pitching-and-presenting`](./pitching-and-presenting/README.md)**
 - **[`project-planning`](./project-planning/README.md)**
 - **[Frontend development with Vue.](./frontend-development/vuejs/README.md)**
+- **[`django`](./django/README.md)**
 
 ## Repository Structure
 
