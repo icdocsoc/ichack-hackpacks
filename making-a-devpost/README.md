@@ -71,14 +71,15 @@ Additionally, adding **screenshots** or a **demo video** gives judges a clear vi
 
 ## Create Your Devpost Project
 
-[comment]: <> (Speak to tech about how hackers will get to Devpost link)
-
-1.
-2. Click **Submit a project**
-3. Create a new project
+1. Navigate to the **DevPost hackathon link** provided on the [IC Hack internal page](https://my.ichack.org/). This is likely to be [ic-hack-26.devpost.com](https://ic-hack-26.devpost.com/).
+2. Join the IC Hack 26 DevPost by clicking the large "*Join hackathon*" button.
+3. Click "*Start project*".
+4. Fill in all the information about your project you want to convey, using the advice given below.
+5. At some point before the 12:00 PM deadline, find the **public URL** for your DevPost submission and paste this into the relevant box on the internal page.
+6. When you are satisfied with your DevPost, continue to the *Submit* step and click "*Submit project*".
 
 > [!NOTE]
-> Only one person needs to submit!
+> Only one person needs to submit the DevPost project! Just make sure you have formed a team on the internal page.
 
 ## Project Name & Tagline
 
