@@ -71,15 +71,15 @@ Additionally, adding **screenshots** or a **demo video** gives judges a clear vi
 
 ## Create Your Devpost Project
 
-1. Navigate to the **DevPost hackathon link** provided on the [IC Hack internal page](https://my.ichack.org/). This is likely to be [ic-hack-26.devpost.com](https://ic-hack-26.devpost.com/).
-2. Join the IC Hack 26 DevPost by clicking the large "*Join hackathon*" button.
+1. Navigate to the **Devpost hackathon link** provided on the [IC Hack internal page](https://my.ichack.org/). This is likely to be [ic-hack-26.devpost.com](https://ic-hack-26.devpost.com/).
+2. Join the IC Hack 26 Devpost by clicking the large "*Join hackathon*" button.
 3. Click "*Start project*".
 4. Fill in all the information about your project you want to convey, using the advice given below.
-5. At some point before the 12:00 PM deadline, find the **public URL** for your DevPost submission and paste this into the relevant box on the internal page.
-6. When you are satisfied with your DevPost, continue to the *Submit* step and click "*Submit project*".
+5. At some point before the 12:00 PM deadline, find the **public URL** for your Devpost submission and paste this into the relevant box on the internal page.
+6. When you are satisfied with your Devpost, continue to the *Submit* step and click "*Submit project*".
 
 > [!NOTE]
-> Only one person needs to submit the DevPost project! Just make sure you have formed a team on the internal page.
+> Only one person needs to submit the Devpost project! Just make sure you have formed a team on the internal page.
 
 ## Project Name & Tagline
 
@@ -277,10 +277,10 @@ For 'Best Use Of' categories, you will want to state the technology in your ***T
 
 ## Past Examples
 
-Take a [look here](https://ic-hack-25.devpost.com/project-gallery) for last years' DevPost submissions.
+Take a [look here](https://ic-hack-25.devpost.com/project-gallery) for last years' Devpost submissions.
 
 >[!TIP]
->Look out for the `Winner` banner, these are the winners or runners-up of a category. They likely did something right in their DevPost!
+>Look out for the `Winner` banner, these are the winners or runners-up of a category. They likely did something right in their Devpost!
 
 ## Final Check
 
