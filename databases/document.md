@@ -61,17 +61,17 @@ This deep dive will focus on integrating Firestore into **web apps** (React / Vu
  1. Go to [console.firebase.google.com](https://console.firebase.google.com/)
  2. Create a new project
  3. Wait for project to be created
- 4. On the left hand pane, click on `Build` -> `Firestore Database`
- 5. Press `Create database`
- 6. Pick `Standard edition`
+ 4. On the left hand pane, click on *Build* -> *Firestore Database*
+ 5. Press *Create database*
+ 6. Pick *Standard edition*
  7. The default location is fine, but Europe, or even better, London, can be selected for lower latency.
- 8. For IC Hack, we recommend you select `test mode`, so you do not have to deal with access issues.
+ 8. For IC Hack, we recommend you select *test mode*, so you do not have to deal with access issues.
 
  > [!IMPORTANT]
- > This will revert to `production mode` within 30 days, so fixes may be needed if you continue to work on your project.
+ > This will revert to *production mode* within 30 days, so fixes may be needed if you continue to work on your project.
 
  9. Return to the home screen
- 10. Add a new web app (press `Add app` and select `web`)
+ 10. Add a new web app (press *Add app* and select *web*)
 
 ---
 
