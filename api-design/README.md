@@ -12,13 +12,13 @@ In this HackPack, we will focus on creating an API that is
 
 This HackPack will cover
 
- 1. General API Design
- 2. Firebase Cloud Functions for serverless APIs
- 3. FastAPI (Python) for fast iteration and typed safety
+1. General API Design
+2. Firebase Cloud Functions for serverless APIs
+3. FastAPI (Python) for fast iteration and typed safety
 
 Example code will be provided, with more info [found here](#example-code).
 
-It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Click here to find out more](../databases/README.md)
+It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Click here to find out more](/databases/README.md)
 
 ## Table Of Contents
 
@@ -632,7 +632,7 @@ You can use this as a function in your React or Vue app.
 
 ### Idiomatic Methods
 
-Check out the Vue HackPack- [at the end](../frontend-development/vuejs/README.md#other-useful-resources) there are several useful links showing more idiomatic ways to call our backend.
+Check out the Vue HackPack- [at the end](/frontend-development/vuejs/README.md#other-useful-resources) there are several useful links showing more idiomatic ways to call our backend.
 
 For React, there are some other idiomatic ways to call functions using libraries. [Check out the React HackPack](../frontend-development/react-example-tutorial/README.md#fastapi-default-path-frontend-serving) to see how to call FastAPI easier with a library!
 
@@ -757,7 +757,7 @@ You would use **FastAPI** if you are comfortable with Python, are using machine 
 
 Since an API is a contract between a frontend and backend, with no implementation details being necessary, the example code is split into the frontend, and the backends.
 
-The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by [changing the API URL](./example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](./example-project/frontend/src/App.tsx#3)
+The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by [changing the API URL](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/App.tsx#3)
 
 [Read more about Firestore and document databases.](../databases/document.md)
 
