@@ -1119,7 +1119,7 @@ We will be using MongoDB as our database. [Click here for the document databases
     source venv/bin/activate
     ```
 
-    > [!IMPORTANT]
+    >[!IMPORTANT]
     > Add **venv** to your **.gitignore**. Your team members will thank you!
 
 3. Run the following to install the necessary dependencies, and any other dependencies you want. For the example, since we are using a MongoDB database, we are adding `pymongo[srv]` and `python-dotenv` to our dependencies.
@@ -1128,7 +1128,7 @@ We will be using MongoDB as our database. [Click here for the document databases
     pip install fastapi uvicorn
     ```
 
-    > [!TIP]
+    >[!TIP]
     > Run the following two commands in the root of your FastAPI to quickly restore your **venv**.
 
     ```bash
