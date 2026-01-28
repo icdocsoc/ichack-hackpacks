@@ -8,7 +8,9 @@ Sample code will be provided, with example programs found in [`example-project`]
 
 ## Table of Contents
 
-- [Firestore](#firestore)
+- [Document Databases](#document-databases)
+  - [Table of Contents](#table-of-contents)
+  - [Firestore](#firestore)
   - [Setup](#setup)
     - [Create a Firebase project](#create-a-firebase-project)
     - [Install Firebase SDK](#install-firebase-sdk)
@@ -57,70 +59,70 @@ This deep dive will focus on integrating Firestore into **web apps** (React / Vu
 
 ### Create a Firebase project
 
- 0. Ensure you have already set up a JS project (we will be using [*npm* with React and TypeScript](/databases/example-project/sample-document-app/))
- 1. Go to [console.firebase.google.com](https://console.firebase.google.com/)
- 2. Create a new project
- 3. Wait for project to be created
- 4. On the left hand pane, click on *Build* -> *Firestore Database*
- 5. Press *Create database*
- 6. Pick *Standard edition*
- 7. The default location is fine, but Europe, or even better, London, can be selected for lower latency.
- 8. For IC Hack, we recommend you select *test mode*, so you do not have to deal with access issues.
+0. Ensure you have already set up a JS project (we will be using [*npm* with React and TypeScript](/databases/example-project/sample-document-app/))
+1. Go to [console.firebase.google.com](https://console.firebase.google.com/)
+2. Create a new project
+3. Wait for project to be created
+4. On the left hand pane, click on *Build* -> *Firestore Database*
+5. Press *Create database*
+6. Pick *Standard edition*
+7. The default location is fine, but Europe, or even better, London, can be selected for lower latency.
+8. For IC Hack, we recommend you select *test mode*, so you do not have to deal with access issues.
 
-> [!IMPORTANT]
-> This will revert to *production mode* within 30 days, so fixes may be needed if you continue to work on your project.
+    > [!IMPORTANT]
+    > This will revert to *production mode* within 30 days, so fixes may be needed if you continue to work on your project.
 
- 9. Return to the home screen
- 10. Add a new web app (press *Add app* and select *web*)
+9. Return to the home screen
+10. Add a new web app (press *Add app* and select *web*)
 
 ---
 
 ### Install Firebase SDK
 
-  In your project root directory, run
+In your project root directory, run
 
-  ```bash
-  npm install firebase
-  ```
+```bash
+npm install firebase
+```
 
 ---
 
 ### Initialise Firebase
 
- 1. Copy the code snippet from the web app setup screen. This should look something like
+1. Copy the code snippet from the web app setup screen. This should look something like
 
- ```ts
- // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+    ```ts
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "...",
-  authDomain: "...",
-  projectId: "...",
-  storageBucket: "...",
-  messagingSenderId: "...",
-  appId: "..."
-};
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "...",
+      authDomain: "...",
+      projectId: "...",
+      storageBucket: "...",
+      messagingSenderId: "...",
+      appId: "..."
+    };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-```
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    ```
 
- 1. Paste all this into a new file, [`project-root/src/firebase.ts`](/databases/example-project/sample-document-app/src/firebase.ts). This should now appear next to `main.tsx`.
- 2. Add the following 2 lines to that file
+2. Paste all this into a new file, [`project-root/src/firebase.ts`](/databases/example-project/sample-document-app/src/firebase.ts). This should now appear next to `main.tsx`.
+3. Add the following 2 lines to that file
 
- ```ts
- import { getFirestore } from "firebase/firestore";
+    ```ts
+    import { getFirestore } from "firebase/firestore";
 
- [EXISTING STUFF]
+    [EXISTING STUFF]
 
- export const db = getFirestore(app);
- ```
+    export const db = getFirestore(app);
+    ```
 
- 3. Congratulations, you are ready to use Firestore!
+4. Congratulations, you are ready to use Firestore!
 
 ## Firestore Data Model
 
@@ -160,7 +162,6 @@ The latter is preferred for **small**, mostly **read-only** data, since it avoid
 - Systems requiring strict ACID across many entities (e.g, financial systems, accounting systems)
 - Analytics-heavy platforms with large, complex queries or aggregations
 - Apps with intricate cross-collection transactions
-
 
 ---
 
@@ -671,61 +672,61 @@ You will likely want some sort of authentication, even anonymous (using just the
 
 ### Setup
 
- 1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/)
- 2. Open your project
- 3. On the left hand pane, click on `Build` -> `Authentication`
- 4. Click on `Get started`
- 5. From this panel, click on the sign-in providers you want
+1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/)
+2. Open your project
+3. On the left hand pane, click on `Build` -> `Authentication`
+4. Click on `Get started`
+5. From this panel, click on the sign-in providers you want
 
-> [!TIP]
-> Anonymous or email/password are by far the recommended methods
+    > [!TIP]
+    > Anonymous or email/password are by far the recommended methods
 
- 6. Click enable for the selected sign-in provider
+6. Click enable for the selected sign-in provider
 
 ### Use
 
- 1. Add the following to your imports for `firebase.ts`
+1. Add the following to your imports for `firebase.ts`
 
- ```ts
-import { getAuth } from "firebase/auth"
-```
+    ```ts
+    import { getAuth } from "firebase/auth"
+    ```
 
- 2. Add the following just before your `getFirestore(app)` call, also in `firebase.ts`
+2. Add the following just before your `getFirestore(app)` call, also in `firebase.ts`
 
- ```ts
- export const auth = getAuth(app);
- ```
+    ```ts
+    export const auth = getAuth(app);
+    ```
 
- 3. In `App.tsx`, the main `App()` function should be of the form
+3. In `App.tsx`, the main `App()` function should be of the form
 
- ```ts
- function App() {
-  const [user, setUser] = useState<User | null | undefined>(undefined);
+    ```ts
+    function App() {
+      const [user, setUser] = useState<User | null | undefined>(undefined);
 
-  useEffect(() => {
-    return onAuthStateChanged(auth, setUser);
-  }, []);
+      useEffect(() => {
+        return onAuthStateChanged(auth, setUser);
+      }, []);
 
-  if (user === undefined) return <Loading />;
+      if (user === undefined) return <Loading />;
 
-  return user ? <Dashboard /> : <SignIn />;
-}
-```
+      return user ? <Dashboard /> : <SignIn />;
+    }
+    ```
 
-where `Loading`, `Dashboard` and `SignIn` are React components.
+    where `Loading`, `Dashboard` and `SignIn` are React components.
 
-Click on the following for examples of those components
+    Click on the following for examples of those components
 
-- [`Loading`](./example-project/sample-document-app/src/components/LoadingSpinner.tsx)
-  ![Loading Spinner Component](./assets/loading-spinner.png)
-- [`Dashboard`](./example-project/sample-document-app/src/pages/Dashboard.tsx)
-  ![Simple Message Dashboard](./assets/simple-dashboard.png)
-- [Anonymous `SignIn`](./example-project/sample-document-app/src/components/SignInAnonymous.tsx)
-  ![Anonymous Sign In](./assets/anonymous-sign-in.png)
-- [Email/Password `SignIn`](./example-project/sample-document-app/src/components/SignInPassword.tsx)
-  ![Email/Password Sign in](./assets/email-password-sign-in.png)
-  ![Invalid Email/Password Sign in](./assets/invalid-email-sign-in.png)
-- [`App.tsx`](./example-project/sample-document-app/src/App.tsx)
+    - [`Loading`](./example-project/sample-document-app/src/components/LoadingSpinner.tsx)
+      ![Loading Spinner Component](./assets/loading-spinner.png)
+    - [`Dashboard`](./example-project/sample-document-app/src/pages/Dashboard.tsx)
+      ![Simple Message Dashboard](./assets/simple-dashboard.png)
+    - [Anonymous `SignIn`](./example-project/sample-document-app/src/components/SignInAnonymous.tsx)
+      ![Anonymous Sign In](./assets/anonymous-sign-in.png)
+    - [Email/Password `SignIn`](./example-project/sample-document-app/src/components/SignInPassword.tsx)
+      ![Email/Password Sign in](./assets/email-password-sign-in.png)
+      ![Invalid Email/Password Sign in](./assets/invalid-email-sign-in.png)
+    - [`App.tsx`](./example-project/sample-document-app/src/App.tsx)
 
 ## Example
 
