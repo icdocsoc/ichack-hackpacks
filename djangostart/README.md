@@ -337,3 +337,7 @@ This topic is covered extensively in [the API design HackPack](/api-design/READM
 
 > [!TIP]
 > If your frontend is blocked by "CORS" errors, install `django-cors-headers`. It's the most common "gotcha" when connecting frontends to backends!
+
+---
+
+**Ready to move faster?** If you're building a production-ready Django project or want to skip repetitive setup, check out [Cookiecutter Django](https://github.com/cookiecutter/cookiecutter-django). It's a project template that automatically scaffolds a Django application with best practices, security settings, Docker configuration, and more built in. Great for when you've outgrown the basics and want a solid foundation for a real-world application.
