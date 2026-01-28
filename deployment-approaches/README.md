@@ -27,8 +27,6 @@ If your project is not deployed, it might seem to the judges that your project i
         - [Prerequisites](#prerequisites)
         - [Deploy using `vercel --yes` (fastest way)](#deploy-using-vercel---yes-fastest-way)
       - [Render](#render)
-        - [Typical Build Command](#typical-build-command)
-        - [Typical Start Command](#typical-start-command)
 
 ## Different deployment approaches
 
@@ -82,35 +80,36 @@ After runnning this command you will see a terminal status window with current c
 
 ### 3rd-party deployment services
 
-The workflow looks like this:
-You push code → service builds → service hosts → you get a stable public URL.
+If we choose to deploy your web app to a third-party service, you might end up with a workflow as follows:
+
+1. You **push your code** to the service's repository (usually via Git).
+2. The service **automatically builds your application** using your specified build configuration.
+3. The service **hosts your built application** on their infrastructure.
+4. You receive a **stable public URL** that anyone can access.
 
 #### Vercel
 
 [Vercel](https://vercel.com/) is a platform for deploying **frontend web applications** and **static sites**.
+
 It is one of the easiest ways to make a project publicly accessible.
 
 ![img.png](assets/vercel.png)
 Vercel can deploy:
 
-- **Static frontend builds** (HTML, CSS, JavaScript)
-- **Single-page applications** (React, Vue, Svelte, etc.)
-- Frontend projects that produce a **build output directory**
+- **Static frontend builds** (HTML, CSS, JavaScript),
+- **Single-page applications** (React, Vue, Svelte, etc.),
+- Frontend projects that produce a **build output directory**.
 
 Vercel is **not meant** for heavy backend logic or long-running servers.
 
----
-
 ##### Prerequisites
 
-- A Vercel account (GitHub login works)
-- Your project can be **built locally** (i.e. it produces static files)
-
----
+- A Vercel account (you can log in with GitHub for ease)
+- A project that can be **built locally** (i.e. it produces static files)
 
 ##### Deploy using `vercel --yes` (fastest way)
 
-From your **frontend project directory** (where `package.json` is located):
+From your **frontend project directory** (where `package.json` is located), run:
 
 ```bash
 npm install -g vercel
@@ -118,12 +117,12 @@ vercel login
 vercel --yes
 ```
 
-This command automatically generates a new project which:
+This set of commands automatically generates a new project and:
 
-- detect a frontend project
-- run build command
-- deploys static files
-- Generates a public URL
+- Detects your frontend **project type and configuration**.
+- Runs your project's **build command** to compile the application.
+- **Deploys** the resulting static files to Vercel's hosting infrastructure.
+- Generates a **public URL** where your application can be accessed.
 
 You'll see output similar to
 
@@ -133,7 +132,7 @@ https://your-project-name.vercel.app
 
 No configuration files required.
 
-If you want to make a change to the project, just run the command again:
+If you want to make a change to the project, just run the ***final command*** again:
 
 ```bash
 vercel --yes
@@ -141,38 +140,26 @@ vercel --yes
 
 #### Render
 
-[Render](https://render.com/) is a hosted platform that can run your backend as a **web service**
-(API) or host a **static site**. It supports **native runtimes** (like Python) and **Docker-based deployments**.
+[Render](https://render.com/) is a hosted platform that can run your *backend* as a **web service** (API) or host a **static site**. It supports native runtimes (like Python) and Docker-based deployments.
+
+Render's **free tier** spins down after ~15 minutes with no inbound traffic, then will "wake up" on the next request (cold start delay).
+
+Render will ask for the following:
+
+- A **Build Command** (to install dependencies)
+- A **Start Command** (to run the server)
+
+For example, if we were attempting to deploy a **Python FastAPI** app on Render, we would first create a new **Web Service** on Render, and then provide the following values during service creation:
+
+- **Language**: Python 3.
+- **Build command**: `pip install -r requirements.txt`.
+- **Start command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`.
+
+Your web service will then live on an `onrender.com` URL as soon as the deploy finishes.
 
 ---
 
-Render’s **Free web services spin down after ~15 minutes with no inbound traffic**,
-then “wake up” on the next request (cold start delay).
-
-Render will ask for:
-
-- **Build Command** (install deps)
-- **Start Command** (run server)
-
-For something like Python it will look like:
-
-##### Typical Build Command
-
-```bash
-pip install -r requirements.txt
-```
-
-##### Typical Start Command
-
-```bash
-pip install -r requirements.txt
-```
-
-- FastAPI:
-
-```bash
-uvicorn main:app --host 0.0.0.0 --port $PORT
-```
+There are many other third-party services and other methods for deployment out there, so don't feel restricted to just the ones we've mentioned in this HackPack! Just make sure that you heed the advice below...
 
 > [!TIP]
 > Use environment variables for secrets, redeploy after changes, and always assume free-tier services can restart or sleep at any time.
