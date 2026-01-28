@@ -11,8 +11,8 @@ This has the benefit of being **serverless**, so you do not have to manage the r
 4. On the left hand pane, click on `Build` -> `Functions`
 5. As `Functions` is not included in the `Spark` (default) plan, you will have to upgrade to the `Blaze` plan
 
->[!WARNING]
->The Blaze plan will cost you if your quota runs out, so be careful with your usage! You are very unlikely to run out of your quota within the timeframe of a hackathon!
+    >[!WARNING]
+    >The Blaze plan will cost you if your quota runs out, so be careful with your usage! You are very unlikely to run out of your quota within the timeframe of a hackathon!
 
 6. Create a Cloud Billing Account
 7. Follow the instructions in the new window
@@ -20,7 +20,7 @@ This has the benefit of being **serverless**, so you do not have to manage the r
 9. As prompted, run `npm install -g firebase-tools`
 10. Run `firebase login`
 11. In your project root, run `firebase init`
-12. At the very least, select `Functions`. 
+12. At the very least, select `Functions`.
 13. Select `Use an existing project` and select your project.
 14. Choose your language for Cloud Functions. For this guide, we will be using **TypeScript**, but links will be provided for Python alternatives.
 15. I recommend enabling ESLint.
@@ -329,53 +329,53 @@ Now add your web app.
 3. Select Web
 4. Copy the code shown, it should look something like
 
-  ```ts
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "firebase/app";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    ```ts
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-  apiKey: "__",
-  authDomain: "__",
-  projectId: "__",
-  storageBucket: "__",
-  messagingSenderId: "__",
-  appId: "__"
-  };
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "__",
+    authDomain: "__",
+    projectId: "__",
+    storageBucket: "__",
+    messagingSenderId: "__",
+    appId: "__"
+    };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  ```
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    ```
 
 5. Copy this into a new file called `firebase.ts` (or `.js`) in `frontend/src`
 6. Add the necessary code to import cloud functions, as shown below
 
-  ```ts
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "firebase/app";
-  import { getFunctions } from "firebase/functions";
+    ```ts
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    import { getFunctions } from "firebase/functions";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-  ...
-  };
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    ...
+    };
 
-  // Initialize Firebase
-  export const app = initializeApp(firebaseConfig);
-  export const functions = getFunctions(app);
-  // anything else you will need
-  ```
+    // Initialize Firebase
+    export const app = initializeApp(firebaseConfig);
+    export const functions = getFunctions(app);
+    // anything else you will need
+    ```
 
 7. Now add the following to the top of your API file
 
-  ```ts
-  import { httpsCallable } from "firebase/functions";
-  import { functions } from "./firebase";
+    ```ts
+    import { httpsCallable } from "firebase/functions";
+    import { functions } from "./firebase";
 
-  const yourFuncName = httpsCallable(functions, "yourFuncName");
-  ```
+    const yourFuncName = httpsCallable(functions, "yourFuncName");
+    ```
 
 8. Call them like you would any other function!
 

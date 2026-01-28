@@ -11,58 +11,58 @@ We will be using MongoDB as our database. [View the document databases HackPack]
 1. Create a new directory for your backend.
 2. In this directory, run the following to set up a virtual environment
 
-  ```bash
-  python -m venv venv
-  source venv/bin/activate
-  ```
+    ```bash
+    python -m venv venv
+    source venv/bin/activate
+    ```
 
-  >[!IMPORTANT]
-  > Add `venv` to your `.gitignore`. Your team members will thank you!
+    >[!IMPORTANT]
+    > Add `venv` to your `.gitignore`. Your team members will thank you!
 
 3. Run the following to install the necessary dependencies, and any other dependencies you want. For the example, since we are using a MongoDB database, we are adding `pymongo[srv]` and `python-dotenv` to our dependencies.
 
-  ```bash
-  pip install fastapi uvicorn
-  ```
+    ```bash
+    pip install fastapi uvicorn
+    ```
 
-  >[!TIP]
-  > Run the following in the root of your FastAPI
-  >
-  > ```bash
-  > pip freeze > requirements.txt
-  > ```
-  >
-  > This will mean that the `venv` can be quickly restored by running
-  >
-  > ```bash
-  > pip install -r requirements.txt
-  > ```
-  >
+    >[!TIP]
+    > Run the following in the root of your FastAPI
+    >
+    > ```bash
+    > pip freeze > requirements.txt
+    > ```
+    >
+    > This will mean that the `venv` can be quickly restored by running
+    >
+    > ```bash
+    > pip install -r requirements.txt
+    > ```
+    >
 
- 4. Create the following directory structure
+4. Create the following directory structure
 
-  ```txt
-  backend/
-  ├─ app/
-  │  ├─ __init__.py
-  │  ├─ main.py
-  │  ├─ db.py
-  │  └─ all files with functions .py
-  └─ requirements.txt
-  ```
+    ```txt
+    backend/
+    ├─ app/
+    │  ├─ __init__.py
+    │  ├─ main.py
+    │  ├─ db.py
+    │  └─ all files with functions .py
+    └─ requirements.txt
+    ```
 
 5. Paste the following into `main.py`
 
-  ```py
-  from fastapi import FastAPI
-  from .[file with functions] import router as [file]_router
-  # all other files with functions
+    ```py
+    from fastapi import FastAPI
+    from .[file with functions] import router as [file]_router
+    # all other files with functions
 
-  app = FastAPI()
+    app = FastAPI()
 
-  app.include_router([file]_router)
-  # repeat for all other routers
-  ```
+    app.include_router([file]_router)
+    # repeat for all other routers
+    ```
 
 ## Writing Functions
 

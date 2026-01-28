@@ -536,7 +536,7 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 
 ### Common Failures
 
-| Rule broken                        | What can go wrong if broken                           |
+| Rule broken                  | What can go wrong if broken                           |
 | ---------------------------- | ----------------------------------------------------- |
 | GET modifies state           | Duplicate writes from prefetch, crawlers, retries     |
 | POST is used for reads       | Hard to cache, confusing for clients                  |
