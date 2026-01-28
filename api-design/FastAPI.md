@@ -4,7 +4,7 @@ FastAPI is a popular Python library that can make an API too. The main differenc
 
 For the purposes of a hackathon, this will likely mean self-hosting to `localhost`.
 
-We will be using MongoDB as our database. [Click here for the document databases HackPack](/databases/document.md)
+We will be using MongoDB as our database. [View the document databases HackPack](/databases/document.md).
 
 ## Setup
 
@@ -93,7 +93,7 @@ As you can see, requests are handled very nicely and without too much boilerplat
 
 Unlike with Firebase Cloud Functions, the HTTP method is specified in the decorator, along with the resource for which this function is for.
 
-Below is a more concrete example, as part of the FastAPI backend for our example program. [Click here for the full code](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/fastapi/app/posts.py)
+Below is a more concrete example, as part of the FastAPI backend for our example program. [View the full code](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/fastapi/app/posts.py).
 
 ```py
 @router.delete("/posts/{id}", status_code=204)

@@ -183,7 +183,7 @@ const id = req.path.split("/")[1]; // /posts/{id}
 
 The above code gets the request path, and splits on the `/`. This will extract the `id` value so it can be used by our backend.
 
-[Click here for an example canonical Firebase backend](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/cloud-functions/functions/src/canonical-restful.ts)
+[View an example canonical Firebase backend](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/cloud-functions/functions/src/canonical-restful.ts).
 
 #### Hackathon Simple
 
@@ -198,7 +198,7 @@ The above unpacks the request body into the `id` and `text` fields.
 >[!WARNING]
 > This typically breaks caching, so the canonical method is preferred...
 
-[Click here for an example hacky Firebase backend](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/cloud-functions/functions/src/request-packing.ts)
+[View an example hacky Firebase backend](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/cloud-functions/functions/src/request-packing.ts).
 
 In general, you send a simple string response with the
 
@@ -297,7 +297,7 @@ export async function updatePost(id: string, text: string) {
 }
 ```
 
-[Click here for a full example frontend for a RESTful Firebase backend](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/classic_api.ts)
+[View a full example frontend for a RESTful Firebase backend](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/classic_api.ts).
 
 Whereas with the ***hacky*** approach, we pack the ID into the request body.
 

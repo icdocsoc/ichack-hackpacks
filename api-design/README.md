@@ -16,9 +16,9 @@ This HackPack will cover
 2. Firebase Cloud Functions for serverless APIs
 3. FastAPI (Python) for fast iteration and typed safety
 
-Example code will be provided, with more info [found here](#example-code).
+Example code will be provided in the [Example Code](#example-code) section.
 
-It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Click here to read more about databases](/databases/README.md).
+It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Read more about databases](/databases/README.md).
 
 ## Table Of Contents
 
@@ -640,7 +640,7 @@ Unless you are using Firebase (which has its own user authentication and deploym
 
 You do ***not*** want to be publishing them on a public platform. The best way to handle this is to create a local `.env` file in the root of your backend.
 
-Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Click here for more information about Git and `.gitignore`](../git-and-github/README.md#gitignore)
+Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Learn more about Git and `.gitignore`](../git-and-github/README.md#gitignore).
 
 Your `.env` file may look something like this
 
@@ -729,7 +729,7 @@ The two backends we will be covering are **Firebase** and **FastAPI**.
 
 You would use this if you are using **Firestore** as your database, and are comfortable with JS/TS. Also use if you are not too comfortable with self-deploying an application.
 
-[Click here to go to the full Firebase HackPack](./Firebase.md).
+[View the full Firebase HackPack](./Firebase.md).
 
 ### FastAPI
 
@@ -747,13 +747,13 @@ You would use this if you are using **Firestore** as your database, and are comf
 
 You would use **FastAPI** if you are comfortable with Python, are using machine learning (since Python ML integration is amazing), or want maximum flexibility.
 
-[Click here to go to the full FastAPI HackPack](./FastAPI.md).
+[View the full FastAPI HackPack](./FastAPI.md).
 
 ## Example Code
 
 Since an API is a contract between a frontend and backend, with no implementation details being necessary, the example code is split into the frontend, and the backends.
 
-The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by [changing the API URL](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/App.tsx#3).
+The [frontend code](./example-project/frontend/) can swap between the Firebase and FastAPI backends just by [changing the API URL](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/App.tsx#3).
 
 [Read more about Firestore and document databases](../databases/document.md).
 
