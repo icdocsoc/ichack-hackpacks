@@ -57,7 +57,7 @@ This deep dive will focus on integrating Firestore into **web apps** (React / Vu
 
 ### Create a Firebase project
 
- 0. Ensure you have already set up a JS project (we will be using [`npm` with `React` and `TypeScript`](/databases/example-project/sample-document-app/))
+ 0. Ensure you have already set up a JS project (we will be using [*npm* with React and TypeScript](/databases/example-project/sample-document-app/))
  1. Go to [console.firebase.google.com](https://console.firebase.google.com/)
  2. Create a new project
  3. Wait for project to be created
