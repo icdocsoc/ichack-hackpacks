@@ -316,7 +316,7 @@ export async function updatePost(id: string, text: string) {
 
 #### JS/TS
 
-If you have not done so yet, run the following in the root of the frontent
+If you have not done so yet, run the following in the root of the frontend
 
 ```bash
 npm install firebase
