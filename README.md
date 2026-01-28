@@ -12,6 +12,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 - **[`android-development`](./android-development/README.md)**
 - **[`api-design`](./api-design/README.md)**
 - **[`databases`](./databases/README.md)**
+- **[`making-a-devpost`](./making-a-devpost/README.md)**
 - **[`engaging-with-sponsors`](./engaging-with-sponsors/README.md)**
 - **[`git-and-github`](./git-and-github/README.md)**
 - **[`pitching-and-presenting`](./pitching-and-presenting/README.md)**
