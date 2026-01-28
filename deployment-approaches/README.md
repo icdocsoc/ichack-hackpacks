@@ -15,6 +15,22 @@ Other people:
 
 If your project is not deployed, it might seem to the judges that your project is unfinished.
 
+## Table of Contents
+
+- [Deployment](#deployment)
+  - [Why do we need deployment?](#why-do-we-need-deployment)
+  - [Table of Contents](#table-of-contents)
+  - [Different deployment approaches](#different-deployment-approaches)
+    - [Local hosting](#local-hosting)
+    - [3rd-party deployment services](#3rd-party-deployment-services)
+      - [Vercel](#vercel)
+        - [Prerequisites](#prerequisites)
+        - [Deploy using `vercel --yes` (fastest way)](#deploy-using-vercel---yes-fastest-way)
+      - [Render](#render)
+        - [Typical Build Command](#typical-build-command)
+        - [Typical Start Command](#typical-start-command)
+
+
 ## Different deployment approaches
 
 We will cover three common approaches to deploying web apps, from easiest to hardest:
@@ -23,7 +39,7 @@ We will cover three common approaches to deploying web apps, from easiest to har
 - **3rd-party deployment services** (still fast, and more long-term)
 - **Personal server with NGINX** (advanced, future-proof)
 
-## Local hosting
+### Local hosting
 
 This approach runs your app on your own laptop and exposes it to the internet.
 
@@ -67,12 +83,12 @@ After the command you will see a terminal status window with current connections
 > If your internet disconnects, the site goes down  
 > URLs may change on restart
 
-## 3rd-party deployment services
+### 3rd-party deployment services
 
 The workflow looks like this:
 You push code → service builds → service hosts → you get a stable public URL.
 
-### **Vercel**
+#### Vercel
 
 [Vercel](https://vercel.com/) is a platform for deploying **frontend web applications** and **static sites**.
 It is one of the easiest ways to make a project publicly accessible.
@@ -88,14 +104,14 @@ Vercel is **not meant** for heavy backend logic or long-running servers.
 
 ---
 
-#### Prerequisites
+##### Prerequisites
 
 - A Vercel account (GitHub login works)
 - Your project can be **built locally** (i.e. it produces static files)
 
 ---
 
-#### Deploy using `vercel --yes` (fastest way)
+##### Deploy using `vercel --yes` (fastest way)
 
 From your **frontend project directory** (where `package.json` is located):
 
@@ -126,7 +142,7 @@ If you want to make a change to the project, just run the command again:
 vercel --yes
 ```
 
-### Render
+#### Render
 
 [Render](https://render.com/) is a hosted platform that can run your backend as a **web service**
 (API) or host a **static site**. It supports **native runtimes** (like Python) and **Docker-based deployments**.
@@ -143,13 +159,13 @@ Render will ask for:
 
 For something like Python it will look like:
 
-#### Typical Build Command
+##### Typical Build Command
 
 ```bash
 pip install -r requirements.txt
 ```
 
-#### Typical Start Command
+##### Typical Start Command
 
 ```bash
 pip install -r requirements.txt
