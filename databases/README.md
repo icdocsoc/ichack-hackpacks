@@ -57,9 +57,9 @@ Relational databases store data in **tables with fixed schemas**, with rows and 
 
 ### Pros/Cons
 
-✅ Clear, stable data structure \
-✅ Complex queries and joins supported \
-✅ Strong consistency and reliability \
+✅ Clear, stable data structure
+✅ Complex queries and joins supported
+✅ Strong consistency and reliability
 ❌ Schema changes require migrations, making rapid schema evolution cumbersome
 
 ### Example use cases
