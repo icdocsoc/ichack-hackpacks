@@ -1,19 +1,19 @@
-# Deployment Mini-Guide
+# Deployment
 
 ## Why do we need deployment?
 
-During development, your app usually runs on **`localhost`** (e.g. `http://localhost:5173`).
-This works **only on your own machine**.
+During development, your project will typically run on a **local port** of your computer: **`localhost`** (e.g. `http://localhost:5173`).
+But this setup works **only on your own machine**.
 
 Other people:
 
-- cannot see your website
-- cannot test it
-- cannot judge your project properly
+- cannot see your website,
+- cannot test it,
+- cannot judge your project properly.
 
-**Deployment makes your website public** — accessible via a real URL that anyone can open.
+**Deployment makes your app, website, or other environment public** — accessible via a real URL that anyone can open.
 
-If your project is not deployed, it might seem that your project is yet to be finished.
+If your project is not deployed, it might seem to the judges that your project is unfinished.
 
 ## Deployment approaches (in increasing difficulty)
 
