@@ -749,7 +749,7 @@ You would use **FastAPI** if you are comfortable with Python, are using machine 
 
 [View the full FastAPI HackPack](./FastAPI.md).
 
-## Example Code
+# Example Code
 
 Since an API is a contract between a frontend and backend, with no implementation details being necessary, the example code is split into the frontend, and the backends.
 

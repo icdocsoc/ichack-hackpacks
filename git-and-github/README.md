@@ -124,7 +124,7 @@ If you do not want to commit all your changes,
 git add [filename]
 ```
 
-can be used selectively to add only files you are interested in. You can also add certain file extensions and folders to a `.gitignore` file to ensure they are **never tracked**. Place the `.gitignore` file in the root of your repo. You may also want to refer to [the documentation and template `.gitignore` files](https://docs.github.com/en/get-started/git-basics/ignoring-files?platform=linux).
+can be used selectively to add only files you are interested in. You can also add certain file extensions and folders to a `.gitignore` file to ensure they are **never tracked**. Place the `.gitignore` file in the root of your repo. You may also want to refer to [the documentation and template **.gitignore** files](https://docs.github.com/en/get-started/git-basics/ignoring-files?platform=linux).
 
 Here is an example stolen from the Git docs:
 
@@ -400,7 +400,7 @@ Don't like the changes made in a specific commit? Run
 git revert <commit>
 ```
 
-The `<commit>` is a commit hash, a unique identifier for a commit. These can be found by running
+The `commit` is a commit hash, a unique identifier for a commit. These can be found by running
 
 ```bash
 git log

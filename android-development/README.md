@@ -264,7 +264,7 @@ Mine looks like this:
 ![Screenshot of example app.](assets/welcome-to-ic-hack.png)
 
 > [!TIP]
-> **Stuck?** The complete example is available in the [`welcome-to-ic-hack` directory](/android-development/welcome-to-ic-hack/). Compare your code to `MainActivity.kt` if you need a hint!
+> **Stuck?** The complete example is available in the [`welcome-to-ic-hack`](/android-development/welcome-to-ic-hack/) directory. Compare your code to `MainActivity.kt` if you need a hint!
 
 ## An IC Hack Countdown Timer
 
@@ -487,7 +487,7 @@ Mine looks like this:
 ![Screenshot of example app.](assets/ic-hack-countdown.png)
 
 > [!TIP]
-> **Stuck?** The complete example is available in the [`ic-hack-countdown` directory](/android-development/ic-hack-countdown/).
+> **Stuck?** The complete example is available in the [`ic-hack-countdown`](/android-development/ic-hack-countdown/) directory.
 
 ## Connecting to a Backend API
 
@@ -752,7 +752,7 @@ Congratulations! You've built an app that fetches and displays data from a real 
 ![Screenshot of final app with post cards.](assets/ic-hack-posts-final.png)
 
 > [!TIP]
-> **Stuck?** The complete example is available in the [`ic-hack-posts` directory](/android-development/ic-hack-posts/). Compare your code to `MainActivity.kt` if you need a hint!
+> **Stuck?** The complete example is available in the [`ic-hack-posts`](/android-development/ic-hack-posts/) directory. Compare your code to `MainActivity.kt` if you need a hint!
 
 ### Taking it further
 
