@@ -17,6 +17,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 - **[`django`](./django/README.md)**
 - **[`frontend-development`](./frontend-development/README.md)**
   - **[`Vue`](./frontend-development/vuejs/README.md)**
+  - **[`React`](./frontend-development/react/README.md)**
 - **[`making-a-devpost`](./making-a-devpost/README.md)**
 - **[`engaging-with-sponsors`](./engaging-with-sponsors/README.md)**
 - **[`git-and-github`](./git-and-github/README.md)**
