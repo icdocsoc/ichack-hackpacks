@@ -208,7 +208,7 @@ You might also want to style this slightly; play around with [the CSS compatible
 
 ### Props, events and the task component
 
-[Source code](https://www.github.com/icdocsoc/ichack-hackpacks/frontend-development/vuejs/todo-app/src/components/Task.vue)
+[Source code](./todo-app/src/components/Task.vue)
 
 ```html
 <!-- src/components/Task.vue -->
@@ -252,7 +252,7 @@ We'd then catch this using `... v-on:event_name = "some_function_using($event)" 
 
 ### The About page
 
-[Source code](https://www.github.com/icdocsoc/ichack-hackpacks/frontend-development/vuejs/todo-app/src/views/AboutView.vue)
+[Source code](./todo-app/src/views/AboutView.vue)
 
 ```html
 <!-- src/views/AboutView.vue -->
@@ -266,7 +266,7 @@ There's nothing interesting at all here, apart from the lack of a `<script>` tag
 
 ### The Home page
 
-[Source code](https://www.github.com/icdocsoc/ichack-hackpacks/frontend-development/vuejs/todo-app/src/views/HomeView.vue)
+[Source code](./todo-app/src/views/HomeView.vue)
 
 
 ```html
@@ -356,7 +356,7 @@ The `<Teleport>` component is a built-in component from Vue.js. It takes a DOM e
 
 ### The Router
 
-[Source code](https://www.github.com/icdocsoc/ichack-hackpacks/frontend-development/vuejs/todo-app/src/router/index.ts)
+[Source code](./todo-app/src/router/index.ts)
 
 ```typescript
 // src/router/index.ts
@@ -379,7 +379,7 @@ Since we've specified the components as lambdas that return the components neede
 
 ### The App itself
 
-[Source code](https://www.github.com/icdocsoc/ichack-hackpacks/frontend-development/vuejs/todo-app/src/App.vue)
+[Source code](./todo-app/src/App.vue)
 
 ```html
 <!-- src/App.vue -->
