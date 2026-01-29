@@ -38,6 +38,7 @@ In this guide you will find useful information about setting up APIs for differe
     - [Using LLM Extensions](#using-llm-extensions)
     - [More information](#more-information)
   - [MCP Servers](#mcp-servers)
+    - [How does MCP server works](#how-does-mcp-server-works)
     - [When should you use MCP server?](#when-should-you-use-mcp-server)
     - [Connect to which MCP server?](#connect-to-which-mcp-server)
     - [Useful Links](#useful-links)
@@ -456,11 +457,11 @@ An MCP server can expose:
 - Custom tools (search, calculations, workflows)
 - and etc.
 
-The AI doesn’t directly “hack” these systems. Instead, it:
+### How does MCP server works
 
-1. Discovers what tools are available
-2. Understands their schemas and permissions
-3. Calls them through the MCP protocol
+When a user gives the LLM a prompt, the *LLM* may decide it needs to use **external tools**. The *MCP client* (configured alongside the LLM) intercepts this request and communicates with the *MCP server*, which executes the tool and returns results to the LLM. 
+
+The benefit is using one or a couple of standardized MCP servers to access all your tools, instead of writing custom integrations for each tool's unique API and authentication.
 
 ![Diagram-of-MCP](assets/MCP-diagram.png)
 
@@ -468,7 +469,7 @@ The AI doesn’t directly “hack” these systems. Instead, it:
 
 Use MCP if:
 - Your AI needs **live data**
-- You want **multiple tools** without prompt spaghetti
+- You want **multiple tools** without prompting them one by one
 - You’re building **agents, copilots, or dev tools**
 - You care about **permissions and safety**
 
@@ -480,14 +481,9 @@ Don't bother using MCP server if:
 ### Connect to which MCP server?
 
 You don’t need to build an MCP server from scratch to get started.
-By installing existing MCP servers, you can instantly give your LLM access to powerful tools such as:
-- Local files
-- GitHub repositories
-- Databases
-- Search APIs
-- Developer workflows
+There are a lot of MCP servers available that are made to connect different kind of tools.
 
-For a list of ready-to-use servers and setup instructions, take a look at [Popular MCP servers](https://code.claude.com/docs/en/mcp#popular-mcp-servers) to checkout which server would you like to use and how to install/connect them.
+For a list of available servers and setup instructions, take a look at [Popular MCP servers](https://code.claude.com/docs/en/mcp#popular-mcp-servers) to checkout which server would you like to use and how to install/connect them.
 
 ### Useful Links
 
