@@ -37,7 +37,7 @@ Other people:
 If your project is not deployed, it might seem to the judges that your project is unfinished.
 
 >[!WARN]
-> This section covers only deployment of web-apps/web based projects. If your demo is not a web-app , consult other resources.
+> This section covers only deployment of web-apps/web based projects. If your demo is not a web-app, consult other resources.
 
 ## Table of Contents
 
@@ -81,7 +81,7 @@ Popular tunneling tools include:
 ![Screenshot of NGrok homepage.](assets/ngrok-homepage.png)
 - [Cloudflare tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
-To use NGrok , first you need to set up an account using the link above. Then install it using either brew:
+To use NGrok, first you need to set up an account using the link above. Then install it using either brew:
 
 ```bash
 brew install ngrok
@@ -192,6 +192,7 @@ There are many other third-party services and other methods for deployment out t
 so don't feel restricted to just the ones we've mentioned in this HackPack! Just make sure that you heed the advice below...
 
 ### Deployment Platforms
+
 - **[Netlify](https://www.netlify.com/)** — Free tier; static sites, Jamstack, and serverless functions.
 - **[Heroku](https://www.heroku.com/)** — No permanent free tier anymore; supports full-stack apps with multiple languages
 - **[Railway](https://railway.com/)** — Free credits; full-stack apps with managed databases.
@@ -201,11 +202,13 @@ so don't feel restricted to just the ones we've mentioned in this HackPack! Just
 - **[Microsoft Azure](https://azure.microsoft.com/en-us)** — Free credits; supports web apps, functions, and cloud services.
 
 ### Tunneling / Local Exposure (no Ngrok)
+
 - **[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/)** — Free; expose local apps securely without public IP.
 - **[LocalTunnel](https://theboroer.github.io/localtunnel-www/)** — Free; quick public URLs for local dev servers.
 
 ### Advanced (VPS + Your Own Nginx)
-For a more advanced approach you can check renting your own server , where you can have more power over your
+
+For a more advanced approach you can check renting your own server, where you can have more power over your
 website configuration:
 
 - **[DigitalOcean](https://www.digitalocean.com/)** — Paid; rent a VPS, full control with Nginx, Docker, SSL, custom networking.
