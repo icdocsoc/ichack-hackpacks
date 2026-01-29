@@ -407,4 +407,4 @@ While using Vue.js like this is useful sometimes, it's often nice to use compone
 
 [Nuxt](https://nuxt.com/) is a fullstack framework using Vue, which integrates backend and frontend into the same project.
 
-Fetching data can either be done [pre- or post-navigation](https://router.vuejs.org/guide/advanced/data-fetching), and common JS http request libraries include [Axios](https://github.com/axios/axios), which is compatible with the RESTful backends discussed in the [Backend hackpacks](/backend-development/), or [VueFire](https://vuefire.vuejs.org/) for [Firebase](/api-design/README.md#firebase-cloud-functions) integration.
+Fetching data can either be done [pre- or post-navigation](https://router.vuejs.org/guide/advanced/data-fetching), and common JS http request libraries include [Axios](https://github.com/axios/axios), which is compatible with the RESTful backends discussed in the [API design HackPacks](/api-design/), or [VueFire](https://vuefire.vuejs.org/) for [Firebase](/api-design/README.md#firebase-cloud-functions) integration.

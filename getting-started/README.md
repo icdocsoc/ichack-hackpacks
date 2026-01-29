@@ -66,7 +66,7 @@ graph TD
     Decision -- "Backend (Server/API)" --> Be["See our Backend HackPack"]
 
     click Fe "https://github.com/icdocsoc/ichack-hackpacks/frontend-development/README.md"
-    click Be "https://github.com/icdocsoc/ichack-hackpacks/backend-development/README.md"
+    click Be "https://github.com/icdocsoc/ichack-hackpacks/api-design/README.md"
 ```
 
 A lot of this depends as well on the experience level of your teammates, so **make sure to discuss** the choice of language/frameworks between yourselves.
