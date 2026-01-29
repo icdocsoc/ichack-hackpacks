@@ -106,7 +106,7 @@ This allows you to run JavaScript applications (in frameworks like React), and m
 > [!IMPORTANT]
 > The following assumes knowledge of terminal commands. You may wish to read [this section](#useful-terminal-commands) before coming back and continuing from here.
 
-To install individual packages, run `npm install package-name`.
+To install individual packages, run `npm install <package-name>`.
 
 Similar to `requirements.txt` in Python, you might also have a `package.json` file that lists all the required packages and versions, then run `npm install` to install all the listed packages.
 
