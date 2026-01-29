@@ -19,7 +19,6 @@ We recommend using Google colab for any ML work since it offers you free access 
 1. Go to google colab and open a new notebook.
 2. Click the arrow in the top right corner, press change runtime type and choose the T4 GPU as your hardware accelerator.
 
-
 ### Import the required libraries
 
 ```python
@@ -28,13 +27,14 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader,random_split
 ```
 
-If there are any errors with the import then just use ```!pip install <your library> ```
+If there are any errors with the import then just use ```!pip install <your library>```
 
 ### Using the GPU
 
 ```python
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ```
+
 ## Loading the dataset
 
 We sourced these images from previous IC Hacks
@@ -53,9 +53,10 @@ transform = transforms.Compose([
     )
 ])
 ```
+
 Now we will write the code to load the dataset
 
-This loads the data from our images folder, which stores 4 subfolders named: 
+This loads the data from our images folder, which stores 4 subfolders named:
 
 - LECTURE_THEATRE
 - QUEENS_TOWER_ROOMS
@@ -71,6 +72,7 @@ train_size = int(0.8 * len(dataset))
 val_size = len(dataset) - train_size
 train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
 ```
+
 ### Prepare data for processing
 
 ```python
@@ -84,6 +86,7 @@ Test that it is working:
 images, labels = next(iter(train_loader))
 images.shape, labels[:5]
 ```
+
 ## Model definition
 
 Always use pretrained models whenever possible.
@@ -97,6 +100,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torchvision.models import resnet18, ResNet18_Weights
 ```
+
 Defining the model:
 We create a resnet18 model
 Freeze the initial parameters.
@@ -113,9 +117,10 @@ model.fc = nn.Linear(model.fc.in_features, NUM_CLASSES)
 
 model = model.to(device)
 ```
+
 ## Loss function and optimiser
 
-We use cross entropy loss because it is the one that is used for multi-class classification. 
+We use cross entropy loss because it is the one that is used for multi-class classification.
 We use Stochastic Gradient Descent (SGD) as our optimiser. It is a one-size-fits-all optimiser, and it will do for this project.
 We set the learning rate to 0.01 for now, since it is quite a high one, allowing our model to quickly learn the general patterns.
 Later on, for fine-tuning, we can set the learning rate to 0.001 or even lower.
@@ -126,6 +131,7 @@ optimizer = optim.SGD(model.parameters(),lr=0.01,)
 ```
 
 Test that it works
+
 ```python
 images, labels = next(iter(train_loader))
 images, labels = images.to(device), labels.to(device)
@@ -216,6 +222,7 @@ train(model, train_loader, val_loader, loss_fn, optimizer, EPOCHS)
 ### Evaluation
 
 Probably the most useful tool for this is a confusion matrix. This will show us what classes the model will confuse for another class.
+
 ```python
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 ```
@@ -241,6 +248,7 @@ with torch.no_grad():
 test_preds = np.array(test_preds)
 test_labels = np.array(test_preds)
 ```
+
 Getting the confusion matrix:
 
 ```python
@@ -256,30 +264,32 @@ plt.show()
 
 The results for our trained model:
 
-
 ### Accuracy: 80.7%
 
-### Confusion matrix:
+### Confusion matrix
 
-<img width="957" height="582" alt="image" src="https://github.com/user-attachments/assets/100f9269-a1e6-47f1-9a5b-70eafa5cf499" />
+![Confusion matrix.](https://github.com/user-attachments/assets/100f9269-a1e6-47f1-9a5b-70eafa5cf499)
 
 This shows that it is very good at identifying a lecture theatre, the Queen's Tower Rooms and the main entrance but bad at identifying the JCR/SCR, often confusing it with the Queen's Tower Rooms, which makes sense because they look quite similar, even to humans.
 These images are also quite blurry since we have limited their size, making it even more difficult to distinguish between them.
 Here are a couple of the images that it got wrong:
 
-<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/4f53b228-1944-45ed-9ff6-885355b448c9" />
-<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/91821377-5abc-442a-a592-12f2e4b7e6cf" />
+![First incorrect image.](https://github.com/user-attachments/assets/4f53b228-1944-45ed-9ff6-885355b448c9)
+
+![Second incorrect image.](https://github.com/user-attachments/assets/91821377-5abc-442a-a592-12f2e4b7e6cf)
 
 And here a couple of the images of the actual Queen's Tower Rooms:
 
-<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/dddda511-a19e-4d2f-9611-0a096db6da6d" />
-<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/ade0bd65-274b-42af-990c-5b6042a1e8dd" />
+[First QTR image.](https://github.com/user-attachments/assets/dddda511-a19e-4d2f-9611-0a096db6da6d)
+
+[Second QTR image.](https://github.com/user-attachments/assets/ade0bd65-274b-42af-990c-5b6042a1e8dd)
 
 Clearly it is quite difficult, even for humans to distinguish between the two, so it makes sense that our model would also have trouble dealing with this.
 
 ## Saving and Loading models
 
 ### Saving
+
 It is important to save models once you're done so as to not lose them:
 
 ```python
@@ -289,7 +299,9 @@ os.makedirs("models", exist_ok=True)
 torch.save(model.state_dict(), "models/campus_classifier.pt")
 print("Model saved to models/campus_classifier.pt")
 ```
+
 ### Loading
+
 First define an empty model of the same class. Everything has to be the exact same except the actual weights and biases.
 Then load the model:
 
@@ -313,13 +325,16 @@ print("Model loaded!")
 ### Why use PyTorch
 
 PyTorch is a machine learning framework widely used across both industry and academia. Some perks of PyTorch are as follows:
+
 - Simple.
 - Automatically handles differentiation for you with autograd.
 - Can take advantage of GPU in 1 line of code.
 - PyTorch `Tensor` compatible with numpy arrays, using `.numpy()`.
 - Comes with pre-trained models.
-- 
+-
+
 ### Basic datatypes in PyTorch
+
 `Tensor`s are like numpy arrays. The main difference being autograd.
 
 A `Module` is a datatype that basically represents your neural net and provides useful abstractions. You should know about [torch.nn.Sequential](https://docs.pytorch.org/docs/stable/generated/torch.nn.Sequential.html#torch.nn.Sequential).
@@ -327,6 +342,7 @@ A `Module` is a datatype that basically represents your neural net and provides 
 An `Optimizer` is ...
 
 ### Autograd explained
+
 Behind the scenes, PyTorch dynamically builds up a graph of all the computations that have happened so far. Autograd will track gradients for all tensors which have their `requires_grad` flag set to `True`.
 
 To trigger backpropogation, compute the loss tensor (must be a scalar) and then call `loss.backward()`. Gradients will then accumulate in leaf nodes in the computation graph. PyTorch considers a node to be a leaf if it is not the result of a tensor operation with at least one input having `requires_grad=True`. The gradients accumulate in the `grad` attribute of leaf nodes.
@@ -340,11 +356,15 @@ If you want to find out more, see [the docs](https://docs.pytorch.org/tutorials/
 You can find and download many datasets from Kaggle. For Reinforcement Learning, you can find environments from [gymnasium](https://gymnasium.farama.org/index.html).
 
 ## Help, I don't know ML
-For those interested in the maths behind Neural Networks, 3B1B has some explainers [here](https://www.3blue1brown.com/topics/neural-networks).
 
-For those who want to use gradient-boosted decision trees instead of Neural Networks, here are LightGBM tutorials: [here](https://lightgbm.readthedocs.io/en/stable/Python-Intro.html) and [here](https://medium.com/@machine.learning.insights/getting-start-with-lightgbm-and-forecasting-91cc501e8a71).
+For those interested in the maths behind Neural Networks, 3B1B has [some explainers](https://www.3blue1brown.com/topics/neural-networks).
 
-Below are some common choices for metrics and layers. The full list of building blocks for neural nets can be found [here](https://docs.pytorch.org/docs/stable/nn.html). 
+For those who want to use gradient-boosted decision trees instead of Neural Networks, here are a few LightGBM tutorials:
+
+- [Official docs](https://lightgbm.readthedocs.io/en/stable/Python-Intro.html).
+- [Getting started with LightGBM and Forecasting](https://medium.com/@machine.learning.insights/getting-start-with-lightgbm-and-forecasting-91cc501e8a71).
+
+Below are some common choices for metrics and layers. You can also take a look at [the full list of building blocks for neural nets](https://docs.pytorch.org/docs/stable/nn.html).
 
 ### Layers
 
@@ -357,4 +377,5 @@ Below are some common choices for metrics and layers. The full list of building 
 ### Optimizers
 
 ## Pretrained models
+
 links to YOLO, resnet, etc.
