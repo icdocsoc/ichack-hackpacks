@@ -14,13 +14,15 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
   - **[`Firebase`](./api-design/Firebase.md)**
   - **[`FastAPI`](./api-design/FastAPI.md)**
 - **[`databases`](./databases/README.md)**
+- **[`deployment-approaches`](./deployment-approaches/README.md)**
 - **[`django`](./django/README.md)**
+- **[`docker`](./docker/README.md)**
+- **[`engaging-with-sponsors`](./engaging-with-sponsors/README.md)**
 - **[`frontend-development`](./frontend-development/README.md)**
   - **[`Vue`](./frontend-development/vuejs/README.md)**
   - **[`React`](./frontend-development/react/README.md)**
-- **[`making-a-devpost`](./making-a-devpost/README.md)**
-- **[`engaging-with-sponsors`](./engaging-with-sponsors/README.md)**
 - **[`git-and-github`](./git-and-github/README.md)**
+- **[`making-a-devpost`](./making-a-devpost/README.md)**
 - **[`pitching-and-presenting`](./pitching-and-presenting/README.md)**
 - **[`project-planning`](./project-planning/README.md)**
 
