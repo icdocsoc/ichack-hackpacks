@@ -25,6 +25,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 - **[`making-a-devpost`](./making-a-devpost/README.md)**
 - **[`pitching-and-presenting`](./pitching-and-presenting/README.md)**
 - **[`project-planning`](./project-planning/README.md)**
+- **[`prompt-engineering`](./prompt-engineering/README.md)**
 
 ## Repository Structure
 
