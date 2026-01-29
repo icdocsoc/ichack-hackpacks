@@ -99,6 +99,10 @@ Other commands that might prove useful include:
 
 ### Compose
 
+Let's say you want to set up a database in Postgres for your software (please also check out [our HackPack](../databases/README.md)!).
+
+[//]: # (to update above)
+
 To get Postgres working, you need to set an environment variable for the password:
 
 ```bash
