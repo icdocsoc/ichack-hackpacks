@@ -383,9 +383,9 @@ Here are a couple of the images that it got wrong:
 
 And here a couple of the images of the actual Queen's Tower Rooms:
 
-[First QTR image.](https://github.com/user-attachments/assets/dddda511-a19e-4d2f-9611-0a096db6da6d)
+![First QTR image.](https://github.com/user-attachments/assets/dddda511-a19e-4d2f-9611-0a096db6da6d)
 
-[Second QTR image.](https://github.com/user-attachments/assets/ade0bd65-274b-42af-990c-5b6042a1e8dd)
+![Second QTR image.](https://github.com/user-attachments/assets/ade0bd65-274b-42af-990c-5b6042a1e8dd)
 
 Clearly it is quite difficult, even for humans to distinguish between the two, so it makes sense that our model would also have trouble dealing with this.
 
