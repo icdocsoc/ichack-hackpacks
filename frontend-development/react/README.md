@@ -60,10 +60,10 @@ You can read more about efficient DOM update in [UI Tree](https://react.dev/lear
 
 ### Required JS/TS
 
-You can use plain **JavaScript**, but **TypeScript (TS)** is strongly recommended.
+You can use plain **JavaScript**, but **ts (TS)** is strongly recommended.
 TS can be thought of as **JS + types**, which catches dumb bugs early and makes teamwork easier.
 
-[TypeScript docs](https://www.typescriptlang.org/).
+[ts docs](https://www.tslang.org/).
 
 ### Repo structure (recommended)
 
@@ -147,7 +147,7 @@ src/
 
 In the below example, `name` is a 'prop', and the `return` value is JSX code.
 
-```typescript
+```ts
 export function Greeting(name : string) {
   return <h1>Hello, {name}!</h1>;
 }
@@ -248,7 +248,7 @@ Common use cases:
 
 - **Fetching data**
 
-```typescript
+```ts
   useEffect(() => {
     async function fetchUsers() {
       const res = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -278,7 +278,7 @@ Common use cases:
 
 A basic example that runs once per load of the page:
 
-```typescript
+```ts
 useEffect(() => {
   console.log("Component rendered");
 }, []);
@@ -288,7 +288,7 @@ The effect runs after the component renders. The **dependency array** controls w
 
 The dependency array follows these patterns:
 
-``` typescript
+```ts
 useEffect(() => { ... }, [])        // run once (on mount)
 useEffect(() => { ... }, [count])   // run when `count` changes
 useEffect(() => { ... })            // run after every render
@@ -296,7 +296,7 @@ useEffect(() => { ... })            // run after every render
 
 It's also important to consider **clean-up** in `useEffect` to avoid unnecessary behaviour.
 
-```typescript
+```ts
 useEffect(() => {
   const id = setInterval(() => {}, 1000);
   return () => clearInterval(id);
@@ -311,7 +311,7 @@ The '**rerender rule**' describes how a component rerenders when its state, prop
 
 The common `useEffect` trap, which some people can fall into and which causes an infinite loop, can be seen below.
 
-```typescript
+```ts
 useEffect(() => {
   setValue(value + 1);
 }, [value]);
@@ -323,7 +323,7 @@ Some *better* patterns can be seen below.
 
 - Only run the effect once on **mount**.
 
-```typescript
+```ts
 useEffect(() => {
   // run once
 }, []);
@@ -331,7 +331,7 @@ useEffect(() => {
 
 - Fetch data safely (and avoid setting state if unmounted).
 
-```typescript
+```ts
 useEffect(() => {
   const controller = new AbortController();
 
@@ -357,7 +357,7 @@ All code snippets below are available in the [example project](/frontend-develop
 
 [`src/components/Counter.tsx`](/frontend-development/react/vite-project/src/components/Counter.tsx)
 
-```typescript
+```ts
 import { useState } from "react";
 
 type CounterProps = {
@@ -407,7 +407,7 @@ Finally, the `disabled` HTML attribute is used on the increment button to preven
 
 [`src/pages/HomePage.tsx`](/frontend-development/react/vite-project/src/pages/HomePage.tsx)
 
-```typescript
+```ts
 import { Counter } from "../components/Counter";
 
 export function HomePage() {
@@ -432,7 +432,7 @@ where it is used to limit the maximum counter value.
 
 [`src/App.tsx`](/frontend-development/react/vite-project/src/App.tsx)
 
-```typescript
+```ts
 import { HomePage } from "./pages/HomePage";
 
 export default function App() {
@@ -503,7 +503,7 @@ The simplest and most explicit approach.
 }
 ```
 
-```typescript
+```ts
 import "./styles/main.css";
 
 export function HomePage() {
@@ -524,7 +524,7 @@ File name **must be** in the format `*.module.css.`
 }
 ```
 
-```typescript
+```ts
 import styles from "./Counter.module.css";
 
 export function Counter() {
@@ -538,7 +538,7 @@ This approach also gives us the benefit of avoiding **class name collisions**.
 
 You would have already come across this approach in the earlier examples.
 
-```typescript
+```ts
 <div style={{ display: "flex", alignItems: "center" }} />
 ```
 
@@ -548,7 +548,7 @@ Here, we remove the need for **extra files** to define our CSS styles.
 
 A utility-first CSS framework. You style directly in the `className` prop of a component.
 
-```typescript
+```ts
 <div className="flex flex-col items-center justify-center min-h-screen p-6">
 <h1 className="text-2xl font-bold">This is my counter</h1>
 </div>
@@ -607,7 +607,7 @@ app.listen(3000, () => console.log("Server running on http://localhost:3000"));
 
 ### *FastAPI* default path frontend serving
 
-```python
+```py
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
