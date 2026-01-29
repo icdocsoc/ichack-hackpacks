@@ -1,5 +1,15 @@
 # Machine Learning
 
+**Machine Learning** (ML) is a branch of artificial intelligence where computers learn patterns from data rather than following explicit programmed instructions.
+
+There are three main types of ML:
+
+- **Supervised Learning**: Learning from labeled examples (e.g., training a model to classify images by showing it labeled photos)
+- **Unsupervised Learning**: Finding patterns in unlabeled data (e.g., grouping similar customers together)
+- **Reinforcement Learning**: Learning through trial and error with rewards (e.g., teaching an AI to play a game)
+
+This HackPack focuses on supervised learning with **Deep Learning** (neural networks), which is particularly good at tasks like image recognition, natural language processing, and more.
+
 ## Mindset
 
 It is important to go into ML with the correct mindset, here are some key tips:
@@ -9,8 +19,6 @@ It is important to go into ML with the correct mindset, here are some key tips:
 - Start with a simple model then build upon that.
 - Prioritise a reliable working model over getting a few higher accuracy points.
 - You don't always have to use Neural Networks! LightGMB and Linear Regression exist.
-
-This tutorial focuses on Deep Learning.
 
 ## Setting up
 
