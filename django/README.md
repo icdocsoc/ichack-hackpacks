@@ -39,7 +39,7 @@ This guide walks you through setting up a local **Django** backend for a simple 
     - **macOS:** Python 3 is often pre-installed. If not, use *Homebrew* (`brew install python3`) or download from python.org.
     - **Linux (Ubuntu/Debian):** Use your package manager. For example:
 
-    ```ba
+    ```bash
         sudo apt update
         sudo apt install python3 python3-pip
     ```
@@ -87,27 +87,26 @@ In Django, a **project** is your entire web application, while an **app** is a s
 2. **Start a new app.** Inside the project directory, run:
 
     ```bash
-        python manage.py startapp notesapp
+    python manage.py startapp notesapp
     ```
 
-    > [!NOTE]
-    > You should now have a folder structure like this:
-    >
-    > ```text
-    > myproject/
-    > ├── manage.py
-    > ├── myproject/
-    > │   ├── __init__.py
-    > │   ├── settings.py
-    > │   ├── urls.py
-    > │   └── wsgi.py
-    > └── notesapp/
-    >     ├── __init__.py
-    >     ├── admin.py
-    >     ├── models.py
-    >     ├── views.py
-    >     └── ...
-    > ```
+    Your folder structure should now look something like:
+
+    ```txt
+    myproject/
+    ├── manage.py
+    ├── myproject/
+    │   ├── __init__.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    └── notesapp/
+        ├── __init__.py
+        ├── admin.py
+        ├── models.py
+        ├── views.py
+        └── ...
+    ```
 
 3. **Register the app.** Django needs to know about your app before it can use it. Open `myproject/settings.py` and add your new app (and DRF) to the `INSTALLED_APPS` list:
 
@@ -140,15 +139,15 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 1. **Define the model.** A *model* defines the structure of your data—think of it as a blueprint for a database table. Each field becomes a column. In `notesapp/models.py`, add a `Note` model:
 
     ```python
-        from django.db import models
+    from django.db import models
 
-        class Note(models.Model):
-            title = models.CharField(max_length=100)
-            content = models.TextField()
-            created_at = models.DateTimeField(auto_now_add=True)
+    class Note(models.Model):
+        title = models.CharField(max_length=100)
+        content = models.TextField()
+        created_at = models.DateTimeField(auto_now_add=True)
 
-            def __str__(self):
-                return self.title
+        def __str__(self):
+            return self.title
     ```
 
     This creates a `notesapp_note` table (after migrating) with `id`, `title`, `content`, and `created_at` columns.
@@ -156,8 +155,8 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 2. **Create and apply migrations.** After saving the model, you need to tell Django to update the database. `makemigrations` creates a migration file describing the changes, and `migrate` applies them:
 
     ```bash
-        python manage.py makemigrations
-        python manage.py migrate
+    python manage.py makemigrations
+    python manage.py migrate
     ```
 
     > [!TIP]
@@ -212,28 +211,28 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 6. **Configure URLs.** URLs define the *endpoints* of your API—the addresses where clients send requests. A *router* automatically generates standard REST URLs for your ViewSet (like `/api/notes/` for listing and `/api/notes/1/` for a specific note). Create `notesapp/urls.py` and set up a router:
 
     ```python
-        from django.urls import path, include
-        from rest_framework.routers import DefaultRouter
-        from .views import NoteViewSet
+    from django.urls import path, include
+    from rest_framework.routers import DefaultRouter
+    from .views import NoteViewSet
 
-        router = DefaultRouter()
-        router.register(r'notes', NoteViewSet)
+    router = DefaultRouter()
+    router.register(r'notes', NoteViewSet)
 
-        urlpatterns = [
-            path('api/', include(router.urls)),
-        ]
+    urlpatterns = [
+        path('api/', include(router.urls)),
+    ]
     ```
 
     Then include this in the project's `urls.py` (`myproject/urls.py`):
 
     ```python
-        from django.contrib import admin
-        from django.urls import path, include
+    from django.contrib import admin
+    from django.urls import path, include
 
-        urlpatterns = [
-            path('admin/', admin.site.urls),
-            path('', include('notesapp.urls')),  # include our app's URLs
-        ]
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', include('notesapp.urls')),  # include our app's URLs
+    ]
     ```
 
     Now the API will be accessible under `/api/notes/`.
@@ -241,7 +240,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 7. **Run the server.** Start Django's development server:
 
     ```bash
-        python manage.py runserver
+    python manage.py runserver
     ```
 
 8. Go to [http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/) in your browser. You should see a list (likely empty) and a form to create new notes.
