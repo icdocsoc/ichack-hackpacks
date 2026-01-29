@@ -47,11 +47,17 @@ CREATE TABLE comments (
 
 PostgreSQL is the most commonly used relational database. It uses SQL (Structured Query Language), an industry standard for relational databases.
 
-> This section covers setting up PostgreSQL, not how to use SQL. For that, there's a good tutorial [here](https://www.w3schools.com/sql/), but with modern interfaces to databases you might never need to write SQL manually.
+> This section covers setting up PostgreSQL, not how to use SQL. For that, there's a [good tutorial here](https://www.w3schools.com/sql/), but with modern interfaces to databases you might never need to write SQL manually.
 
-PostgreSQL can be set-up locally, or through [Docker](/deployment-approaches/docker/README.md)(reccomended). To set-up locally, download the package from [the PostgreSQL page](https://www.postgresql.org/download/) and install. Docker gives an easier way to restart and erase data, or to switch between databases. It's covered in depth in the [Docker hackpack](/deployment-approaches/docker/README.md) (with a PostgreSQL example), but in summary either run the command `docker run postgres -e POSTGRES_PASSWORD=some_password -p 5432:5432 -v ./my/own/datadir:/var/lib/postgresql` with relevant bits (the password, the port, and the local data-directory) configured correctly) or use the Docker Compose file from the hackpack.
+PostgreSQL can be set-up locally, or through [Docker](../../docker/README.md) (recommended). To set-up locally, download the package from [the PostgreSQL page](https://www.postgresql.org/download/) and install. Docker gives an easier way to restart and erase data, or to switch between databases. It's covered in depth in the [Docker hackpack](../../docker/README.md) (with a PostgreSQL example), but in summary either run the command:
 
-Once you have PostgreSQL set-up, you can either interface with it through raw SQL (not massively useful, but documented in more detail [here](https://www.w3schools.com/postgresql/)), or use some sort of library built for your language.
+```bash
+docker run postgres -e POSTGRES_PASSWORD=some_password -p 5432:5432 -v ./my/own/datadir:/var/lib/postgresql
+```
+
+with relevant bits (the password, the port, and the local data-directory) configured correctly; or use the Docker Compose file from the hackpack.
+
+Once you have PostgreSQL set-up, you can either interface with it through raw SQL (not massively useful, but documented in [more detail here](https://www.w3schools.com/postgresql/)), or use some sort of library built for your language.
 
 ### ORMs
 
