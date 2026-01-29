@@ -400,7 +400,7 @@ Don't like the changes made in a specific commit? Run
 git revert <commit>
 ```
 
-The `commit` is a commit hash, a unique identifier for a commit. These can be found by running
+The <commit> is a commit hash, a unique identifier for a commit. These can be found by running
 
 ```bash
 git log
