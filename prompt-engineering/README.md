@@ -398,7 +398,7 @@ Once installed, the extensions will appear in your editor.
 
 ![Screenshot showing the buttons to open the various extensions](./assets/open-extensions.png)
 
-In the above screenshot, BlackBox AI is the lightning bolt on the left hand side. Gemini is teh Gemini logo just below the lightning bolt, and Copilot Chat is the chat logo on the top row.
+In the above screenshot, BlackBox AI is the lightning bolt on the left hand side. Gemini is the Gemini logo just below the lightning bolt, and Copilot Chat is the chat logo on the top row.
 
 >[!TIP]
 > At this point, it is recommended that you should restart VS Code to ensure the extensions are properly installed.
@@ -457,7 +457,7 @@ An MCP server can expose:
 - Custom tools (search, calculations, workflows)
 - and etc.
 
-### How does MCP server works
+### How do MCP servers work
 
 When a user gives the LLM a prompt, the *LLM* may decide it needs to use **external tools**. The *MCP client* (configured alongside the LLM) intercepts this request and communicates with the *MCP server*, which executes the tool and returns results to the LLM. 
 
