@@ -1,5 +1,26 @@
 # Deployment
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Deployment](#deployment)
+  - [Table of Contents](#table-of-contents)
+  - [Why do we need deployment?](#why-do-we-need-deployment)
+  - [Table of Contents](#table-of-contents-1)
+  - [Different deployment approaches](#different-deployment-approaches)
+    - [Local hosting](#local-hosting)
+    - [3rd-party deployment services](#3rd-party-deployment-services)
+      - [Vercel](#vercel)
+        - [Prerequisites](#prerequisites)
+        - [Deploy using `vercel --yes` (fastest way)](#deploy-using-vercel---yes-fastest-way)
+      - [Render](#render)
+    - [Deployment Platforms](#deployment-platforms)
+    - [Tunneling / Local Exposure (no Ngrok)](#tunneling--local-exposure-no-ngrok)
+    - [Advanced (VPS + Your Own Nginx)](#advanced-vps--your-own-nginx)
+
+<!-- /TOC -->
+
 ## Why do we need deployment?
 
 During development, your project will typically run on a **local port** of your computer: **`localhost`** (e.g. `http://localhost:5173`).
@@ -21,8 +42,9 @@ If your project is not deployed, it might seem to the judges that your project i
 ## Table of Contents
 
 - [Deployment](#deployment)
-  - [Why do we need deployment?](#why-do-we-need-deployment)
   - [Table of Contents](#table-of-contents)
+  - [Why do we need deployment?](#why-do-we-need-deployment)
+  - [Table of Contents](#table-of-contents-1)
   - [Different deployment approaches](#different-deployment-approaches)
     - [Local hosting](#local-hosting)
     - [3rd-party deployment services](#3rd-party-deployment-services)
@@ -30,6 +52,9 @@ If your project is not deployed, it might seem to the judges that your project i
         - [Prerequisites](#prerequisites)
         - [Deploy using `vercel --yes` (fastest way)](#deploy-using-vercel---yes-fastest-way)
       - [Render](#render)
+    - [Deployment Platforms](#deployment-platforms)
+    - [Tunneling / Local Exposure (no Ngrok)](#tunneling--local-exposure-no-ngrok)
+    - [Advanced (VPS + Your Own Nginx)](#advanced-vps--your-own-nginx)
 
 ## Different deployment approaches
 
