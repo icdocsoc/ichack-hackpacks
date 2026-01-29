@@ -56,6 +56,40 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 This allows us to take advantage of the significantly more powerful **GPU** (Graphical Processing Unit) available to us within our notebook.
 
+## PyTorch Basics
+
+Now that you have your environment set up, let's understand the framework we'll be using. PyTorch is a machine learning framework widely used across both industry and academia.
+
+### Why use PyTorch
+
+Some key advantages of PyTorch:
+
+- Simple and intuitive API
+- Automatically handles differentiation for you with autograd
+- Can take advantage of GPU in 1 line of code
+- PyTorch `Tensor` is compatible with NumPy arrays using `.numpy()`
+- Comes with pre-trained models
+
+### Basic datatypes in PyTorch
+
+**`Tensor`s** are like numpy arrays. The main difference being *autograd* (automatic differentiation).
+
+**`Module`** is a datatype that represents your neural network and provides useful abstractions. You should know about [torch.nn.Sequential](https://docs.pytorch.org/docs/stable/generated/torch.nn.Sequential.html#torch.nn.Sequential).
+
+**`Optimizer`** is an algorithm that adjusts model parameters to minimize loss (we'll cover this in detail in the project).
+
+### Autograd explained
+
+Behind the scenes, PyTorch dynamically builds up a graph of all the computations that have happened so far. Autograd will track gradients for all tensors which have their `requires_grad` flag set to `True`.
+
+To trigger backpropagation, compute the loss tensor (must be a scalar) and then call `loss.backward()`. Gradients will then accumulate in leaf nodes in the computation graph. PyTorch considers a node to be a leaf if it is not the result of a tensor operation with at least one input having `requires_grad=True`. The gradients accumulate in the `grad` attribute of leaf nodes.
+
+The `Module` and `Optimizer` classes provide a convenient wrapper of this functionality.
+
+If you want to find out more, see [the PyTorch autograd tutorial](https://docs.pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html).
+
+Now that you understand the basics of PyTorch, let's put it into practice by building a real image classification model!
+
 ## The Project: IC Hack Location Classifier
 
 In this tutorial, we'll build an **image classification model** that can identify which location at IC Hack a photo was taken in. Given an image from the event, our model will predict whether it's from:
@@ -391,42 +425,15 @@ Our accuracy is quite good, but there are several limitations to be aware of:
 - JCR/SCR and Queen's Tower Rooms look similar, leading to common misclassifications.
 - Low image resolution tradeoff. We used a low image resolution, which allows for faster compute and therefore more possible experimentation. But it comes at the cost of potentially lower performance
 
-## PyTorch
+## Going Further
 
-### Why use PyTorch
+Now that you've completed a full ML project, you're ready to build your own! The best way to learn is by working on problems you're genuinely excited about. Below you'll find resources for finding datasets and deepening your ML knowledge.
 
-PyTorch is a machine learning framework widely used across both industry and academia. Some perks of PyTorch are as follows:
-
-- Simple.
-- Automatically handles differentiation for you with autograd.
-- Can take advantage of GPU in 1 line of code.
-- PyTorch `Tensor` compatible with numpy arrays, using `.numpy()`.
-- Comes with pre-trained models.
--
-
-### Basic datatypes in PyTorch
-
-`Tensor`s are like numpy arrays. The main difference being autograd.
-
-A `Module` is a datatype that basically represents your neural net and provides useful abstractions. You should know about [torch.nn.Sequential](https://docs.pytorch.org/docs/stable/generated/torch.nn.Sequential.html#torch.nn.Sequential).
-
-An `Optimizer` is ...
-
-### Autograd explained
-
-Behind the scenes, PyTorch dynamically builds up a graph of all the computations that have happened so far. Autograd will track gradients for all tensors which have their `requires_grad` flag set to `True`.
-
-To trigger backpropogation, compute the loss tensor (must be a scalar) and then call `loss.backward()`. Gradients will then accumulate in leaf nodes in the computation graph. PyTorch considers a node to be a leaf if it is not the result of a tensor operation with at least one input having `requires_grad=True`. The gradients accumulate in the `grad` attribute of leaf nodes.
-
-The `Module` and `Optimizer` classes provide a convenient wrapper of this functionality. (...)
-
-If you want to find out more, see [the docs](https://docs.pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html).
-
-## Where to find Datasets
+### Where to find Datasets
 
 You can find and download many datasets from Kaggle. For Reinforcement Learning, you can find environments from [gymnasium](https://gymnasium.farama.org/index.html).
 
-## Help, I don't know ML
+### "*Help, I don't know ML!*"
 
 For those interested in the maths behind Neural Networks, 3B1B has [some explainers](https://www.3blue1brown.com/topics/neural-networks).
 
@@ -435,18 +442,4 @@ For those who want to use gradient-boosted decision trees instead of Neural Netw
 - [Official docs](https://lightgbm.readthedocs.io/en/stable/Python-Intro.html).
 - [Getting started with LightGBM and Forecasting](https://medium.com/@machine.learning.insights/getting-start-with-lightgbm-and-forecasting-91cc501e8a71).
 
-Below are some common choices for metrics and layers. You can also take a look at [the full list of building blocks for neural nets](https://docs.pytorch.org/docs/stable/nn.html).
-
-### Layers
-
-### Testing metrics
-
-### Training Loop
-
-### Evaluation metrics
-
-### Optimizers
-
-## Pretrained models
-
-links to YOLO, resnet, etc.
+You can also take a look at [the full list of building blocks for neural nets](https://docs.pytorch.org/docs/stable/nn.html) to explore more options.
