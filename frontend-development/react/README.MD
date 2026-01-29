@@ -455,7 +455,7 @@ After running the app, you should see something like this.
 
 ![img.png](assets/img.png)
 
-## Some short and useful [hooks](https://react.dev/reference/react/)
+## Some short and useful hooks
 
 There is a lots of other functionality in React hooks besides remembering the state.
 
@@ -465,6 +465,8 @@ There is a lots of other functionality in React hooks besides remembering the st
 - `useCallback` — memoize function references (useful when passing callbacks deep).
 - `useRef` — mutable value that doesn’t trigger rerenders; also DOM refs.
 - `useContext` — share data across many components without prop-drilling
+
+Refer to [the React docs](https://react.dev/reference/react/hooks) for a full list.
 
 For bigger apps, you might find these further resources useful too:
 
@@ -542,7 +544,7 @@ You would have already come across this approach in the earlier examples.
 
 Here, we remove the need for **extra files** to define our CSS styles.
 
-### [Tailwind CSS](https://tailwindcss.com/)
+### Tailwind CSS
 
 A utility-first CSS framework. You style directly in the `className` prop of a component.
 
@@ -561,6 +563,8 @@ This enables **fast development**, since:
 - no need for extra css classes.
 
 The downside is learning Tailwind syntax, which is a bit different from plain CSS.
+
+Refer to [the official Tailwind docs](https://tailwindcss.com/docs/installation/using-vite) for more info.
 
 ## Deployment
 
