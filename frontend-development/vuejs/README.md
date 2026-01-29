@@ -49,7 +49,7 @@ Vue.js talks about "components" a lot — they're simply reusable pieces of an a
 
 ### Devtools and IDE Setup
 
-Vue.js is well supported in VSCode out-of-the-box (see the [Getting Started Hackpack](TODO) for how to setup VSCode). For a slightly richer experience, you can install [the official Vue.js extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar).
+Vue.js is well supported in VSCode out-of-the-box (see the [Getting Started Hackpack](TODO) for how to setup VSCode and TypeScript). For a slightly richer experience, you can install [the official Vue.js extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar).
 
 For other editors, there exist integrations for [Neovim](https://github.com/vuejs/language-tools/wiki/Neovim), [IntelliJ IDEA](https://www.jetbrains.com/help/idea/vue-js.html), [Emacs](https://emacs-lsp.github.io/lsp-mode/page/lsp-volar/), and more.
 
@@ -72,7 +72,7 @@ You'll want to enable TypeScript, the *Router* (we'll go into this later!), and 
 > [!NOTE]
 > You can rejig almost all of these files and directories (save for `index.html` and `public/`) by updating where things are imported from — however, for beginners, this isn't recommended, since the provided file structure helps to organize things.
 
-There's an awful lot of pre-existing code in here, most of which we don't really care about. We're going to remember how these directories are set up, and **delete the old project**. Run `npm create vue@latest` again with the same settings, but choose a relevant name here and *don't include the example code*. Now is also a good time to [set-up Git](/git-&-github/README.md).
+There's an awful lot of pre-existing code in here, most of which we don't really care about. We're going to remember how these directories are set up, and **delete the old project**. Run `npm create vue@latest` again with the same settings, but choose a relevant name here and *don't include the example code*. Now is also a good time to [set-up Git](/git-and-github/README.md).
 
 ### Running your app
 
@@ -208,7 +208,9 @@ If you want to follow along, you'll need the standard basic Vue.js project setup
 
 You might also want to style this slightly; play around with [the CSS compatible with the class names used here](TODO), which should go in [`src/assets/main.css`](/vuejs/todo-app/src/assets/main.css) and imported from [`src/main.ts`](/vuejs/todo-app/src/main.ts) with `import "./assets/main.css"`.
 
-### Props, events and the [task component](/vuejs/todo-app/src/components/Task.vue)
+### Props, events and the task component
+
+[Source code](./todo-app/src/components/Task.vue)
 
 ```html
 <!-- src/components/Task.vue -->
@@ -250,7 +252,9 @@ We can emit events (cause one to happen and be subsequently processed, probably 
 
 We'd then catch this using `... v-on:event_name = "some_function_using($event)" ...` where `$event` is a built-in variable within `v-on` clauses that is the event data, if provided. Most native events have data; see [the MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Event) for details.
 
-### [The About page](/vuejs/todo-app/src/views/AboutView.vue)
+### The About page
+
+[Source code](./todo-app/src/views/AboutView.vue)
 
 ```html
 <!-- src/views/AboutView.vue -->
@@ -262,7 +266,9 @@ We'd then catch this using `... v-on:event_name = "some_function_using($event)" 
 
 There's nothing interesting at all here, apart from the lack of a `<script>` tag — like the `<style>` tag, this is optional.
 
-### [The Home page](/vuejs/todo-app/src/views/HomeView.vue)
+### The Home page
+
+[Source code](./todo-app/src/views/HomeView.vue)
 
 ```html
 <!-- src/views/HomeView.vue -->
@@ -349,7 +355,9 @@ It looks like there's a lot going on here, but there's very little new — just 
 
 The `<Teleport>` component is a built-in component from Vue.js. It takes a DOM element that logically belongs somewhere (here, the modal logically belongs within the Home page), but should be rendered somewhere else — the most common use is to move modals to the `<body>` tag, as done here (and [documented on the Vue.js docs](https://vuejs.org/guide/built-ins/teleport.html)).
 
-### [The Router](/vuejs/todo-app/src/router/index.ts)
+### The Router
+
+[Source code](./todo-app/src/router/index.ts)
 
 ```typescript
 // src/router/index.ts
@@ -370,7 +378,9 @@ This is pretty similar to the pre-provided Router file. We've just registered tw
 
 Since we've specified the components as lambdas that return the components needed, instead of just providing the components, Vue.js Router will lazy-load those components in when needed — potentially slowing navigation very slightly, but greatly improving initial page load speed.
 
-### [The App](/vuejs/todo-app/src/App.vue) itself
+### The App itself
+
+[Source code](./todo-app/src/App.vue)
 
 ```html
 <!-- src/App.vue -->

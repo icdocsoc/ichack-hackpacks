@@ -12,76 +12,92 @@ In this HackPack, we will focus on creating an API that is
 
 This HackPack will cover
 
- 1. General API Design
- 2. Firebase Cloud Functions for serverless APIs
- 3. FastAPI (Python) for fast iteration and typed safety
+1. General API Design
+2. Firebase Cloud Functions for serverless APIs
+3. FastAPI (Python) for fast iteration and typed safety
 
-Example code will be provided, with more info [found here](#example-code).
+Example code will be provided in the [Example Code](#example-code) section.
 
-It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Click here to find out more](../databases/README.md)
+It may be a good idea to first familiarise yourself with databases, since a lot of what APIs do is working with persistent data. [Read more about databases](/databases/README.md).
 
-# Table Of Contents
+## Table Of Contents
 
 - [API Design](#api-design)
-- [Table Of Contents](#table-of-contents)
-- [General API Design](#general-api-design)
-  - [What Is an API?](#what-is-an-api)
-  - [REST and HTTP](#rest-and-http)
-  - [Resources and URLs](#resources-and-urls)
-  - [HTTP Methods](#http-methods)
-    - [Glossary](#glossary)
-    - [GET](#get)
-    - [OPTIONS](#options)
-    - [POST](#post)
-    - [PUT](#put)
-    - [PATCH](#patch)
-    - [DELETE](#delete)
-  - [Status Codes](#status-codes)
-  - [Request and Response Bodies](#request-and-response-bodies)
-  - [Authentication and Authorisation](#authentication-and-authorisation)
-  - [Error Handling](#error-handling)
-  - [Extras](#extras)
-    - [Rate Limiting](#rate-limiting)
-    - [Pagination](#pagination)
-    - [Caching](#caching)
-    - [Versioning](#versioning)
-  - [General Rules](#general-rules)
-  - [Common Failures](#common-failures)
-  - [Cheatsheet](#cheatsheet)
-- [Making Requests](#making-requests)
-  - [JavaScript/TypeScript](#javascripttypescript)
-- [Secrets](#secrets)
-  - [Python](#python)
-  - [Vite](#vite)
-  - [JS/TS](#jsts)
-- [Firebase Cloud Functions](#firebase-cloud-functions)
-  - [Setup](#setup)
-  - [Writing Cloud Functions](#writing-cloud-functions)
-    - [Setup `index.ts`](#setup-indexts)
-    - [Create Your Functions](#create-your-functions)
-    - [Deploy Your Functions](#deploy-your-functions)
-    - [Writing RESTful Functions](#writing-restful-functions)
-      - [Canonical RESTful](#canonical-restful)
-      - [Hackathon Simple](#hackathon-simple)
-    - [Writing Callable Functions](#writing-callable-functions)
-    - [Handling CORS](#handling-cors)
-  - [Making Requests](#making-requests-1)
-    - [Canonical HTTP Request](#canonical-http-request)
-    - [Callable Functions](#callable-functions)
-      - [JS/TS](#jsts-1)
-- [FastAPI](#fastapi)
-  - [Setup](#setup-1)
-  - [Writing Functions](#writing-functions)
-    - [Typing](#typing)
-    - [CORS](#cors)
-  - [Deploying](#deploying)
-- [Example Code](#example-code)
+  - [Table Of Contents](#table-of-contents)
+  - [General API Design](#general-api-design)
+    - [What Is an API?](#what-is-an-api)
+    - [REST and HTTP](#rest-and-http)
+    - [Resources and URLs](#resources-and-urls)
+      - [*The GOOD:*](#the-good)
+        - [Why?](#why)
+      - [*The BAD:*](#the-bad)
+        - [Why?](#why-1)
+      - [*The UGLY:*](#the-ugly)
+        - [Why?](#why-2)
+    - [HTTP Methods](#http-methods)
+      - [Glossary](#glossary)
+      - [GET](#get)
+        - [Semantics](#semantics)
+          - [What GET must not do](#what-get-must-not-do)
+          - [What GET can do](#what-get-can-do)
+        - [Example](#example)
+      - [OPTIONS](#options)
+        - [Semantics](#semantics-1)
+        - [Purpose](#purpose)
+      - [POST](#post)
+        - [Semantics](#semantics-2)
+        - [Purpose](#purpose-1)
+        - [Typical purposes](#typical-purposes)
+        - [What POST does *not* guarantee](#what-post-does-not-guarantee)
+        - [Example](#example-1)
+      - [PUT](#put)
+        - [Semantics](#semantics-3)
+        - [Purpose](#purpose-2)
+        - [Rules](#rules)
+        - [Example](#example-2)
+      - [PATCH](#patch)
+        - [Semantics](#semantics-4)
+        - [Purpose](#purpose-3)
+        - [Idempotence](#idempotence)
+        - [Example](#example-3)
+      - [DELETE](#delete)
+        - [Semantics](#semantics-5)
+        - [Rules](#rules-1)
+        - [Example](#example-4)
+    - [Status Codes](#status-codes)
+    - [Request and Response Bodies](#request-and-response-bodies)
+      - [Rules of thumb](#rules-of-thumb)
+    - [Authentication and Authorisation](#authentication-and-authorisation)
+    - [Error Handling](#error-handling)
+    - [Extras](#extras)
+      - [Rate Limiting](#rate-limiting)
+      - [Pagination](#pagination)
+      - [Caching](#caching)
+      - [Versioning](#versioning)
+    - [General Rules](#general-rules)
+    - [Common Failures](#common-failures)
+    - [Cheatsheet](#cheatsheet)
+  - [Making Requests](#making-requests)
+    - [JavaScript/TypeScript](#javascripttypescript)
+    - [Idiomatic Methods](#idiomatic-methods)
+  - [Secrets](#secrets)
+    - [Python](#python)
+    - [Vite](#vite)
+    - [JS/TS](#jsts)
+  - [Creating Your Own Backend](#creating-your-own-backend)
+    - [Firebase Cloud Functions](#firebase-cloud-functions)
+      - [Pros](#pros)
+      - [Cons](#cons)
+    - [FastAPI](#fastapi)
+      - [Pros](#pros-1)
+      - [Cons](#cons-1)
+  - [Example Code](#example-code)
 
-# General API Design
+## General API Design
 
-## What Is an API?
+### What Is an API?
 
-An **Application Programming Interface** is the definition of a contract between a client and a server.
+An **Application Programming Interface** is the definition of a contract between a *client* and a *server*.
 
 It defines the **inputs**, consisting of the request method, URL, headers and body. The **outputs** are also defined, with a status code, headers and body.
 
@@ -89,7 +105,7 @@ An API should be treated as a black box, with the client not caring *how* the ba
 
 ![API framework at a glance](./assets/web-api.webp)
 
-## REST and HTTP
+### REST and HTTP
 
 Most modern APIs are **RESTful** and built on HTTP.
 
@@ -100,7 +116,7 @@ Most modern APIs are **RESTful** and built on HTTP.
 
 REST is a *design style*, not a protocol. You should follow REST conventions where they help clarity and speed, and ignore them when they slow you down.
 
-## Resources and URLs
+### Resources and URLs
 
 We design URLs around **nouns** not verbs.
 
@@ -109,7 +125,7 @@ URLs should show a hierarchy, reflecting ownership or containment.
 - `/users/{id}/posts` are the posts owned by a user
 - `/posts/{id}/comments` are the comments belonging to a post
 
-***The GOOD:***
+#### *The GOOD:*
 
 ```bash
 GET /users
@@ -118,14 +134,14 @@ POST /posts
 GET /posts/{postId}/comments
 ```
 
-**Why?**
+##### Why?
 
 - Nouns, not verbs
 - Predictable and consistent, you can guess how to interact with the API even without documentation
 - Hierarchical structure. `/posts/{postId}/comments` clearly shows that comments belong to a post
 - Follows standard REST conventions: URLs represent entities, HTTP methods represent actions
 
-***The BAD:***
+#### *The BAD:*
 
 ```bash
 GET /getUsers
@@ -133,12 +149,12 @@ POST /createPost
 POST /deleteComment
 ```
 
-**Why?**
+##### Why?
 
 - Mixing verbs and nouns: `GET /getUsers` is redundant, since `GET` already implies that we are fetching
 - Inconsistent naming- you may end up confusing endpoints like `POST /createPost` and `POST /addPost`, two verbs for the same action
 
-***The UGLY:***
+#### *The UGLY:*
 
 ```bash
 DELETE /getUsers
@@ -146,7 +162,7 @@ GET /incrementCounter
 PATCH /deletePost
 ```
 
-**Why?**
+##### Why?
 
 - HTTP method conflicts with verb in URL
 - Very hard to maintain, you will struggle to guess what an endpoint does  
@@ -154,17 +170,17 @@ PATCH /deletePost
 >[!WARNING]
 >The BAD section would at least work and make sense, ***NEVER*** do anything from the UGLY!
 
-## HTTP Methods
+### HTTP Methods
 
 The subsections below after the glossary show the HTTP methods that you can use for your API.
 
-For the examples provided for each of the HTTP methods, we will be using an in-memory 'database'
+For the examples provided for each of the HTTP methods, we will be using an in-memory 'database'.
 
 ```py
 users = {}
 ```
 
-Our 'database' will store users, with documents having the following schema
+Our 'database' will store users, with documents having the following schema:
 
 ```py
 class User(BaseModel):
@@ -172,31 +188,27 @@ class User(BaseModel):
     email: str
 ```
 
-### Glossary
+#### Glossary
 
-**Safe:** Does not change server state
+- **Safe:** Does not change server state.
+- **Server state:** Anything persistent or observable:
+  - database rows,
+  - counters,
+  - logs,
+  - "last viewed" timestamps,
+  - cache entries.
+- **Idempotent:** Repeated calls do not change the result.
+- **Cacheable:** Intermediaries can cache the result.
 
-**Server state:** Anything persistent or observable:
+#### GET
 
-- database rows
-- counters
-- logs
-- "last viewed" timestamps
-- cache entries
-
-**Idempotent:** Repeated calls do not change the result
-
-**Cacheable:** Intermediaries can cache the result
-
-### GET
-
-**Semantics**
+##### Semantics
 
 - Safe
 - Idempotent
 - Cacheable
 
-**What GET must not do**
+###### What GET must not do
 
 - Modify database state
 - Increment counters
@@ -206,14 +218,14 @@ class User(BaseModel):
 >[!NOTE]
 >It’s acceptable to use logging for debugging purposes, but nothing should be user-visible or persisted.
 
-**What GET can do**
+###### What GET can do
 
 - Read data
 - Filter via query parameters
 - Pagination
 - Sorting
 
-**Example**
+##### Example
 
 ```py
 @app.get("/users/{user_id}")
@@ -227,15 +239,15 @@ As you can see, the above `GET` API call would retrieve a user based on the `use
 
 ---
 
-### OPTIONS
+#### OPTIONS
 
-**Semantics**
+##### Semantics
 
 - Safe
 - Idempotent
 - Can be Cacheable
 
-**Purpose**
+##### Purpose
 
 Returns the allowed methods and CORS info. This will likely be automatically handled for you by FastAPI and Firebase Cloud Functions.
 
@@ -243,19 +255,19 @@ Returns the allowed methods and CORS info. This will likely be automatically han
 >Since these are automatically handled, don't use this
 
 >[!TIP]
->If you are having problems with this, ask a mentor on the day for help!
+>If you are having problems with this, ask a coach on the day for help!
 
 ---
 
-### POST
+#### POST
 
-**Semantics**
+##### Semantics
 
 - Not safe
 - Not idempotent
 - Not cacheable
 
-**Purpose**
+##### Purpose
 
 `POST` can do pretty much any action or side-effect, such as:
 
@@ -264,16 +276,16 @@ Returns the allowed methods and CORS info. This will likely be automatically han
 - Perform non-idempotent operations
 - Accept complex input
 
-**Typical uses**
+##### Typical purposes
 
 ```bash
-POST /posts    # create
-POST /login    # auth
+POST /posts    ## create
+POST /login    ## auth
 POST /posts/123/like
-POST /search   # complex queries
+POST /search   ## complex queries
 ```
 
-**What POST does *not* guarantee**
+##### What POST does *not* guarantee
 
 Since POST is not idempotent, if POST is retried, side effects may repeat.
 
@@ -283,7 +295,7 @@ Since POST is not idempotent, if POST is retried, side effects may repeat.
 >[!TIP]
 >Treat this as a *'do anything'* method
 
-**Example**
+##### Example
 
 ```py
 @app.post("/users", status_code=201)
@@ -298,21 +310,21 @@ The above example creates a new `user` entry in our database given a `user_id` a
 
 ---
 
-### PUT
+#### PUT
 
-**Semantics**
+##### Semantics
 
 - Not Safe
 - Idempotent
 - Not Cacheable
 
-**Purpose**
+##### Purpose
 
 This is used for replacing the entire resource with the provided representation.
 
 This will replace the resource with the data provided by the headers and body by the client.
 
-**Rules**
+##### Rules
 
 - The client supplies the full resource state
 - Server completely overwrites existing state
@@ -322,14 +334,14 @@ This will replace the resource with the data provided by the headers and body by
 >A common point of failure is using PUT for partial updates
 >Using `PUT` for partial updates can overwrite fields you didn’t intend to change. Use `PATCH` for updating just specific fields.
 
-**Example**
+##### Example
 
 ```py
 @app.put("/users/{user_id}")
 def replace_user(user_id: int, user: User):
     if user_id not in users:
         raise HTTPException(status_code=404, detail="User not found")
-    users[user_id] = user  # Replaces the entire user object
+    users[user_id] = user  ## Replaces the entire user object
     return user
 ```
 
@@ -337,33 +349,33 @@ This looks very similar to `POST`, however this isn't creating a new resource, i
 
 ---
 
-### PATCH
+#### PATCH
 
-**Semantics**
+##### Semantics
 
 - Not Safe
 - Can be Idempotent
 - Not Cacheable
 
-**Purpose**
+##### Purpose
 
 Whereas PUT replaces the whole resource, PATCH partially modifies the resource with the provided data.
 
-**Idempotence**
+##### Idempotence
 
 Depending on the implementation, PATCH may or may not be idempotent
 
 - `set name = "Alice"` is idempotent
 - `increment likes by 1` is not idempotent
 
-**Example**
+##### Example
 
 ```py
 @app.patch("/users/{user_id}")
 def update_user(user_id: int, user: dict):
     if user_id not in users:
         raise HTTPException(status_code=404, detail="User not found")
-    # Update only the provided fields
+    ## Update only the provided fields
     updated = users[user_id].dict()
     updated.update(user)
     users[user_id] = User(**updated)
@@ -374,20 +386,20 @@ Like `PUT`, but only the supplied fields are updated. Missing fields remain unch
 
 ---
 
-### DELETE
+#### DELETE
 
-**Semantics**
+##### Semantics
 
 - Not Safe
 - Idempotent
 - Not Cacheable
 
-**Rules**
+##### Rules
 
 - Repeating DELETE should not change the state (after the first call anyway)
 - Subsequent calls should return errors
 
-**Example**
+##### Example
 
 ```py
 @app.delete("/users/{user_id}")
@@ -402,7 +414,7 @@ The above code does as we expect, deletes a user with the given `user_id`, if th
 
 ---
 
-## Status Codes
+### Status Codes
 
 Status codes are a key part of an API contract.
 
@@ -420,7 +432,7 @@ Common ones:
 
 ---
 
-## Request and Response Bodies
+### Request and Response Bodies
 
 We use JSON as the format for passing data between the client and the backend.
 
@@ -429,7 +441,7 @@ We use JSON as the format for passing data between the client and the backend.
 
 Example response:
 
-```JS
+```js
 {
     "id": "123",
     "authorId": "abc",
@@ -438,15 +450,15 @@ Example response:
 }
 ```
 
-**Rules of thumb:**
+#### Rules of thumb
 
 - Always return the created resource on `POST`
-- Use ISO-8601 for timestamps
+- Use [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) for timestamps
 - Prefer explicit fields over positional arrays
 
 ---
 
-## Authentication and Authorisation
+### Authentication and Authorisation
 
 Authentication verifies the user, and authorisation verifies what a user can do.
 
@@ -463,7 +475,7 @@ This is pretty straightforward for Cloud Functions since Firebase already includ
 
 ---
 
-## Error Handling
+### Error Handling
 
 Errors should be:
 
@@ -472,7 +484,7 @@ Errors should be:
 
 Example:
 
-```JS
+```js
 {
     "error": "permission_denied",
     "message": "You cannot delete this post"
@@ -483,23 +495,23 @@ The key is simplicity and consistency.
 
 ---
 
-## Extras
+### Extras
 
 The following are good practice in production but not necessary for hackathons!
 
-### Rate Limiting
+#### Rate Limiting
 
-This should be done to prevent abuse. This adds unnecesarry complexity in a hackathon setting where you do not have real clients.
+This should be done to prevent abuse. This adds unnecessary complexity in a hackathon setting where you do not have real clients.
 
-### Pagination
+#### Pagination
 
 Returning all the results can unnecesarily use up both server and client resources. You will be unlikely to have enough data to require this in a hackathon setting.
 
-### Caching
+#### Caching
 
 Improves request latency, but not worth it in a hackathon setting. This is already provided for you by Firebase.
 
-### Versioning
+#### Versioning
 
 Since APIs evolve, we need versioning so clients don't break when we change contracts.
 
@@ -512,7 +524,7 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 
 ---
 
-## General Rules
+### General Rules
 
 - **GET**, **HEAD** and **OPTIONS** should **NEVER** have any side effects or unsafe actions.
 - Use of verbs
@@ -522,9 +534,9 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 
 ---
 
-## Common Failures
+### Common Failures
 
-| Rule                         | What can go wrong if broken                           |
+| Rule broken                  | What can go wrong if broken                           |
 | ---------------------------- | ----------------------------------------------------- |
 | GET modifies state           | Duplicate writes from prefetch, crawlers, retries     |
 | POST is used for reads       | Hard to cache, confusing for clients                  |
@@ -534,7 +546,7 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 
 ---
 
-## Cheatsheet
+### Cheatsheet
 
 | Method  | Safe | Idempotent | Typical Use       | Notes                                      |
 | ------- | ---- | ---------- | ----------------- | ------------------------------------------ |
@@ -546,11 +558,13 @@ Since you are not in a production setting, you can quickly migrate anything, so 
 | HEAD    | ✅   | ✅         | Metadata / checks | Usually ignored                            |
 | OPTIONS | ✅   | ✅         | CORS info         | Framework handles                          |
 
-# Making Requests
+## Making Requests
 
 Since all backends are HTTP requests, there is a unified way to create a request from a frontend.
 
-## JavaScript/TypeScript
+Below are the links to the guides on how to call our API functions, from the respective frontend HackPacks.
+
+### JavaScript/TypeScript
 
 ```ts
 const res = await fetch(url, {
@@ -610,13 +624,23 @@ export async function createPost(text: string) {
 
 The above demonstrates a full HTTP request with full error handling.
 
-# Secrets
+You can use this as a function in your React or Vue app.
+
+### Idiomatic Methods
+
+Check out the Vue HackPack. [At the end](/frontend-development/vuejs/README.md#other-useful-resources) there are several useful links showing more idiomatic ways to call our backend.
+
+For React, there are some other idiomatic ways to call functions using libraries. [Check out the React HackPack](../frontend-development/react-example-tutorial/README.md#fastapi-default-path-frontend-serving) to see how to call FastAPI easier with a library!
+
+The Android development HackPack has [an entire section](../android-development/README.md#connecting-to-a-backend-api) on this exact topic!
+
+## Secrets
 
 Unless you are using Firebase (which has its own user authentication and deployment system), you will likely need to store some sensitive API keys.
 
 You do ***not*** want to be publishing them on a public platform. The best way to handle this is to create a local `.env` file in the root of your backend.
 
-Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Click here for more information about Git and `.gitignore`](../git-and-github/README.md#gitignore)
+Since we do not want this file to be pushed to GitHub, you will want to add it to your `.gitignore`. [Learn more about Git and .gitignore](../git-and-github/README.md#gitignore).
 
 Your `.env` file may look something like this
 
@@ -628,17 +652,17 @@ SECRET_KEY=supersecret
 
 where the left hand side are the names of the environment variables, and the right hand side the value.
 
-## Python
+### Python
 
-For Python, you will first need to install the `python-dotenv` library to your virtual environment. First, complete up to [Step 3 of the FastAPI setup guide](#setup-1).
+For Python, you will first need to install the `python-dotenv` library to your virtual environment. First, complete up to [Step 3 of the FastAPI setup guide](FastAPI.md#setup).
 
-Run
+Run:
 
 ```bash
 pip install python-dotenv
 ```
 
-Now, wherever you need to access those environment variables, add this to the top of that file
+Now, wherever you need to access those environment variables, add this snippet to the top of that file
 
 ```py
 from dotenv import load_dotenv
@@ -650,7 +674,7 @@ host = os.getenv("DB_HOST")
 
 where `DB_HOST` is the name of the environment variable we want.
 
-## Vite
+### Vite
 
 If you have created your JS/TS project using Vite, there is an easy way to extract environment variables.
 
@@ -664,11 +688,11 @@ VITE_SECRET_KEY=supersecret
 
 Unlike Python, you do not need to import or install any modules. Simply use
 
-```JS
+```js
 const host = import.meta.env.VITE_DB_HOST;
 ```
 
-## JS/TS
+### JS/TS
 
 Follow these instructions if you did not use Vite as your build tool.
 
@@ -688,616 +712,49 @@ import 'dotenv/config';
 const host = process.env.DB_HOST;
 ```
 
-# Firebase Cloud Functions
+## Creating Your Own Backend
 
-Firebase Cloud Functions uses the Firebase framework so you can have one backend for your whole project.
-This has the benefit of being **serverless**, so you do not have to manage the running of your API yourself.
+The two backends we will be covering are **Firebase** and **FastAPI**.
 
-## Setup
+### Firebase Cloud Functions
 
- 1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/)
- 2. Create a new project (or if you have already done this, open it by clicking on it)
- 3. Wait for project to be created
- 4. On the left hand pane, click on `Build` -> `Functions`
- 5. As `Functions` is not included in the `Spark` (default) plan, you will have to upgrade to the `Blaze` plan
+#### Pros
 
->[!WARNING]
->The Blaze plan will cost you if your quota runs out, so be careful with your usage! You are very unlikely to run out of your quota within the timeframe of a hackathon!
+- Faster to deploy: no self-hosting needed, deployment in minutes
+- Excellent integration with Firebase services: databases, authentication
 
- 6. Create a Cloud Billing Account
- 7. Follow the instructions in the new window
- 8. Click `Get Started` once you have changed to the `Blaze` plan
- 9. As prompted, run `npm install -g firebase-tools`
- 10. Run `firebase login`
- 11. In your project root, run `firebase init`
- 12. At the very least, select `Functions`. 
- 13. Select `Use an existing project` and select your project.
- 14. Choose your language for Cloud Functions. For this guide, we will be using **TypeScript**, but links will be provided for Python alternatives.
- 15. I recommend enabling ESLint.
- 16. Install dependencies as prompted.
- 17. Firebase will have created a whole directory structure like the one below
-  
- ```bash
- example-project/
- ├─ functions/
- │   ├─ src/
- │   │   └─ index.ts
- │   ├─ package.json
- │   └─ tsconfig.json
- ├─ firebase.json
- └─ .firebaserc
- ```
+#### Cons
 
-## Writing Cloud Functions
+- Deploy cycles are slower: local deployment is very fast once set up
 
-Now that you have set up your Cloud Functions directory, we will get to writing some example functions themselves.
+You would use this if you are using **Firestore** as your database, and are comfortable with JS/TS. Also use if you are not too comfortable with self-deploying an application.
 
-### Setup `index.ts`
+[View the full Firebase HackPack](./Firebase.md).
 
-Add the following to the end of `src/index.ts`
+### FastAPI
 
-```ts
-// The Firebase Admin SDK to access Firestore.
-import {initializeApp} from "firebase-admin/app";
-import {getFirestore} from "firebase-admin/firestore";
+#### Pros
 
-initializeApp();
-```
+- It's Python!!
+- Very fast iteration: startup time is extremely fast
+- Freedom: you can use any service or database
 
-This will setup your cloud functions in ***Admin*** mode, allowing your backend full access to Firebase's framework (Firestore, etc).
+#### Cons
 
-### Create Your Functions
+- You have to self-host: fine for ICHack, but a small bump to get over first
+- More manual setup than Firebase
+- Authentication is much more difficult to implement
 
-All the functions you create need to be exposed as
+You would use **FastAPI** if you are comfortable with Python, are using machine learning (since Python ML integration is amazing), or want maximum flexibility.
 
-```ts
-export const [fun_name] = [fun_def]
-```
-
-in `index.ts`.
-
-You can go about this in one of two ways:
-
-- If you don't have many functions, you can write all your functions directly inside `index.ts`.
-- If you have many, you will want to split them into several files. I would recommend this approach.
-
-To demonstrate a simple `GET` request, we will create a new file `basic.ts` in the `src` folder.
-
-```ts
-import * as functions from "firebase-functions";
-
-export const helloWorld = functions.https.onRequest((req, res) => {
-  res.send("Hello ICHack!");
-});
-```
-
-This is a simple HTTP `GET` function that returns `"Hello ICHack!"` to the caller.
-
-Since this is not in `index.ts`, we now need to expose it there.
-
-We add the following to `index.ts`
-
-```ts
-import * as basic from "./basic";
-
-export const helloWorld = basic.helloWorld;
-```
-
-We use a qualified import so we can reuse the same name for the function.
-
-Now that we have written our first function, we can deploy it!
-
-### Deploy Your Functions
-
-Deploying your functions is just publishing your code to Firebase's servers so your clients can call them.
-
-To deploy, in your project directory, call
-
-```bash
-firebase deploy
-```
-
-There is a high chance that there will be deployment failures due to ESLint errors. Fix those errors and re-run the command.
-
->[!IMPORTANT]
-> While setting this up myself, I got the following error
->
-> ```bash
-> Error: Request to https://serviceusage.googleapis.com/v1/projects/X/services/run.googleapis.com:enable had HTTP Error: 429, Quota exceeded for quota metric 'Mutate requests' and limit 'Mutate requests per minute' of service 'serviceusage.googleapis.com' for consumer 'project_number:X'.
-> ```
->
-> This is Google rate-limiting you when you are enabling the various APIs. Wait for a minute or two and retry.
-
->[!NOTE]
->The deployment may take a short while, be patient!
-
-Once the process is complete, you will be provided with the URL where your function can be accessed.
-For me, this was
-
-```bash
-Function URL (helloWorld(us-central1)): https://us-central1-sample-project-44e1c.cloudfunctions.net/helloWorld
-```
-
->[!IMPORTANT]
-> Once the setup is complete, you may be asked
->
-> ```txt
-> How many days do you want to keep container images before they're deleted?
-> ```
->
-> To avoid surprise bills, press 1 and `Enter`. This cleans up the containers for tasks older than a day.
-
-### Writing RESTful Functions
-
-As you may have noticed, where do the HTTP methods and status codes come into this?
-
-Each function you create represents a resource, an endpoint. The function itself will handle what HTTP method is used.
-
-Below is how you would go about it
-
-```ts
-import * as functions from "firebase-functions";
-
-export const helloWorld = functions.https.onRequest(async (req, res) => {
-  switch (req.method) {
-  case "GET":
-    res.status(200).send("Hello ICHack!");
-    break;
-
-  case "POST": {
-    // Increment counter
-    res.status(200).json({ newCount: ... });
-    break;
-  }
-
-  case "DELETE":
-    // Reset counter
-    res.status(204);
-    break;
-
-  default:
-    res.status(404).send("Method Not Allowed");
-  }
-});
-```
-
-Now on to a specific resource, the canonical **RESTful** way of doing this is with `/posts/{postId}`. We will show why this may not be the best with Firestore, and that packing the `postId` into the request body may be better.
-
-#### Canonical RESTful
-
-In order to properly parse the resource, we must inspect the path.
-
-```ts
-const id = req.path.split("/")[1]; // /posts/{id}
-```
-
-The above code gets the request path, and splits on the `/`. This will extract the `id` value so it can be used by our backend.
-
-[Click here for an example canonical Firebase backend](./example-project/cloud-functions/functions/src/canonical-restful.ts)
-
-#### Hackathon Simple
-
-For our hacky, simpler method, we just pack the request body with all the data we need. Requests will all go to the `/posts` endpoint but with different arguments.
-
-```ts
-const { id, text } = req.body;
-```
-
-The above unpacks the request body into the `id` and `text` fields.  
-
->[!WARNING]
-> This typically breaks caching, so the canonical method is preferred...
-
-[Click here for an example hacky Firebase backend](./example-project/cloud-functions/functions/src/request-packing.ts)
-
-In general, you send a simple string response with the
-
-```ts
-res.send("Message");
-```
-
-and you send a `JSON` response with
-
-```ts
-res.json(data)
-```
-
-### Writing Callable Functions
-
-Firebase comes with a special type of API - a ***callable function***.
-
-There are many benefits:
-
-- Auth tokens are automatically included and handled
-- No need for custom parsing
-- No need to explicitly handle HTTP error codes
-- No need for CORS handling
-- On the frontend, it is a simple function call
-
-To create a callable function, you just need to use the following structure
-
-```ts
-import { onCall, CallableRequest } from "firebase-functions/v2/https";
-
-export const fun = onCall(
-    async (request: CallableRequest<{ arg1?: number, arg2?: string,}>) => {
-        const { arg1, arg2 } = request.data;
-        // your function
-        const response = {
-            res1: val1,
-            res2: val2,
-            ok: true,
-        };
-        return response;
-    }
-);
-```
-
-[An example of this can be found by clicking here](./example-project/cloud-functions/functions/src/callable.ts)
-
-### Handling CORS
-
-If you were to deploy and run your API and call these functions from a browser front-end, you will end up with CORS errors.
-
-This step can be avoided if you choose the Firebase callable functions method of calling your API (more on this later...)
-
-To suppress CORS errors, simply add `{cors: true}` as shown below, to all your functions.
-
-```ts
-export const helloWorld = functions.https.onRequest(
-  {cors: true},
-  async (req, res) => {
-    // your function logic
-  }
-);
-```
-
->[!WARNING]
-> Do not use this in production. This allows requests from any source. Instead you should use `{cors: [your_domain_one.com, ...]}`
->
-> However this is perfectly fine for hackathons!
-
->[!TIP]
-> Don't forget to redeploy your functions using `firebase deploy` after you edit them!
-
-## Making Requests
-
-Now that we know how to create the backend, we now need to know how to use it!
-
-As alluded to already, Firebase has 2 main ways to do this:
-
- 1. The canonical HTTP request
- 2. A callable function
-
-### Canonical HTTP Request
-
-This has been covered by [Making Requests](#making-requests). But I want to point out how the frontend requests differ based on the approach used.
-
-With the **RESTful** approach, we need to add the post ID to the API URL.
-
-```ts
-export async function updatePost(id: string, text: string) {
-  const url = `${API}/${id}`;
-  const res = await fetch(url, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text }),
-  });
-  return res.json();
-}
-```
-
-[Click here for a full example frontend for a RESTful Firebase backend](./example-project/frontend/src/classic_api.ts)
-
-Whereas with the ***hacky*** approach, we pack the ID into the request body.
-
-```ts
-export async function updatePost(id: string, text: string) {
-  const res = await fetch(API, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id, text }),
-  });
-  return res.json();
-}
-```
-
-### Callable Functions
-
-#### JS/TS
-
-If you have not done so yet, run the following in the root of the frontent
-
-```bash
-npm install firebase
-```
-
-Now add your web app.
-
- 1. On [Firebase Console](https://console.firebase.google.com/u/0/), open your project
- 2. Press the `+ Add app` button
- 3. Select Web
- 4. Copy the code shown, it should look something like
-
-    ```ts
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "firebase/app";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "__",
-      authDomain: "__",
-      projectId: "__",
-      storageBucket: "__",
-      messagingSenderId: "__",
-      appId: "__"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    ```
-
-  5. Copy this into a new file called `firebase.ts` (or `.js`) in `frontend/src`
-  6. Add the necessary code to import cloud functions, as shown below
-
-  ```ts
-    // Import the functions you need from the SDKs you need
-  import { initializeApp } from "firebase/app";
-  import { getFunctions } from "firebase/functions";
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    ...
-  };
-
-  // Initialize Firebase
-  export const app = initializeApp(firebaseConfig);
-  export const functions = getFunctions(app);
-  // anything else you will need
-  ```
-
-  7. Now add the following to the top of your API file
-
-  ```ts
-  import { httpsCallable } from "firebase/functions";
-  import { functions } from "./firebase";
-
-  const yourFuncName = httpsCallable(functions, "yourFuncName");
-  ```
-
-  8. Call them like you would any other function!
-
----
-Below is an example of a function from the [sample project](./example-project/frontend/src/callable_api.ts)
-
-```ts
-import { httpsCallable } from "firebase/functions";
-import { functions } from "./firebase";
-
-// Not necessary but good for consistency
-type PostsRequest = {
-  action: "create" | "get" | "update" | "delete"
-  id?: string
-  text?: string
-}
-
-type PostsResponse =
-  | { id: string }                 // create
-  | { ok: true }                   // update/delete
-  | { id: string; text: string }   // get single
-  | { id: string; text: string }[] // get all
-
-const postsCallable = httpsCallable<PostsRequest, PostsResponse>(functions, "postCallable");
-
-export async function getPosts(id?: string) {
-  try {
-    const res = await postsCallable({ action: "get", id });
-    return res.data;
-  } catch (err: any) {
-    throw new Error(err.message || "Network Error");
-  }
-}
-```
-
-# FastAPI
-
-FastAPI is a popular Python library that can make an API too. The main differences are that FastAPI does not have Firebase's whole framework and easily interoperability with Firebase. It is also not serverless, so must be hosted.
-
-For the purposes of a hackathon, this will likely mean self-hosting to `localhost`.
-
-We will be using MongoDB as our database. [Click here for the document databases HackPack](../databases/document.md)
-
-## Setup
-
- 1. Create a new directory for your backend.
- 2. In this directory, run the following to set up a virtual environment
-
- ```bash
- python -m venv venv
- source venv/bin/activate
- ```
-
- >[!IMPORTANT]
- > Add `venv` to your `.gitignore`. Your team members will thank you!
-
- 3. Run the following to install the necessary dependencies, and any other dependencies you want. For the example, since we are using a MongoDB database, we are adding `pymongo[srv]` and `python-dotenv` to our dependencies.
-
- ```bash
- pip install fastapi uvicorn
- ```
-
- >[!TIP]
- > Run the following in the root of your FastAPI
- >
- > ```bash
- > pip freeze > requirements.txt
- > ```
- >
- > This will mean that the `venv` can be quickly restored by running
- >
- > ```bash
- > pip install -r requirements.txt
- > ```
- >
-
- 4. Create the following directory structure
-
- ```txt
- backend/
-├─ app/
-│  ├─ __init__.py
-│  ├─ main.py
-│  ├─ db.py
-│  └─ all files with functions .py
-└─ requirements.txt
- ```
-
- 5. Paste the following into `main.py`
-
- ```py
- from fastapi import FastAPI
-from .[file with functions] import router as [file]_router
-# all other files with functions
-
-app = FastAPI()
-
-app.include_router([file]_router)
-# repeat for all other routers
- ```
-
-## Writing Functions
-
-Now that you have finished the (very fast) setup, you are ready to create your first backend functions.
-
-The following shows the basic setup of your API.
-
-```py
-from fastapi import APIRouter, Request, HTTPException
-
-router = APIRouter()
-
-@router.[HTTP_METHOD]("/RESOURCE")
-async def fun(req: Request):
-    body = await req.json()
-    if "val1" not in body:
-        raise HTTPException(400, "Missing text")
-    val1 = body["val1"]
-    
-    # do something
-
-    return {"val1": val1}
-```
-
-This represents one of the `files with functions.py`.
-
-As you can see, requests are handled very nicely and without too much boilerplate compared to a standard Python function.
-
-Unlike with Firebase Cloud Functions, the HTTP method is specified in the decorator, along with the resource for which this function is for.
-
-Below is a more concrete example, as part of the FastAPI backend for our example program. [Click here for the full code](./example-project/fastapi/app/posts.py)
-
-```py
-@router.delete("/posts/{id}", status_code=204)
-async def delete_post(id: str):
-    result = posts_collection.delete_one({"_id": ObjectId(id)})
-    if result.deleted_count == 0:
-        raise HTTPException(404, "not_found")
-```
-
-As you can see from the above function, FastAPI also makes the handling of the RESTful resource locators much cleaner. Instead of manually splitting the path, we can extract the bit after the `/posts/` into a named parameter `id` through the use of the curly braces. This can now be used like a standard parameter of a function.
-
-The decorator also can be used to define a default response status code (here, it is set to `204`).
-
-### Typing
-
-We can further utilise FastAPIs powerful decorators to automatically parse the request body into a defined class.
-
-```py
-from pydantic import BaseModel
-
-class Text(BaseModel):
-    text: str
-```
-
-The above code defines a new class `Text` that has a `text` string field.
-
-```py
-@router.patch("/posts/{id}")
-async def update_post(id: str, text: Text):
-    result = posts_collection.update_one(
-        {"_id": ObjectId(id)},
-        {"$set": {"text": text.text}}
-    )
-
-    if result.matched_count == 0:
-        raise HTTPException(404, "not_found")
-
-    return {"ok": True}
-```
-
-The FastAPI decorator now knows to parse the request body into this `text` parameter, instead of having to manually work with the raw JSON.
-
-### CORS
-
-Like with Firebase, we need a way to suppress CORS errors.
-
-Add the following import to the top of `main.py`
-
-```py
-from fastapi.middleware.cors import CORSMiddleware
-```
-
-And add the following after `app = FastAPI()` in `main.py`
-
-```py
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-```
-
->[!WARNING]
-> This allows all origins and methods and users. Perfectly fine for a hackathon but do not use in production code!
-
-Since we separated `main.py` with all the logic, and applied it to the whole app, we do not need any further modifications.
-
-## Deploying
-
-Since we are self-hosting this, deploying is as simple as running the following at the root of your FastAPI backend.
-
-```bash
-uvicorn app.main:app --reload
-```
-
->[!TIP]
-> Since we used `--reload`, the backend will redeploy every time you edit any of your backend code, so no need to manually rerun this command!
-
-Upon startup, you will get a message along the lines of
-
-```bash
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-```
-
-This is the base URL at which you can access your backend. The defined routes can then be appended to this base URL to access the API functions.
-
-If you want to specify your own host address and port, you can using the arguments
-
-```bash
-uvicorn app.main:app --reload --host 1.2.3.4 --port 1234
-```
-
->[!TIP]
-> Just use the defaults unless you have a good reason to not do so
+[View the full FastAPI HackPack](./FastAPI.md).
 
 # Example Code
 
 Since an API is a contract between a frontend and backend, with no implementation details being necessary, the example code is split into the frontend, and the backends.
 
-The frontend code, [found here](./example-project/frontend/), can swap between the Firebase and FastAPI backends just by [changing the API URL](./example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](./example-project/frontend/src/App.tsx#3)
+The [frontend code](./example-project/frontend/) can swap between the Firebase and FastAPI backends just by [changing the API URL](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/classic_api.ts#1). You can further choose between the Firebase API implementations by [changing the imported middleware](https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/example-project/frontend/src/App.tsx#3).
 
-[See here for more information about Firestore and document databases](../databases/document.md)
-[See here for more information abour databases in general](../databases/README.md)
+[Read more about Firestore and document databases](../databases/document.md).
+
+[Read more about databases in general](../databases/README.md).

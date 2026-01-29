@@ -15,6 +15,7 @@ Welcome to IC Hack! Get ready for **24 hours** of *intense* coding. Every year, 
     - [JavaScript / TypeScript](#javascript--typescript)
   - [Useful terminal commands](#useful-terminal-commands)
   - [Other useful resources](#other-useful-resources)
+    - [GitHub Copilot](#github-copilot)
   - [Recommended HackPacks for further reading](#recommended-hackpacks-for-further-reading)
 
 ## Setting up an IDE
@@ -37,7 +38,7 @@ We **recommend** using [Visual Studio Code (VS Code)](#visual-studio-code) for d
 4. Once you get VS Code up and running, we recommend installing a few more pieces of software and plugins:
    - [Git](https://git-scm.com/install/). Follow the instructions on the installer. For detailed use of Git, check out [our HackPack](../git-and-github/README.md). On VS Code, we use the **Source Control** feature to manage Git (the third icon on the left hand sidebar).
    - **Extensions** for whichever programming languages you use. For example, if you want to install the extension for Python, you can go to the Extension icon on the left hand sidebar and search for `Python`: ![Installing Python extension](./assets/python_extension_vscode.png)
-   - Access to your favourite **LLMs**! VS Code has GitHub Copilot *built-in* from an icon on the top bar: ![GitHub Copilot in VS Code](./assets/github_copilot_vscode.png) You can integrate other LLMs into VS Code through the extensions as well: `Codex` for OpenAI (ChatGPT), `Claude Code for VS Code` for Anthropic (Claude), `Gemini Code Assist` for Google (Gemini). If you don't mind setting up API keys, then `Cline` is a good one as well. See our [prompt engineering HackPack](../prompt-engineering/README.md) for more info on how to get the most of those LLMs!
+   - Access to your favourite **LLMs**! VS Code has GitHub Copilot *built-in* from an icon on the top bar; also see [later section](#github-copilot) on how to gain free Pro access: ![GitHub Copilot in VS Code](./assets/github_copilot_vscode.png) You can integrate other LLMs into VS Code through the extensions as well: `Codex` for OpenAI (ChatGPT), `Claude Code for VS Code` for Anthropic (Claude), `Gemini Code Assist` for Google (Gemini). If you don't mind setting up API keys, then `Cline` is a good one as well. See our [prompt engineering HackPack](../prompt-engineering/README.md) for more info on how to get the most of those LLMs!
 
 ## Choosing a programming language
 
@@ -98,14 +99,14 @@ To share and set up a virtual environment:
 
 ### JavaScript / TypeScript
 
-Scroll down on the [`node.js` download page](https://nodejs.org/en/download) until you see "*Or get a prebuilt Node.js for Windows running a x64 architecture*". Switch the operating system and architecture to your computer's *before* downloading the installer.
+Scroll down on the [node.js download page](https://nodejs.org/en/download) until you see "*Or get a prebuilt Node.js for Windows running a x64 architecture*". Switch the operating system and architecture to your computer's *before* downloading the installer.
 
 This allows you to run JavaScript applications (in frameworks like React), and most importantly you get the `npm` package manager (similar to `pip` in Python) for external packages.
 
 > [!IMPORTANT]
 > The following assumes knowledge of terminal commands. You may wish to read [this section](#useful-terminal-commands) before coming back and continuing from here.
 
-To install individual packages, run `npm install <package-name>`.
+To install individual packages, run `npm install package-name`.
 
 Similar to `requirements.txt` in Python, you might also have a `package.json` file that lists all the required packages and versions, then run `npm install` to install all the listed packages.
 
@@ -145,6 +146,18 @@ For Git-specific commands, refer back to our [Git HackPack](../git-and-github/RE
 - [Read the HackPacks](../README.md) that may be relevant to your project!
 - Use our **Discord**. We have *mentors on-call* throughout to help you in `#coach-support`!
 - Make good use of Google, [Stack Overflow](https://stackoverflow.com/) and your favourite LLMs to answer your technical questions if you're unable to reach us.
+
+### GitHub Copilot
+
+Students gain free access to [GitHub Copilot Pro](https://docs.github.com/en/copilot/how-tos/manage-your-account/get-free-access-to-copilot-pro) as part of the [GitHub Student Developer Pack](https://github.com/education/students) - we strongly encourage you to sign up to make use of the increased usage limits and advanced models!
+
+It could take a few days to verify your student status, so we would advise you to sign up before IC Hack in order for it to be approved in time for the weekend. You may find the [application instructions here](https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student).
+
+Make sure to do the following before applying (else you may get rejected):
+
+- Your GitHub display name matches your student ID name;
+- You have enabled multi-factor authentication on your GitHub account;
+- You have included a billing address on your GitHub account.
 
 ## Recommended HackPacks for further reading
 

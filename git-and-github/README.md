@@ -2,9 +2,45 @@
 
 In this guide, we will cover the basics of Git, useful features on GitHub, and some advice for using these two tools as a team.
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Git \& GitHub](#git--github)
+  - [Table of Contents](#table-of-contents)
+  - [What is Git? What is the point?](#what-is-git-what-is-the-point)
+    - [Key Git Concepts](#key-git-concepts)
+    - [How to Install](#how-to-install)
+  - [Git Basics](#git-basics)
+    - [1. Create or Clone a Repository](#1-create-or-clone-a-repository)
+    - [2. Make a commit](#2-make-a-commit)
+    - [3. Pushing and pulling](#3-pushing-and-pulling)
+    - [4. Checkout and Branch](#4-checkout-and-branch)
+      - [Remote branches](#remote-branches)
+      - [A common error](#a-common-error)
+        - [1. Commit your changes](#1-commit-your-changes)
+        - [2. Stash your changes](#2-stash-your-changes)
+        - [3. Discard your changes (*irreversible*)](#3-discard-your-changes-irreversible)
+    - [4. Merge branches](#4-merge-branches)
+      - [Merge Conflicts](#merge-conflicts)
+    - [5. Undo Mistakes](#5-undo-mistakes)
+  - [Useful Features](#useful-features)
+    - [Pull Request](#pull-request)
+      - [How to create a PR](#how-to-create-a-pr)
+    - [Issues](#issues)
+      - [How to Create an Issue](#how-to-create-an-issue)
+  - [How to use Git as a team?](#how-to-use-git-as-a-team)
+    - [1. Conventional commit messages](#1-conventional-commit-messages)
+      - [What is a `<type>`?](#what-is-a-type)
+    - [2. Make Small, Focused Commits](#2-make-small-focused-commits)
+    - [3. Agree on a branching strategy](#3-agree-on-a-branching-strategy)
+  - [Useful links](#useful-links)
+
+<!-- /TOC -->
+
 ## What is Git? What is the point?
 
-Git is a **popular what is version control system **, which tracks and manages changes to files (like source code) over time, creating a complete history, enabling collaboration, and allowing developers to revert to previous versions if errors occur. 
+Git is a **popular what is version control system**, which tracks and manages changes to files (like source code) over time, creating a complete history, enabling collaboration, and allowing developers to revert to previous versions if errors occur.
 
 Git is often used to work on code with others. It also allows you to save the entire history of your codebase, go back to points in history, selectively undo changes and more. Git stores this information in the `.git` folder of a repository.
 
@@ -88,7 +124,7 @@ If you do not want to commit all your changes,
 git add [filename]
 ```
 
-can be used selectively to add only files you are interested in. You can also add certain file extensions and folders to a `.gitignore` file to ensure they are **never tracked**. Place the `.gitignore` file in the root of your repo. You may also want to refer to [the documentation and template `.gitignore` files](https://docs.github.com/en/get-started/git-basics/ignoring-files?platform=linux).
+can be used selectively to add only files you are interested in. You can also add certain file extensions and folders to a `.gitignore` file to ensure they are **never tracked**. Place the `.gitignore` file in the root of your repo. You may also want to refer to [the documentation and template **.gitignore** files](https://docs.github.com/en/get-started/git-basics/ignoring-files?platform=linux).
 
 Here is an example stolen from the Git docs:
 
@@ -364,7 +400,7 @@ Don't like the changes made in a specific commit? Run
 git revert <commit>
 ```
 
-The `<commit>` is a commit hash, a unique identifier for a commit. These can be found by running
+The `commit` is a commit hash, a unique identifier for a commit. These can be found by running
 
 ```bash
 git log
@@ -482,7 +518,8 @@ Creating this type of issue can record your brainstroming process, which will be
 Although this sounds like a hassle, writing conventional commit messages is actually very useful when **working in a team**. Conventional commit messages help your teammates understand what changed in that commit, quickly. This will be helpful if you want to go back to a specific commit or ask your teammates about a change in a commit they did.
 
 A good conventional commit message should look like this:
-```
+
+```text
 <type>[optional scope]: <description>
 
 Co-authored-by: AAA <ic@hack.com>

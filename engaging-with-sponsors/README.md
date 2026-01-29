@@ -1,6 +1,6 @@
 # Engaging with Sponsors
 
-*This HackPack is heavily adapted from [DurHack's 'Hacking Your Future' HackPack](https://medium.com/@DurHack_press/hacking-your-future-how-to-best-engage-with-sponsors-in-a-hackathon-47423f3959e9). Thank you to Adrienne Lam and the DurHack team for this resource.*
+*This HackPack uses content from [DurHack's 'Hacking Your Future' HackPack](https://medium.com/@DurHack_press/hacking-your-future-how-to-best-engage-with-sponsors-in-a-hackathon-47423f3959e9). Thank you to Adrienne Lam and the DurHack team for this resource.*
 
 ---
 
@@ -9,6 +9,22 @@ In this HackPack, we'll take a brief look at how to maximise your time at IC Hac
 IC Hack is **the largest student-run hackathon in Europe**, and that's only possible thanks to the support of [our sponsors](https://ichack.org/#sponsors). This year, we're proud to welcome **23 sponsors** to IC Hack, with **16** attending in-person, across a variety of different sectors (tech, finance, AI and more!).
 
 But, *why do our sponsors actually attend*? Well, they want access to **you**: they're scouting for talent to hire in the future by promoting themselves through sponsor booths, talks and categories. So, how can you make the most of that interest?
+
+## Table of Contents
+
+<!-- TOC -->
+
+- [Engaging with Sponsors](#engaging-with-sponsors)
+  - [Table of Contents](#table-of-contents)
+  - [Before IC Hack](#before-ic-hack)
+  - [Attending sponsor talks](#attending-sponsor-talks)
+  - [Sponsor booths](#sponsor-booths)
+  - [Making the most of challenges](#making-the-most-of-challenges)
+    - [Regular sponsor tracks](#regular-sponsor-tracks)
+    - ['Best use of' challenges](#best-use-of-challenges)
+  - [Presenting to sponsors](#presenting-to-sponsors)
+
+<!-- /TOC -->
 
 ## Before IC Hack
 

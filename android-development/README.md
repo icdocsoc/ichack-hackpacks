@@ -8,11 +8,17 @@ To follow along, you'll probably also want to download **Android Studio**, the o
 
 ## Table of Contents
 
+<!-- TOC -->
+
 - [Android Development with Kotlin](#android-development-with-kotlin)
   - [Table of Contents](#table-of-contents)
   - [An IC Hack Greeting App](#an-ic-hack-greeting-app)
     - [Basic Set-up](#basic-set-up)
     - [Running on a physical device](#running-on-a-physical-device)
+      - [Enabling Developer Options](#enabling-developer-options)
+      - [Enabling USB Debugging](#enabling-usb-debugging)
+      - [Connecting to your laptop](#connecting-to-your-laptop)
+      - [Debugging with Logcat](#debugging-with-logcat)
     - [Understanding the generated code](#understanding-the-generated-code)
     - [Composable Functions](#composable-functions)
       - [Examples of composable functions](#examples-of-composable-functions)
@@ -56,6 +62,8 @@ To follow along, you'll probably also want to download **Android Studio**, the o
     - [More on Coroutines](#more-on-coroutines)
     - [Working with Databases](#working-with-databases)
     - [Official Resources](#official-resources)
+
+<!-- /TOC -->
 
 ## An IC Hack Greeting App
 
@@ -256,7 +264,7 @@ Mine looks like this:
 ![Screenshot of example app.](assets/welcome-to-ic-hack.png)
 
 > [!TIP]
-> **Stuck?** The complete example is available in the [`welcome-to-ic-hack` directory](/android-development/welcome-to-ic-hack/). Compare your code to `MainActivity.kt` if you need a hint!
+> **Stuck?** The complete example is available in the [`welcome-to-ic-hack`](/android-development/welcome-to-ic-hack/) directory. Compare your code to `MainActivity.kt` if you need a hint!
 
 ## An IC Hack Countdown Timer
 
@@ -479,7 +487,7 @@ Mine looks like this:
 ![Screenshot of example app.](assets/ic-hack-countdown.png)
 
 > [!TIP]
-> **Stuck?** The complete example is available in the [`ic-hack-countdown` directory](/android-development/ic-hack-countdown/).
+> **Stuck?** The complete example is available in the [`ic-hack-countdown`](/android-development/ic-hack-countdown/) directory.
 
 ## Connecting to a Backend API
 
@@ -744,7 +752,7 @@ Congratulations! You've built an app that fetches and displays data from a real 
 ![Screenshot of final app with post cards.](assets/ic-hack-posts-final.png)
 
 > [!TIP]
-> **Stuck?** The complete example is available in the [`ic-hack-posts` directory](/android-development/ic-hack-posts/). Compare your code to `MainActivity.kt` if you need a hint!
+> **Stuck?** The complete example is available in the [`ic-hack-posts`](/android-development/ic-hack-posts/) directory. Compare your code to `MainActivity.kt` if you need a hint!
 
 ### Taking it further
 
