@@ -13,7 +13,7 @@
     - [3rd-party deployment services](#3rd-party-deployment-services)
       - [Vercel](#vercel)
         - [Prerequisites](#prerequisites)
-        - [Deploy using `vercel --yes` (fastest way)](#deploy-using-vercel---yes-fastest-way)
+        - [Deployment](#deployment-1)
       - [Render](#render)
     - [Deployment Platforms](#deployment-platforms)
     - [Tunneling / Local Exposure (no Ngrok)](#tunneling--local-exposure-no-ngrok)
@@ -50,7 +50,7 @@ If your project is not deployed, it might seem to the judges that your project i
     - [3rd-party deployment services](#3rd-party-deployment-services)
       - [Vercel](#vercel)
         - [Prerequisites](#prerequisites)
-        - [Deploy using `vercel --yes` (fastest way)](#deploy-using-vercel---yes-fastest-way)
+        - [Deployment](#deployment-1)
       - [Render](#render)
     - [Deployment Platforms](#deployment-platforms)
     - [Tunneling / Local Exposure (no Ngrok)](#tunneling--local-exposure-no-ngrok)
@@ -136,7 +136,7 @@ Vercel is **not meant** for heavy backend logic or long-running servers.
 - A Vercel account (you can log in with GitHub for ease)
 - A project that can be **built locally** (i.e. it produces static files)
 
-##### Deploy using `vercel --yes` (fastest way)
+##### Deployment
 
 From your **frontend project directory** (where `package.json` is located), run:
 
