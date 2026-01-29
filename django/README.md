@@ -46,8 +46,8 @@ This guide walks you through setting up a local **Django** backend for a simple 
 
 2. **Verify installation** by running `python3 --version` and `pip3 --version` (should show Python 3.x).
 
-    > [!TIP]
-    > You should see something like `Python 3.11.4` and `pip 23.1.2`. The exact numbers may differ, but as long as Python is 3.8+, you're good!
+> [!TIP]
+> You should see something like `Python 3.11.4` and `pip 23.1.2`. The exact numbers may differ, but as long as Python is 3.8+, you're good!
 
 3. **Create a virtual environment.** This keeps project dependencies isolated, so packages you install for this project won't conflict with other Python projects on your machine. From your project folder, run:
 
@@ -60,8 +60,8 @@ This guide walks you through setting up a local **Django** backend for a simple 
     source venv/bin/activate
     ```
 
-    > [!IMPORTANT]
-    > After activation, you should see `(venv)` at the beginning of your terminal prompt. This confirms you're working inside the virtual environment.
+> [!IMPORTANT]
+> After activation, you should see `(venv)` at the beginning of your terminal prompt. This confirms you're working inside the virtual environment.
 
 4. **Install Django and DRF.** With Python ready, install the required packages via `pip`:
 
@@ -69,8 +69,8 @@ This guide walks you through setting up a local **Django** backend for a simple 
     pip install django djangorestframework
     ```
 
-    > [!TIP]
-    > Run `pip list` to verify. You should see `Django` and `djangorestframework` in the list of installed packages.
+> [!TIP]
+> Run `pip list` to verify. You should see `Django` and `djangorestframework` in the list of installed packages.
 
 ## Creating a Django Project and App
 
@@ -159,8 +159,8 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
     python manage.py migrate
     ```
 
-    > [!TIP]
-    > You should see output mentioning the creation of the `Note` model.
+> [!TIP]
+> You should see output mentioning the creation of the `Note` model.
 
 3. **Register in Admin.** Django comes with a built-in admin panel where you can view and edit your data without writing any frontend code. Register the model in `notesapp/admin.py`:
 
@@ -170,8 +170,8 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
     admin.site.register(Note)
     ```
 
-    > [!TIP]
-    > To test the admin panel, first create a superuser by running `python manage.py createsuperuser` and following the prompts. Then start the server (`python manage.py runserver`) and go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). Log in and you should see "Notes" listed!
+> [!TIP]
+> To test the admin panel, first create a superuser by running `python manage.py createsuperuser` and following the prompts. Then start the server (`python manage.py runserver`) and go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). Log in and you should see "Notes" listed!
 
 4. **Create a serializer.** When your API sends data to a browser or app, it needs to be in a format they can understand (usually **JSON**). A *serializer* handles this conversion. It turns Python objects into JSON (and vice versa). In `notesapp` folder create a file `serializers.py` and add:
 
@@ -245,11 +245,11 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
 8. Go to [http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/) in your browser. You should see a list (likely empty) and a form to create new notes.
 
-    > [!TIP]
-    > Try creating a note using the form at the bottom of the page! Fill in a title and content, then click POST. Your note should appear in the list above.
+> [!TIP]
+> Try creating a note using the form at the bottom of the page! Fill in a title and content, then click POST. Your note should appear in the list above.
 
-    It should look as follows:
-    ![webpage image](images/image.png)
+Your app should look something like the below:
+![webpage image](images/image.png)
 
 ## Troubleshooting Common Issues
 
