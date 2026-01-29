@@ -34,7 +34,7 @@ Linux has [Docker Engine](https://docs.docker.com/engine/install/) which is also
 > [!NOTE]
 > The binaries are available for Windows too, but they don't include _Compose_, which we'll use later.
 
-You can also install [_Podman_](https://podman.io/docs/installation), a drop-in replacement for Docker for Windows, Linux and MacOS (just replace the `docker` in commands with `podman`).
+You can also install [_Podman_](https://podman.io/docs/installation), a drop-in replacement for Docker for Windows, Linux and MacOS (just replace the `docker` in commands with `podman`). It is an open-source, lightweight alternative.
 
 Once you have a working `docker` command (see below), you can proceed with the rest of this guide.
 
