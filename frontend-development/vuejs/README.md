@@ -49,7 +49,9 @@ Vue.js talks about "components" a lot — they're simply reusable pieces of an a
 
 ### Devtools and IDE Setup
 
-TODO
+Vue.js is well supported in VSCode out-of-the-box (see the [Getting Started Hackpack](TODO) for how to setup VSCode). For a slightly richer experience, you can install [the official Vue.js extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar).
+
+For other editors, there exist integrations for [Neovim](https://github.com/vuejs/language-tools/wiki/Neovim), [IntelliJ IDEA](https://www.jetbrains.com/help/idea/vue-js.html), [Emacs](https://emacs-lsp.github.io/lsp-mode/page/lsp-volar/), and more.
 
 ### Building an app
 
