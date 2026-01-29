@@ -60,10 +60,10 @@ graph TD
     MobileOS -- iOS --> SwiftEnd["Swift"]
 
     %% Branch 3: Frontend
-    Decision -- "Frontend (Web UI)" --> Fe["See our Frontend HackPack"]
+    Decision -- "Frontend (Web UI)" --> Fe["Click to see our Frontend HackPack"]
 
     %% Branch 4: Backend
-    Decision -- "Backend (Server/API)" --> Be["See our Backend HackPack"]
+    Decision -- "Backend (Server/API)" --> Be["Click to see our Backend HackPack"]
 
     click Fe "https://github.com/icdocsoc/ichack-hackpacks/blob/main/frontend-development/README.md"
     click Be "https://github.com/icdocsoc/ichack-hackpacks/blob/main/api-design/README.md"
