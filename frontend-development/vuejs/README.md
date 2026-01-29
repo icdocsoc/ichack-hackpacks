@@ -268,7 +268,6 @@ There's nothing interesting at all here, apart from the lack of a `<script>` tag
 
 [Source code](./todo-app/src/views/HomeView.vue)
 
-
 ```html
 <!-- src/views/HomeView.vue -->
 <script lang="ts">
