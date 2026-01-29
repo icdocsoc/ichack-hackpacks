@@ -36,9 +36,8 @@ In this guide you will find useful information about setting up APIs for differe
     - [For Learning New Tech Fast](#for-learning-new-tech-fast)
   - [IDE Extensions](#ide-extensions)
     - [Using LLM Extensions](#using-llm-extensions)
-    - [More information](#more-information)
   - [MCP Servers](#mcp-servers)
-    - [How does MCP server works](#how-does-mcp-server-works)
+    - [How do MCP servers work](#how-do-mcp-servers-work)
     - [When should you use MCP server?](#when-should-you-use-mcp-server)
     - [Connect to which MCP server?](#connect-to-which-mcp-server)
     - [Useful Links](#useful-links)
@@ -366,19 +365,19 @@ Do NOT add explanations or commentary unless asked.
 
 ## IDE Extensions
 
-Tired of `Alt + Tab`ing? You can now do all your LLM-powered work from right within your IDE!
+Tired of `Alt+Tab`ing? You can now do all your LLM-powered work from right within your IDE!
 
 This quick guide will focus on VSCode, but setup is quite similar for JetBrains' products (IntelliJ, PyCharm, etc.).
 
 There are many extensions from all your popular LLM providers:
 
-- Claude Code for VS Code
-- Codex - OpenAI
-- GitHub Copilot Chat
-- Gemini Code Assist
-- BlackBox AI
+- [Claude Code for VS Code](https://code.claude.com/docs/en/vs-code)
+- [Codex - OpenAI](https://developers.openai.com/codex/ide)
+- [GitHub Copilot Chat](https://github.com/features/copilot/ai-code-editor)
+- [Gemini Code Assist](https://developers.google.com/gemini-code-assist/docs/write-code-gemini)
+- [BlackBox AI](https://docs.blackbox.ai/features/vscode-agent/introduction)
 
-Of the above, the only *free* options are `GitHub Copilot Chat` (with expanded quotas if you have redeemed your free Education Pack...), `BlackBox AI` and Gemini.
+Of the above, the only *free* options are **GitHub Copilot Chat** (with expanded quotas if you have redeemed your free Education Pack), **BlackBox AI** and **Gemini Code Assist**. You will be able to use your Claude API credits for **Claude Code** during IC Hack.
 
 >[!WARNING]
 > Only install one of these...
@@ -436,21 +435,12 @@ Aside from the above exceptions, all other prompt generation recommendations [fo
 >[!TIP]
 > Always review the changes carefully! LLMs aren't perfect.
 
-### More information
-
-Here are some links to the official documentation of the above extensions for more information.
-
-[Gemini](https://docs.cloud.google.com/gemini/docs/codeassist/write-code-gemini)
-
-[GitHub Copilot](https://github.com/features/copilot/ai-code-editor)
-
-[BlackBox AI](https://docs.blackbox.ai/features/vscode-agent/getting-started)
-
 ## MCP Servers
 
 MCP stands for **Model Context Protocol**. An **MCP server** is a service that exposes tools, data, or capabilities to an AI model in a **standardized way**, so the model can use external resources safely and predictably.
 
 An MCP server can expose:
+
 - Databases (SQL, NoSQL, vector stores)
 - APIs (GitHub, Jira, Stripe, internal services)
 - Filesystems or documents
@@ -459,7 +449,7 @@ An MCP server can expose:
 
 ### How do MCP servers work
 
-When a user gives the LLM a prompt, the *LLM* may decide it needs to use **external tools**. The *MCP client* (configured alongside the LLM) intercepts this request and communicates with the *MCP server*, which executes the tool and returns results to the LLM. 
+When a user gives the LLM a prompt, the *LLM* may decide it needs to use **external tools**. The *MCP client* (configured alongside the LLM) intercepts this request and communicates with the *MCP server*, which executes the tool and returns results to the LLM.
 
 The benefit is using one or a couple of standardized MCP servers to access all your tools, instead of writing custom integrations for each tool's unique API and authentication.
 
@@ -468,12 +458,14 @@ The benefit is using one or a couple of standardized MCP servers to access all y
 ### When should you use MCP server?
 
 Use MCP if:
+
 - Your AI needs **live data**
 - You want **multiple tools** without prompting them one by one
 - You’re building **agents, copilots, or dev tools**
 - You care about **permissions and safety**
 
 Don't bother using MCP server if:
+
 - It’s a one-off script
 - Pure text generation
 - No external state
@@ -487,5 +479,5 @@ For a list of available servers and setup instructions, take a look at [Popular 
 
 ### Useful Links
 
-[Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp#installing-mcp-servers)
-[Use MCP servers in VS Code](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
+- [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp#installing-mcp-servers)
+- [Use MCP servers in VS Code](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
