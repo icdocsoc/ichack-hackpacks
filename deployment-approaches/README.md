@@ -35,7 +35,7 @@ Other people:
 
 If your project is not deployed, it might seem to the judges that your project is unfinished.
 
->[!WARN]
+>[!WARNING]
 > This section covers only deployment of web-apps/web based projects. If your demo is not a web-app, please consult other resources.
 
 ## Different deployment approaches
@@ -60,7 +60,7 @@ Now you can use **Tunneling Tools** to create a *temporary public URL* that forw
 Popular tunneling tools include:
 
 - [NGrok](https://ngrok.com/)
-![Screenshot of NGrok homepage.](assets/ngrok-homepage.png)
+![Screenshot of NGrok homepage](assets/ngrok-homepage.png)
 - [Cloudflare tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 To use NGrok, first you need to set up an account using the link above. Then install it using either brew:
