@@ -284,7 +284,7 @@ useEffect(() => {
 }, []);
 ```
 
-The effect runs after the component renders. The dependency array controls when the effect runs based on state or prop changes. In the basic case, an empty array `[]` means the effect runs only once after the initial render.
+The effect runs after the component renders. The **dependency array** controls when the effect runs based on state or prop changes. In the basic case, an empty array `[]` means the effect runs only once after the initial render.
 
 The dependency array follows these patterns:
 
@@ -382,34 +382,28 @@ export function Counter({ maxValue }: CounterProps) {
 }
 ```
 
-Above is an exported functional React component called `Counter`. It is exported so it can be reused in other files,
-for example inside a `HomePage` component.
+Above is a functional React component called `Counter`. It is exported so it can be reused in other files, for example inside a `HomePage` component.
 
-The component receives its input via `props`. Here, `{ maxValue }` uses **object destructuring** to extract the `maxValue`
-field directly from the props object. React always passes a **single props object** to a component, so a function signature
-like `Counter(name, value)` would not work. Instead, props must be accessed either via `props.name` or by destructuring,
-as in `Counter({ name, value })`.
+The component receives its input via `props`. Here, `{ maxValue }` uses **object destructuring** to extract the `maxValue` field directly from the props object.
 
-Since this component is written in TypeScript, a dedicated type `CounterProps` is defined to describe the shape
-of the props object. This allows the compiler to catch incorrect usage at compile time and improves code clarity.
+React always passes a **single props object** to a component, so a function signature like `Counter(name, value)` would not work. Instead, props must be accessed either via `props.name` or by destructuring, as in `Counter({ name, value })`.
+
+Since this component is written in TypeScript, a dedicated type `CounterProps` is defined to describe the shape of the props object. This allows the compiler to catch incorrect usage at compile time and improves code clarity.
+
 In this case, `CounterProps` specifies that `maxValue` must be a number.
 
 The `useState` hook is used to create component state. Here, `value` stores the current counter value and
 `setValue` updates it. Hooks are placed at the top level of the component to ensure they are called in a
 consistent order on every render.
 
-Two functions are then defined: `inc`, which increments the counter while enforcing the `maxValue` limit,
-and `reset`, which resets the counter to zero. These functions are later passed as event handlers to buttons.
+Two functions are then defined: `inc()`, which increments the counter while enforcing the `maxValue` limit, and `reset()`, which resets the counter to zero. These functions are later passed as **event handlers** to buttons.
 
-The component returns JSX with minimal inline styling. In JSX, `{value}` evaluates a JavaScript expression and
-inserts its result into the React element tree during rendering.
+The component returns JSX with minimal inline styling. In JSX, `{value}` evaluates a JavaScript expression and inserts its result into the React element tree during rendering.
 
-Finally, the `disabled` HTML attribute is used on the increment button to
-prevent further clicks when the counter reaches `maxValue`. `OnClick=` attribute specifies what function is executed on click
-of the button.
+Finally, the `disabled` HTML attribute is used on the increment button to prevent further clicks when the counter reaches `maxValue`. `OnClick=` attribute specifies what function is executed on click of the button.
 
 > [!NOTE]
-> In JSX, writing onClick={fn} passes the function, while onClick={fn()} executes it immediately during rendering.
+> In JSX, writing `onClick={fn}` passes the function, while `onClick={fn()}` executes it immediately during rendering.
 
 [`src/pages/HomePage.tsx`](/frontend-development/react/vite-project/src/pages/HomePage.tsx)
 
@@ -427,15 +421,14 @@ export function HomePage() {
 ```
 
 Above is a simple example of a `HomePage` functional component.
-It renders a heading and the `Counter` component created in the previous snippet.
-The `Counter` is used as a JSX element and receives `maxValue={10}` as a prop.
+
+It renders a heading, and the `Counter` component created in the previous snippet. The `Counter` is used as a JSX element and receives `maxValue={10}` as a prop.
 
 Because props flow from parent to child, the value `10` is passed from `HomePage` into `Counter`,
 where it is used to limit the maximum counter value.
 
 > [!NOTE]
-> If `maxValue` were changed inside the `HomePage` component (for example, via state or props),
-> React would re-render `HomePage` and consequently re-render `Counter` with the updated value.
+> If `maxValue` were changed inside the `HomePage` component (for example, via state or props), React would re-render `HomePage` and consequently re-render `Counter` with the updated value.
 
 [`src/App.tsx`](/frontend-development/react/vite-project/src/App.tsx)
 
@@ -447,7 +440,7 @@ export default function App() {
 }
 ```
 
-The `App` component is typically the main entry point of a React application. It defines the top-level structure of the UI and determines which components are rendered.
+The `App` component is typically the **main entry point** of a React application. It defines the top-level structure of the UI and determines which components are rendered.
 
 In this example, `App` renders the `HomePage` component directly. In small applications, this can be sufficient, but as an application grows, `App` usually becomes the place where global configuration and layout are defined.
 
