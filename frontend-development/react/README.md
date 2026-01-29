@@ -60,10 +60,10 @@ You can read more about efficient DOM update in [UI Tree](https://react.dev/lear
 
 ### Required JS/TS
 
-You can use plain **JavaScript**, but **ts (TS)** is strongly recommended.
+You can use plain **JavaScript**, but **TypeScript (TS)** is strongly recommended.
 TS can be thought of as **JS + types**, which catches dumb bugs early and makes teamwork easier.
 
-[ts docs](https://www.tslang.org/).
+[TypeScript docs](https://www.tslang.org/).
 
 ### Repo structure (recommended)
 
