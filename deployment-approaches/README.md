@@ -7,7 +7,6 @@
 - [Deployment](#deployment)
   - [Table of Contents](#table-of-contents)
   - [Why do we need deployment?](#why-do-we-need-deployment)
-  - [Table of Contents](#table-of-contents-1)
   - [Different deployment approaches](#different-deployment-approaches)
     - [Local hosting](#local-hosting)
     - [3rd-party deployment services](#3rd-party-deployment-services)
@@ -37,24 +36,7 @@ Other people:
 If your project is not deployed, it might seem to the judges that your project is unfinished.
 
 >[!WARN]
-> This section covers only deployment of web-apps/web based projects. If your demo is not a web-app, consult other resources.
-
-## Table of Contents
-
-- [Deployment](#deployment)
-  - [Table of Contents](#table-of-contents)
-  - [Why do we need deployment?](#why-do-we-need-deployment)
-  - [Table of Contents](#table-of-contents-1)
-  - [Different deployment approaches](#different-deployment-approaches)
-    - [Local hosting](#local-hosting)
-    - [3rd-party deployment services](#3rd-party-deployment-services)
-      - [Vercel](#vercel)
-        - [Prerequisites](#prerequisites)
-        - [Deployment](#deployment-1)
-      - [Render](#render)
-    - [Deployment Platforms](#deployment-platforms)
-    - [Tunneling / Local Exposure (no Ngrok)](#tunneling--local-exposure-no-ngrok)
-    - [Advanced (VPS + Your Own Nginx)](#advanced-vps--your-own-nginx)
+> This section covers only deployment of web-apps/web based projects. If your demo is not a web-app, please consult other resources.
 
 ## Different deployment approaches
 
@@ -87,7 +69,7 @@ To use NGrok, first you need to set up an account using the link above. Then ins
 brew install ngrok
 ```
 
-or via instructions on their website: [Website](https://ngrok.com/download/windows)
+or via instructions on [their website](https://ngrok.com/download/).
 
 Run the following command to add your authtoken to the default `ngrok.yml` configuration file.
 
@@ -188,8 +170,7 @@ Your web service will then live on an `onrender.com` URL as soon as the deploy f
 
 ---
 
-There are many other third-party services and other methods for deployment out there, 
-so don't feel restricted to just the ones we've mentioned in this HackPack! Just make sure that you heed the advice below...
+There are many other third-party services and other methods for deployment out there, so don't feel restricted to just the ones we've mentioned in this HackPack! Just make sure that you heed the advice below...
 
 ### Deployment Platforms
 
@@ -208,8 +189,7 @@ so don't feel restricted to just the ones we've mentioned in this HackPack! Just
 
 ### Advanced (VPS + Your Own Nginx)
 
-For a more advanced approach you can check renting your own server, where you can have more power over your
-website configuration:
+For a more advanced approach you can check renting your own server, where you can have more power over your website configuration:
 
 - **[DigitalOcean](https://www.digitalocean.com/)** — Paid; rent a VPS, full control with Nginx, Docker, SSL, custom networking.
 - **[Hetzner Cloud](https://www.hetzner.com/cloud)** — Cheap VPS; high performance, great for backend-heavy apps.
