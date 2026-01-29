@@ -127,7 +127,7 @@ URLs should show a hierarchy, reflecting ownership or containment.
 
 #### *The GOOD:*
 
-```bash
+```http
 GET /users
 GET /users/{userId}
 POST /posts
@@ -143,7 +143,7 @@ GET /posts/{postId}/comments
 
 #### *The BAD:*
 
-```bash
+```http
 GET /getUsers
 POST /createPost
 POST /deleteComment
@@ -156,7 +156,7 @@ POST /deleteComment
 
 #### *The UGLY:*
 
-```bash
+```http
 DELETE /getUsers
 GET /incrementCounter
 PATCH /deletePost
@@ -278,7 +278,7 @@ Returns the allowed methods and CORS info. This will likely be automatically han
 
 ##### Typical purposes
 
-```bash
+```http
 POST /posts    ## create
 POST /login    ## auth
 POST /posts/123/like
@@ -644,7 +644,7 @@ Since we do not want this file to be pushed to GitHub, you will want to add it t
 
 Your `.env` file may look something like this
 
-```txt
+```dotenv
 DB_HOST=localhost
 DB_PORT=5432
 SECRET_KEY=supersecret
@@ -680,7 +680,7 @@ If you have created your JS/TS project using Vite, there is an easy way to extra
 
 Any environment variables in your `.env` file must first be prefixed with `VITE_` to make them available.
 
-```txt
+```dotenv
 VITE_DB_HOST=localhost
 VITE_DB_PORT=5432
 VITE_SECRET_KEY=supersecret
