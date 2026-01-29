@@ -49,7 +49,9 @@ Vue.js talks about "components" a lot — they're simply reusable pieces of an a
 
 ### Devtools and IDE Setup
 
-Do refer to our [Getting Started HackPack](../../getting-started/README.md) for getting the developer environment set up properly.
+Vue.js is well supported in VSCode out-of-the-box (see the [Getting Started Hackpack](/getting-started/README.md) for how to setup VSCode and TypeScript). For a slightly richer experience, you can install [the official Vue.js extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar).
+
+For other editors, there exist integrations for [Neovim](https://github.com/vuejs/language-tools/wiki/Neovim), [IntelliJ IDEA](https://www.jetbrains.com/help/idea/vue-js.html), [Emacs](https://emacs-lsp.github.io/lsp-mode/page/lsp-volar/), and more.
 
 ### Building an app
 
@@ -204,7 +206,7 @@ We're going to build a *very, very simple* todo app, that has a list of tasks, a
 
 If you want to follow along, you'll need the standard basic Vue.js project setup that we used in the last example.
 
-You might also want to style this slightly; play around with [the CSS compatible with the class names used here](TODO), which should go in [`src/assets/main.css`](/vuejs/todo-app/src/assets/main.css) and imported from [`src/main.ts`](/vuejs/todo-app/src/main.ts) with `import "./assets/main.css"`.
+You might also want to style this slightly; play around with [the CSS compatible with the class names used here](./todo-app/src/assets/main.css), which should go in [`src/assets/main.css`](./todo-app/src/assets/main.css) and imported from [`src/main.ts`](./todo-app/src/main.ts) with `import "./assets/main.css"`.
 
 ### Props, events and the task component
 
