@@ -488,3 +488,4 @@ For a list of available servers and setup instructions, take a look at [Popular 
 ### Useful Links
 
 [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp#installing-mcp-servers)
+[Use MCP servers in VS Code](https://code.visualstudio.com/docs/copilot/customization/mcp-servers)
