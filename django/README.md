@@ -40,8 +40,8 @@ This guide walks you through setting up a local **Django** backend for a simple 
     - **Linux (Ubuntu/Debian):** Use your package manager. For example:
 
     ```bash
-        sudo apt update
-        sudo apt install python3 python3-pip
+    sudo apt update
+    sudo apt install python3 python3-pip
     ```
 
 2. **Verify installation** by running `python3 --version` and `pip3 --version` (should show Python 3.x).
@@ -52,12 +52,12 @@ This guide walks you through setting up a local **Django** backend for a simple 
 3. **Create a virtual environment.** This keeps project dependencies isolated, so packages you install for this project won't conflict with other Python projects on your machine. From your project folder, run:
 
     ```bash
-        python3 -m venv venv
-        # Activate it:
-        # Windows:
-        venv\Scripts\activate
-        # macOS/Linux:
-        source venv/bin/activate
+    python3 -m venv venv
+    # Activate it:
+    # Windows:
+    venv\Scripts\activate
+    # macOS/Linux:
+    source venv/bin/activate
     ```
 
     > [!IMPORTANT]
@@ -111,12 +111,12 @@ In Django, a **project** is your entire web application, while an **app** is a s
 3. **Register the app.** Django needs to know about your app before it can use it. Open `myproject/settings.py` and add your new app (and DRF) to the `INSTALLED_APPS` list:
 
     ```python
-        INSTALLED_APPS = [
-            ...,
-            'rest_framework',   # enable Django REST Framework
-            'notesapp',         # our app (replace with your app name)
-            ...
-        ]
+    INSTALLED_APPS = [
+        ...,
+        'rest_framework',   # enable Django REST Framework
+        'notesapp',         # our app (replace with your app name)
+        ...
+    ]
     ```
 
 ## Database Setup (SQLite)
@@ -124,7 +124,7 @@ In Django, a **project** is your entire web application, while an **app** is a s
 Django uses SQLite by default for simple projects. To create the database and tables, run migrations. **Migrations** are Django's way of syncing your Python code with the database structure. They translate your models into actual database tables:
 
 ```bash
-    python manage.py migrate
+python manage.py migrate
 ```
 
 > [!TIP]
@@ -165,9 +165,9 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 3. **Register in Admin.** Django comes with a built-in admin panel where you can view and edit your data without writing any frontend code. Register the model in `notesapp/admin.py`:
 
     ```python
-        from django.contrib import admin
-        from .models import Note
-        admin.site.register(Note)
+    from django.contrib import admin
+    from .models import Note
+    admin.site.register(Note)
     ```
 
     > [!TIP]
