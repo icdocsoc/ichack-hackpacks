@@ -37,6 +37,10 @@ In this guide you will find useful information about setting up APIs for differe
   - [IDE Extensions](#ide-extensions)
     - [Using LLM Extensions](#using-llm-extensions)
     - [More information](#more-information)
+  - [MCP Servers](#mcp-servers)
+    - [When should you use MCP server?](#when-should-you-use-mcp-server)
+    - [Connect to which MCP server?](#connect-to-which-mcp-server)
+    - [Useful Links](#useful-links)
 
 <!-- /TOC -->
 
@@ -440,3 +444,51 @@ Here are some links to the official documentation of the above extensions for mo
 [GitHub Copilot](https://github.com/features/copilot/ai-code-editor)
 
 [BlackBox AI](https://docs.blackbox.ai/features/vscode-agent/getting-started)
+
+## MCP Servers
+
+MCP stands for **Model Context Protocol**. An **MCP server** is a service that exposes tools, data, or capabilities to an AI model in a **standardized way**, so the model can use external resources safely and predictably.
+
+An MCP server can expose:
+- Databases (SQL, NoSQL, vector stores)
+- APIs (GitHub, Jira, Stripe, internal services)
+- Filesystems or documents
+- Custom tools (search, calculations, workflows)
+- and etc.
+
+The AI doesn’t directly “hack” these systems. Instead, it:
+
+1. Discovers what tools are available
+2. Understands their schemas and permissions
+3. Calls them through the MCP protocol
+
+![Diagram-of-MCP](assets/MCP-diagram.png)
+
+### When should you use MCP server?
+
+Use MCP if:
+- Your AI needs **live data**
+- You want **multiple tools** without prompt spaghetti
+- You’re building **agents, copilots, or dev tools**
+- You care about **permissions and safety**
+
+Don't bother using MCP server if:
+- It’s a one-off script
+- Pure text generation
+- No external state
+
+### Connect to which MCP server?
+
+You don’t need to build an MCP server from scratch to get started.
+By installing existing MCP servers, you can instantly give your LLM access to powerful tools such as:
+- Local files
+- GitHub repositories
+- Databases
+- Search APIs
+- Developer workflows
+
+For a list of ready-to-use servers and setup instructions, take a look at [Popular MCP servers](https://code.claude.com/docs/en/mcp#popular-mcp-servers) to checkout which server would you like to use and how to install/connect them.
+
+### Useful Links
+
+[Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp#installing-mcp-servers)
