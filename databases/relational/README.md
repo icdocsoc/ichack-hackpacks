@@ -47,7 +47,7 @@ CREATE TABLE comments (
 
 So far, we have constructed a schema which looks like this:
 
-_TODO: add entity relationship diagram_
+![Entity Relationship Diagram](./assets/schema.png)
 
 Adapting real data into a data model is often a difficult task with many reasonable answers - if you get stuck, let us know via the Discord server and we'll be around to help!
 
