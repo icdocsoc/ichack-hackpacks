@@ -1,5 +1,19 @@
 # Relational databases and PostgreSQL
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Relational databases and PostgreSQL](#relational-databases-and-postgresql)
+  - [Table of Contents](#table-of-contents)
+  - [Relational databases](#relational-databases)
+    - [Primary keys](#primary-keys)
+    - [Foreign Keys](#foreign-keys)
+  - [PostgreSQL](#postgresql)
+    - [ORMs](#orms)
+
+<!-- /TOC -->
+
 ## Relational databases
 
 **Relational databases** are databases based upon [a specific model](https://en.wikipedia.org/wiki/Relational_model) of storing data, where data is represented by tuples (groups of values of fixed size, more commonly referred to as rows or records) within relations (more commonly known as tables). A table organises data into columns with titles and data types, and each row contains an entry (which may be `NULL`) for each column. Basically, relational databases are made up of many tables, each with a fixed number of columns, and with each entry in said table (each row) being one data-point.
