@@ -14,6 +14,8 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
   - **[`Firebase`](./api-design/Firebase.md)**
   - **[`FastAPI`](./api-design/FastAPI.md)**
 - **[`databases`](./databases/README.md)**
+  - **[`document-databases`](./databases/document.md)**
+  - **[`relational-databases`](./databases/relational.md)**
 - **[`deployment-approaches`](./deployment-approaches/README.md)**
 - **[`django`](./django/README.md)**
 - **[`docker`](./docker/README.md)**
