@@ -71,6 +71,4 @@ Once you have PostgreSQL set-up, you can either interface with it through raw SQ
 
 ORMs or Object-Relational Mappings, are tools, libraries, or interfaces to a database that emulate an object-oriented approach to data storage through a relational database. In essence, they translate object-oriented principles into things compatible with relational models, allowing you to use an object-oriented approach.
 
-ORMs for languages you might use include [Prisma](https://www.prisma.io/) for JavaScript/TypeScript, which also manages things like migrations (changing the structure of your database) and can manage PostgreSQL itself. Python's Django has [an ORM built in](https://docs.djangoproject.com/en/6.0/topics/db/), but if you'd prefer to do it differently [SQLAlchemy](https://www.sqlalchemy.org/) is also an option.
-
-Most ORMs are able to automatically perform _schema migrations_: they will create and modify tables to match your object-level model whenever you make changes to your data classes.
+ORMs for languages you might use include [Prisma](https://www.prisma.io/) for JavaScript/TypeScript, which also manages things like _schema migrations_ (changing the structure of your database) and can manage PostgreSQL itself. Python's Django has [an ORM built in](https://docs.djangoproject.com/en/6.0/topics/db/), but if you'd prefer to do it differently [SQLAlchemy](https://www.sqlalchemy.org/) is also an option.
