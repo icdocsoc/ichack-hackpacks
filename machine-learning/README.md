@@ -10,6 +10,43 @@ There are three main types of ML:
 
 This HackPack focuses on supervised learning with **Deep Learning** (neural networks), which is particularly good at tasks like image recognition, natural language processing, and more.
 
+## Table of Contents
+
+- [Machine Learning](#machine-learning)
+  - [Table of Contents](#table-of-contents)
+  - [Mindset](#mindset)
+  - [Setting up](#setting-up)
+    - [What is Google Colab?](#what-is-google-colab)
+    - [Getting started](#getting-started)
+    - [Import the required libraries](#import-the-required-libraries)
+    - [Using the GPU](#using-the-gpu)
+  - [PyTorch Basics](#pytorch-basics)
+    - [Why use PyTorch](#why-use-pytorch)
+    - [Basic datatypes in PyTorch](#basic-datatypes-in-pytorch)
+    - [Autograd explained](#autograd-explained)
+  - [The Project: IC Hack Location Classifier](#the-project-ic-hack-location-classifier)
+    - [Transforming images](#transforming-images)
+    - [Loading the dataset](#loading-the-dataset)
+    - [Prepare data for processing](#prepare-data-for-processing)
+    - [Defining our model](#defining-our-model)
+    - [Loss function and optimiser](#loss-function-and-optimiser)
+      - [Our choices](#our-choices)
+    - [Training Loop](#training-loop)
+      - [1. Training Phase](#1-training-phase)
+      - [2. Validation Phase](#2-validation-phase)
+      - [3. Results](#3-results)
+    - [Evaluation](#evaluation)
+    - [Results](#results)
+      - [Confusion matrix](#confusion-matrix)
+        - [Analysis](#analysis)
+    - [Saving and Loading models](#saving-and-loading-models)
+      - [Saving](#saving)
+      - [Loading](#loading)
+    - [Limitations of our project](#limitations-of-our-project)
+  - [Going Further](#going-further)
+    - [Where to find Datasets](#where-to-find-datasets)
+    - ["*Help, I don't know ML!*"](#help-i-dont-know-ml)
+
 ## Mindset
 
 Here are some key tips for the general mindset that you should approach ML problems with:
