@@ -11,7 +11,7 @@ Furthermore, we also mention a third type: **Graph Databases**, in passing, even
 
 Use the decision tree below to choose your database.
 
-```mermaid
+```mmd
 flowchart TD
     A[You need to store data] --> B{Is your data highly structured and stable?}
 

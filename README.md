@@ -16,14 +16,18 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 - **[`databases`](./databases/README.md)**
   - **[`document-databases`](./databases/document.md)**
   - **[`relational-databases`](./databases/relational.md)**
+- **[`deployment-approaches`](./deployment-approaches/README.md)**
 - **[`django`](./django/README.md)**
+- **[`docker`](./docker/README.md)**
+- **[`engaging-with-sponsors`](./engaging-with-sponsors/README.md)**
 - **[`frontend-development`](./frontend-development/README.md)**
   - **[`Vue`](./frontend-development/vuejs/README.md)**
-- **[`making-a-devpost`](./making-a-devpost/README.md)**
-- **[`engaging-with-sponsors`](./engaging-with-sponsors/README.md)**
+  - **[`React`](./frontend-development/react/README.md)**
 - **[`git-and-github`](./git-and-github/README.md)**
+- **[`making-a-devpost`](./making-a-devpost/README.md)**
 - **[`pitching-and-presenting`](./pitching-and-presenting/README.md)**
 - **[`project-planning`](./project-planning/README.md)**
+- **[`prompt-engineering`](./prompt-engineering/README.md)**
 
 ## Repository Structure
 
