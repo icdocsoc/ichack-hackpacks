@@ -4,7 +4,7 @@ For your IC Hack project, you will almost certainly need to store data. This Hac
 
 We have deep dives into two common types of databases:
 
-- [**Structured (Relational) Databases - PostgreSQL**]()
+- [**Structured (Relational) Databases - PostgreSQL**](relational/README.md)
 - [**Document Databases - Firestore**](document.md)
 
 Furthermore, we also mention a third type: **Graph Databases**, in passing, even if there is no dedicated HackPack for them.
