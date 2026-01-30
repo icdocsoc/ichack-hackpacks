@@ -15,7 +15,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
   - **[`FastAPI`](./api-design/FastAPI.md)**
 - **[`databases`](./databases/README.md)**
   - **[`document-databases`](./databases/document.md)**
-  - **[`relational-databases`](./databases/relational.md)
+  - **[`relational-databases`](./databases/relational.md)**
 - **[`django`](./django/README.md)**
 - **[`frontend-development`](./frontend-development/README.md)**
   - **[`Vue`](./frontend-development/vuejs/README.md)**
