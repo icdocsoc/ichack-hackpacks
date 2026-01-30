@@ -2,15 +2,21 @@
 
 ## Relational databases
 
-Relational databases are databases based upon [a specific model](https://en.wikipedia.org/wiki/Relational_model) of storing data, wherein data is represented by tuples (groups of values of fixed size, more commonly referred to as rows or records) within relations (more commonly known as tables). A table organises data into columns with titles and data types, and each row contains an entry (which may be `NULL`) for each column. Basically, relational databases are made up of many tables, each with a fixed number of columns, and each entry in said table (each row) is one data-point.
+**Relational databases** are databases based upon [a specific model](https://en.wikipedia.org/wiki/Relational_model) of storing data, where data is represented by tuples (groups of values of fixed size, more commonly referred to as rows or records) within relations (more commonly known as tables). A table organises data into columns with titles and data types, and each row contains an entry (which may be `NULL`) for each column. Basically, relational databases are made up of many tables, each with a fixed number of columns, and with each entry in said table (each row) being one data-point.
 
-Formally, the set of tables and their column descriptions is called a _schema_. SQL - a common relational data query language - is capable of defining and modifying schemas in addition to inserting and querying data.
+> [!NOTE]
+> Formally, the set of tables and their column descriptions is called a _schema_. **SQL** - a common relational data query language - is capable of defining and modifying schemas in addition to inserting and querying data.
 
-Schemas can also define constraints (i.e. conditions that the database is guaranteed to always fulfill) and changes that violate the constraints don't get made. The most common types of constraints are primary keys and foreign keys.
+> [!IMPORTANT]
+> Schemas can also define **constraints** (i.e. conditions that the database is guaranteed to always fulfill) and changes that violate the constraints don't get made. The most common types of constraints are primary keys and foreign keys.
 
-**Primary Keys**: Primary keys are guaranteed to be unique within each table. A column can be marked as `PRIMARY KEY`, which means that no two values within that column are the same. Therefore, given a primary key and the table it originates from, it's always possible to determine the unique row it identifies.
+### Primary keys
 
-Primary keys may be real-world identifiers, such as names, serial numbers or barcode numbers. However, sometimes adding a serial `*_id` attribute can be the easiest (and most performant) solution. This means that new records will be inserted with the next available integer ID. For example, the following SQL query creates a `users` table with a serial `user_id` primary key attribute:
+**Primary keys** are guaranteed to be unique within each table. A column can be marked as `PRIMARY KEY`, which means that no two values within that column are the same. Therefore, given a primary key and the table it originates from, it's always possible to determine the unique row it identifies.
+
+Primary keys may be real-world identifiers, such as names, serial numbers or barcode numbers. However, sometimes adding a serial `*_id` attribute can be the easiest (and most performant) solution. This means that new records will be inserted with the next available integer ID.
+
+For example, the following SQL query creates a `users` table with a serial `user_id` primary key attribute:
 
 ``` sql
 CREATE TABLE users (
@@ -19,9 +25,12 @@ CREATE TABLE users (
 );
 ```
 
-Uniqueness constraints can be specified for non-key attributes using `UNIQUE` as shown above. Also, `NULL` values can be explicitly forbidden within a column by appending `NOT NULL`.
+> [!TIP]
+> _Uniqueness constraints_ can be specified for non-key attributes using `UNIQUE` as shown above. Also, `NULL` values can be explicitly forbidden within a column by appending `NOT NULL`.
 
-**Foreign Keys**: A foreign key is guaranteed to reference another row. Within a table, columns marked as foreign keys are guaranteed to point to a column of a specified different table, or another key within the same table.
+### Foreign Keys
+
+A **foreign key** is guaranteed to reference another row. Within a table, columns marked as foreign keys are guaranteed to point to a column of a specified different table, or another key within the same table.
 
 For example, the following SQL query creates a `posts` table which references the `users` table created above:
 
@@ -49,15 +58,17 @@ So far, we have constructed a schema which looks like this:
 
 ![Entity Relationship Diagram](./assets/schema.png)
 
-Adapting real data into a data model is often a difficult task with many reasonable answers - if you get stuck, let us know via the Discord server and we'll be around to help!
+> [!TIP]
+> Adapting real data into a data model is often a difficult task with many reasonable answers - if you get stuck, let us know via the Discord server and we'll be around to help!
 
 ## PostgreSQL
 
 PostgreSQL is the most commonly used relational database. It uses SQL (Structured Query Language), an industry standard for relational databases.
 
-> This section covers setting up PostgreSQL, not how to use SQL. For that, there's a [good tutorial here](https://www.w3schools.com/sql/), but with modern interfaces to databases you might never need to write SQL manually.
+> [!NOTE]
+> This section covers setting up PostgreSQL, not how to use SQL. For that, there's a [good tutorial here](https://www.w3schools.com/sql/), but with modern interfaces to databases you might never need to write SQL manually!
 
-PostgreSQL can be set-up locally, or through [Docker](../../docker/README.md) (recommended). To set-up locally, download the package from [the PostgreSQL page](https://www.postgresql.org/download/) and install. Docker gives an easier way to restart and erase data, or to switch between databases. It's covered in depth in the [Docker hackpack](../../docker/README.md) (with a PostgreSQL example), but in summary either run the command:
+PostgreSQL can be set-up locally, or through [Docker](https://www.docker.com/) (recommended). To set-up locally, download the package from [the PostgreSQL page](https://www.postgresql.org/download/) and install. Docker gives an easier way to restart and erase data, or to switch between databases. It's covered in depth in the [Docker hackpack](/docker/README.md) (with a PostgreSQL example), but, in summary either run the command:
 
 ```bash
 docker run postgres -e POSTGRES_PASSWORD=some_password -p 5432:5432 -v ./my/own/datadir:/var/lib/postgresql
