@@ -1,10 +1,12 @@
 # Relational databases and PostgreSQL
 
-## Relational dabatases
+## Relational databases
 
-Relational databases are databases based upon [a specific model](https://en.wikipedia.org/wiki/Relational_model) of storing data, wherein data is represented by tuples (groups of values of fixed size, more commonly referred to as rows) and relations (more commonly known as tables). A table specifies the data's organisation in terms of column titles and types, and each row has the same number of entries as specified in the table's details. Basically, relational databases are made up of many tables, each with a fixed number of columns, and each entry in said table (each row) is one data-point.
+Relational databases are databases based upon [a specific model](https://en.wikipedia.org/wiki/Relational_model) of storing data, wherein data is represented by tuples (groups of values of fixed size, more commonly referred to as rows or records) within relations (more commonly known as tables). A table organises data into columns with titles and data types, and each row contains an entry (which may be `NULL`) for each column. Basically, relational databases are made up of many tables, each with a fixed number of columns, and each entry in said table (each row) is one data-point.
 
-Relational databases also have constraints (i.e. conditions that the database is guaranteed to always fulfill) and changes that violate the constraints don't get made. The most common types of constraints are primary keys and foreign keys.
+Formally, the set of tables and their column descriptions is called a _schema_. SQL - a common relational data query language - is capable of defining and modifying schemas in addition to inserting and querying data.
+
+Schemas can also define constraints (i.e. conditions that the database is guaranteed to always fulfill) and changes that violate the constraints don't get made. The most common types of constraints are primary keys and foreign keys.
 
 **Primary Keys**: Primary keys are guaranteed to be unique within each table. A column can be marked as `PRIMARY KEY`, which means that no two values within that column are the same. Therefore, given a primary key and the table it originates from, it's always possible to determine the unique row it identifies.
 
@@ -13,11 +15,11 @@ Primary keys may be real-world identifiers, such as names, serial numbers or bar
 ``` sql
 CREATE TABLE users (
   user_id serial PRIMARY KEY,
-  username text UNIQUE NOT NULL,
+  username text UNIQUE NOT NULL
 );
 ```
 
-Uniqueness constraints can be specified for non-key attributes using `UNIQUE` as shown above.
+Uniqueness constraints can be specified for non-key attributes using `UNIQUE` as shown above. Also, `NULL` values can be explicitly forbidden within a column by appending `NOT NULL`.
 
 **Foreign Keys**: A foreign key is guaranteed to reference another row. Within a table, columns marked as foreign keys are guaranteed to point to a column of a specified different table, or another key within the same table.
 
@@ -43,6 +45,12 @@ CREATE TABLE comments (
 );
 ```
 
+So far, we have constructed a schema which looks like this:
+
+_TODO: add entity relationship diagram_
+
+Adapting real data into a data model is often a difficult task with many reasonable answers - if you get stuck, let us know via the Discord server and we'll be around to help!
+
 ## PostgreSQL
 
 PostgreSQL is the most commonly used relational database. It uses SQL (Structured Query Language), an industry standard for relational databases.
@@ -64,3 +72,5 @@ Once you have PostgreSQL set-up, you can either interface with it through raw SQ
 ORMs or Object-Relational Mappings, are tools, libraries, or interfaces to a database that emulate an object-oriented approach to data storage through a relational database. In essence, they translate object-oriented principles into things compatible with relational models, allowing you to use an object-oriented approach.
 
 ORMs for languages you might use include [Prisma](https://www.prisma.io/) for JavaScript/TypeScript, which also manages things like migrations (changing the structure of your database) and can manage PostgreSQL itself. Python's Django has [an ORM built in](https://docs.djangoproject.com/en/6.0/topics/db/), but if you'd prefer to do it differently [SQLAlchemy](https://www.sqlalchemy.org/) is also an option.
+
+Most ORMs are able to automatically perform _schema migrations_: they will create and modify tables to match your object-level model whenever you make changes to your data classes.
