@@ -185,10 +185,10 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
             fields = ['id', 'title', 'content', 'created_at']
     ```
 
-Here, we create a class (**`class NoteSerializer`**) that inherits from DRF's `ModelSerializer`, meaning we can use all methods that are implemented in that class. This saves us time by automatically figuring out how to map database fields to JSON fields so we don't have to write that logic manually.
+    Here, we create a class (**`class NoteSerializer`**) that inherits from DRF's `ModelSerializer`, meaning we can use all methods that are implemented in that class. This saves us time by automatically figuring out how to map database fields to JSON fields so we don't have to write that logic manually.
 
     - The inner `Meta` class is used to provide configuration to the main class.
-    - `model = Note` tells the serializer exactly which Database Model it should look at.
+    - `model = Note` tells the serializer exactly which Database Model it should look at
     - `fields = [...]` explicitly defines which pieces of data should be included in the API. If you left 'created_at' out of this list, the API would hide that timestamp from the user.
 
 5. **Create a ViewSet.** A *view* handles incoming requests and returns responses. A `ViewSet` bundles all the CRUD operations together, so you don't have to write separate functions for listing, creating, updating, and deleting. In `notesapp/views.py`, add:
@@ -203,12 +203,12 @@ Here, we create a class (**`class NoteSerializer`**) that inherits from DRF's `M
         serializer_class = NoteSerializer
     ```
 
-In this case, by inheriting from `ModelViewSet` our **`class NoteViewSet(viewsets.ModelViewSet)`** gets the logic for *Create*, *Read*, *Update*, and *Delete* for free. We don't have to write the functions ourselves!
-
+    In this case, by inheriting from `ModelViewSet` our **`class NoteViewSet(viewsets.ModelViewSet)`** gets the logic for *Create*, *Read*, *Update*, and *Delete* for free. We don't have to write the functions ourselves!
+    
     - `queryset = Note.objects.all()` defines the *data source*. It tells the view: "When someone asks for notes, look at the `Note` table and get `all()` of them."
     - `serializer_class = NoteSerializer` defines the *translator*. It tells the view: "When you get that data, use `NoteSerializer` to turn it into JSON before sending it to the user."
 
-6. **Configure URLs.** URLs define the *endpoints* of your API—the addresses where clients send requests. A *router* automatically generates standard REST URLs for your ViewSet (like `/api/notes/` for listing and `/api/notes/1/` for a specific note). Create `notesapp/urls.py` and set up a router:
+7. **Configure URLs.** URLs define the *endpoints* of your API—the addresses where clients send requests. A *router* automatically generates standard REST URLs for your ViewSet (like `/api/notes/` for listing and `/api/notes/1/` for a specific note). Create `notesapp/urls.py` and set up a router:
 
     ```python
     from django.urls import path, include
@@ -237,13 +237,13 @@ In this case, by inheriting from `ModelViewSet` our **`class NoteViewSet(viewset
 
     Now the API will be accessible under `/api/notes/`.
 
-7. **Run the server.** Start Django's development server:
+8. **Run the server.** Start Django's development server:
 
     ```bash
     python manage.py runserver
     ```
 
-8. Go to [http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/) in your browser. You should see a list (likely empty) and a form to create new notes.
+9. Go to [http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/) in your browser. You should see a list (likely empty) and a form to create new notes.
 
 > [!TIP]
 > Try creating a note using the form at the bottom of the page! Fill in a title and content, then click POST. Your note should appear in the list above.
