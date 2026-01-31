@@ -21,11 +21,11 @@ If you're completely new to hackathons or coding in general, we'd recommend **[t
   - **[`Vue`](./frontend-development/vuejs/README.md)**
   - **[`React`](./frontend-development/react/README.md)**
 - **[`git-and-github`](./git-and-github/README.md)**: Master version control basics and collaborate effectively using Git and GitHub.
+- **[`machine-learning`](./machine-learning/README.md)**: Get to grips with the basics of machine learning and deep learning using PyTorch.
 - **[`making-a-devpost`](./making-a-devpost/README.md)**: Create compelling Devpost submissions that clearly communicate your project to judges.
 - **[`pitching-and-presenting`](./pitching-and-presenting/README.md)**: Deliver confident, engaging presentations with effective demos and clear storytelling.
 - **[`project-planning`](./project-planning/README.md)**: Form effective teams and manage your hackathon time with strategic planning and work allocation.
 - **[`prompt-engineering`](./prompt-engineering/README.md)**: Craft effective prompts for AI language models and leverage IDE extensions for rapid development.
-- **[`machine-learning`](./machine-learning/README.md)**: Get to grips with the basics of machine learning and deep learning using PyTorch.
 
 ### 'Best Use Of' Challenges
 
