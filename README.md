@@ -11,6 +11,7 @@ These HackPacks will then be rendered and displayed on the IC Hack dashboard, fo
 - **`android-development`**
 - **[`databases`](./databases/README.md)**
 - **`pitching-and-presenting`**
+- **[`machine-learning`](./machine-learning/README.md)**: Get to grips with the basics of machine learning and deep learning using PyTorch.
 
 ## Repository Structure
 
