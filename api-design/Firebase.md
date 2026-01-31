@@ -3,6 +3,29 @@
 Firebase Cloud Functions uses the Firebase framework so you can have one backend for your whole project.
 This has the benefit of being **serverless**, so you do not have to manage the running of your API yourself.
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Firebase Cloud Functions](#firebase-cloud-functions)
+  - [Table of Contents](#table-of-contents)
+  - [Setup](#setup)
+  - [Writing Cloud Functions](#writing-cloud-functions)
+    - [Setup `index.ts`](#setup-indexts)
+    - [Create Your Functions](#create-your-functions)
+    - [Deploy Your Functions](#deploy-your-functions)
+    - [Writing RESTful Functions](#writing-restful-functions)
+      - [Canonical RESTful](#canonical-restful)
+      - [Hackathon Simple](#hackathon-simple)
+    - [Writing Callable Functions](#writing-callable-functions)
+    - [Handling CORS](#handling-cors)
+  - [Making Requests](#making-requests)
+    - [Canonical HTTP Request](#canonical-http-request)
+    - [Callable Functions](#callable-functions)
+      - [JS/TS](#jsts)
+
+<!-- /TOC -->
+
 ## Setup
 
 1. Go to [https://console.firebase.google.com/](https://console.firebase.google.com/).
@@ -113,9 +136,7 @@ There is a high chance that there will be deployment failures due to ESLint erro
 >[!IMPORTANT]
 > While setting this up myself, I got the following error
 >
-> ```bash
 > Error: Request to https://serviceusage.googleapis.com/v1/projects/X/services/run.googleapis.com:enable had HTTP Error: 429, Quota exceeded for quota metric 'Mutate requests' and limit 'Mutate requests per minute' of service 'serviceusage.googleapis.com' for consumer 'project_number:X'.
-> ```
 >
 > This is Google rate-limiting you when you are enabling the various APIs. Wait for a minute or two and retry.
 
@@ -132,9 +153,7 @@ Function URL (helloWorld(us-central1)): https://us-central1-sample-project-44e1c
 >[!IMPORTANT]
 > Once the setup is complete, you may be asked
 >
-> ```txt
 > How many days do you want to keep container images before they're deleted?
-> ```
 >
 > To avoid surprise bills, press 1 and `Enter`. This cleans up the containers for tasks older than a day.
 
