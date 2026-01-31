@@ -30,6 +30,14 @@ If you're completely new to hackathons or coding in general, we'd recommend **[t
 - **[`prompt-engineering`](./prompt-engineering/README.md)**: Craft effective prompts for AI language models and leverage IDE extensions for rapid development.
 - **[`machine-learning`](./machine-learning/README.md)**: Get to grips with the basics of machine learning and deep learning using PyTorch.
 
+### 'Best Use Of' Challenges
+
+We have also prepared HackPacks for the three 'Best Use Of' challenges at IC Hack 26! They are as follows:
+
+- **[`claude`](./claude/README.md)**
+- **[`elevenlabs`](./elevenlabs/README.md)**
+- **[`hacktron-skills`](./hacktron-skills/README.md)**
+
 ## Repository Structure
 
 Each directory under this root folder contains a single, or base 'HackPack' with the following structure:

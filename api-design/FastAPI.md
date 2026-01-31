@@ -6,6 +6,20 @@ For the purposes of a hackathon, this will likely mean self-hosting to `localhos
 
 We will be using MongoDB as our database. [View the document databases HackPack](/databases/document.md).
 
+## Table of Content
+
+<!-- TOC -->
+
+- [FastAPI](#fastapi)
+  - [Table of Content](#table-of-content)
+  - [Setup](#setup)
+  - [Writing Functions](#writing-functions)
+    - [Typing](#typing)
+    - [CORS](#cors)
+  - [Deploying](#deploying)
+
+<!-- /TOC -->
+
 ## Setup
 
 1. Create a new directory for your backend.

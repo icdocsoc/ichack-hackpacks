@@ -110,7 +110,7 @@ In Django, a **project** is your entire web application, while an **app** is a s
 
 3. **Register the app.** Django needs to know about your app before it can use it. Open `myproject/settings.py` and add your new app (and DRF) to the `INSTALLED_APPS` list:
 
-    ```python
+    ```py
     INSTALLED_APPS = [
         ...,
         'rest_framework',   # enable Django REST Framework
@@ -138,7 +138,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
 1. **Define the model.** A *model* defines the structure of your data—think of it as a blueprint for a database table. Each field becomes a column. In `notesapp/models.py`, add a `Note` model:
 
-    ```python
+    ```py
     from django.db import models
 
     class Note(models.Model):
@@ -164,18 +164,20 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
 3. **Register in Admin.** Django comes with a built-in admin panel where you can view and edit your data without writing any frontend code. Register the model in `notesapp/admin.py`:
 
-    ```python
+    ```py
     from django.contrib import admin
     from .models import Note
     admin.site.register(Note)
     ```
 
 > [!TIP]
-> To test the admin panel, first create a superuser by running `python manage.py createsuperuser` and following the prompts. Then start the server (`python manage.py runserver`) and go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). Log in and you should see "Notes" listed!
+> To test the admin panel, first create a superuser by running `python manage.py createsuperuser` and following the prompts.
+> Then start the server (`python manage.py runserver`) and go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/).
+> Log in and you should see "Notes" listed!
 
 4. **Create a serializer.** When your API sends data to a browser or app, it needs to be in a format they can understand (usually **JSON**). A *serializer* handles this conversion. It turns Python objects into JSON (and vice versa). In `notesapp` folder create a file `serializers.py` and add:
 
-    ```python
+    ```py
     from rest_framework import serializers
     from .models import Note
 
@@ -188,12 +190,12 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
     Here, we create a class (**`class NoteSerializer`**) that inherits from DRF's `ModelSerializer`, meaning we can use all methods that are implemented in that class. This saves us time by automatically figuring out how to map database fields to JSON fields so we don't have to write that logic manually.
 
     - The inner `Meta` class is used to provide configuration to the main class.
-    - `model = Note` tells the serializer exactly which Database Model it should look at.
+    - `model = Note` tells the serializer exactly which Database Model it should look at
     - `fields = [...]` explicitly defines which pieces of data should be included in the API. If you left 'created_at' out of this list, the API would hide that timestamp from the user.
 
 5. **Create a ViewSet.** A *view* handles incoming requests and returns responses. A `ViewSet` bundles all the CRUD operations together, so you don't have to write separate functions for listing, creating, updating, and deleting. In `notesapp/views.py`, add:
 
-    ```python
+    ```py
     from rest_framework import viewsets
     from .models import Note
     from .serializers import NoteSerializer
@@ -204,13 +206,13 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
     ```
 
     In this case, by inheriting from `ModelViewSet` our **`class NoteViewSet(viewsets.ModelViewSet)`** gets the logic for *Create*, *Read*, *Update*, and *Delete* for free. We don't have to write the functions ourselves!
-
+    
     - `queryset = Note.objects.all()` defines the *data source*. It tells the view: "When someone asks for notes, look at the `Note` table and get `all()` of them."
     - `serializer_class = NoteSerializer` defines the *translator*. It tells the view: "When you get that data, use `NoteSerializer` to turn it into JSON before sending it to the user."
 
-6. **Configure URLs.** URLs define the *endpoints* of your API—the addresses where clients send requests. A *router* automatically generates standard REST URLs for your ViewSet (like `/api/notes/` for listing and `/api/notes/1/` for a specific note). Create `notesapp/urls.py` and set up a router:
+7. **Configure URLs.** URLs define the *endpoints* of your API—the addresses where clients send requests. A *router* automatically generates standard REST URLs for your ViewSet (like `/api/notes/` for listing and `/api/notes/1/` for a specific note). Create `notesapp/urls.py` and set up a router:
 
-    ```python
+    ```py
     from django.urls import path, include
     from rest_framework.routers import DefaultRouter
     from .views import NoteViewSet
@@ -225,7 +227,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
     Then include this in the project's `urls.py` (`myproject/urls.py`):
 
-    ```python
+    ```py
     from django.contrib import admin
     from django.urls import path, include
 
@@ -237,13 +239,13 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
     Now the API will be accessible under `/api/notes/`.
 
-7. **Run the server.** Start Django's development server:
+8. **Run the server.** Start Django's development server:
 
     ```bash
     python manage.py runserver
     ```
 
-8. Go to [http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/) in your browser. You should see a list (likely empty) and a form to create new notes.
+9. Go to [http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/) in your browser. You should see a list (likely empty) and a form to create new notes.
 
 > [!TIP]
 > Try creating a note using the form at the bottom of the page! Fill in a title and content, then click POST. Your note should appear in the list above.
@@ -325,7 +327,7 @@ Your backend is running on port 8000. Now you need a frontend (React, Vue, Mobil
 - **The Endpoint:** `http://127.0.0.1:8000/api/notes/`
 - **The Fetch:** Use standard HTTP requests.
 
-    ```javascript
+    ```js
     // Example JavaScript fetch
     fetch('[http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/)')
       .then(response => response.json())
