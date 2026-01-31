@@ -110,7 +110,7 @@ In Django, a **project** is your entire web application, while an **app** is a s
 
 3. **Register the app.** Django needs to know about your app before it can use it. Open `myproject/settings.py` and add your new app (and DRF) to the `INSTALLED_APPS` list:
 
-    ```python
+    ```py
     INSTALLED_APPS = [
         ...,
         'rest_framework',   # enable Django REST Framework
@@ -138,7 +138,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
 1. **Define the model.** A *model* defines the structure of your data—think of it as a blueprint for a database table. Each field becomes a column. In `notesapp/models.py`, add a `Note` model:
 
-    ```python
+    ```py
     from django.db import models
 
     class Note(models.Model):
@@ -164,7 +164,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
 3. **Register in Admin.** Django comes with a built-in admin panel where you can view and edit your data without writing any frontend code. Register the model in `notesapp/admin.py`:
 
-    ```python
+    ```py
     from django.contrib import admin
     from .models import Note
     admin.site.register(Note)
@@ -177,7 +177,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
 4. **Create a serializer.** When your API sends data to a browser or app, it needs to be in a format they can understand (usually **JSON**). A *serializer* handles this conversion. It turns Python objects into JSON (and vice versa). In `notesapp` folder create a file `serializers.py` and add:
 
-    ```python
+    ```py
     from rest_framework import serializers
     from .models import Note
 
@@ -195,7 +195,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
 5. **Create a ViewSet.** A *view* handles incoming requests and returns responses. A `ViewSet` bundles all the CRUD operations together, so you don't have to write separate functions for listing, creating, updating, and deleting. In `notesapp/views.py`, add:
 
-    ```python
+    ```py
     from rest_framework import viewsets
     from .models import Note
     from .serializers import NoteSerializer
@@ -212,7 +212,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
 7. **Configure URLs.** URLs define the *endpoints* of your API—the addresses where clients send requests. A *router* automatically generates standard REST URLs for your ViewSet (like `/api/notes/` for listing and `/api/notes/1/` for a specific note). Create `notesapp/urls.py` and set up a router:
 
-    ```python
+    ```py
     from django.urls import path, include
     from rest_framework.routers import DefaultRouter
     from .views import NoteViewSet
@@ -227,7 +227,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
 
     Then include this in the project's `urls.py` (`myproject/urls.py`):
 
-    ```python
+    ```py
     from django.contrib import admin
     from django.urls import path, include
 
