@@ -171,7 +171,9 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
     ```
 
 > [!TIP]
-> To test the admin panel, first create a superuser by running `python manage.py createsuperuser` and following the prompts. Then start the server (`python manage.py runserver`) and go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). Log in and you should see "Notes" listed!
+> To test the admin panel, first create a superuser by running `python manage.py createsuperuser` and following the prompts.
+> Then start the server (`python manage.py runserver`) and go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/).
+> Log in and you should see "Notes" listed!
 
 4. **Create a serializer.** When your API sends data to a browser or app, it needs to be in a format they can understand (usually **JSON**). A *serializer* handles this conversion. It turns Python objects into JSON (and vice versa). In `notesapp` folder create a file `serializers.py` and add:
 
