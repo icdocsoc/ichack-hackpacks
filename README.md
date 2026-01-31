@@ -17,7 +17,7 @@ If you're completely new to hackathons or coding in general, we'd recommend **[t
 - **[`deployment-approaches`](./deployment-approaches/README.md)**: Deploy your web applications using local hosting, third-party services, or advanced VPS setups.
 - **[`docker`](./docker/README.md)**: Containerize your applications with Docker for portable, consistent deployment across environments.
 - **[`engaging-with-sponsors`](./engaging-with-sponsors/README.md)**: Maximise your hackathon experience by effectively networking with sponsors and tackling challenges.
-- **[`frontend-development`](./frontend-development/README.md)**: Build modern web interfaces with component-based frameworks.
+- **`frontend-development`**: Build modern web interfaces with component-based frameworks.
   - **[`Vue`](./frontend-development/vuejs/README.md)**
   - **[`React`](./frontend-development/react/README.md)**
 - **[`git-and-github`](./git-and-github/README.md)**: Master version control basics and collaborate effectively using Git and GitHub.
