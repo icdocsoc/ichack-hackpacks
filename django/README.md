@@ -327,7 +327,7 @@ Your backend is running on port 8000. Now you need a frontend (React, Vue, Mobil
 - **The Endpoint:** `http://127.0.0.1:8000/api/notes/`
 - **The Fetch:** Use standard HTTP requests.
 
-    ```javascript
+    ```js
     // Example JavaScript fetch
     fetch('[http://127.0.0.1:8000/api/notes/](http://127.0.0.1:8000/api/notes/)')
       .then(response => response.json())
