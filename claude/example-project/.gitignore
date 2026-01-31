@@ -1,0 +1,17 @@
+# Dependencies
+
+node_modules/
+
+# Environment variables (Keep your secrets safe!)
+
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS junk
+
+.DS_Store
+Thumbs.db

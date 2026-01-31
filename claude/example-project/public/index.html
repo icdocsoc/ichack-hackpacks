@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude API Hackathon Demo</title>
+    <!-- Using Tailwind CSS for instant styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar for a polished look */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .typing-dot {
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 h-screen flex flex-col items-center justify-center font-sans">
+
+    <!-- Main Chat Container -->
+    <div class="w-full max-w-2xl bg-slate-800 rounded-xl shadow-2xl flex flex-col overflow-hidden border border-slate-700">
+        
+        <!-- Header -->
+        <div class="p-4 bg-slate-900/50 border-b border-slate-700 flex items-center justify-between backdrop-blur-sm">
+            <div class="flex items-center gap-3">
+                <div class="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
+                <h1 class="font-bold text-lg tracking-wide text-slate-100">Claude <span class="text-orange-400">Sonnet</span> Demo</h1>
+            </div>
+            <span class="text-xs text-slate-500 font-mono">v1.0.0</span>
+        </div>
+
+        <!-- Result Area -->
+        <div id="result-box" class="flex-1 overflow-y-auto p-6 scrollbar-hide scroll-smooth">
+            <div id="loading" class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-orange-500 rounded-full typing-dot"></div>
+                <div class="w-2 h-2 bg-orange-500 rounded-full typing-dot"></div>
+                <div class="w-2 h-2 bg-orange-500 rounded-full typing-dot"></div>
+            </div>
+            <div id="content" class="hidden">
+                <h2 class="text-lg font-semibold text-orange-400 mb-4">Python Email Validator Function</h2>
+                <pre id="result-text" class="bg-slate-950/50 p-4 rounded-lg text-sm leading-relaxed overflow-x-auto border border-slate-700 text-slate-300"></pre>
+            </div>
+            <div id="error" class="hidden text-red-400 p-4 bg-red-950/20 rounded-lg border border-red-900/50"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const resultBox = document.getElementById('result-box');
+        const loadingEl = document.getElementById('loading');
+        const contentEl = document.getElementById('content');
+        const resultText = document.getElementById('result-text');
+        const errorEl = document.getElementById('error');
+
+        // Fetch the result on page load
+        async function fetchResult() {
+            try {
+                const response = await fetch('/api/result');
+                const data = await response.json();
+
+                loadingEl.classList.add('hidden');
+
+                if (data.error) {
+                    errorEl.textContent = `Error: ${data.error}`;
+                    errorEl.classList.remove('hidden');
+                } else {
+                    resultText.textContent = data.result;
+                    contentEl.classList.remove('hidden');
+                }
+            } catch (err) {
+                loadingEl.classList.add('hidden');
+                errorEl.textContent = 'Error: Could not connect to the server.';
+                errorEl.classList.remove('hidden');
+            }
+        }
+
+        // Load result when page loads
+        fetchResult();
+    </script>
+</body>
+</html>
