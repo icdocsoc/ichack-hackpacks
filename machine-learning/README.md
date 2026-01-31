@@ -78,7 +78,7 @@ Think of notebooks as an interactive coding playground where you can test ideas 
 
 ### Import the required libraries
 
-```python
+```py
 import torch
 import pandas as pd
 import numpy as np
@@ -92,7 +92,7 @@ If there are any errors with the import then just run `!pip install <your librar
 
 ### Using the GPU
 
-```python
+```py
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ```
 
@@ -135,6 +135,7 @@ If you want to find out more, see [the PyTorch autograd tutorial](https://docs.p
 ### Modules and friends
 
 Dealing with autograd directly is painful. This is why modules exist. Here are some useful examples of modules:
+
 - `nn.Linear` - fully connected layer
 - `nn.Conv2d` - convolution layer, useful in computer vision
 - `nn.BatchNorm2d` - apply batch norm
@@ -144,6 +145,7 @@ Dealing with autograd directly is painful. This is why modules exist. Here are s
 - `nn.Dropout` - randomly drop values when in training mode, to encourage robustness in the model
 
 To create a `Module`, create a class that extends `nn.Module`. You then have to implement two things:
+
 - `__init__(self)`
   - This is where we initialize parameters and submodules.
   - PyTorch will look at all the instance attributes defined here - eg things that look like `self.layer1` and `self.w` - and look for `nn.Parameter`s and submodules. These will be tracked. If you want a parameter to be tracked, make sure it is wrapped in an `nn.Parameter(...)` (or inside a submodule). If you want to store a list of Modules, use [ModuleList](https://docs.pytorch.org/docs/stable/generated/torch.nn.ModuleList.html) and store it in an instance attribute. See also: [ParameterList](https://docs.pytorch.org/docs/stable/generated/torch.nn.ParameterList.html). The things that are tracked end up in the module's `state_dict`, used in loading and saving.
@@ -152,6 +154,7 @@ To create a `Module`, create a class that extends `nn.Module`. You then have to 
   - If you are keeping track of things like total loss so far, try to ensure you remove it from the autograd system with eg [.detach()](https://docs.pytorch.org/docs/stable/generated/torch.Tensor.detach.html). If you don't do this, PyTorch will keep track of all the intermediate values and can fill up your memory.
 
 Here are some useful functions `Module` provides:
+
 - `.parameters()` - return all the parameters in the function
 - `.zero_grad()` - set all the gradients accumulated in the leaf nodes (parameters) to zero, but usually you should prefer `Optimizer.zero_grad`
 - `.to(device)` - allows you to move modules do a specific device, eg GPU (note: see [docs](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module.to) for more details, this function is very flexible)
@@ -160,11 +163,13 @@ Here are some useful functions `Module` provides:
 - `.type(dtype)` - casts all the parameters to a specific datatype - can help make modules take up less memory, but slightly advanced so be careful
 
 Now we need to deal with actually updating the weights of our model. The solution is an `Optimizer`. You may have heard of momentum; `Optimizer`s can deal with that too! Here are the most useful functions that `Optimizer`s have:
+
 - `.step()` - this updates the parameters of the module
 - `.zero_grad()` - same idea as `Module.zero_grad`, except will only zero out parameters it is resposible for
 
 To create an `Optimizer`, it needs to be told which parameters it is responsible for. Here is a basic example of creating an `Optimizer` (stochastic gradient descent) and using it:
-```
+
+```py
 # Create the optimiser, passing the model parameters (or even just a subset)
 optimizer = torch.optim.SGD(model.parameters(), lr=0.1, momentum=0.9)
 
@@ -205,7 +210,7 @@ This transformation does three things:
 2. **Converts** images to PyTorch tensors - the data format PyTorch understands
 3. **Normalizes** pixel values to have specific means and standard deviations - this helps the model train more effectively by keeping values in a reasonable range
 
-```python
+```py
 transform = transforms.Compose([
     transforms.Resize((500, 500)),
     transforms.ToTensor(),
@@ -227,7 +232,7 @@ The code below loads the data from our images folder, which stores each image in
 - `MAIN_ENTRANCE`
 - `JCR_SCR`
 
-```python
+```py
 dataset = datasets.ImageFolder(
     root="/content/images", 
     transform=transform
@@ -248,14 +253,14 @@ Key parameters:
 - `shuffle=False` (validation): Keep validation data in consistent order for reliable testing
 - `num_workers=2`: Use parallel processing to load data faster
 
-```python
+```py
 train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=2)
 val_loader = DataLoader(val_dataset, batch_size=32, shuffle=False, num_workers=2)
 ```
 
 We now test our DataLoaders are working by returning the shape of a batch of images and the first five labels:
 
-```python
+```py
 images, labels = next(iter(train_loader))
 images.shape, labels[:5]
 ```
@@ -273,7 +278,7 @@ This is because it detects shapes, parts and higher level patterns already. We o
 > [!NOTE]
 > Freezing parameters isn't always necessary - sometimes you might want to fine-tune the entire model or just some layers. For this tutorial, freezing saves training time and works well with our limited dataset.
 
-```python
+```py
 import torch.nn as nn
 import torch.optim as optim
 from torchvision.models import resnet18, ResNet18_Weights
@@ -306,14 +311,14 @@ We set the **learning rate** to 0.01 for now (this is relatively high), allowing
 
 Later on, for fine-tuning, we can set the learning rate to 0.001 or even lower.
 
-```python
+```py
 loss_fn = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameters(),lr=0.01,)
 ```
 
 Once again, testing that this incremental change works:
 
-```python
+```py
 images, labels = next(iter(train_loader))
 images, labels = images.to(device), labels.to(device)
 outputs = model(images)
@@ -345,7 +350,7 @@ Within each epoch, we perform three main stages:
 
 - Print the epoch's training and validation metrics to track the model's development
 
-```python
+```py
 def train(model, train_loader, val_loader, loss_fn, optimizer, epochs):
     for epoch in range(epochs):
         model.train()
@@ -402,7 +407,7 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, epochs):
 
 We now **execute our training function**:
 
-```python
+```py
 EPOCHS = 5
 train(model, train_loader, val_loader, loss_fn, optimizer, EPOCHS)
 ```
@@ -411,13 +416,13 @@ train(model, train_loader, val_loader, loss_fn, optimizer, EPOCHS)
 
 The most useful *visual tool* for evaluating our network is a **confusion matrix**. This will show us what classes the model will confuse for another class.
 
-```python
+```py
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 ```
 
 First, we run our model on the **validation set** and collect all predictions and actual labels as [`NumPy`](https://numpy.org/) arrays:
 
-```python
+```py
 model.eval() 
 test_preds = []
 test_labels = []
@@ -439,7 +444,7 @@ test_labels = np.array(test_preds)
 
 We can now finally plot our confusion matrix:
 
-```python
+```py
 class_names = train_dataset.dataset.classes 
 
 cm = confusion_matrix(test_labels, test_preds)
@@ -485,7 +490,7 @@ Clearly it is quite difficult, even for humans to distinguish between the two, s
 
 It is important to save models once you're done so we can reuse them later:
 
-```python
+```py
 import os
 os.makedirs("models", exist_ok=True)
 
@@ -498,7 +503,7 @@ print("Model saved to models/campus_classifier.pt")
 First define an empty model of the same class. Everything has to be the exact same except the actual weights and biases.
 Then load the model:
 
-```python
+```py
 model = resnet18(weights=None)
 model.fc = torch.nn.Linear(model.fc.in_features, 4)
 model.load_state_dict(torch.load("models/campus_classifier.pt"))

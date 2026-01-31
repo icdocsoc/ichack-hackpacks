@@ -5,10 +5,7 @@ Hello from the inaugural **Hacker Education** team of IC Hack! Starting from IC 
 If you're completely new to hackathons or coding in general, we'd recommend **[the 'Getting Started' HackPack](./getting-started/README.md)**. Otherwise, feel free to check out any of the available HackPacks below!
 
 ## Available HackPacks
-- **`project-planning`**
-- **`android-development`**
-- **[`databases`](./databases/README.md)**
-- **`pitching-and-presenting`**
+
 - **[`android-development`](./android-development/README.md)**: Get familiar with Android development using Kotlin and Jetpack Compose.
 - **[`api-design`](./api-design/README.md)**: Learn to design RESTful APIs with practical guides for Firebase Cloud Functions and FastAPI.
   - **[`Firebase`](./api-design/Firebase.md)**
