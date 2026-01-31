@@ -88,7 +88,7 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader,random_split
 ```
 
-If there are any errors with the import then just run `!pip install <your library>`.
+If there are any errors with the import then just run `!pip install <your library>` (see the [Getting Started HackPack](/getting-started/README.md#python)).
 
 ### Using the GPU
 
