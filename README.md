@@ -25,6 +25,7 @@ If you're completely new to hackathons or coding in general, we'd recommend **[t
 - **[`pitching-and-presenting`](./pitching-and-presenting/README.md)**: Deliver confident, engaging presentations with effective demos and clear storytelling.
 - **[`project-planning`](./project-planning/README.md)**: Form effective teams and manage your hackathon time with strategic planning and work allocation.
 - **[`prompt-engineering`](./prompt-engineering/README.md)**: Craft effective prompts for AI language models and leverage IDE extensions for rapid development.
+- **[`machine-learning`](./machine-learning/README.md)**: Get to grips with the basics of machine learning and deep learning using PyTorch.
 
 ### 'Best Use Of' Challenges
 
