@@ -34,8 +34,8 @@ This has the benefit of being **serverless**, so you do not have to manage the r
 4. On the left hand pane, click on `Build` -> `Functions`.
 5. As `Functions` is not included in the `Spark` (default) plan, you will have to upgrade to the `Blaze` plan.
 
-    >[!WARNING]
-    >The Blaze plan will cost you if your quota runs out, so be careful with your usage! You are very unlikely to run out of your quota within the timeframe of a hackathon!
+    > [!WARNING]
+    > The Blaze plan will cost you if your quota runs out, so be careful with your usage! You are very unlikely to run out of your quota within the timeframe of a hackathon!
 
 6. Create a Cloud Billing Account.
 7. Follow the instructions in the new window.
