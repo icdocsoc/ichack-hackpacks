@@ -185,7 +185,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
             fields = ['id', 'title', 'content', 'created_at']
     ```
 
-    Here, we create a class (**`class NoteSerializer`**) that inherits from DRF's `ModelSerializer`, meaning we can use all methods that are implemented in that class. This saves us time by automatically figuring out how to map database fields to JSON fields so we don't have to write that logic manually.
+Here, we create a class (**`class NoteSerializer`**) that inherits from DRF's `ModelSerializer`, meaning we can use all methods that are implemented in that class. This saves us time by automatically figuring out how to map database fields to JSON fields so we don't have to write that logic manually.
 
     - The inner `Meta` class is used to provide configuration to the main class.
     - `model = Note` tells the serializer exactly which Database Model it should look at.
@@ -203,7 +203,7 @@ Let's create a simple **Notes app** with `title` and `content` fields, exposed v
         serializer_class = NoteSerializer
     ```
 
-    In this case, by inheriting from `ModelViewSet` our **`class NoteViewSet(viewsets.ModelViewSet)`** gets the logic for *Create*, *Read*, *Update*, and *Delete* for free. We don't have to write the functions ourselves!
+In this case, by inheriting from `ModelViewSet` our **`class NoteViewSet(viewsets.ModelViewSet)`** gets the logic for *Create*, *Read*, *Update*, and *Delete* for free. We don't have to write the functions ourselves!
 
     - `queryset = Note.objects.all()` defines the *data source*. It tells the view: "When someone asks for notes, look at the `Note` table and get `all()` of them."
     - `serializer_class = NoteSerializer` defines the *translator*. It tells the view: "When you get that data, use `NoteSerializer` to turn it into JSON before sending it to the user."
