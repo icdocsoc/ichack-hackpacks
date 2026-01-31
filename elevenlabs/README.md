@@ -122,7 +122,7 @@ pip install "elevenlabs[pyaudio]" python-dotenv
 
 Create a `.env` file in your project directory to store your API credentials:
 
-```env
+```dotenv
 ELEVENLABS_API_KEY=your_api_key_here
 ELEVENLABS_AGENT_ID=your_agent_id_here
 ```
@@ -137,7 +137,7 @@ The complete working example is available in [`ic-hack-greeter/agent.py`](ic-hac
 
 Start by importing the necessary modules:
 
-```python
+```py
 import os
 from dotenv import load_dotenv
 from elevenlabs.client import ElevenLabs
@@ -154,7 +154,7 @@ from elevenlabs.conversational_ai.conversation import Conversation, Conversation
 
 Next, load your environment variables and create an authenticated client:
 
-```python
+```py
 load_dotenv()
 
 client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
@@ -167,7 +167,7 @@ The `client` handles all API communication and authentication. The `agent_id` id
 
 If your agent uses dynamic variables for personalization, set them up:
 
-```python
+```py
 dynamic_vars = {
     "name": "John Smith",
     "student_year": "Third Year Undergraduate",
@@ -188,7 +188,7 @@ In your agent's configuration on the ElevenLabs platform, you can reference thes
 
 Now create the conversation instance that ties everything together:
 
-```python
+```py
 conversation = Conversation(
     client=client,
     agent_id=agent_id,
@@ -213,7 +213,7 @@ Let's break down these parameters:
 
 Finally, start the conversation and wait for it to complete:
 
-```python
+```py
 print("Starting conversation with your agent...\n")
 
 conversation.start_session()
@@ -249,7 +249,7 @@ The agent will start listening to your microphone and respond through your speak
 
 - **Make variables dynamic**: Replace the hardcoded values in `dynamic_vars` with user input:
 
-  ```python
+  ```py
   dynamic_vars = {
       "name": input("What's your name? "),
       "student_year": input("What year are you in? "),
