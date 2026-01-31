@@ -24,6 +24,7 @@ This HackPack focuses on supervised learning with **Deep Learning** (neural netw
     - [Why use PyTorch](#why-use-pytorch)
     - [Basic datatypes in PyTorch](#basic-datatypes-in-pytorch)
     - [Autograd explained](#autograd-explained)
+    - [Modules and friends](#modules-and-friends)
   - [The Project: IC Hack Location Classifier](#the-project-ic-hack-location-classifier)
     - [Transforming images](#transforming-images)
     - [Loading the dataset](#loading-the-dataset)
@@ -55,7 +56,7 @@ Here are some key tips for the general mindset that you should approach ML probl
 - Use **pretrained models** wherever possible.
 - Start with a simple model then build upon that.
 - Prioritise a **reliable working model** over getting a few higher accuracy points.
-- You don't always have to use Neural Networks! LightGMB and Linear Regression exist.
+- You don't always have to use Neural Networks! LightGBM and Linear Regression exist.
 
 ## Setting up
 
@@ -78,7 +79,11 @@ Think of notebooks as an interactive coding playground where you can test ideas 
 ### Import the required libraries
 
 ```python
-import torch, pandas, numpy as np, matplotlib.pyplot as plt, sklearn
+import torch
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import sklearn
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader,random_split
 ```
@@ -91,7 +96,7 @@ If there are any errors with the import then just run `!pip install <your librar
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ```
 
-This allows us to take advantage of the significantly more powerful **GPU** (Graphical Processing Unit) available to us within our notebook.
+This allows us to take advantage of the significantly more powerful **GPU** (Graphical Processing Unit) available to us within our notebook, if it is available. We then can simply run `model.to(device)` to move it to the device.
 
 ## PyTorch Basics
 
@@ -104,12 +109,12 @@ Some key advantages of PyTorch:
 - Simple and intuitive API
 - Automatically handles differentiation for you with autograd
 - Can take advantage of GPU in 1 line of code
-- PyTorch `Tensor` is compatible with NumPy arrays using `.numpy()`
+- PyTorch `Tensor` is compatible with NumPy arrays using `.numpy()` (with some caveats)
 - Comes with pre-trained models
 
 ### Basic datatypes in PyTorch
 
-**`Tensor`s** are like numpy arrays. The main difference being *autograd* (automatic differentiation).
+**`Tensor`s** are like numpy arrays. The main difference being *autograd* (automatic differentiation). There are a LOT of functions in common with numpy.
 
 **`Module`** is a datatype that represents your neural network and provides useful abstractions. You should know about [torch.nn.Sequential](https://docs.pytorch.org/docs/stable/generated/torch.nn.Sequential.html#torch.nn.Sequential).
 
@@ -117,13 +122,61 @@ Some key advantages of PyTorch:
 
 ### Autograd explained
 
+This subsection is here to explain autograd for those who are interested.
+
 Behind the scenes, PyTorch dynamically builds up a graph of all the computations that have happened so far. Autograd will track gradients for all tensors which have their `requires_grad` flag set to `True`.
 
-To trigger backpropagation, compute the loss tensor (must be a scalar) and then call `loss.backward()`. Gradients will then accumulate in leaf nodes in the computation graph. PyTorch considers a node to be a leaf if it is not the result of a tensor operation with at least one input having `requires_grad=True`. The gradients accumulate in the `grad` attribute of leaf nodes.
+To trigger backpropagation, compute the loss tensor (must be a scalar) and then call `loss.backward()`. Gradients will then accumulate in leaf nodes in the computation graph. PyTorch considers a node to be a leaf if it is not the result of a tensor operation with at least one input having `requires_grad=True`. The gradients accumulate in the `grad` attribute of leaf nodes. You can manually clear these accumulated gradients by setting them equal to `None`.
 
-The `Module` and `Optimizer` classes provide a convenient wrapper of this functionality.
+The `Module` and `Optimizer` classes provide a convenient wrapper of this functionality that hide most of the details from you.
 
 If you want to find out more, see [the PyTorch autograd tutorial](https://docs.pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html).
+
+### Modules and friends
+
+Dealing with autograd directly is painful. This is why modules exist. Here are some useful examples of modules:
+- `nn.Linear` - fully connected layer
+- `nn.Conv2d` - convolution layer, useful in computer vision
+- `nn.BatchNorm2d` - apply batch norm
+- `nn.Sequential` - chains together modules for you, very common as it lets you avoid subclassing `nn.Module`
+- `nn.ReLU`, `nn.LeakyReLU`, `nn.Sigmoid`, `nn.Tanh` - common activation functions
+- `nn.Softmax` - [softmax](https://en.wikipedia.org/wiki/Softmax_function); avoid using before `CrossEntropyLoss` as it expects logits
+- `nn.Dropout` - randomly drop values when in training mode, to encourage robustness in the model
+
+To create a `Module`, create a class that extends `nn.Module`. You then have to implement two things:
+- `__init__(self)`
+  - This is where we initialize parameters and submodules.
+  - PyTorch will look at all the instance attributes defined here - eg things that look like `self.layer1` and `self.w` - and look for `nn.Parameter`s and submodules. These will be tracked. If you want a parameter to be tracked, make sure it is wrapped in an `nn.Parameter(...)` (or inside a submodule). If you want to store a list of Modules, use [ModuleList](https://docs.pytorch.org/docs/stable/generated/torch.nn.ModuleList.html) and store it in an instance attribute. See also: [ParameterList](https://docs.pytorch.org/docs/stable/generated/torch.nn.ParameterList.html). The things that are tracked end up in the module's `state_dict`, used in loading and saving.
+- `forward(self, x)`
+  - This is where we define the forward pass, ie do stuff to the data.
+  - If you are keeping track of things like total loss so far, try to ensure you remove it from the autograd system with eg [.detach()](https://docs.pytorch.org/docs/stable/generated/torch.Tensor.detach.html). If you don't do this, PyTorch will keep track of all the intermediate values and can fill up your memory.
+
+Here are some useful functions `Module` provides:
+- `.parameters()` - return all the parameters in the function
+- `.zero_grad()` - set all the gradients accumulated in the leaf nodes (parameters) to zero, but usually you should prefer `Optimizer.zero_grad`
+- `.to(device)` - allows you to move modules do a specific device, eg GPU (note: see [docs](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module.to) for more details, this function is very flexible)
+- `.train(mode=True)` - sets the module to training mode, in which some modules behave differently (eg `nn.Dropout`)
+- `.state_dict()` - returns a dictionary containing the weights of the module, useful for loading and saving modules and inspecting state
+- `.type(dtype)` - casts all the parameters to a specific datatype - can help make modules take up less memory, but slightly advanced so be careful
+
+Now we need to deal with actually updating the weights of our model. The solution is an `Optimizer`. You may have heard of momentum; `Optimizer`s can deal with that too! Here are the most useful functions that `Optimizer`s have:
+- `.step()` - this updates the parameters of the module
+- `.zero_grad()` - same idea as `Module.zero_grad`, except will only zero out parameters it is resposible for
+
+To create an `Optimizer`, it needs to be told which parameters it is responsible for. Here is a basic example of creating an `Optimizer` (stochastic gradient descent) and using it:
+```
+# Create the optimiser, passing the model parameters (or even just a subset)
+optimizer = torch.optim.SGD(model.parameters(), lr=0.1, momentum=0.9)
+
+# Repeat the following for each batch
+optimizer.zero_grad()
+loss_fn(model(input), target).backward()
+optimizer.step()
+```
+
+The docs have an example of creating a custom `Module` [here](https://docs.pytorch.org/tutorials/beginner/examples_nn/polynomial_module.html) for beginners. We also have examples later on in this hackpack.
+
+If you want to change the learning rate over time, you can use some of PyTorch's built-in learning rate schedulers, like [this one here](https://docs.pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.ReduceLROnPlateau.html). They are different to optimizers.
 
 Now that you understand the basics of PyTorch, let's put it into practice by building a real image classification model!
 
@@ -243,7 +296,7 @@ To train our model, we need two key components:
 
 **Loss Function**: This measures how wrong the model's predictions are. Think of it as a score that tells the model "you're this far off from the correct answer." The goal of training is to minimize this loss. Lower loss = better predictions.
 
-**Optimizer**: This is the algorithm that adjusts the model's parameters (weights) to reduce the loss. It figures out which direction to "nudge" each parameter to improve performance. The optimizer uses the loss to determine how to update the model.
+**Optimizer**: This is the algorithm that adjusts the model's parameters (weights) to reduce the loss. It figures out which direction to "nudge" each parameter to improve performance. The optimizer uses the loss to determine how to update the model. Optimizers can be used to implement strategies like momentum.
 
 #### Our choices
 
